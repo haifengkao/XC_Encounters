@@ -1,0 +1,1510 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// 4 Bags of each type are placed in the world and made 'Global'
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// magic arrows
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Arrows_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Arrows_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Arrows_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Arrows_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Arrows_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Arrows_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Arrows_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Arrows_8,		1,	1	);
+// blacksmith ingredients
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Blacksmith_1,	CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Blacksmith_2,	CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Blacksmith_3,	CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Blacksmith_4,	CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Blacksmith_5,	0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Blacksmith_6,	0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Blacksmith_7,	1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Blacksmith_8,	1,	1	);
+// cooking ingredients
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Cook_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Cook_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Cook_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Cook_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Cook_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Cook_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Cook_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Cook_8,		1,	1	);
+// crafting ingredients
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Crafter_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Crafter_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Crafter_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Crafter_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Crafter_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Crafter_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Crafter_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Crafter_8,		1,	1	);
+// equipment
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Equipment_1,	CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Equipment_2,	CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Equipment_3,	CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Equipment_4,	CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Equipment_5,	0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Equipment_6,	0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Equipment_7,	1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Equipment_8,	1,	1	);
+// food, drinks and potions
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Food_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Food_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Food_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Food_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Food_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Food_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Food_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Food_8,		1,	1	);
+// grenades
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Grenades_1,	CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Grenades_2,	CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Grenades_3,	CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Grenades_4,	CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Grenades_5,	0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Grenades_6,	0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Grenades_7,	1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Grenades_8,	1,	1	);
+// keys
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Keys_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Keys_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Keys_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Keys_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Keys_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Keys_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Keys_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Keys_8,		1,	1	);
+// books and parchments
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Paperwork_1,	CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Paperwork_2,	CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Paperwork_3,	CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Paperwork_4,	CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Paperwork_5,	0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Paperwork_6,	0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Paperwork_7,	1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Paperwork_8,	1,	1	);
+// potions
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Potions_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Potions_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Potions_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Potions_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Potions_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Potions_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Potions_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Potions_8,		1,	1	);
+// quest and story items
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Quest_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Quest_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Quest_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Quest_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Quest_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Quest_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Quest_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Quest_8,		1,	1	);
+// scrolls
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Scrolls_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Scrolls_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Scrolls_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Scrolls_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Scrolls_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Scrolls_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Scrolls_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Scrolls_8,		1,	1	);
+// tools (only the new ones go there)
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Tools_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Tools_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Tools_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Tools_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Tools_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Tools_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Tools_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Tools_8,		1,	1	);
+// poisoned food, drinks and potions
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Zombie_1,		CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Zombie_2,		CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Zombie_3,		CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Zombie_4,		CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Zombie_5,		0,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Zombie_6,		0,	1	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Zombie_7,		1,	0	);
+XCBagsDB_World_Placed_Bags( ITEM_XC_Tool_Bag_Zombie_8,		1,	1	);
+
+// Bag controllers
+XCBagsDB_World_Placed_Controllers( ITEM_XC_Tool_Bags_Controller_1,	CHARACTER_Bairdotr	);
+XCBagsDB_World_Placed_Controllers( ITEM_XC_Tool_Bags_Controller_2,	CHARACTER_Jahan		);
+XCBagsDB_World_Placed_Controllers( ITEM_XC_Tool_Bags_Controller_3,	CHARACTER_Madoc		);
+XCBagsDB_World_Placed_Controllers( ITEM_XC_Tool_Bags_Controller_4,	CHARACTER_Wolgraff	);
+XCBagsDB_World_Placed_Controllers( ITEM_XC_Tool_Bags_Controller_5,	0,	0	);
+XCBagsDB_World_Placed_Controllers( ITEM_XC_Tool_Bags_Controller_6,	0,	1	);
+XCBagsDB_World_Placed_Controllers( ITEM_XC_Tool_Bags_Controller_7,	1,	0	);
+XCBagsDB_World_Placed_Controllers( ITEM_XC_Tool_Bags_Controller_8,	1,	1	);
+
+// database of templates that should be moved to the temp container first before adding bags, so that they will
+// be moved back in a specific order after the bags are added.
+// (this has become necessary because otherwise Wolgraff ends up with his bow euipeed instead of his two daggers.)
+// If more templates are added, they must be in the desired order here, because they will be queried in this order
+// and will also be moved in this order.
+// There is no chance to have a 'special' case for one character, if this is needed, the whole moving code needs
+// to be rewritten.
+// If this database is extended in another file, the additional templates will be prepended or appended depending
+// on the lexical order of the file name in comparison to the file name of this file.
+// Source Hunter Guide
+XCBagsDB__CharInit__FirstTemplates__ToMove( "XC_Quest_Book_QuestBook_C_21e3804e-34cf-4c82-872e-89451bf48433" );
+// Player Orders
+XCBagsDB__CharInit__FirstTemplates__ToMove( "BOOK_Quest_PlayerOrders_061bab98-1596-4575-87d7-cebc4559d2e6" );
+XCBagsDB__CharInit__FirstTemplates__ToMove( "Quest_renamed_BOOK_Quest_PlayerOrders_061bab98-1596-4575-87d7-cebc4559d2e6" );
+// Wolgraffs Bow
+XCBagsDB__CharInit__FirstTemplates__ToMove( "WPN_Human_Normal_Bow_Short_A_3c79e509-9cf3-4102-9224-03e429b3bdd4" );
+
+// initialization
+XCBagsProc__Setup();
+
+// Templates of paperwork stuff that should be moved delayed
+// generic quest and story books and parchments
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_QuestBook_A_a1085bcf-97e7-412f-8cc9-80abf36c2ecd" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_QuestBook_B_ae11fa39-50ec-47ff-941c-55343dd7591a" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_QuestBook_C_21e3804e-34cf-4c82-872e-89451bf48433" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_QuestBook_D_0891571b-ab61-4d8c-b154-481fa283a899" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_QuestBook_E_936481ea-dc15-486d-ad0e-0923594e633c" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_QuestParchment_aafabd95-d76c-4df9-98dc-068c0c96f1a3" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_QuestSpellBook_d0288fb8-6aaf-4d96-87cb-9924357a7e79" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_QuestSpellBook_Open_be9e9b7b-33fe-43dd-9292-7cf88fe97e3b" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_StoryBook_A_aaa92abe-63d1-4c22-9460-7a0c85d4e092" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_StoryBook_B_31aaf8b6-ce53-4f24-bcdf-90169bec0f1b" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_StoryBook_C_628b16b2-7265-4862-8134-bc95c1f317ff" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_StoryBook_D_4fbe53a4-2305-476b-9d45-d90fdb653b01" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_StoryBook_E_5683c5e9-e121-4b0c-b1d7-26bddbc060a6" );
+XCBagsDB__Register__Delayed( 0, "XC_Quest_Book_StoryParchment_56ef4784-907e-45c7-b50b-115b90b2edf4" );
+// specific quest and story books and parchments
+XCBagsDB__Register__Delayed( 1, "Quest_BOOK_LeandrasBook_2b880911-d031-4388-b24e-b27a2958e7d9" );
+XCBagsDB__Register__Delayed( 1, "Quest_Book_ReginsFakeGenealogy_Elliot_c3ea97c5-0f2b-41db-886a-13d7a7f027d0" );
+XCBagsDB__Register__Delayed( 1, "Quest_Book_ReginsFakeGenealogy_Medora_e799a794-129c-429f-b46e-9702899d92d5" );
+XCBagsDB__Register__Delayed( 1, "Quest_Book_ReginsGenealogy_WithMissingPage_d5e7563e-a426-45b4-af33-38b778d0b82f" );
+XCBagsDB__Register__Delayed( 1, "Quest_CYS_BlossiusWill_48ec9368-3530-4ecb-9ba1-86ece3b26ec9" );
+XCBagsDB__Register__Delayed( 1, "Quest_CYS_BlossiusWillAltered_c42d53c3-4293-4cb0-b42a-dcedf6c30f29" );
+XCBagsDB__Register__Delayed( 1, "Quest_GoblinTransformSpell_A_b2fd3596-825d-4a03-9b55-ff73779cb95b" );
+XCBagsDB__Register__Delayed( 1, "Quest_LeandraSpell_6e26d7bc-1298-4afa-ba94-6b3d0b9f979b" );
+XCBagsDB__Register__Delayed( 1, "Quest_MaradinoBook_0a9ca3f1-4af2-485b-93fe-fc9b20d0b658" );
+XCBagsDB__Register__Delayed( 1, "Quest_TenebriumBook_A_aabe94bb-87c1-4a77-ad5b-5a5894eb1a78" );
+XCBagsDB__Register__Delayed( 1, "Quest_renamed_BOOK_PhilosophyOfDeath_A_b333bc02-f755-4ab1-bd8f-24f1dffcd0dd" );
+XCBagsDB__Register__Delayed( 1, "Quest_renamed_BOOK_Quest_HiberheimDictionary_b868126b-77b1-4cd1-a771-7eb38c33d183" );
+XCBagsDB__Register__Delayed( 1, "Quest_renamed_BOOK_Quest_PlayerOrders_061bab98-1596-4575-87d7-cebc4559d2e6" );
+// Info book templates cannot be removed on first use, because they are used for several instances
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Readme_A_4315168e-cf5b-43b7-8678-f688c8d33611" );
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Readme_B_f01768a4-754b-4f24-8a6e-03e751a4d598" );
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Readme_C_17f87b1b-4952-417b-a5b7-296981ed5fe2" );
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Readme_D_f5e2a343-889f-49f4-b6e7-de53c3cb4922" );
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Readme_E_ff8fd224-d1a1-4186-91f1-913f74320719" );
+
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Recipe_Archer_c55cba52-9ca0-45a4-a57b-c651a3e12c13" );
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Recipe_Cook_ad822bf3-76a6-47f3-92b7-797f2b9c6518" );
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Recipe_Magic_46fdeb39-3818-49f0-81fa-fa920c4c3482" );
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Recipe_Potion_d4d395ac-2335-4e62-8a65-d0c3b82025e6" );
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Recipe_Smith_622587d1-d3c1-4f0d-b771-c769a96ec78e" );
+//XCBagsDB__Register__Delayed( 0, "XC_InfoBook_Recipe_Survivor_3c823f27-b59d-48ca-b663-bc27442aa68f" );
+
+// Treasure maps cannot be delayed because they are added via TreasureTable.txt or
+// ItemTemplateAddToCharacter() in case of Gerome in Cyseal
+// Since they are not global, they do not create a GameBookInterfaceClosed() event
+
+KBSECTION
+//REGION Magic bags
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Bag initialization (called in INIT only)
+//
+// - Builds a database of all bags with category and handle: XCBagsDB_Bags()
+// - registers all known categories: XCBagsDB_Categories()
+// - sets up databases for bag distribution to players and companions ('unclaimed' bags)
+// - builds database of all controllers
+// - distributes all tools that don't require discovering (currently none after we had to remove the sleeping mat)
+//
+// Unsets the initial database of bags in the process
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// init player bags
+PROC
+	XCBagsProc__Setup()
+	AND
+	XCBagsDB_World_Placed_Bags( _Bag, _isFemaleFlag, _HandOutOrder )
+	AND
+	ItemGetVarString( _Bag, "XCBags_BagCategory", _BagCategory )
+	AND
+	ItemGetHandle( _Bag, _BagHandle )
+THEN
+	NOT XCBagsDB_World_Placed_Bags( _Bag, _isFemaleFlag, _HandOutOrder );
+	XCBagsDB_Bags( _Bag, _BagCategory, _BagHandle );
+	XCBagsDB_Categories( _BagCategory );
+	XCBagsDB_Unclaimed_Player_Bags( _Bag, _BagCategory, _isFemaleFlag, _HandOutOrder );
+
+// init companion bags
+PROC
+	XCBagsProc__Setup()
+	AND
+	XCBagsDB_World_Placed_Bags( _Bag, _Companion )
+	AND
+	ItemGetVarString( _Bag, "XCBags_BagCategory", _BagCategory )
+	AND
+	ItemGetHandle( _Bag, _BagHandle )
+THEN
+	NOT XCBagsDB_World_Placed_Bags( _Bag, _Companion );
+	XCBagsDB_Bags( _Bag, _BagCategory, _BagHandle );
+	XCBagsDB_Categories( _BagCategory );
+	XCBagsDB_Unclaimed_Companion_Bags( _Bag, _BagCategory, _Companion );
+
+// register controller handles to prevent their sending to homestead
+PROC
+	XCBagsProc__Setup()
+	AND
+	XCBagsDB_World_Placed_Controllers( _Controller, _, _ )
+	AND
+	ItemGetHandle( _Controller, _ControllerHandle )
+THEN
+	XCBagsDB_Controllers( _Controller, _ControllerHandle );
+
+PROC
+	XCBagsProc__Setup()
+	AND
+	XCBagsDB_World_Placed_Controllers( _Controller, _ )
+	AND
+	ItemGetHandle( _Controller, _ControllerHandle )
+THEN
+	XCBagsDB_Controllers( _Controller, _ControllerHandle );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Send to Homestead
+//
+// We want to prevent bags and controllers from being sent to Homestead.
+// To achieve this, we use a hook called by the container's item distribution procedure before actual 'sending'.
+// If we mark the handle as 'already sent' here, the actual send procedures will be skipped.
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Hook to mark a bag as already sent although we will not do it, instead we 'send' the bag's content
+// NOTE: sending it to the hidden container triggers distribution of the items to their real destination, we do not have 
+// to call any procedure and we do not have to know anything about the bag's content, the hidden container handles it all.
+PROC
+	XCContHook_PrepareForHomestead( (CHARACTER)_Char, (INTEGER)_ItemHandle )
+	AND
+	XCBagsDB_Bags( _Bag, _, _ItemHandle )
+THEN
+	XCContFlag__HandleAlreadySent( _ItemHandle );
+	ContainerMoveAllItemsToContainer( _Bag, ITEM_XC_STORAGE_HOMESTEAD, 1 );
+
+// Prevent controllers from being sent to homestead
+PROC
+	XCContHook_PrepareForHomestead( (CHARACTER)_Char, (INTEGER)_ItemHandle )
+	AND
+	XCBagsDB_Controllers( _, _ItemHandle )
+THEN
+	XCContFlag__HandleAlreadySent( _ItemHandle );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Character setup for bag handling, including all event handlers used
+//
+// Preparing a character for bag handling consists of the following steps
+// - give one bag of each category to a character (there are 8 pre-defined bags, 4 for the named companions and 4 for players)
+// - give the character one bag controller
+// - set the variables in the control skill character script (we do this to 'force' the names we use here upon the script)
+// - add the control skill
+// - activate the bags
+//
+// Since normal handling with only these steps leaves ugly 'holes' in the inventory, we do a little bit more:
+// We also add the character's items in the order we want them to be added, with gold in the first slot, followed by
+// the bags and finally the rest, most of which will be sucked int the bag upon activation (actually, ALL will be)
+//
+// To achieve this, we call an inventory preparation function first, which completely undresses the character by moving all
+// items out to a temporary storage, re-add the gold, add the bags, add the controller and finally add the rest.
+// Items added to character are not equipped automatically (the handler of Equipment.txt does this though).
+// So we also need to dress the characters when we move stuff back. As long as nothing special is added to Equipment.txt,
+// this works well because there is no additional equippable item  in the char's inventory except for Wolgraff's, he has
+// an additional bow sitting in his inventory. Bairdotr also has bow and dagger, but they are not in her inventory.
+// If we did simple dressing up, Wolgraff ended with the bow eqipped instead of his two daggers.
+// That was probably because the daggers were moved back and equipped before his bow, which caused the daggers to get
+// unequipped when the bow arrived. The solution to this was, to move the bow as the very first item so that it came back
+// as the first one and the daggers replaced the bow instead of the other way around.
+//
+// So finally we have the following basic steps:
+// - Prepare the inventory (move out everything)
+// - add the bags
+// - add the controllers
+// - set the character script variables (event names)
+// - add the control skill
+// - activate the bags
+// - restore the inventory (with auto-equipping)
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// We provide hooks so that additional stuff can be added to characters in initialization
+// That will make adding of stuff independent of any file name order.
+//
+// These hooks can be used in two ways:
+// 1. Add another procedure of that name with the same parameter
+// 2. Add database entries in any INIT section with the desired template (and amount)
+//    (does not have to be in INIT, but the database must exist when these PROCs are called.)
+
+// Add stuff that should also be equipped if possible
+// This hook is called immediately after the original inventory of the character has been restored
+// (no amount can be specified here because equippable gear can never stack and I dont want to have to introduce
+//  an additional counter and recursive function calls. If that is what is desired, another PROC of that name
+//  can still be added and will be executed. Would not make much sense to constantly equip added gear and
+//  unequip currently equipped gear though. If only the presence of additional stuff is desired, the second
+//  database can be used.)
+PROC
+	XCBagsHook_Add_AdditionalItems_AndEquip( (CHARACTER)_Char )
+	AND
+	XCBagsDB_Additional_Items_Equip( (STRING)_ItemTemplate )
+THEN
+	ItemTemplateAddToCharacter( _ItemTemplate, _Char, 1 );
+
+// add stuff that should never be equipped, here, an amount can be given
+PROC
+	XCBagsHook_Add_AdditionalItems( (CHARACTER)_Char )
+	AND
+	XCBagsDB_Additional_Items( (STRING)_ItemTemplate, (INTEGER)_Amount )
+THEN
+	ItemTemplateAddToCharacter( _ItemTemplate, _Char, _Amount );
+
+// Hook after all bag initialization is done
+PROC
+	XCBagsHook_After_All_Init_Done()
+THEN
+	XCNOP(1);
+
+// Events for bag init for characters
+// (They are no actual events but 'hooks' which are called on events in XCStart/zzzzzz_XC_Hooks.txt, so indirectly, they
+//  ARE events.)
+
+// Set up the two players (hook is called when players first enter Cyseal Beach)
+PROC
+	XCHook_On_Player_Enters_World( (CHARACTER)_Player )
+THEN
+	XCBagsProc_CharSetup( _Player );
+
+// Set up all companions (this hook is executed before the hook for players, which I use above)
+// (Newly introduced companions require new bags and adding those bags in INIT above. They would still be iterated here
+//  though and at least get the skill ... if they have the character script attached.)
+PROC
+	XCHook_Cys_First_BeforePlayer()
+	AND
+	_Companion.XCDB_IsCompanion()
+THEN
+	XCBagsProc_CharSetup( _Companion );
+
+// This hook is called after the player hooks and we use it to remove stale databases
+// We can also re-enable automatic tool-adding
+PROC
+	XCHook_Cys_First_AfterPlayer()
+THEN
+	XCBagsProc_CharSetup_Cleanup();
+
+// This procedure is called for the players and each companion when Cyseal Beach is entered by the players
+// for the first time.
+// We only execute the code here if the character can actually handle 'Magic Bags'. For the bags to work
+// the skill handler character script needs to be attached to the character. Once it is attached, the scripts
+// internal variable 'XCBFlag_IsBagHandler' is 1.
+//
+// We use an internal flag to signal to event handlers (below) that it should do auto-equipping of added items.
+// Later on, no auto-equipping should be done anymore. The flag needs to be set before any item move or add
+// handlers of this whole process can execute, so we do it right at the beginning.
+// Due to how Osiris works, it cannot be unset in this place directly after re-adding all stuff.
+// The resetting event needs to be detached, see below.
+// The flag .XCBagsFlag_BagsActive() marks the status of bag handling, if items are sucked in or not.
+PROC
+	XCBagsProc_CharSetup( (CHARACTER)_Char )
+	AND
+	CharacterGetVarInteger( _Char, "XCBFlag_IsBagHandler", 1 )
+	AND
+	NOT _Char.XCBagsFlag_IsInitialized()
+THEN
+	_Char.XCBagsFlag_IsInitialized();
+	XCBagsIntFlag__AutoEquipActive( _Char );
+	XCBagsProc__CharInit__PrepInv( _Char );
+	XCBagsProc__CharInit__AddAllBags( _Char );
+	XCBagsProc__CharInit__AddBagControllers( _Char );
+	XCBagsProc__CharInit__PrepCharScript( _Char );
+	XCBagsProc__CharInit__AddControlSkill( _Char );
+	_Char.XCBagsFlag_BagsActive();
+	XCBagsProc__CharInint__RestoreInv( _Char );
+
+// /////////////////////////////////////////////////////
+// inventory preparation
+// /////////////////////////////////////////////////////
+
+// Register amount of owned gold and remove it.
+// The gold template must be removed because using only CharacterAddGold( -Gold ) still leaves the template
+// in the inventory which would be moved to the temp container and then be moved back unordered.
+// Since we want to have gold in the first slot, we have to add it first.
+// So what we do here is remove the whole stack after registering the amount and recreate it later.
+PROC
+	XCBagsProc__CharInit__PrepInv( (CHARACTER)_Char )
+	AND
+	ItemTemplateIsInCharacterInventory( _Char, "LOOT_Gold_Big_A_1c3c9c74-34a1-4685-989e-410dc080be6f", _NumItems )
+	AND
+	_NumItems > 0
+	AND
+	GetItemhandleForItemTemplateInInventory( _Char, "LOOT_Gold_Big_A_1c3c9c74-34a1-4685-989e-410dc080be6f", _GoldHandle )
+THEN
+	XCBagsTempStorage__PlayerGold( _Char, _GoldHandle );
+	ItemHandleToContainer( _GoldHandle, ITEM_XC_STORAGE_TEMPORARY, -1 );
+
+// Items to move first to achieve a desired move-back order
+// (for now only usefule to have Wolgraff end up with his daggers equipped instead of his bow)
+PROC
+	XCBagsProc__CharInit__PrepInv( (CHARACTER)_Char )
+	AND
+	XCBagsDB__CharInit__FirstTemplates__ToMove( _ItemTemplate )
+	AND
+	ItemTemplateIsInCharacterInventory( _Char, _ItemTemplate, _NumItems )
+	AND
+	_NumItems > 0
+	AND
+	GetItemhandleForItemTemplateInInventory( _Char, _ItemTemplate, _ItemHandle )
+THEN
+	ItemHandleToContainer( _ItemHandle, ITEM_XC_STORAGE_TEMPORARY, -1 );
+
+// Move all the rest of the inventory out, inventory should now be empty
+PROC
+	XCBagsProc__CharInit__PrepInv( (CHARACTER)_Char )
+THEN
+	CharacterMoveAllItemsToContainer( _Char, ITEM_XC_STORAGE_TEMPORARY, 1 );
+
+// Give gold back, should now be in first slot in inventory
+// (it does works to add a stack with an amount, no need additional CharacterAddGold() call required;
+//  also removes the need to subtract 1 from the registered amount for the call after adding a stack of 1.
+//  We only registered the gold above if there was a root template in the the inventory, so there is
+//  of course a chance to create a 0-stack and I don't know if that would even result in any creation.
+//  In that case, no gold would be added, since no gold was there before --> who cares.)
+PROC
+	XCBagsProc__CharInit__PrepInv( (CHARACTER)_Char )
+	AND
+	XCBagsTempStorage__PlayerGold( _Char, _GoldHandle )
+THEN
+	NOT XCBagsTempStorage__PlayerGold( _Char, _GoldHandle );
+	ItemHandleToCharacter( _GoldHandle, _Char, -1 );
+
+// /////////////////////////////////////////////////////
+// hand out the assigned bags
+// /////////////////////////////////////////////////////
+
+// Add one bag of each category
+// Iterates all categories previously set in bag initialization
+PROC
+	XCBagsProc__CharInit__AddAllBags( (CHARACTER)_Char )
+	AND
+	XCBagsDB_Categories( _BagCategory )
+THEN
+	XCBagsProcHelper__GiveAssignedBag( _Char, _BagCategory );
+
+// We gave the placed bags 'names' to make it easier to handle them, making it easier to identify which bag
+// should go to which character by default. (This makes bag moving and giving them back easier; Players will figure
+// out themselves what to make out of this. Bag moving might happen a lot due to their built-in 'content-transport-
+// functionality' and when using bags that way it is nice to know which bag to give back after having it received)
+// So we will have "Jahan's Crafter Bag", "Madora's Blacksmith Bag" and so forth.
+// Players will get 'gender bags', female characters will get "Scarlett's" and "Doreen's" bag while male characters
+// get "Roderick's" and "Swen's" bags. (Of course this is only cosmetic but looks nicer.)
+//
+// We have assigned specific bags to specific characters in the XCBagsDB_World_Placed_Bags() database for this purpose.
+// For players, we cannot directly assign a bag to a player because the gender is unknown in INIT.
+// Instead we have 4 bags, two of each marked as _IsFemale = 1 and two as _IsFemale = 0.
+// The additional INTEGER in the database is a 'handout order', for example if we have handed out a set of male bags, we
+// increase this value and if the following player is also male, the second set of bags will be used, same thing
+// for the female bags.
+// While real companions have their own bags, henchmen don't have any, because it is too much work to handle them
+// also. They can receive bags though when a real companion is hired and then dismissed, because the bags are
+// given back to a player on dismiss and can be given to a hired henchman.
+// It is nigh impossible to do this for henchmen due to all the root template mangling and the constant
+// hiring/dismissing of henchmen in the hiring 'preview' dialog.
+// (which is no real preview, there is always some hiring and dismissing going on when browsing through the list!)
+
+// Add of a category to a companion (Madora, Jahan, Bairdotr, Wolgraff)
+PROC
+	XCBagsProcHelper__GiveAssignedBag( (CHARACTER)_Companion, (STRING)_BagCategory )
+	AND
+	_Companion.XCDB_IsCompanion()
+	AND
+	XCBagsDB_Unclaimed_Companion_Bags( _Bag, _BagCategory, _Companion )
+THEN
+	NOT XCBagsDB_Unclaimed_Companion_Bags( _Bag, _BagCategory, _Companion );
+	ItemToCharacter( _Bag, _Companion );
+
+// We want to hand out the 'correct' bag to players, females should get the 'female bags' while male players
+// should get the male bags.
+// We build the handout order on-the-fly only if we need it.
+// I also call the CharacterIsFemale() API directly, because I don't feel like searching for it in Larian's
+// mess of initializations.
+// (this whole bunch of procedures is called only once, so who cares about some microseconds)
+PROC
+	XCBagsProcHelper__GiveAssignedBag( (CHARACTER)_Player, (STRING)_BagCategory )
+	AND
+	_Player.XCDB_IsPlayer()
+	AND
+	CharacterIsFemale( _Player, _isFemaleFlag )
+	AND
+	NOT XCBagsIntDB__PlayerBagHandOutOrder( _BagCategory, _isFemaleFlag, _ )
+THEN
+	XCBagsIntDB__PlayerBagHandOutOrder( _BagCategory, _isFemaleFlag, 0 );
+
+// adding an assigned bag to a player
+PROC
+	XCBagsProcHelper__GiveAssignedBag( (CHARACTER)_Player, (STRING)_BagCategory )
+	AND
+	_Player.XCDB_IsPlayer()
+	AND
+	CharacterIsFemale( _Player, _isFemaleFlag )
+	AND
+	XCBagsIntDB__PlayerBagHandOutOrder( _BagCategory, _isFemaleFlag, _CurrentHandOutOrder )
+	AND
+	XCBagsDB_Unclaimed_Player_Bags( _Bag, _BagCategory, _isFemaleFlag, _CurrentHandOutOrder )
+	AND
+	IntegerSum( _CurrentHandOutOrder, 1, _NextHandOutOrder )
+THEN
+	NOT XCBagsDB_Unclaimed_Player_Bags( _Bag, _BagCategory, _isFemaleFlag, _CurrentHandOutOrder );
+	NOT XCBagsIntDB__PlayerBagHandOutOrder( _BagCategory, _isFemaleFlag, _CurrentHandOutOrder );
+	XCBagsIntDB__PlayerBagHandOutOrder( _BagCategory, _isFemaleFlag, _NextHandOutOrder );
+	ItemToCharacter( _Bag, _Player );
+
+// one of the cleanups, we don't need any handout order anymore after bags have been handed out
+// --> remove the stale database.
+PROC
+	XCBagsProc_CharSetup_Cleanup()
+	AND
+	XCBagsIntDB__PlayerBagHandOutOrder( _BagCategory, _isFemaleFlag, _HandOutOrder )
+THEN
+	NOT XCBagsIntDB__PlayerBagHandOutOrder( _BagCategory, _isFemaleFlag, _HandOutOrder );
+
+// /////////////////////////////////////////////////////
+// hand out the assigned bag controllers
+// /////////////////////////////////////////////////////
+
+// See above, the same is done for the controllers as is done for the bags, they are 'named'
+// and thus will be given to the characters they are assigned to.
+// Again, a 'handout order' is required for 'male and female controllers'
+
+// adding a bag controller to a companion
+PROC
+	XCBagsProc__CharInit__AddBagControllers( (CHARACTER)_Companion )
+	AND
+	_Companion.XCDB_IsCompanion()
+	AND
+	XCBagsDB_World_Placed_Controllers( _Controller, _Companion )
+THEN
+	NOT XCBagsDB_World_Placed_Controllers( _Controller, _Companion );
+	ItemToCharacter( _Controller, _Companion );
+
+PROC
+	XCBagsProc__CharInit__AddBagControllers( (CHARACTER)_Player )
+	AND
+	_Player.XCDB_IsPlayer()
+	AND
+	CharacterIsFemale( _Player, _isFemaleFlag )
+	AND
+	NOT XCBagsIntDB__ControllerHandOutOrder( _isFemaleFlag, _ )
+THEN
+	XCBagsIntDB__ControllerHandOutOrder( _isFemaleFlag, 0 );
+
+PROC
+	XCBagsProc__CharInit__AddBagControllers( (CHARACTER)_Player )
+	AND
+	_Player.XCDB_IsPlayer()
+	AND
+	CharacterIsFemale( _Player, _isFemaleFlag )
+	AND
+	XCBagsIntDB__ControllerHandOutOrder( _isFemaleFlag, _CurrentHandOutOrder )
+	AND
+	XCBagsDB_World_Placed_Controllers( _Controller, _isFemaleFlag, _CurrentHandOutOrder )
+	AND
+	IntegerSum( _CurrentHandOutOrder, 1, _NextHandOutOrder )
+THEN
+	NOT XCBagsDB_World_Placed_Controllers( _Controller, _isFemaleFlag, _CurrentHandOutOrder );
+	NOT XCBagsIntDB__ControllerHandOutOrder( _isFemaleFlag, _CurrentHandOutOrder );
+	XCBagsIntDB__ControllerHandOutOrder( _isFemaleFlag, _NextHandOutOrder );
+	ItemToCharacter( _Controller, _Player );
+
+// one of the cleanups, we don't need any handout order anymore after controllers have been handed out
+// --> remove the stale database.
+PROC
+	XCBagsProc_CharSetup_Cleanup()
+	AND
+	XCBagsIntDB__ControllerHandOutOrder( _isFemaleFlag, _CurrentHandOutOrder )
+THEN
+	NOT XCBagsIntDB__ControllerHandOutOrder( _isFemaleFlag, _CurrentHandOutOrder );
+
+// /////////////////////////////////////////////////////
+// initialize the character script
+// /////////////////////////////////////////////////////
+
+// We explicitely set the names of the we want to catch, so we have them in one central place (this file)
+// and are (half-) independent of changes in the character script.
+// ('half' because the variable names could be changed ...)
+PROC
+	XCBagsProc__CharInit__PrepCharScript( (CHARACTER)_Char )
+THEN
+	CharacterSetVarInteger(	_Char, "XCBFlag_Active",			1 );
+	CharacterSetVarString(	_Char, "XCBCmd_TurnOn",				"XCBagsEv_TurnOn" );
+	CharacterSetVarString(	_Char, "XCBCmd_TurnOff",			"XCBagsEv_TurnOff" );
+	CharacterSetVarString(	_Char, "XCBEv_Toggled",				"XCBagsEv_Toggled" );
+
+// We also set the script's internal event names
+// (we only do this to avoid name conflicts that could occur when we set the names of the events we
+//  directly deal with.)
+//PROC
+//	XCBagsProc__CharInit__PrepCharScript( (CHARACTER)_Char )
+//THEN
+//	CharacterSetVarString(	_Char, "XCBLEff__BagsOff__Play",	"XCBagsIntEv_PlayEffect" );
+//	CharacterSetVarString(	_Char, "XCBLEff__BagsOff__Stop",	"XCBagsIntEv_StopEffect" );
+
+// /////////////////////////////////////////////////////
+// give the control skill
+// /////////////////////////////////////////////////////
+
+// Add the control skill
+// I would have liked to have this in one central place, but this is impossible, because neither can I
+// query a SKILL_ID variable nor can I set it, and character scripts need SKILL_IDs when dealing with skills.
+PROC
+	XCBagsProc__CharInit__AddControlSkill( (CHARACTER)_Char )
+THEN
+	CharacterAddSkill( _Char, "XC_Skill_Other_MagicBagControl" );
+
+// /////////////////////////////////////////////////////
+// inventory restoration
+// /////////////////////////////////////////////////////
+
+// Give previously removed items back, money and bags are in the leading inventory slots now.
+// Since the bags are already active at this point, everything should end up within one of the bags.
+// (except for the stuff that does not go into bags like Wolgraff's bow.)
+PROC
+	XCBagsProc__CharInint__RestoreInv( (CHARACTER)_Char )
+THEN
+	ContainerMoveAllItemsToCharacter( ITEM_XC_STORAGE_TEMPORARY, _Char, 1 );
+
+// after the initial gear has been moved back in, we call our provided hook
+PROC
+	XCBagsProc__CharInint__RestoreInv( (CHARACTER)_Char )
+THEN
+	XCBagsHook_Add_AdditionalItems_AndEquip( _Char );
+
+// This handler equips the items that are added to inventory if possible and if auto-equipping is on.
+IF
+	ItemTemplateAddedToCharacter( _, _ItemHandle, _Char )
+	AND
+	XCBagsIntFlag__AutoEquipActive( _Char )
+	AND
+	ItemHandleIsEquipable( _ItemHandle, 1 )
+THEN
+	CharacterEquipItemhandle( _Char, _ItemHandle );
+
+// After all items have been given back to their owners at the end of this initialization process,
+// we add another item to the character. This is a signal token that is caught by the
+// ItemTemplateAddedToCharacter() handler to finally turn off the auto-equipping-enabled flag.
+// The reason why it has to be done this way is, that Osiris always executes every piece of code
+// that belongs together until it is done with it.
+// Events are NO real events, they can never interrupt any currently executed code, they are mere
+// 'queued calls' that get executed when they are next in the execution stack.
+// This is the reason why the required flag cannot be unset in the CharSetup() procedure:
+// since all event handlers are executed after this procedure, the 'auto-equip-handler' would already
+// find the variable unset and not do anything.
+// So to achieve what we want, we need to make sure that this variable is set until it is no longer needed.
+// This is done by adding the signal token immediately after all other stuff and when the Added handler
+// finds it, it knows that the end of added items is reached.
+// (If we add it after the rest, the event it generates is also executed after their event!)
+PROC
+	XCBagsProc__CharInint__RestoreInv( (CHARACTER)_Char )
+THEN
+	XCHooksProc_SendInventorySignal( _Char, "DisableAutoEquip" );
+
+// Signals the end of auto-equipping-enabled
+PROC
+	XCHooksProc_ReceiveInventorySignal( (CHARACTER)_Char, "DisableAutoEquip" )
+THEN
+	NOT XCBagsIntFlag__AutoEquipActive( _Char );
+
+// Call of our provieded hook to add additional items that should never be auto-equipped
+PROC
+	XCBagsProc__CharInint__RestoreInv( (CHARACTER)_Char )
+THEN
+	XCBagsHook_Add_AdditionalItems( _Char );
+
+// Add a signal token to CHARACTER_Player2, because that is the last character set up
+PROC
+	XCBagsProc__CharInint__RestoreInv( CHARACTER_Player2 )
+THEN
+	XCHooksProc_SendInventorySignal( CHARACTER_Player2, "BagSetupFinished" );
+
+// Signals the definite end of all bag setup
+// A hook is called here.
+PROC
+	XCHooksProc_ReceiveInventorySignal( CHARACTER_Player2, "BagSetupFinished" )
+THEN
+	XCBagsHook_After_All_Init_Done();
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Procedures to handle bags added to or removed from a character's inventory
+//
+// - these procedures are called from event handlers when a bag is added to or removed from a character
+// - the first bag of a category added to a character is called the 'used bag', every additionally added ones are 'spare bags'
+// - if a used bag is removed, a spare bag can be 'promoted' to 'used bag', if there is one
+// - adding a bag to a character as 'spare bag' automatically unloads the 'spare bags' content to the 'used bag'
+//   (this is automatic, because the item within the bag generate their own event; exceptions could be manually added items
+//    in bags that allow manual adding.)
+// - auto distribution of spare bag content only happens when 'Magic Bags' is on, if not, the content is unloaded to the
+//   main inventory
+// - we also need a database of all bags in any party member's inventory (this db is used for 'forbidden item' ejection
+//   and for the tools distribution)
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// /////////////////////////////////////////////////////
+// unregistering bags
+// /////////////////////////////////////////////////////
+
+// Make a spare bag the used bag.
+//
+// This procedure is potentially called with a tuple of spare bags so we only need to check if we are done and skip
+// the rest. We are done as soon as we have a new used bag.
+// Unregisters the former spare bag used as the new 'used bag' from the spare bags database.
+// (We don't need to query the spare bag database here again because we will only get called with an existing spare bag
+//  entry as parameters)
+PROC
+	XCBagsProcHelper__ActivateSpareBag( (CHARACTER)_Char, (ITEM)_Bag, (STRING)_BagCategory )
+	AND
+	NOT XCBagsDB_UsedBags( _, _Char, _BagCategory )
+THEN
+	XCBagsDB_UsedBags( _Bag, _Char, _BagCategory );
+	NOT XCBagsDB_SpareBags( _Bag, _Char, _BagCategory );
+
+// 'promotion' of a spare bag to the new main bag
+//
+// Since there can be possibly more than one spare bag, we query all spare bags here and call a skippable procedure
+// to activate the first we find
+PROC
+	XCBagsProcHelper__PromoteSpareBag( (CHARACTER)_Char, (STRING)_BagCategory )
+	AND
+	XCBagsDB_SpareBags( _Bag, _Char, _BagCategory )
+THEN
+	XCBagsProcHelper__ActivateSpareBag( _Char, _Bag, _BagCategory );
+
+// unregistering a spare bag is trivial because no further steps are required, just remove the database entry
+PROC
+	XCBagsProc__UnregisterBag( (ITEM)_Bag, (CHARACTER)_Char )
+	AND
+	XCBagsDB_SpareBags( _Bag, _Char, _BagCategory )
+THEN
+	NOT XCBagsDB_SpareBags( _Bag, _Char, _BagCategory );
+
+// If we unregister a used bag and it is no longer in party inventory, we move all items within the bag
+// back to the previous owner (who we still have stored here)
+// (!! this is NOT distribution to the new bag holder, just reclaiming the contents of a bag dropped into world)
+PROC
+	XCBagsProc__UnregisterBag( (ITEM)_Bag, (CHARACTER)_Char )
+	AND
+	XCBagsDB_UsedBags( _Bag, _Char, _BagCategory )
+	AND
+	ItemIsInPartyInventory( _Bag, _Char, 0, 0 )
+THEN
+	ContainerMoveAllItemsToCharacter( _Bag, _Char, 0 );
+
+// unregistering a 'used bag'
+// when we remove a 'used bag', we need to promote a spare bag into its place if we carry one because
+// we do not know, if we will get the bag back
+PROC
+	XCBagsProc__UnregisterBag( (ITEM)_Bag, (CHARACTER)_Char )
+	AND
+	XCBagsDB_UsedBags( _Bag, _Char, _BagCategory )
+THEN
+	NOT XCBagsDB_UsedBags( _Bag, _Char, _BagCategory );
+	XCBagsProcHelper__PromoteSpareBag( _Char, _BagCategory );
+
+// deregister the removed bags from the database of bags held by the party
+PROC
+	XCBagsProc__UnregisterBag( (ITEM)_Bag, (CHARACTER)_Char )
+	AND
+	XCBagsDB_HeldBags( _Bag, _Char, _BagCategory )
+THEN
+	NOT XCBagsDB_HeldBags( _Bag, _Char, _BagCategory );
+
+// remove the 'holds bag' flag from a character who no longer carries any bag
+PROC
+	XCBagsProc__UnregisterBag( (ITEM)_Bag, (CHARACTER)_Char )
+	AND
+	NOT XCBagsDB_SpareBags( _, _Char, _ )
+	AND
+	NOT XCBagsDB_UsedBags( _, _Char, _ )
+THEN
+	NOT _Char.XCDB_IsBagHolder();
+
+// If a bag is removed from a character's inventory, deregister it
+IF
+	ItemRemovedFromCharacter( _Bag, _Char )
+	AND
+	XCBagsDB_Bags( _Bag, _, _ )
+THEN
+	XCBagsProc__UnregisterBag( _Bag, _Char );
+
+// /////////////////////////////////////////////////////
+// registering bags
+// /////////////////////////////////////////////////////
+
+// on registering a spare bag, we unload it to the char's inventory if 'Magic Bags' are off
+PROC
+	XCBagsProc__RegisterBag( (ITEM)_Bag, (CHARACTER)_Char, (STRING)_BagCategory )
+	AND
+	XCBagsDB_UsedBags( _, _Char, _BagCategory )
+	AND
+	NOT _Char.XCBagsFlag_BagsActive()
+THEN
+	ContainerMoveAllItemsToCharacter( _Bag, _Char, 0 );
+
+// register a bag as 'spare bag', because we already carry a 'used bag'
+PROC
+	XCBagsProc__RegisterBag( (ITEM)_Bag, (CHARACTER)_Char, (STRING)_BagCategory )
+	AND
+	XCBagsDB_UsedBags( _, _Char, _BagCategory )
+THEN
+	XCBagsDB_SpareBags( _Bag, _Char, _BagCategory );
+
+// Register a bag as the 'used bag'
+// We immediately call the distribution procedure because we did not have a bag of that category before
+PROC
+	XCBagsProc__RegisterBag( (ITEM)_Bag, (CHARACTER)_Char, (STRING)_BagCategory )
+	AND
+	NOT XCBagsDB_UsedBags( _, _Char, _BagCategory )
+THEN
+	XCBagsDB_UsedBags( _Bag, _Char, _BagCategory );
+	XCBagsProc__DistributePending( _Char );
+
+// Don't remember exactly, but this seems to be a 'safety handler' to prevent a bag from existing in both databases
+// (can this even ever happen, a bag registered in both databases ?)
+PROC
+	XCBagsProc__RegisterBag( (ITEM)_Bag, (CHARACTER)_Char, (STRING)_BagCategory )
+	AND
+	XCBagsDB_UsedBags( _Bag, _Char, _BagCategory )
+	AND
+	XCBagsDB_SpareBags( _Bag, _Char, _BagCategory )
+THEN
+	NOT XCBagsDB_SpareBags( _Bag, _Char, _BagCategory );
+
+// If a bag is added to a character's inventory, we register it
+// We mark the receiver as a 'bag holder'.
+// (no need to check if it's the very first one added, always marking the char as bag holder is faster)
+// We also add the new bag to the 'bags carried by this char' database
+IF
+	ItemAddedToCharacter( _Bag, _Char )
+	AND
+	XCBagsDB_Bags( _Bag, _BagCategory, _ )
+THEN
+	_Char.XCDB_IsBagHolder();
+	XCBagsDB_HeldBags( _Bag, _Char, _BagCategory );
+	XCBagsProc__RegisterBag( _Bag, _Char, _BagCategory );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Events of the 'Magic Bag Control' skill
+//
+// Here we catch the event sent by the character script when the control is used to set our internally used on/off flag
+// It is easier here to ask the character for the state of the flag than doing some toggling here since Osiris
+// knows no variables. (So we cannot implement something like a simple swap( a, b ))
+//
+// Character script takes care of:
+// - visual effects on skill use, dying, savegame load and whatever might be needed
+// - holds its own internal 'bags are active' status internally that we can query
+// - sends an event on skill use so we can set the .XCBagsFlag_BagsActive() flag
+// - handles event we send to it to force bags on or off
+//   (we use that e.g. for bag unloading)
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Event is sent by the charScript on skill use
+// we ask the character directly for current state instead of implementing some 'swap procedure'
+IF
+	CharacterEvent( _Char, "XCBagsEv_Toggled" )
+	AND
+	CharacterGetVarInteger( _Char, "XCBFlag_Active", 0 )
+THEN
+	NOT _Char.XCBagsFlag_BagsActive();
+
+IF
+	CharacterEvent( _Char, "XCBagsEv_Toggled" )
+	AND
+	CharacterGetVarInteger( _Char, "XCBFlag_Active", 1 )
+THEN
+	_Char.XCBagsFlag_BagsActive();
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Handling of added and removed items (this is the 'magic functionality)
+//
+// We do not immediately move any items we receive but register them into a database of 'pending items' for several reasons:
+// - we must not move an added item to bags if the players has bags turned off
+// - we cannot move items given in any initialization before any bags are present
+// - we cannot distribute any items while a bag is temporarily moved to a different character
+// - we always have to register every item anyway to enable auto-suck in when bags are turned back on
+//
+// So what we do is register items to a 'pending items' database when we receive them.
+// Items removed are removed from this database should they still be in the database.
+// We use a distribution procedure for moving of items to bags that can be called from different places.
+//
+// All root templates we want to be distributed have an item script attached which is nothing more than a variable
+// container that holds the category the item wants to belong to.
+// When we receive an item, we ask the item for this category and if the category is known to us, we store it in
+// the pending database. If the category is unknown to us, we skip registration.
+// (The database of known categories is built by asking the bags for the categories 'they serve' in bag initialization.)
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// /////////////////////////////////////////////////////
+// events that trigger registration
+// /////////////////////////////////////////////////////
+
+// Handler for adding items
+//
+// Builds a database of 'pending items' which can be moved to a bag.
+//
+// ItemHandleGetVarString() always returns something even if the variable does not exist for the queried character.
+// So we check if we know the returned value, i.e. if it is a known category.
+// We check the returned value against our known categories and not against held bags, because not holding a bag
+// for a category at the moment of item adding does not mean there will be no bag for it later.
+// We also limit the check to playable characters, so it skips execution for all NPCs.
+// (We cannot limit it to party members only though, because then, items added to companions at game start would not
+//  get registered and would have to be moved one time before they 'played the game'.)
+IF
+	ItemTemplateAddedToCharacter( _ItemTemplate, _ItemHandle, _Char )
+	AND
+	_Char.XCDB_IsPlayable()
+	AND
+	ItemHandleGetVarString( _ItemHandle, "XCBags_ItemCategory", _BagCategory )
+	AND
+	XCBagsDB_Categories( _BagCategory )
+THEN
+	XCBagsProc__RegisterItem( _Char, _ItemHandle, _BagCategory, _ItemTemplate );
+	XCBagsProc__DistributePending( _Char );
+
+// If an item is removed from a character, we need to deregister from the pending item database.
+IF
+	ItemTemplateRemovedFromCharacter( _, _ItemHandle, _Char )
+	AND
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, _Immediately )
+THEN
+	NOT XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, _Immediately );
+
+// If a book was safely read one, we can move it to a bag
+// We also register it in the XCBagsIntDB__BookReadOnce() database, so in the future, it will immediately
+// be moved to a bag.
+IF
+	GameBookInterfaceClosed( _Book, _ )
+	AND
+	ItemGetHandle( _Book, _ItemHandle )
+	AND
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 )
+THEN
+	NOT XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 );
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 1 );
+	XCBagsIntProc__HandleDelayedBookFuture( _ItemTemplate, _ItemHandle );
+
+// Templates marked with 1 are removed because they are unique (or should be)
+PROC
+	XCBagsIntProc__HandleDelayedBookFuture( (STRING)_ItemTemplate, (INTEGER)_ItemHandle )
+	AND
+	XCBagsDB__Register__Delayed( 1, _ItemTemplate )
+THEN
+	NOT XCBagsDB__Register__Delayed( 1, _ItemTemplate );
+
+PROC
+	XCBagsIntProc__HandleDelayedBookFuture( (STRING)_ItemTemplate, (INTEGER)_ItemHandle )
+	AND
+	XCBagsDB__Register__Delayed( 0, _ItemTemplate )
+THEN
+	XCBagsIntDB__BookReadOnce( _ItemHandle );
+
+
+// On re-activation we call the distribution procedure
+IF
+	_Char.XCBagsFlag_BagsActive()
+THEN
+	XCBagsProc__DistributePending( _Char );
+
+// /////////////////////////////////////////////////////
+// item distribution
+// /////////////////////////////////////////////////////
+
+// This procedure moves pending items to their respective bags
+// The first query is a 'quick skip' if the character does not hold any bags.
+// Distribution only happens if bags are turned on.
+// Only items marked as 'immediate' are distributed (required to handle Teberium, see below)
+// Items are only distributed if the user actually holds a bag for the item's category
+//
+// If an item is moved to a bag, it is deregistered as pending
+PROC
+	XCBagsProc__DistributePending( (CHARACTER)_Char )
+	AND
+	_Char.XCDB_IsBagHolder()
+	AND
+	_Char.XCBagsFlag_BagsActive()
+	AND
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 1 )
+	AND
+	XCBagsDB_UsedBags( _Bag, _Char, _BagCategory )
+THEN
+	NOT XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 1 );
+	ItemHandleToContainer( _ItemHandle, _Bag, -1 );
+
+// /////////////////////////////////////////////////////
+// item registration
+// /////////////////////////////////////////////////////
+
+// Hook procedure, does nothing but exist. (well, it provides a 'skeleton' for the Osiris compiler ;-)
+// This procedure is called BEFORE any registering by this module is done.
+//
+// If another module uses this procedure and wants registration to be skipped after it is finished,
+// it should set XCBagsFlag__ItemRegistered( _ItemHandle );
+// I don't think it is necessary to include the character here as well because a handle cannot be held by
+// two different characters at the same time. Due to Osiris way of 'call queuing' instead of real 'eventing'
+// no Removed handler can interfere either.
+// This flag is used by all subsequent registering procedures and if it exists, registration is skipped.
+// At the end, this flag will be removed automatically if it is set. (no permanent skipping possible)
+PROC
+	XCBagsHook_Before_RegisterItem( (CHARACTER)_Char, (INTEGER)_ItemHandle, (STRING)_BagCategory, (STRING)_ItemTemplate )
+THEN
+	XCNOP(1);
+
+// Calling a hook procedure, so other modules can have registering skipped.
+PROC
+	XCBagsProc__RegisterItem( (CHARACTER)_Char, (INTEGER)_ItemHandle, (STRING)_BagCategory, (STRING)_ItemTemplate )
+THEN
+	XCBagsHook_Before_RegisterItem( _Char, _ItemHandle, _BagCategory, _ItemTemplate );
+
+// Register special books and parchments delayed, so they must be read in inventory before being moved to bags
+PROC
+	XCBagsProc__RegisterItem( (CHARACTER)_Char, (INTEGER)_ItemHandle, (STRING)_BagCategory, (STRING)_ItemTemplate )
+	AND
+	NOT XCBagsFlag__ItemRegistered( _ItemHandle )
+	AND
+	XCBagsDB__Register__Delayed( _, _ItemTemplate )
+	AND
+	NOT XCBagsIntDB__BookReadOnce( _ItemHandle )
+THEN
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 );
+	XCBagsFlag__ItemRegistered( _ItemHandle );
+
+// I need to deal with Tenebrium in connection with the bags. (see below for more detailed 'discussion' of Tenebrium)
+// I use the DB_UnlockedBlackRock(1) flag as a secure 'ability unlocked' indicator.
+// As long as Tenebrium is not unlocked, I register the items but mark then as 'not immediate'.
+PROC
+	XCBagsProc__RegisterItem( (CHARACTER)_Char, (INTEGER)_ItemHandle, (STRING)_BagCategory, (STRING)_ItemTemplate )
+	AND
+	NOT XCBagsFlag__ItemRegistered( _ItemHandle )
+	AND
+	NOT DB_UnlockedBlackRock(1)
+	AND
+	DB_BlackRockRootTemplate( _ItemTemplate, _ )
+THEN
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 );
+	XCBagsFlag__ItemRegistered( _ItemHandle );
+
+// All items that have not been handled before are registered as 'immediately movable'
+PROC
+	XCBagsProc__RegisterItem( (CHARACTER)_Char, (INTEGER)_ItemHandle, (STRING)_BagCategory, (STRING)_ItemTemplate )
+	AND
+	NOT XCBagsFlag__ItemRegistered( _ItemHandle )
+THEN
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 1 );
+
+// clear the 'is registered' indicator
+PROC
+	XCBagsProc__RegisterItem( (CHARACTER)_Char, (INTEGER)_ItemHandle, (STRING)_BagCategory, (STRING)_ItemTemplate )
+THEN
+	NOT XCBagsFlag__ItemRegistered( _ItemHandle );
+
+	
+	
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Item ejection
+//
+// Most bags only accept items of categories they are meant for and eject everything else.
+// This is defined in their item script.
+// Here, we also have the bag controller's functionality because it hooks into bag ejection.
+//
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// The bag asks the added object for its name and immediately calls a 'throw out procedure'
+IF
+	ItemTemplateAddedToContainer( _ItemTemplate, _ItemHandle, _Bag )
+	AND
+	XCBagsDB_Bags( _Bag, _BagCategory, _BagHandle )
+	AND
+	ItemGetVarInteger( _Bag, "XCBags_AllowOtherCategories", _BagAllowsAny )
+THEN
+	XCBagsProc__Eject( _ItemTemplate, _ItemHandle, _Bag, _BagCategory, _BagAllowsAny );
+
+// Provides a hook to do something before an item is possibly ejected
+// If further handling is stopped by setting XCBagsFlag__ItemAlreadyEjected( _ItemHandle ), ejection should still be done
+// unless there is a VERY GOOD reason to allow an item into a bag that was not meant to hold it.
+PROC
+	XCBagsHook_Before_Eject( (STRING)_ItemTemplate, (INTEGER)_ItemHandle, (ITEM)_Bag, (STRING)_BagCategory, (INTEGER)_BagAllowsAny )
+THEN
+	XCNOP(1);
+
+// Calling the hook
+// the called hook can mark a handle as already ejected to prevent further handling
+PROC
+	XCBagsProc__Eject( (STRING)_ItemTemplate, (INTEGER)_ItemHandle, (ITEM)_Bag, (STRING)_BagCategory, (INTEGER)_BagAllowsAny )
+THEN
+	XCBagsHook_Before_Eject( _ItemTemplate, _ItemHandle, _Bag, _BagCategory, _BagAllowsAny );
+
+// Special handling for tenebrium items
+// (Item ejection occurs only, if a bag is held by a character and not in the open world)
+PROC
+	XCBagsProc__Eject( (STRING)_ItemTemplate, (INTEGER)_ItemHandle, (ITEM)_Bag, (STRING)_BagCategory, (INTEGER)_ )
+	AND
+	NOT XCBagsFlag__ItemAlreadyEjected( _ItemHandle )
+	AND
+	NOT DB_UnlockedBlackRock(1)
+	AND
+	DB_BlackRockRootTemplate( _ItemTemplate, _ )
+	AND
+	XCBagsDB_HeldBags( _Bag, _Char, _ )
+THEN
+	ItemHandleToCharacter( _ItemHandle, _Char, -1 );
+	XCBagsFlag__ItemAlreadyEjected( _ItemHandle );
+
+// Some bags might be configured to accept everything (in their item script)
+// (... except tenebrium stuff, as long as Tenebrium ability is not unlocked)
+// The bag still must be a used bag and may not be a spare bag
+PROC
+	XCBagsProc__Eject( (STRING)_ItemTemplate, (INTEGER)_ItemHandle, (ITEM)_Bag, (STRING)_BagCategory, 1 )
+	AND
+	NOT XCBagsFlag__ItemAlreadyEjected( _ItemHandle )
+	AND
+	XCBagsDB_UsedBags( _Bag, _, _ )
+THEN
+	XCBagsFlag__ItemAlreadyEjected( _ItemHandle );
+
+// Most frequent case, item is put into the correct (used) bag
+// (This case happens quite often because it is triggered by auto-distribution!)
+// In this case - item put into correct bag AND it's a 'used bag' - set the 'skipping flag'
+PROC
+	XCBagsProc__Eject( (STRING)_ItemTemplate, (INTEGER)_ItemHandle, (ITEM)_Bag, (STRING)_BagCategory, 0 )
+	AND
+	NOT XCBagsFlag__ItemAlreadyEjected( _ItemHandle )
+	AND
+	XCBagsDB_UsedBags( _Bag, _, _ )
+	AND
+	ItemHandleGetVarString( _ItemHandle, "XCBags_ItemCategory", _ItemCategory )
+	AND
+	_BagCategory == _ItemCategory
+THEN
+	XCBagsFlag__ItemAlreadyEjected( _ItemHandle );
+
+// All 'positive' tests have failed here, so the item will be ejected
+
+// If the item was put into any bag in the inventory (can be a wrong bag but also a 'spare bag')
+PROC
+	XCBagsProc__Eject( (STRING)_ItemTemplate, (INTEGER)_ItemHandle, (ITEM)_Bag, (STRING)_BagCategory, 0 )
+	AND
+	NOT XCBagsFlag__ItemAlreadyEjected( _ItemHandle )
+	AND
+	XCBagsDB_HeldBags( _Bag, _Char, _ )
+THEN
+	XCBagsFlag__ItemAlreadyEjected( _ItemHandle );
+	ItemHandleToCharacter( _ItemHandle, _Char, -1 );
+
+// Last resort handler, if the bag is no longer in any party member's inventory, it must be somehwere in the world
+// In this case, we move the added item to CHARACTER_Player1
+// (We can no longer find out which character did the adding)
+PROC
+	XCBagsProc__Eject( (STRING)_ItemTemplate, (INTEGER)_ItemHandle, (ITEM)_Bag, (STRING)_BagCategory, (INTEGER)_ )
+	AND
+	NOT XCBagsFlag__ItemAlreadyEjected( _ItemHandle )
+THEN
+	ItemHandleToCharacter( _ItemHandle, CHARACTER_Player1, -1 );
+
+// Reset the 'item already ejected' flag
+PROC
+	XCBagsProc__Eject( (STRING)_ItemTemplate, (INTEGER)_ItemHandle, (ITEM)_Bag, (STRING)_BagCategory, (INTEGER)_ )
+THEN
+	NOT XCBagsFlag__ItemAlreadyEjected( _ItemHandle );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Bag controller
+//
+// Most bags only accept items of categories they are meant for and eject everything else.
+// This is defined in their item script.
+// Here, we also have the bag controller's functionality because it hooks into bag ejection.
+//
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Hook into the item ejection procedure to move the controller back into inventory no matter which bag it was added to
+// and what a potentially attached item script might say.
+// (Works only if the bag is in a character's inventory because only in that case we can make a connection to a character,
+//  putting it into some magic bag outside of inventory will move it to CHARACTER_Player1 and putting it to any other
+//  container does absolutely nothing and will leave it there.)
+// - deactivates the 'bags on' flag (event would be received too late, still triggers an unset, which will do nothing though)
+// - inform the character script to turn bags off (and start the loop animation and sync its internal flag)
+// - move the content of the bag the controller was moved into to the main inventory
+// - move the controller back to the main inventory (done first)
+// - inform the following ejection handlers that we already handled this added item
+PROC
+	XCBagsHook_Before_Eject( "XC_Tool_Bags_Controller_3096ac1b-962a-4715-84d4-3daa0f8697ec", (INTEGER)_ItemHandle, (ITEM)_Bag, (STRING)_, (INTEGER)_ )
+	AND
+	XCBagsDB_HeldBags( _Bag, _Char, _ )
+THEN
+	NOT _Char.XCBagsFlag_BagsActive();
+	CharacterSetEvent( _Char, "XCBagsEv_TurnOff" );
+	ItemHandleToCharacter( _ItemHandle, _Char, -1 );
+	ContainerMoveAllItemsToCharacter( _Bag, _Char, 1 );
+	XCBagsFlag__ItemAlreadyEjected( _ItemHandle );
+
+// When the controller is 'used' from the right-click menu:
+// - deactivates the 'bags on' flag (event would be received too late, still triggers an unset, which will do nothing though)
+// - inform the character script to turn bags off (and start the loop animation and sync its internal flag)
+// - move the contents of all bags to the main inventory
+IF
+	CharacterUsedItemTemplate( _Char, "XC_Tool_Bags_Controller_3096ac1b-962a-4715-84d4-3daa0f8697ec", _ )
+THEN
+	NOT _Char.XCBagsFlag_BagsActive();
+	CharacterSetEvent( _Char, "XCBagsEv_TurnOff" );
+	XCBagsProc__UnloadAllBags( (CHARACTER)_Char );
+
+// Although not a single spare bag should contain anything, we still query held bags here and not only used bags
+// (after all, manuall adding to some bags is possible)
+PROC
+	XCBagsProc__UnloadAllBags( (CHARACTER)_Char )
+	AND
+	XCBagsDB_HeldBags( _Bag, _Char, _ )
+THEN
+	ContainerMoveAllItemsToCharacter( _Bag, _Char, 1 );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Handling Tenebrium
+//
+// Some thoughts about Tenebrium
+//
+// 1. We do no longer need the default handling as soon as Tenebrium is unlocked (no need to call the original PROC
+//    in that case, even if it immediately skips after the first call anyway). But then, we would need to introduce
+//    our own ItemTemplateAddedToCharacter() handler which would also be called on every item adding, as well as
+//    the disabled one, so we would not win a lot. A new one could skip a bit earlier, but together with the still existing
+//    old one, nothing would be gained. A real change would be the change directly in LUC_MineBlackRock.txt and
+//    this is what I want to avoid. Also, the default handler still works for non party members which might be intended.
+// 2. I don't like the fact that a lot of NPCs get ROT when we sell stuff to them, might be funny the first time
+//    but then no longer. In my opinion the whole Tenebrium thing is a story element for players and not a combat mechanism
+//    versus NPCs.
+//    The existing code goes for players as well as NPCs. Other players might like this element though, which is
+//    a reason to leave that untouched.
+//    (But on the other hand, DOS2 will have PvP, enough playgound for the typical griefers ... ;-)
+// 3. The default procedure uses CharacterGetAbility() to query if ANY Tenebrium ability is there.
+//    (which includes boosts from items)
+//    Some might argue that items should be able to give a player abilities they do not have otherwise, fair argument.
+//    Adding a tenebrium item while we wear an item with a tenebrium boost does not put the tenebrium stuff into the
+//    blood cage though with the default code (it happened to me, that I found a ring - or amulet ? - with Tenebrium on it,
+//    long before I finished Brandon's quest ... and even longer before reaching Sacred Stone for the book)
+//    But what should happen if the item giving Tenebrium is unequipped before finishing Brandon's quest or reading the book?
+//    The existing game code ignores this case and  does not handle it. It is close to impossible without more than major
+//    efforts.
+//    One would constantly have to monitor equipping and unequipping, check the ability after unequipping and also monitor
+//    the inventory of all Tenebrium carriers. Doing this with an inventory scan being impossible would require additional
+//    bookkeeping of the Tenebrium items in inventory and bookkepping of where the blood stone cage was and move the
+//    item(s) there or apply ROT if the cage was dropped to world.
+//    Technically, it would be a lot easier to make a CharacterGetBaseAbility() check and ignore every item boosts.
+//    (Would be: 'Either you put it into the cage or you get ROT, if you had no proper education in the ability, but a boost
+//     from an item ? Not this time, my friend!')
+//    So one could also argue story-wise that Tenebrium is such a dangerous material that boosts on items do not help,
+//    without proper education how to handle it, the only chance to avoid dying is putting the stuff into the cage.
+//    (The ability must be learned at some point anyway, and only impatient idiots miss that because they skip any reading
+//     and most talking to NPCs. The mines must be done anyway if only to get the spell. There is enough Tenebrium there.
+//     As usual though, Larian forgot to close a 'backdoor' when they finished the EE: they introduced Shadow Wands, which
+//     are not in their pre-defined database, so those neither cause ROT, what they should nor are they unequippable.
+//     I am evil enough to close that backdoor if I don't forget ;-)
+// 4. Racing conditions between my move handlers (add to bags or throw out of them) should not occur as long as I query
+//    the real 'unlocking' of the Tenebrium ability with the flag DB_UnlockedBlackRock(1), because that flag is only set
+//    if the ability is really unlocked party-wide (see below)
+//    So if my handlers ignore Tenebrium completely as long as it is not unlocked, there is no problem. After it is unlocked
+//    the existing code never reaches the item moving part again for players, so it does not compete with my handlers.
+//    If handled correctly, tenebrium should be registered but not be moved to bags until it is safe.
+//    For similar reasons, I cannot abandon special tenebrium handling in the eject handlers because manual adding of
+//    Tenebrium would be made possible without it (to the blacksmith bag or the 'allow all in' bags.)
+//
+// My decicion for now is to leave the default handlers alone, with all their wrong behaviour AND with the annoying
+// 'Magic Pockets' functionality.
+//
+// (To fully disable the old handling, I would need to destroy the 'tenebrium-item-root-templates' database
+//  DB_BlackRockRootTemplate() so that the original ItemTemplateAddedToCharacter() handler in
+//  DOSStart/LUC_MineBlackRock.txt, line 52, could no longer reach its procedure call.)
+// IMPORTANT SIDE NOTE: should I ever decide to disable the default handling, I would have to unset the Tenebrium
+// templates DB. But the database cannot be unset upon being set because it looks like a 'rule trigger' cannot be unset
+// while it is still processed.
+// - could be that this is forbidden and silently skipped (possible)
+// - could also be that the rule is executed before the value is actually set (most likely)
+// - could also be that 'IF rules' have to be present before a database is set (doubt that strongly)
+// So basically an 'IF DB_BlackRockRootTemplate(...) THEN NOT DB_BlackRockRootTemplate(...);' rule does not work,
+// if required, we best unset it after INIT altogether.
+//
+//
+// How Tenebrium ability is gained (also: When is the DB_BlackRockRootTemplate(1) flag set ?)
+//
+// When Brandon's quest is done or the book from Sacred Stone is read ('How to handle Tenebrium'), the flag is set.
+// DOSStart/LUC_TrollKing.txt, line 57, the quest:
+// - a tuple of the whole party is iterated and gets the ability
+// - at the end, the flag is set (multiple times, for each party member, but that does not matter)
+// DOSStart/LUC_ImmaculatesVillage.txt, line 90, the book:
+// - when the book is read, Tenebrium gets unlocked immediately for players only, if they do not have it yet.
+//   (here, the base ability is queried, ignoring any equipped items, which is good)
+// - at the end, the flag is set.
+// - the first rule only shows the 'already mastered this material' message if the reader has Tenebrium already
+// Now, at first this looks like companions can not get Tenebrium directly any other way but by Brenton's quest.
+// There is one code block though, that could be executed the first time, the book is read.
+// Global_Companion.txt, line 45:
+// When the flag is set the first time, this rule should actually execute for all current companions because of
+// a change in the second condition. For every subsequent companion hiring, this rule would be executed because of
+// a change in the first condition.
+// Thus, as soon as Tenebrium is unlocked by book instead of quest, it should be unlocked for everyone in the party.
+// (not quite sure if my assumption about rule execution is correct though, but on the other hand, I cannot
+//  babysit players with everything. After all, mining a single tenebrium ore in the mines and turn that in with
+//  Brandon is not that hard after all, especially, when the first tenebrium mine is reachable already without
+//  having to pass the Death Knights ;-)
+//
+//
+// How should I deal with Tenebrium adding ?
+// There are two ways:
+// 1. refuse to put tenebrium into any bag as long as the ability is not unlocked
+// 2. don't register any tenebrium stuff as long as the ability is locked which also achieves this effect
+//
+// Without registering the stuff, what happens when Tenebrium is unlocked ? In most cases nothing, the blood stone
+// cage could be unloaded to the holder's inventory and since the unlocked flag would be set the following added events
+// would pass like everthing else.
+// But what if there are players who give a shit about getting the ROT ? Or if Tenebrium was never put into the cage
+// due to an item boost in the first place ?
+// If the Tenebrium stuff had not been registered at all before, there would be no way to access it then.
+// A single move of the item would be required to bring them back into the 'handling game'.
+// Additionally, if we always register even tenebrium, we do not have to monitor the removal of the cage anymore.
+// (Small gain, I admit, but at least the event handler required for this is at least never executed for the
+// infamous CHARACTER_LUC_PickAxeHolderHack)
+// So I will always register that stuff but mark it as 'on hold' and query this additional flag in the distribution
+// procedure.
+// (... which is not the worst thing to do, because something similar is required anyway if I ever succeed in
+//  putting quest or story books on hold until they are read once.)
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Unloading the blood stone cage if it is dropped into the world
+// (AFTER Tenebrium Ability is unlocked)
+IF
+	ItemRemovedFromCharacter( ITEM_LUC_BloodStoneCage, _Char )
+	AND
+	_Char.DB_IsPlayer()
+	AND
+	DB_UnlockedBlackRock(1)
+	AND
+	ItemIsInPartyInventory( ITEM_LUC_BloodStoneCage, _Char, 0, 0 )
+THEN
+	ContainerMoveAllItemsToCharacter( ITEM_LUC_BloodStoneCage, _Char, 0 );
+
+// When Tenebrium is unlocked ... we can finally remove all 'on hold' entries from pending
+
+// First, we distribute all registered stuff to bags (ore and bars currently) for all users who have magic bags turned on.
+// If one of those users happens to carry the blood stone cage, all distributable items will be moved out of the cage
+// by this process.
+IF
+	DB_UnlockedBlackRock(1)
+	AND
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 )
+	AND
+	DB_BlackRockRootTemplate( _ItemTemplate, _ )
+	AND
+	_Char.XCBagsFlag_BagsActive()
+THEN
+	NOT XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 );
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 1 );
+	XCBagsProc__DistributePending( _Char );
+
+// Next, we remove the not immediate pending entries for all players with magic bags off who do not carry the
+// blood stone cage. (There are more party members than blood stone cages ... ;-)
+// Since there is no cage here, Tenebrium stuff might be in the inventory. Since bags are turned off in this case, there
+// is no need to move the items.
+// So we need to deregister the pending items and register them again as immediately movable.
+// (Default handling never moves Tenebrium to the blood stone cage if it finds the ability, and since the ability could
+//  have come from item buffs, stuff might still sit in regular inventory,  marked as 'on hold' by us before.)
+// (No interference with blood stone cage unloading here because we only branch into here if we do NOT carry the cage.)
+IF
+	DB_UnlockedBlackRock(1)
+	AND
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 )
+	AND
+	DB_BlackRockRootTemplate( _ItemTemplate, _ )
+	AND
+	NOT _Char.XCBagsFlag_BagsActive()
+	AND
+	ItemIsInCharacterInventory( ITEM_LUC_BloodStoneCage, _Char, 0 )
+THEN
+	NOT XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 );
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 1 );
+
+// Here, we remove the not immediate pending entries for the blood stone carrier with magic bags off.
+// No further steps beyond unsetting the entries is necessary because we unload the cage in the final step, which will
+// have the items be re-registered again, this time as immediate. They would just stay in the main inventory until bags are
+// activated again or until the items are sold or moved.
+IF
+	DB_UnlockedBlackRock(1)
+	AND
+	XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 )
+	AND
+	DB_BlackRockRootTemplate( _ItemTemplate, _ )
+	AND
+	NOT _Char.XCBagsFlag_BagsActive()
+	AND
+	ItemIsInCharacterInventory( ITEM_LUC_BloodStoneCage, _Char, 1 )
+THEN
+	NOT XCBagsIntDB__PendingItems( _Char, _ItemHandle, _BagCategory, _ItemTemplate, 0 );
+
+// Finally unload the blood stone cage to its carrier's inventory
+// Triggers registering of the unloaded items.
+IF
+	DB_UnlockedBlackRock(1)
+	AND
+	_Char.DB_IsPlayer()
+	AND
+	ItemIsInCharacterInventory( ITEM_LUC_BloodStoneCage, _Char, 1 )
+THEN
+	ContainerMoveAllItemsToCharacter( ITEM_LUC_BloodStoneCage, _Char, 0 );
+
+//REGION Magic Bags ends
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

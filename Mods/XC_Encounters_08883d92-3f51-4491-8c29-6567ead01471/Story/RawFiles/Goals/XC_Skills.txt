@@ -1,0 +1,374 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// fieldbeds
+XCSkillsDB__FieldBed__Coffin( ITEM_XC_SkillItem_Coffin_1 );
+XCSkillsDB__FieldBed__Coffin( ITEM_XC_SkillItem_Coffin_2 );
+XCSkillsDB__FieldBed__Coffin( ITEM_XC_SkillItem_Coffin_3 );
+XCSkillsDB__FieldBed__Coffin( ITEM_XC_SkillItem_Coffin_4 );
+XCSkillsDB__FieldBed__Coffin( ITEM_XC_SkillItem_Coffin_5 );
+XCSkillsDB__FieldBed__Coffin( ITEM_XC_SkillItem_Coffin_6 );
+XCSkillsDB__FieldBed__Mattress( ITEM_XC_SkillItem_Mattress_1 );
+XCSkillsDB__FieldBed__Mattress( ITEM_XC_SkillItem_Mattress_2 );
+XCSkillsDB__FieldBed__Mattress( ITEM_XC_SkillItem_Mattress_3 );
+XCSkillsDB__FieldBed__Mattress( ITEM_XC_SkillItem_Mattress_4 );
+XCSkillsDB__FieldBed__Mattress( ITEM_XC_SkillItem_Mattress_5 );
+XCSkillsDB__FieldBed__Mattress( ITEM_XC_SkillItem_Mattress_6 );
+
+// Despawn time in milliseconds
+XCSkillsConfig__FieldBedDespawnTime( 10000 );
+
+// sets all field beds offstage initially
+XCSkillsProc__InitFieldBeds();
+
+XCSkillsDB__Tornado__Competitor( "Shield_Air" );
+XCSkillsDB__Tornado__Competitor( "Shout_InvisibilitySelf" );
+XCSkillsDB__Tornado__Competitor( "Summon_Air" );
+XCSkillsDB__Tornado__Competitor( "Target_InstantPressure" );
+XCSkillsDB__Tornado__Competitor( "XC_Skill_Air_FeatherDrop" );
+KBSECTION
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// The new 'portable field beds'
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Initialization
+//
+// Besides initially setting the field beds offstage, we build names for their despawn timers and attach the configured
+// despawn time.
+//
+// About the 'despawn timer':
+// Since we do not spawn field beds but use pre-placed global ones, so we cannot allow calling forth a field bed as long
+// as one is still out - that could remove a bed from under a character lying on it. New forthcalling is blocked by
+// the flag %MyFieldBedIsOut in the field bed handler script. (per character)
+// We start a timer that despawns a bed when it has not been used for the defined time.
+// (XCSkillsConfig__FieldBedDespawnTime() in INIT, time is in milliseconds)
+//
+// All this timer starting and despawning could be done in the field bed's item script, but there is one big problem:
+// Item scripts stop working when the players move out of range, so a possibly started timer would never finish and
+// the character spawning a bed would never receive the 'ready to call forth again' event. (The timer would probably finish
+// but only when the players went in range again. Even then, the wrong character might be in range, receive the event and
+// ignore it, which can happen with detached party members and more so in multiplayer.)
+// This is the reason for handling a lot here in Osiris, especially the despawn timer.
+//
+// Out of range can of course occur when zoning but my tests showed that it can even occur when moving away far enough
+// from the bed's spot quickly enough.
+// (Spawning a bed in the Cyseal Legion quarter area and then moving to the market was enough to block the skill from
+//  being used again, no 'free event' was ever caught because none was ever sent from a sleeping item script.)
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Coffins
+PROC
+	XCSkillsProc__InitFieldBeds()
+	AND
+	XCSkillsDB__FieldBed__Coffin( _Coffin )
+	AND
+	ItemGetHandle( _Coffin, _Handle )
+	AND
+	IntegertoString( _Handle, _HandleString )
+	AND
+	StringConcatenate( "FieldBedDespawnTimer_", _HandleString, _CoffinTimer )
+	AND
+	XCSkillsConfig__FieldBedDespawnTime( _DespawnTime )
+THEN
+	XCSkillsDB__Registered__FieldBeds( _Coffin, _CoffinTimer, _DespawnTime );
+	ItemSetOnstage( _Coffin, 0 );
+
+// Mattresses
+PROC
+	XCSkillsProc__InitFieldBeds()
+	AND
+	XCSkillsDB__FieldBed__Mattress( _Mattress )
+	AND
+	ItemGetHandle( _Mattress, _Handle )
+	AND
+	IntegertoString( _Handle, _HandleString )
+	AND
+	StringConcatenate( "BedDespawnTimer_", _HandleString, _MattressTimer )
+	AND
+	XCSkillsConfig__FieldBedDespawnTime( _DespawnTime )
+THEN
+	XCSkillsDB__Registered__FieldBeds( _Mattress, _MattressTimer, _DespawnTime );
+	ItemSetOnstage( _Mattress, 0 );
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Learning the skills, assigning the pre-placed field beds, and free assigned field beds on companion dismiss
+//
+// There is actually no need to clear the character script's %MyMattress and %MyCoffin variables on dismiss, because
+// dismissed companions don't use the skill.
+// It must be cleared though if there are no assignable field beds left, which would indicate a script error.
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+PROC
+	XCHook_On_Player_Enters_World( (CHARACTER)_Player )
+	AND
+	CharacterGetVarInteger( _Player, "ISpeakFieldBedish", 1 )
+THEN
+	XCSkillsProc__PrepareNormalFieldBed( _Player );
+	XCSkillsProc__PrepareZombieFieldBed( _Player );
+
+PROC
+	XCHook_On_Companion_Join( (CHARACTER)_Companion )
+	AND
+	CharacterGetVarInteger( _Companion, "ISpeakFieldBedish", 1 )
+THEN
+	XCSkillsProc__PrepareNormalFieldBed( _Companion );
+	XCSkillsProc__PrepareZombieFieldBed( _Companion );
+
+// When a companion is dismissed, the assigned field beds are put back into the pool
+// of available field beds.
+PROC
+	XCHook_On_Companion_Leave( (CHARACTER)_Companion )
+	AND
+	XCkillsDB_MattressOwner( _Companion, _Mattress )
+THEN
+	NOT XCkillsDB_MattressOwner( _Companion, _Mattress );
+	XCSkillsDB__FieldBed__Mattress( _Mattress );
+
+PROC
+	XCHook_On_Companion_Leave( (CHARACTER)_Companion )
+	AND
+	XCkillsDB_CoffinOwner( _Companion, _Coffin )
+THEN
+	NOT XCkillsDB_CoffinOwner( _Companion, _Coffin );
+	XCSkillsDB__FieldBed__Coffin( _Coffin );
+
+// ////////////////////////////////////////////////////
+// Mattress
+// ////////////////////////////////////////////////////
+
+// Add the skill if it has not been added before (skill is not tied to abilities)
+PROC
+	XCSkillsProc__PrepareNormalFieldBed( (CHARACTER)_Char )
+	AND
+	NOT _Char.XCSkillsFlag_HasNormalFBSkill()
+THEN
+	_Char.XCSkillsFlag_HasNormalFBSkill();
+	CharacterAddSkill( _Char, "XC_Skill_Other_FieldBed" );
+
+// Clear the variable.
+// If a coffin is available, the variable will be set again, if not, it should become 'null'.
+// In that case, the character script shows the message 'This seems to be broken.'
+PROC
+	XCSkillsProc__PrepareNormalFieldBed( (CHARACTER)_Char )
+THEN
+	CharacterClearVar( _Char, "MyMattress" );
+
+// Iterate unassigned matresses and assign one
+PROC
+	XCSkillsProc__PrepareNormalFieldBed( (CHARACTER)_Char )
+	AND
+	XCSkillsDB__FieldBed__Mattress( _Mattress )
+THEN
+	XCSkillsProc__AssignMatress( _Char, _Mattress );
+
+// Assign one single mattress
+PROC
+	XCSkillsProc__AssignMatress( (CHARACTER)_Char, (ITEM)_Mattress )
+	AND
+	NOT XCkillsDB_MattressOwner( _Char, _ )
+	AND
+	XCSkillsDB__FieldBed__Mattress( _Mattress )
+THEN
+	NOT XCSkillsDB__FieldBed__Mattress( _Mattress );
+	XCkillsDB_MattressOwner( _Char, _Mattress );
+	CharacterSetVarItem( _Char, "MyMattress", _Mattress );
+
+// ////////////////////////////////////////////////////
+// Zombie coffin
+// ////////////////////////////////////////////////////
+
+// Add the skill if it has not been added before (skill is not tied to abilities)
+PROC
+	XCSkillsProc__PrepareZombieFieldBed( (CHARACTER)_Char )
+	AND
+	NOT _Char.XCSkillsFlag_HasZombieFBSkill()
+THEN
+	_Char.XCSkillsFlag_HasZombieFBSkill();
+	CharacterAddSkill( _Char, "XC_Skill_Other_FieldBedZombie" );
+
+// Clear the variable
+PROC
+	XCSkillsProc__PrepareZombieFieldBed( (CHARACTER)_Char )
+THEN
+	CharacterClearVar( _Char, "MyCoffin" );
+
+// Iterate unassigned coffins and assign one
+PROC
+	XCSkillsProc__PrepareZombieFieldBed( (CHARACTER)_Char )
+	AND
+	XCSkillsDB__FieldBed__Coffin( _Coffin )
+THEN
+	XCSkillsProc__AssignCoffin( _Char, _Coffin );
+
+// Assign one single coffin
+PROC
+	XCSkillsProc__AssignCoffin( (CHARACTER)_Char, (ITEM)_Coffin )
+	AND
+	NOT XCkillsDB_CoffinOwner( _Char, _ )
+	AND
+	XCSkillsDB__FieldBed__Coffin( _Coffin )
+THEN
+	NOT XCSkillsDB__FieldBed__Coffin( _Coffin );
+	XCkillsDB_CoffinOwner( _Char, _Coffin );
+	CharacterSetVarItem( _Char, "MyCoffin", _Coffin );
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Skill and item handling
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// The field beds send an event "FieldBedActivated" when they come on stage.
+// We start the despawn timer here because it cannot be in use here yet.
+// We also send the "SayGreeting" event to the item to make it talk.
+// (Could be done within the script itself, but in my tests it never worked without any 'hickups', i.e. the spoken test
+//  started and was immediately interrupted again by the same text spoken again, this time until it finished.
+//  No detaching of the speaking with timers or anything else helped.)
+IF
+	ItemEvent( _FieldBed, "FieldBedActivated" )
+	AND
+	XCSkillsDB__Registered__FieldBeds( _FieldBed, _FieldBedTimer, _DespawnTime )
+THEN
+	TimerLaunch( _FieldBedTimer, _DespawnTime );
+	ItemSetEvent( _FieldBed, "SayGreeting" );
+
+// Interrupt the timer when a character uses a field bed
+// We register the user here because we need to know that for the 'use-stopped' event.
+IF
+	CharacterUsedItem( _Char, _FieldBed )
+	AND
+	XCSkillsDB__Registered__FieldBeds( _FieldBed, _FieldBedTimer, _ )
+THEN
+	XCSkillsIntDB__CurrentFBUser( _Char, _FieldBed );
+	TimerCancel( _FieldBedTimer );
+
+// Since there is no 'use-stopped' event in Osiris, we catch the removal of the 'LYING' status instead
+// and check if the character was registered as a field bed user.
+// (that's why we registered the user before)
+IF
+	CharacterStatusRemoved( _Char, "LYING" )
+	AND
+	XCSkillsIntDB__CurrentFBUser( _Char, _FieldBed )
+	AND
+	XCSkillsDB__Registered__FieldBeds( _FieldBed, _FieldBedTimer, _DespawnTime )
+THEN
+	NOT XCSkillsIntDB__CurrentFBUser( _Char, _FieldBed );
+	TimerLaunch( _FieldBedTimer, _DespawnTime );
+	ItemSetEvent( _FieldBed, "UseStopped" );
+
+// If one of the despawn timers finished, we play an effect at its position and despawn it.
+// (playing the effect at the item does not work, because setting the item offstage immediately afterwards
+//  would suppress the effect.)
+// In the end, we inform the owner that his/her field bed has despawned, so the skill can be used again.
+IF
+	TimerFinished( _FieldBedTimer )
+	AND
+	XCSkillsDB__Registered__FieldBeds( _FieldBed, _FieldBedTimer, _ )
+	AND
+	ItemGetPosition( _FieldBed, _X, _Y, _Z )
+THEN
+	PlayEffectAtPosition( "FX_GP_TeleportSmoke_A", _X, _Y, _Z );
+	ItemSetOnstage( _FieldBed, 0 );
+	XCSkillsProc__FieldBedDisappeared( _FieldBed );
+
+// Inform owner of the item despawn
+PROC
+	XCSkillsProc__FieldBedDisappeared( (ITEM)_FieldBed )
+	AND
+	XCkillsDB_MattressOwner( _Owner, _FieldBed )
+THEN
+	CharacterSetEvent( _Owner, "FieldBedDisappeared" );
+
+PROC
+	XCSkillsProc__FieldBedDisappeared( (ITEM)_FieldBed )
+	AND
+	XCkillsDB_CoffinOwner( _Owner, _FieldBed )
+THEN
+	CharacterSetEvent( _Owner, "FieldBedDisappeared" );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// New Rogue skill 'Distract'
+//
+// No skill handling can be done in Osiris, because Osiris only gets the CharacterUsedSkillOnTarget() for global
+// characters and CharacterUsedSkillOnTargetHandle() does not help, because no position of a character handle can be queried.
+// Informing a character of a targeted handle does not help either because character scripts on the other hand cannot
+// work with handles.
+//
+// Everything is now handled in Base.charScript, a character can catch the CONSUME status and query the name of the consumed
+// potion in the 'ExtraData' field.
+//
+// All we do here is tell a character with the skill handler, which item it should use as the distractor.
+// It is no problem to share the item between all skill users because the skill cannot be used by different characters
+// at the same time, since it is only usable in combat.
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Assign the hidden item to a character variable
+PROC
+	XCHook_On_Player_Enters_World( (CHARACTER)_Player )
+	AND
+	CharacterGetVarInteger( _Player, "ICanDistractEnemies", 1 )
+THEN
+	CharacterSetVarItem( _Player, "XCS_RogueDistractHelper", ITEM_XC_SkillItem_Distractor );
+
+PROC
+	XCHook_On_Companion_Join( (CHARACTER)_Companion )
+	AND
+	CharacterGetVarInteger( _Companion, "ICanDistractEnemies", 1 )
+THEN
+	CharacterSetVarItem( _Companion, "XCS_RogueDistractHelper", ITEM_XC_SkillItem_Distractor );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// New Tornado skill 'Violent Summer Breeze'
+//
+// Since it is tedious to wait a full 8 turn cooldown to come off with Tornado, we introduce a new one that can only
+// be used outside of combat due to its extreme AP cost of 25.
+//
+// It is unlocked for characters who learn the regular Tornado.
+// If Tornado is unlearned, the skill stays, but when the next Adept Air spell is learned, it is removed
+// (There is no 'unlearned' or 'skill removed' event, so we can only do it this way.)
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+IF
+	CharacterLearnedSkill( _Char, "Tornado_Air" )
+	AND
+	_Char.DB_IsPlayer()
+THEN
+	_Char.XCSkillsFlag_HasTornado();
+	CharacterAddSkill( _Char, "XC_Skill_Other_ViolentSummerBreeze" );
+
+IF
+	CharacterLearnedSkill( _Char, _AirSkill )
+	AND
+	_Char.XCSkillsFlag_HasTornado()
+	AND
+	XCSkillsDB__Tornado__Competitor( _AirSkill )
+THEN
+	CharacterSetEvent( _Char, "XCSMisc_CheckOOCTornado" );
+
+IF
+	CharacterEvent( _Char, "XCSMisc_OOCTornadoRemoved" )
+THEN
+	NOT _Char.XCSkillsFlag_HasTornado();
+	OpenMessageBox( _Char, "XC_Message_OOC_Tornado_Removed" );
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

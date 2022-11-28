@@ -1,0 +1,16 @@
+INIT
+	ITEM:__Me
+	INT:%XCLevels_CurrentLevel=1
+
+EVENTS
+
+EVENT LevelupOnCommand
+ON
+	OnGlobalEventSet( "XC_Levelup_To_At_Least_4" )
+ACTIONS
+	ItemDie( __Me )
+
+
+
+
+

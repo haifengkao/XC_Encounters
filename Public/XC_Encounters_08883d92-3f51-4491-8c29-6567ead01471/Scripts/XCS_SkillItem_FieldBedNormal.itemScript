@@ -1,0 +1,26 @@
+#INCLUDE XCS_SkillItem_FieldBed
+
+INIT
+	USING XCS_SkillItem_FieldBed
+	ITEM:__Me
+
+EVENTS
+
+// SPEAKER: GEN_Object_Shorts_ZandalorsTrunksofEpicIntelligence_M
+EVENT FieldBed_OnInitSetMessages
+ON
+	OnInit()
+ACTIONS
+	Set( %IAmCoffin, 0 )
+	// Trunks_BuyFriendship: Where'd you learn that little trick, Source Hunter? The red lamp district?
+	Set( %XCSFB_Msg_Greeting_1, "Trunks_BuyFriendship" )
+	// Trunks_LoseCIR: Well, that's what you get for trying.
+	// Trunks_EndDefeat: After this long in your pants, I for one welcome the Void...
+	Set( %XCSFB_Msg_StopUse_1, "Trunks_LoseCIR" )
+	Set( %XCSFB_Msg_StopUse_2, "Trunks_EndDefeat" )
+	// Trunks_Sick: Ugh, is that a... a seeping wound?
+	// Trunks_IcaraFound: Ooh, a witchcicle!
+	// Trunks_DeadBodies: Mmm, venison!
+	Set( %XCSFB_Msg_StartUse_1, "Trunks_Sick" )
+	Set( %XCSFB_Msg_StartUse_2, "Trunks_IcaraFound" )
+	Set( %XCSFB_Msg_StartUse_3, "Trunks_DeadBodies" )

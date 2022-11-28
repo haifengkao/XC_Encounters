@@ -1,0 +1,29 @@
+INIT
+
+	CHARACTER:__Me
+	INT:%ICanDistractEnemies = 1
+	ITEM:%XCS_RogueDistractHelper = null
+
+EVENTS
+
+EVENT XCSRogueDistract_Init
+VARS
+	ITEM:_Distractor=XC_SkillItem_Distractor_257a7c61-7f6c-4aae-9436-c39cb31757f6
+ON
+	OnInit()
+ACTIONS
+	Set( %XCS_RogueDistractHelper, _Distractor )
+
+EVENT XCSRogueDistract_CastedSkill
+VARS
+	FIXEDSTRING:_Comment
+ON
+	OnSkillCast( __Me, "XC_Skill_Rogue_Distract" )
+ACTIONS
+	// COMBAT_Comment_EvilLaugh_1_6:							Heh heh heh...
+	// COMBAT_PlayerComment_Projectile_WellCraftedArrow_1_6:	I whittled this beauty myself.
+	// COMBAT_PlayerComment_Target_Blind_1_4:					Over here! No, here! Ahahaha!
+	GetWeightedRandom( _Comment, "COMBAT_Comment_EvilLaugh_1_6", INT:1, "COMBAT_PlayerComment_Projectile_WellCraftedArrow_1_6", INT:1, "COMBAT_PlayerComment_Target_Blind_1_4", INT:1 )
+	DisplayText( __Me, _Comment, 5.0 )
+
+

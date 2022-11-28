@@ -1,0 +1,489 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// Templates handed out when their category is triggered
+// templates with 0 are added only to players, the ones with 1 are added to all companions as well
+XCToolsDB__Tools__Templates( 1,	"disarm",		"XC_Tool_General_Disarm_Kit_ec734b2d-0811-4096-a018-b6c3d268b5c1"			);
+XCToolsDB__Tools__Templates( 0,	"identify",		"XC_Tool_General_IdentifyingGlass_2750517d-c2ca-40ae-a04a-e8773eae55a0"		);
+XCToolsDB__Tools__Templates( 0, "lockpick",		"XC_Tool_General_Lockpick_e85bbdff-bf7b-43f1-93c6-33d5c9d6caf3"				);
+XCToolsDB__Tools__Templates( 1, "shovel",		"XC_Tool_General_Shovel_7b29fbdb-6a51-42af-85a1-30e5b24fe18f"				);
+
+XCToolsDB__Tools__Templates( 0, "pickaxe",		"XC_Tool_Crafting_Axe_Blacksmith_c8b2b78c-ae56-4076-bb4e-d6c1e78e85fd"		);
+XCToolsDB__Tools__Templates( 0, "axe",			"XC_Tool_Crafting_Axe_Crafter_e15bbd4c-7589-41f8-9415-948c779b901a"			);
+XCToolsDB__Tools__Templates( 1, "blender",		"XC_Tool_Crafting_Blender_Cook_5f95d2ca-59a2-4f66-b6a7-064e146f542a"		);
+XCToolsDB__Tools__Templates( 0, "hammer",		"XC_Tool_Crafting_Hammer_Blacksmith_470086b2-9e71-476f-81b3-dca2a77e6d30"	);
+XCToolsDB__Tools__Templates( 0, "hammer",		"XC_Tool_Crafting_Hammer_Crafter_3b83611f-eaa3-493b-aa82-7e2f9d25cb5b"		);
+XCToolsDB__Tools__Templates( 0, "inkpot",		"XC_Tool_Crafting_InkpotQuill_Magic_ccc9ff47-66ee-4b01-9367-569665b4fdd8"	);
+XCToolsDB__Tools__Templates( 1, "knife",		"XC_Tool_Crafting_Knife_Cook_4f9b184c-fcd4-4459-a945-599c06c65964"			);
+XCToolsDB__Tools__Templates( 0, "knife",		"XC_Tool_Crafting_Knife_Crafter_d2dc1fd9-3557-4354-a1c7-76bf8f39bdcd"		);
+XCToolsDB__Tools__Templates( 0, "knife",		"XC_Tool_Crafting_Knife_Paper_846e0501-e010-48cc-8c21-98b14c27b76e"			);
+XCToolsDB__Tools__Templates( 0, "knife",		"XC_Tool_Crafting_Knife_Paper_Magic_6089bd49-0099-476e-be59-dd6163e0d0bf"	);
+XCToolsDB__Tools__Templates( 0, "mortar",		"XC_Tool_Crafting_MortarPestle_ba9b493a-e20f-46bc-b394-dd01caffff45"		);
+
+XCToolsDB__Tools__Templates( 0, "needle",		"XC_Tool_Crafting_NeedleThread_efda77bc-e321-482c-81b8-481d70b3c63b"		);
+XCToolsDB__Tools__Templates( 0, "needlemag",	"XC_Tool_Crafting_NeedleThread_Magic_036ab6e8-d200-4c29-8c07-9b93c988d5dc"	);
+XCToolsDB__Tools__Templates( 0, "tong",			"XC_Tool_Crafting_Tong_385649ab-dd09-425d-a4d8-400b3c30e749"				);
+
+// Templates that trigger categories of tools to be handed out once they are found (i.e. picked up)
+// sturdy trap disarm kit
+XCToolsDB__Tools__Triggers( "disarm",		"TOOL_Trap_DisarmToolkit_9fda335e-2220-4ae9-a4c2-2424d5ef5165"				);
+// identifying glass
+XCToolsDB__Tools__Triggers( "identify",		"TOOL_IdentifyingGlass_A_32288ce4-3d8d-46b3-a655-598350a96201"				);
+// sturdy lockpicks
+XCToolsDB__Tools__Triggers( "lockpick",		"TOOL_LockPick_A_06d0eecb-4271-42a7-bd8c-4cbf24927197"						);
+// shovel
+XCToolsDB__Tools__Triggers( "shovel",		"TOOL_Shovel_A_41486dd2-3fd5-464e-870e-844120cf0517"						);
+// blacksmith pickaxe
+XCToolsDB__Tools__Triggers( "pickaxe",		"WPN_Undead_Pickaxe_A_0f11d7e7-4e0b-4921-aa63-f8c6511ac631"							);
+// crafter axe
+XCToolsDB__Tools__Triggers( "axe",			"TOOL_2H_WoodAxe_A_f4fa071b-cf2b-4343-8b78-3efd00e3f801"							);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_renamed_TOOL_2H_WoodAxe_A_f4fa071b-cf2b-4343-8b78-3efd00e3f801"				);
+XCToolsDB__Tools__Triggers( "axe",			"TOOL_CleaverAxe_A_5d9b15b3-6d9f-493a-b81a-8a08c3454146"							);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_renamed_TOOL_CleaverAxe_A_5d9b15b3-6d9f-493a-b81a-8a08c3454146"				);
+XCToolsDB__Tools__Triggers( "axe",			"TOOL_CleaverAxe_A_B_31ab1864-6d82-4715-bbb1-4071b315af26"							);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_renamed_TOOL_CleaverAxe_A_B_31ab1864-6d82-4715-bbb1-4071b315af26"				);
+XCToolsDB__Tools__Triggers( "axe",			"TOOL_WoodAxe_A_9728e267-a187-4a46-9bb4-5db3478e0fbf"								);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_renamed_TOOL_WoodAxe_A_9728e267-a187-4a46-9bb4-5db3478e0fbf"					);
+XCToolsDB__Tools__Triggers( "axe",			"TOOL_WoodAxe_A_C_120b7167-87ef-49e2-84b2-2a94e2210e88"								);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_renamed_TOOL_WoodAxe_A_C_120b7167-87ef-49e2-84b2-2a94e2210e88"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_2H_Axe_A_00c6592c-8a5f-4012-a9fb-3498d64246c6"									);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Axe_A_21636f66-045f-46ef-b586-62f17abd83f3"									);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Axe_B_c919c5b1-7262-4618-9b1d-6beac9ccab56"									);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Blackrock_2H_Axe_A_d674f267-f7f5-42a8-b8a5-9638d219825c"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Blackrock_Axe_A_4c2d0965-5f71-4d62-8e12-a75a37dd62d2"							);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Blackrock_Scythe_A_cbb31cab-dc07-4268-abb2-bc221634de12"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_DIY_Axe_A_5f7e8ae2-c931-4caa-80dd-e83235345a74"								);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_DIY_Axe_B_186ad8f8-8eea-4562-943a-7d8519ed6286"								);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_DIY_Axe_C_942c9068-33f4-470e-8eaf-3329ccf25939"								);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_DIY_Axe_D_a28caf1b-48bd-4429-aba8-e39a86914950"								);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_DarkMinions_DoubleAxe_ac816d94-f31b-401a-84bc-53bd77bd8007"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_DarkMinions_DoubleAxe_Human_be9afc41-f215-4dc8-af09-4616b44f7ec7"				);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_DarkMinions_SingleAxe_cadc3c0f-26aa-49d6-b46d-4ff6663b513a"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_DarkMinions_SingleAxe_Human_ef3685c5-60ac-4b3f-a9d3-bd833a69b5fd"				);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_2H_Axe_A_6523725d-751d-4489-b897-a5576e094ddd"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_2H_Axe_A_B_e27689e5-5ab6-4926-afff-ee79d002c22b"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_2H_Axe_A_C_bb905b38-08d6-436e-a3af-b11c3c2d6847"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_2H_Axe_B_fe92828f-79d3-4308-b526-80226af27141"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_2H_Axe_B_B_d6c5cea0-b325-49a6-be39-01938eba9c08"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_2H_Axe_B_C_dcd6b3f5-7b6a-4985-973d-12dea4867ac7"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_2H_Axe_PoleArm_A_91fb4812-2b30-4ecb-beda-9cb51b3bacd9"			);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_2H_Axe_PoleArm_A_B_1f31e5b7-d681-4725-b55b-5c1a70276556"			);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_2H_Axe_PoleArm_A_C_8a92481a-74cb-4208-bfa3-8cf456dd170a"			);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Axe_A_63b6f542-1a86-40dc-a7d5-68c344a97aaa"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Axe_A_B_0d4bd6fb-46db-4cca-a3f2-7bfe0c783213"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Axe_A_C_9ec7322f-2ca7-4cf6-996b-fc28f0dd5d3d"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Axe_B_09795109-3ef7-4697-adc6-c6f0d68ebedc"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Axe_B_B_28b73bb3-1922-4db4-843a-8cfa5eefd3ee"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Axe_B_C_065124fd-e310-41da-8251-ec0ef4c5a509"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Axe_C_4d6d60f8-3daa-41ef-99c5-a4a6f1b5ea05"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Axe_C_B_15a89843-abf0-414f-9346-82cebc8437d9"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Axe_C_C_6240dafd-61d0-47be-976a-adf1510f7554"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Scythe_A_a60feb19-fcce-4d37-a390-5d29b4bdd00f"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Scythe_A_B_e0470266-e19d-4d05-a49e-5ecc8b09642f"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Human_Normal_Scythe_A_C_0d403ed3-cd40-4c44-98e0-16fdc091770f"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Orcs_Warrior_Axe_A_231aab26-3db7-43a7-ad6d-d40f6c0a4e53"						);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Orcs_Warrior_Elite_Axe_A_cf75bfb1-73b4-4d85-bdc3-52acf8b4ad54"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Orcs_Warrior_Elite_Axe_A_Human_9ae829d1-ae90-42f6-836a-97834572f334"			);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Undead_2H_Axe_Braccus_A_4e50b02c-8704-42d7-9d7f-303ab66fc2de"					);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Undead_2H_Axe_Braccus_A_Human_deba8ddf-00ad-4271-bf85-1256c0b6ff16"			);
+XCToolsDB__Tools__Triggers( "axe",			"WPN_Undead_Pickaxe_A_0f11d7e7-4e0b-4921-aa63-f8c6511ac631"							);
+// blender
+XCToolsDB__Tools__Triggers( "blender",		"TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770"								);
+XCToolsDB__Tools__Triggers( "blender",		"WPN_renamed_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770"					);
+XCToolsDB__Tools__Triggers( "blender",		"LAB_MortarPestle_A_e834444d-cdb9-42ad-8fd4-71bb22126f72"							);
+XCToolsDB__Tools__Triggers( "blender",		"TOOL_renamed_LAB_MortarPestle_A_e834444d-cdb9-42ad-8fd4-71bb22126f72"				);
+XCToolsDB__Tools__Triggers( "blender",		"TOOL_Hammer_Repair_A_be7226da-7211-4250-be95-ca780bcdb3df"							);
+// hammers
+XCToolsDB__Tools__Triggers( "hammer",		"TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770"								);
+XCToolsDB__Tools__Triggers( "hammer",		"WPN_renamed_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770"					);
+// magic inkpot & quill
+XCToolsDB__Tools__Triggers( "inkpot",		"LOOT_Ink_Pot_A_Quill_A_Magic_a456773f-9c1b-46c5-bbd4-f7f0e645f1ed"					);
+XCToolsDB__Tools__Triggers( "inkpot",		"TOOL_renamed_LOOT_Ink_Pot_A_Quill_A_Magic_a456773f-9c1b-46c5-bbd4-f7f0e645f1ed"	);
+// knives
+XCToolsDB__Tools__Triggers( "knife",		"FUR_Cutlery_Knife_A_262a9a07-c20f-41b0-8747-343886cc34c1"							);
+XCToolsDB__Tools__Triggers( "knife",		"FUR_Rich_Fork_A_8ab5a04b-9262-48c1-b65c-3058a55c6c21"								);
+XCToolsDB__Tools__Triggers( "knife",		"FUR_Rich_Knife_A_b8c69b5d-2b10-4001-b63f-c968b7b79376"								);
+XCToolsDB__Tools__Triggers( "knife",		"TOOL_Wood_Stake_a977ec45-a29e-404b-8d80-e130fe38a66e"								);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_renamed_TOOL_Wood_Stake_a977ec45-a29e-404b-8d80-e130fe38a66e"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Blackrock_DaggerPush_A_f07caeb5-6ee9-4606-9dcd-2fbace3eb081"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Dagger_A_262e9525-6fbd-49be-947a-10ad19ed4861"									);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_DaggerPush_A_a7dfb3d1-8a60-4ac8-90ba-730e3364a6e4"				);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_DaggerPush_A_B_0e651296-db33-43ae-8679-a0f51f0dd455"				);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_DaggerPush_A_C_a3383fb1-9fc5-4f52-9880-ec8486cc9b6a"				);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Dagger_A_7a715594-05f4-4dad-a059-d15c9662dd2c"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Dagger_A_B_68b7fdca-fdbb-4a87-ba67-055acaa6560e"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Dagger_A_C_08b3ef50-407a-4c08-afd1-c2a96360c0f7"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Estoc_A_4c04f006-d631-4be7-855c-3ccd2c3ba0e2"						);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Estoc_A_B_23c8a394-2a1f-44d3-901f-0ffb5982189d"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Estoc_A_C_f2d89cbe-0557-4577-aec7-e4fb51f757de"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Mercygiver_A_3558e14c-ec8b-4b57-92bf-1ade459d3650"				);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Mercygiver_A_B_95adc446-82de-4564-994a-10786bde8a5d"				);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Mercygiver_A_C_4472f14f-cef2-4d0e-9fb4-63ba82552055"				);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Rapier_A_97c9dec1-c307-4080-94ab-ad70ce511c3e"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Rapier_A_B_acae3e9a-cf91-4060-9138-9a836a80984d"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Human_Normal_Rapier_A_C_f5a04b80-a857-4eb1-8224-4a2897888756"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_LUC_Prostitute_Dagger_ffa49cdf-565d-4b89-ba29-c4feefdae3fa"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_LUC_Prostitute_Pen_05145c28-5fab-435a-94c7-411c9f1703ee"						);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Orc_Normal_Dagger_Dummy_607ada16-7da3-4de8-ae4f-89302f232cbe"					);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_PocketKnife_1b6b6f74-b0cf-4411-9e66-62d859206e99"								);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Stick_A_32de53ae-e7bd-4cfa-ac03-032a709e82ff"									);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_UNIQUE_SeaSpiderClaw_e1caefe4-806f-4234-af9d-c55e220a28c7"						);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_UNIQUE_Snakebite_947d1719-931a-4c9b-922e-81f42aacd4a8"							);
+XCToolsDB__Tools__Triggers( "knife",		"WPN_Wood_Stake_28920ea6-248b-4fc5-8b23-e2655480786c"								);
+// mortar & pestle
+XCToolsDB__Tools__Triggers( "mortar",		"LAB_MortarPestle_A_e834444d-cdb9-42ad-8fd4-71bb22126f72"							);
+XCToolsDB__Tools__Triggers( "mortar",		"TOOL_renamed_LAB_MortarPestle_A_e834444d-cdb9-42ad-8fd4-71bb22126f72"				);
+// needle & thread
+XCToolsDB__Tools__Triggers( "needle",		"LOOT_Needle_Thread_A_e0f0d8ef-73e9-444a-9e6a-84c6d3b7d2d0"							);
+XCToolsDB__Tools__Triggers( "needle",		"TOOL_renamed_LOOT_Needle_Thread_A_e0f0d8ef-73e9-444a-9e6a-84c6d3b7d2d0"			);
+// magic needle & thread
+XCToolsDB__Tools__Triggers( "needlemag",	"LOOT_Needle_Thread_A_Magic_708fe5f8-53d9-447e-bf6c-74bc90514094"					);
+XCToolsDB__Tools__Triggers( "needlemag",	"TOOL_renamed_LOOT_Needle_Thread_A_Magic_708fe5f8-53d9-447e-bf6c-74bc90514094"		);
+// tong
+XCToolsDB__Tools__Triggers( "tong",			"TOOL_Hammer_Repair_A_be7226da-7211-4250-be95-ca780bcdb3df"							);
+XCToolsDB__Tools__Triggers( "tong",			"TOOL_Tong_A_8955f424-b4ef-402b-8940-013ca9c409d6"									);
+KBSECTION
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Adding the new tools
+//
+// We add the new tools to all players and companions when their 'base template' is found and added,
+// e.g. when first the shovel is picked up, the new shovel is automatically added.
+// (Same for lockpicks or the disarm kit in the tutorial dungeon of course.)
+//
+// Since automatic adding occurs after bags have been added, we don't need to move anything into bags, it will be
+// done automatically. Because of this there is no longer any need to provide any 'ejection protection'.
+//
+// Adding is enabled as soon as we can assume everything else to be set up, especially adding items through Equipment.txt
+// but also the undressing/re-dressing done with bag initialization.
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// /////////////////////////////////////////////////////
+// 'After all bag setup done' hook
+// /////////////////////////////////////////////////////
+
+// Enable template-triggering for tool-auto-adding
+// We cannot use XCHook_Cys_First_AfterPlayer() here because that is still excuted in the same context as all the bag
+// init stuff, we MUST use the hook from bags to tell us that it is now safe to assume it will no longer add any items.
+PROC
+	XCBagsHook_After_All_Init_Done()
+THEN
+	XCToolsFlag__AutoToolsEnabled(1);
+
+// /////////////////////////////////////////////////////
+// event handler
+// /////////////////////////////////////////////////////
+
+// Add tools when the first of the configured trigger templates of a category is added
+// (doesn't matter which party member picks up the item, but must be a party member, can even be a henchman
+//  although henchmen are not eligible to receive tools)
+IF
+	ItemTemplateAddedToCharacter( _ItemTemplate, _, _Char )
+	AND
+	XCToolsFlag__AutoToolsEnabled(1)
+	AND
+	XCToolsDB__Tools__Triggers( _ToolCategory, _ItemTemplate )
+	AND
+	_Char.DB_IsPlayer()
+THEN
+	XCBagsProc__AutoGrantCategory( _ToolCategory );
+
+// /////////////////////////////////////////////////////
+// 'granting' tools
+// /////////////////////////////////////////////////////
+
+// Give one tool to every current party member
+// The templates database might expand tuples, if a category triggers more than one tools
+// (as is the case for category "knife")
+PROC
+	XCBagsProc__AutoGrantCategory( (STRING)_ToolCategory )
+	AND
+	XCToolsDB__Tools__Templates( _, _ToolCategory, _ToolTemplate )
+	AND
+	_Char.DB_IsPlayer()
+THEN
+	ItemTemplateAddToCharacter( _ToolTemplate, _Char, 1 );
+
+// give one tool to every companion not currently a party member
+PROC
+	XCBagsProc__AutoGrantCategory( (STRING)_ToolCategory )
+	AND
+	XCToolsDB__Tools__Templates( 1, _ToolCategory, _ToolTemplate )
+	AND
+	_Companion.XCDB_IsCompanion()
+	AND
+	NOT _Companion.DB_IsPlayer()
+THEN
+	ItemTemplateAddToCharacter( _ToolTemplate, _Companion, 1 );
+
+// Remove the templates of the granted tools, they are no longer needed
+PROC
+	XCBagsProc__AutoGrantCategory( (STRING)_ToolCategory )
+	AND
+	XCToolsDB__Tools__Templates( _PlayersOnly, _ToolCategory, _ToolTemplate )
+THEN
+	NOT XCToolsDB__Tools__Templates( _PlayersOnly, _ToolCategory, _ToolTemplate );
+
+// Remove all other trigger templates that would trigger the category, because all tools triggered by that category
+// have been granted now.
+PROC
+	XCBagsProc__AutoGrantCategory( (STRING)_ToolCategory )
+	AND
+	XCToolsDB__Tools__Triggers( _ToolCategory, _ItemTemplate )
+THEN
+	NOT XCToolsDB__Tools__Triggers( _ToolCategory, _ItemTemplate );
+
+// As soon as there are no more triggers left, we remove the auto-adding-enabled flag again.
+// (to skip the ItemTemplateAddedToCharacter() handler at the earliest possible point)
+PROC
+	XCBagsProc__AutoGrantCategory( (STRING)_ToolCategory )
+	AND
+	NOT XCToolsDB__Tools__Triggers( _, _ )
+THEN
+	NOT XCToolsFlag__AutoToolsEnabled(1);
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// SOAP
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// If character is OILED remove OILED, otherwise the character slips on the soap
+
+// Call a procedure to minimize the amount of installed handlers
+IF
+	CharacterUsedItemTemplate( _Char, "FUR_WashSoap_A_eda48b44-7f26-4922-84bf-85725ef067c1", _ )
+	AND
+	_Char.DB_IsPlayer()
+THEN
+	XCToolsProc__Character_Used__Soap( _Char );
+
+// Remove one soap from the stack
+PROC
+	XCToolsProc__Character_Used__Soap( (CHARACTER)_Char )
+	AND
+	ItemTemplateIsInCharacterInventory( _Char, "FUR_WashSoap_A_eda48b44-7f26-4922-84bf-85725ef067c1", _Count )
+	AND
+	_Count > 0
+	AND
+	GetItemhandleForItemTemplateInInventory( _Char, "FUR_WashSoap_A_eda48b44-7f26-4922-84bf-85725ef067c1", _Handle )
+THEN
+	ItemHandleToContainer( _Handle, ITEM_XC_STORAGE_BLACK_HOLE_SUN, 1 );
+
+// Must come first, otherwise, the character always slips, because the status would have gone away
+PROC
+	XCToolsProc__Character_Used__Soap( (CHARACTER)_Char )
+	AND
+	CharacterHasStatus( _Char, "OILED", 0 )
+THEN
+	// STAT_Comment_FALLING_1_9: What in the name of Sigurd?!
+	CharacterDisplayText( _Char, "STAT_Comment_FALLING_1_9" );
+	CharacterApplyStatus( _Char, "KNOCKED_DOWN", 5.0, 1 );
+
+// Remove OILED, must come AFTER slip
+PROC
+	XCToolsProc__Character_Used__Soap( (CHARACTER)_Char )
+	AND
+	CharacterHasStatus( _Char, "OILED", 1 )
+THEN
+	CharacterRemoveStatus( _Char, "OILED" );
+	// STAT_Comment_HEAL_1_7: I needed that...
+	CharacterDisplayText( _Char, "STAT_Comment_HEAL_1_7" );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// THE NEW SHOVEL
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// After looking into the code, I decided to modify general shovel handling directly in __Start/__GLO_Shovel.txt.
+// Picking up the new shovel by only 'disabling' the old one (renaming the root template!) would have caused problems
+// if the old code had still been there:
+// - the on-use-shovel handlers are no problem because they cannot execute, if the template does not exist
+// - the on-use-dirtpile handler is the big problem, because it shows an error message if it does not find the template
+// Of course this handler could be disabled by simply destroying the DB_ShovelArea() database and replace it by a new one.
+// Unfortunately this database is not only set but also used in other places, like DOSStart/LUC_WitchCave.txt with the
+// 'Thuringar Treasure Hunt', starting from line 136. While this is not yet an unsolvable problem, there is a one in
+// GLO_Achievements.txt, line 70. Accidently unlocking an achievement due to the removal of the expected database is not
+// acceptable. This code is NOT directly modifyable. Of course, we could modify the call to ProcShovelRewards(), but then
+// a whole lot of new problems would arise, because this procedure again is hooked into in a couple of further places.
+// So it is best to modify the original file in this case, because there is no easy way to circumvent it.
+//
+// Maybe I could also just 'silence' the message and throw a new ony in my handlers, but I haven't found out how I could
+// voice the new message, it would be silent, which is not nice.
+//
+// If we cannot not disable the old template for the reasons discussed above, we need to directly change every file where
+// the template is used in a query instead of a use-event, because under no circumstance should the triggered code be
+// excuted twice, if both shovels were present.
+//
+// The following files use the old template in queries:
+// - __Start/__GLO_Shovel.txt (the default shovel handling
+// - DOSStart/CYS_ThelyronWife.txt has a dirtpile handler that triggers dialog which MUST NOT be executed twice
+// - DOSStart/END_NegaKingsCrab.txt also uses its own dirtpile handler
+//
+// Since there is only one single further file, which uses the old template, we can change this as well and after that
+// the old shovel will be completely disabled
+// DOSStart/CYS_ElioOrcRaids.txt, which uses the template to trigger a potential fight with the 'Greaving Orc'
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// DOSStart/CYS_ThelyronWife.txt: implementation of additional 'special handling'
+//
+// Introducing a procedure to handle using Thelyron's wife's grave and call it there so that we do not introduce even
+// more event handlers that would be skipped for any other use but still called.
+//
+// We also need to prevent the default shovel handlers to interfere here.
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Companion digging or using the dirt pile and is not Madora (because she IS a Source Hunter)
+PROC
+	XCToolsProc_CharDiggingThelyronGrave( (CHARACTER)_Char )
+	AND
+	_Char.XCDB_IsCompanion()
+	AND
+	_Char != CHARACTER_Madoc
+	AND
+	NOT ITEM_CYS_ShovelThelyronWifeDirt.XCDB_ThelyronGraveExploded()
+THEN
+	// Whoohee, no, I'm not going to touch this, I'll leave that to the Source Hunters.
+	CharacterDisplayText( _Char, "XC_Message_DigThelyronGrave_Companion" );
+
+// Madora digging or using the dirt pile
+PROC
+	XCToolsProc_CharDiggingThelyronGrave( CHARACTER_Madoc )
+	AND
+	NOT ITEM_CYS_ShovelThelyronWifeDirt.XCDB_ThelyronGraveExploded()
+THEN
+	// Hohoho, no no no comrade, I won't touch this grave. I'll leave that up to you.
+	CharacterDisplayText( CHARACTER_Madoc, "XC_Message_DigThelyronGrave_Madora" );
+
+// Henchman digging or using the dirt pile 
+PROC
+	XCToolsProc_CharDiggingThelyronGrave( (CHARACTER)_Char )
+	AND
+	_Char.XCDB_IsHenchman()
+	AND
+	NOT ITEM_CYS_ShovelThelyronWifeDirt.XCDB_ThelyronGraveExploded()
+THEN
+	// Who are you ? Some kind of butler ? Leave me alone for the sake of the Seven.
+	ItemDisplayText( ITEM_CYS_ShovelThelyronWifeDirt, "XC_Message_DigThelyronGrave_Henchman" );
+
+// Player digging or using the dirt pile while other players are still in dialog deciding to dig or not
+// (required for any 2+ character mods)
+PROC
+	XCToolsProc_CharDiggingThelyronGrave( (CHARACTER)_Char )
+	AND
+	_Char.XCDB_IsPlayer()
+	AND
+	ITEM_CYS_ShovelThelyronWifeDirt.DialogOneShot()
+	AND
+	ITEM_CYS_ShovelThelyronWifeDirt.DB_IsInItemDialog()
+THEN
+	// Whoa, come to senses ... Am I really THAT impatient that I cannot even wait for my comrades to finish their conversation?
+	CharacterDisplayText( _Char, "XC_Message_DigThelyronGrave_Player_Impatient" );
+
+// Player digging or using the dirt pile after digging was declined in the first dialog
+PROC
+	XCToolsProc_CharDiggingThelyronGrave( (CHARACTER)_Char )
+	AND
+	_Char.XCDB_IsPlayer()
+	AND
+	ITEM_CYS_ShovelThelyronWifeDirt.DialogOneShot()
+	AND
+	NOT ITEM_CYS_ShovelThelyronWifeDirt.DB_IsInItemDialog()
+	AND
+	NOT ITEM_CYS_ShovelThelyronWifeDirt.XCDB_ThelyronGraveExploded()
+THEN
+	// *sighs* How many times do we have to discuss this ? We have already decided to leave this grave alone and undisturbed.
+	// (that text is okay, if the grave is still onstage, it must be because we left it alone)
+	CharacterDisplayText( _Char, "XC_Message_DigThelyronGrave_Player_NoSecondTime" );
+
+// player digging or using the dirt pile and no dialog has occured yet
+PROC
+	XCToolsProc_CharDiggingThelyronGrave( (CHARACTER)_Char )
+	AND
+	_Char.XCDB_IsPlayer()
+	AND
+	NOT ITEM_CYS_ShovelThelyronWifeDirt.DialogOneShot()
+THEN
+	ProcDoTwoSpeakerItemDialog( "CYS_ThelyronWifeTomb", _Char, ITEM_CYS_ThelyronWifeTomb );
+	ITEM_CYS_ShovelThelyronWifeDirt.DialogOneShot();
+
+
+// We need to hook into the dialog end, because when the decision was made to actually dig the grave,
+// we must re-enable default shovel handlers again to get the normal 'All that digging and there's nothing here?'
+// message again after the dirtpile has disappeared.
+// We don't need to do anything else in the opposite case because the new handlers will be used then.
+// (In fact we MUST not do anything in that case because the default shovel handler would again start to
+//  interfere with our handlers.)
+//
+// 'Deregisters the message preventers', iterating all potentially playable characters
+IF
+	DialogEnded( "CYS_ThelyronWifeTomb", _ID )
+	AND
+	DB_GlobalEvent( "CYS_DisturbThelyronWife2" )
+	AND
+	_Char.XCDB_IsPlayable()
+THEN
+	NOT DB_Shovelling_Mound( _Char, ITEM_CYS_ShovelThelyronWifeDirt );
+
+// We also need a flag to show us that the grave has been destroyed, so that our handlers do not interfere with
+// the now enabled default shovel handlers
+IF
+	DialogEnded( "CYS_ThelyronWifeTomb", _ID )
+	AND
+	DB_GlobalEvent( "CYS_DisturbThelyronWife2" )
+THEN
+	ITEM_CYS_ShovelThelyronWifeDirt.XCDB_ThelyronGraveExploded();
+
+// Registering the 'fake' database prevents the default shovel handler from 'jumping in'.
+IF
+	DB_InRegion( _Player, TRIGGER_CYS_ShovelThelyronWife )
+	AND
+	_Player.DB_IsPlayer()
+THEN
+	DB_Shovelling_Mound( _Player, ITEM_CYS_ShovelThelyronWifeDirt );
+
+IF
+	_Player.DB_IsPlayer()
+	AND
+	NOT DB_InRegion( _Player, TRIGGER_CYS_ShovelThelyronWife )
+THEN
+	NOT DB_Shovelling_Mound( _Player, ITEM_CYS_ShovelThelyronWifeDirt );
+
+// registering the 'fake' database prevents the default shovel handler from 'jumping in'.
+// iterating all potentially playable characters as immediately above
+//PROC
+//	XCHook_Cys_First_AfterPlayer()
+//	AND
+//	_Char.XCDB_IsPlayable()
+//THEN
+//	DB_Shovelling_Mound( _Char, ITEM_CYS_ShovelThelyronWifeDirt );
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

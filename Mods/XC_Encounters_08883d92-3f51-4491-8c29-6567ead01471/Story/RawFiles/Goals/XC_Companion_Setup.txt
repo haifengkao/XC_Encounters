@@ -1,0 +1,43 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// enable extensions for companions
+XCCompanionDB__Extensions__Enabled(1);
+// ... so that removing Tenebrium from Bairdotr can still be done independent of enabling
+XCCompanionDB__Extensions__Bairdotr__NoBR(0);
+
+// Traits for Companions
+XCCompanionDB__Traits( CHARACTER_Bairdotr,	"Obedient",		5 );
+XCCompanionDB__Traits( CHARACTER_Jahan,		"Blunt",		5 );
+XCCompanionDB__Traits( CHARACTER_Madoc,		"Vindictive",	5 );
+XCCompanionDB__Traits( CHARACTER_Wolgraff,	"Renegade",		5 );
+
+XCCompanionsProc__Add__Companion__Traits();
+KBSECTION
+// Add traits to companions
+PROC
+	XCCompanionsProc__Add__Companion__Traits()
+	AND
+	XCCompanionDB__Extensions__Enabled(1)
+	AND
+	XCCompanionDB__Traits( _Companion, _Trait, _TraitValue )
+	AND
+	_Companion.XCDB_IsCompanion()
+THEN
+	CharacterAddTrait( _Companion, _Trait, _TraitValue );
+
+// Revert a change done previously in Global_Companion.txt:
+// nobody starts with Tenebrium anymore, not even Bairdotr
+// Doing this on initial join to become independent of PROC execution order
+PROC
+	XCHook_On_Companion_Initial_Join( CHARACTER_Bairdotr )
+	AND
+	XCCompanionDB__Extensions__Enabled(1)
+	AND
+	XCCompanionDB__Extensions__Bairdotr__NoBR(1)
+THEN
+	CharacterLockAbility( CHARACTER_Bairdotr, "Blackrock" );
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

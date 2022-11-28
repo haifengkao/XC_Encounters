@@ -1,0 +1,26 @@
+#INCLUDE XCS_SkillItem_FieldBed
+
+INIT
+	USING XCS_SkillItem_FieldBed
+	ITEM:__Me
+
+EVENTS
+
+// SPEAKER: CYS_BC_ZombieStoryteller_Nick_M
+EVENT FieldBed_OnInitSetMessages
+ON
+	OnInit()
+ACTIONS
+	Set( %IAmCoffin, 1 )
+	// GLO_NickTurnInCombat8: No grave contains me!
+	Set( %XCSFB_Msg_Greeting_1, "GLO_NickTurnInCombat8" )
+	// GLO_NickTurnInCombat13: As thrilling as the stage! Though not half so bloody...
+	// GLO_NickTurnInCombat11: I'll defend you till my death rattle!
+	Set( %XCSFB_Msg_StopUse_1, "GLO_NickTurnInCombat13" )
+	Set( %XCSFB_Msg_StopUse_2, "GLO_NickTurnInCombat11" )
+	// GLO_NickTurnInCombat4: I'll make short work of this scum.
+	// GLO_NickTurnInCombat14: What do you think, Source Hunter? Shall I start shredding from the top or bottom?
+	// GLO_NickTurnInCombat7: I think I'll go for the eyes this time...
+	Set( %XCSFB_Msg_StartUse_1, "GLO_NickTurnInCombat4" )
+	Set( %XCSFB_Msg_StartUse_2, "GLO_NickTurnInCombat14" )
+	Set( %XCSFB_Msg_StartUse_3, "GLO_NickTurnInCombat7" )

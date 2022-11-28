@@ -1,0 +1,291 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// set up a dialog for our new trader ;-)
+//DB_Dialogs( CHARACTER_XC_CYS_Ingredient_Trader, "CYS_BlackHoleTrader" );
+// The Warrior Trader in Silverglen has been forgotten by Larian
+DB_BigTrader( CHARACTER_LUC_WarriorTrader );	// Hiver
+
+// All characters in DB_BigTrader() are included in the 'club of cleaning traders',
+// some must be added manually here.
+//
+// Some others should not be in the club, the 'evil traders', they should never clean up.
+// /////////////////////////////////////////////
+// CYSEAL
+// /////////////////////////////////////////////
+// Cyseal North Gate
+XCTradeDB_Traders( CHARACTER_XC_CYS_Ingredient_Trader		);	// Ingredient Seller
+// Cyseal Market
+XCTradeDB_Traders( CHARACTER_CYS_Bertia						);	// Bertia
+// Cyseal next to Market
+XCTradeDB_Traders( CHARACTER_CYS_OrcLibrarian				);	// Victoria
+XCTradeDB_Traders( CHARACTER_CYS_Cecilia					);	// Cecilia
+// Cyseal King Crab Inn
+XCTradeDB_Traders( CHARACTER_CYS_Wilbur						);	// Yvad Tavernier
+XCTradeDB_Traders( CHARACTER_CYS_Tavern_Waitress			);	// Waitress
+// /////////////////////////////////////////////
+// HIBERHEIM
+// /////////////////////////////////////////////
+// (Sua could be present for a long time, Lurrean and Tximista leave immediately after the Dialog)
+XCTradeDB_Traders( CHARACTER_HIB_ElementalGuardian_Fire		);	// Sua
+// /////////////////////////////////////////////
+// LUCULLA MINES
+// /////////////////////////////////////////////
+// /////////////////////////////////////////////
+// LUCULLA FOREST
+// /////////////////////////////////////////////
+// Silverglen Smithy (Bjorn and Mara are handled by a rule in KB)
+// Silverglen Tavern
+XCTradeDB_Traders( CHARACTER_LUC_InnKeeper					);	// Paul, Tavernier
+XCTradeDB_Traders( CHARACTER_LUC_Marisa						);	// M-m-m-marisa
+// Goblin Village (Village goblins are added in PROC_LUC_GV_InitializeGoblins() in KB)
+// Sacred Stone
+// /////////////////////////////////////////////
+// PHANTOM FOREST
+// /////////////////////////////////////////////
+// Hunter's Edge
+// /////////////////////////////////////////////
+// HOMESTEAD (Zandalor has no treasure)
+// /////////////////////////////////////////////
+XCTradeDB_Traders( CHARACTER_HOM_Icara						);	// Icara
+XCTradeDB_Traders( CHARACTER_HOM_Weaver						);	// Weaver of Time
+// (Leandra and Icandra have too little appearance to matter, also, they only occur in End-Game)
+// other
+// (There's a different 'Brian' in the First Garden, but he can never be revisited again)
+
+// Templates that should be ignored from registration
+XCTradeDB__Ignored__Templates( "LOOT_Gold_Big_A_1c3c9c74-34a1-4685-989e-410dc080be6f"			);
+XCTradeDB__Ignored__Templates( "LOOT_Gold_Coin_A_f99231ed-4e41-4d7e-8a3f-4175e1b1ded5"			);
+XCTradeDB__Ignored__Templates( "XC_SIGNALTOKEN_Internal_A_09bb7492-ed2b-4ccb-b610-f9835f20b649"	);
+
+// Add Treasure Maps to the Teller of Secrects, the same way as with Gerome in Cyseal
+// They are removed from TreasureTable.txt
+ItemTemplateAddToCharacter( "BOOK_TellerMap1_d08107e6-1901-433f-b7f2-e1103954724f",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMap2_942ef786-5e7f-425e-b4c6-b35524fb8e7e",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMap3_b0dbfd62-3dcb-408d-add5-44befe7eb588",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMap4_c1c62469-b8fb-4c8c-82ff-eb5a6ec68aad",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMap5_a22b735c-d7c8-4477-b173-d4c2e5ba32f5",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMundane1_8b1813ca-65b1-464b-963f-92a3b4ecaeb5",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMundane2_e7cbb835-de41-42c9-83a4-13dd9604a6a9",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMundane3_8567c623-33b1-411f-90be-646b48dc48b0",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMundane4_13549127-219e-4965-8ca0-5dc942066fa6",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMundane5_44461313-9459-4cd8-9cc1-dbf035d7ec0f",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerMundane6_794dec7c-6064-48f4-b67c-8fd3aea1d13b",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill1_e7363d62-7f21-462f-bef8-09ca3b671db3",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill2_b41c4d66-1f5f-4fe8-8499-4ef1b6364650",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill3_e06059e3-6ae9-4838-b5de-f28390dc8086",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill4_27f93ad4-4c3d-44eb-b3d6-7f074e284ee8",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill5_f2f40534-bcda-446f-8291-24e8d106c984",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill6_6482343c-f8da-4c42-bf51-1486d61b3cc7",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill7_fcdae1ee-54fd-472c-ab36-94a771c89167",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill8_016d2697-d07a-4a3b-b9e6-760c4941eaa3",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill9_df55411f-cc36-4bde-aa64-4992286cd2b4",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill10_23b5ada1-beb3-48a1-a603-eb4847412128",	CHARACTER_HOM_TellerOfSecrets, 1 );
+ItemTemplateAddToCharacter( "BOOK_TellerSkill11_dbf84592-73db-4d8c-ad84-1616a74665cf",	CHARACTER_HOM_TellerOfSecrets, 1 );
+
+// Items removed from TreasureTable.txt to reduce handle waste
+// I add one of each of those to traders in Cyseal, so that at least one is buyable.
+// There is absolutely no need for more than one of each because one of them triggers acquirement of the new tools.
+// I only include shovel, lockpicks and disarm kits here because there are people who actually manage to miss
+// picking those up on Cyseal Beach or the Tutorial Dungeon.
+// An identifying glass could be stolen in the Legion Quarter and in the Mortician's private room, but that's stealing.
+// Repair hammer and mortar must be bought, unless one gets them as random drops.
+// Adding shears to Bertia now, they fit with her.
+
+// Shereth
+ItemTemplateAddToCharacter( "TOOL_LockPick_A_06d0eecb-4271-42a7-bd8c-4cbf24927197",					CHARACTER_CYS_Shereth, 1 );
+ItemTemplateAddToCharacter( "TOOL_Trap_DisarmToolkit_9fda335e-2220-4ae9-a4c2-2424d5ef5165",			CHARACTER_CYS_Shereth, 1 );
+// Norbyte
+ItemTemplateAddToCharacter( "TOOL_Hammer_Repair_A_be7226da-7211-4250-be95-ca780bcdb3df",			CHARACTER_XC_CYS_Ingredient_Trader, 1 );
+ItemTemplateAddToCharacter( "TOOL_IdentifyingGlass_A_32288ce4-3d8d-46b3-a655-598350a96201",			CHARACTER_XC_CYS_Ingredient_Trader, 1 );
+ItemTemplateAddToCharacter( "TOOL_renamed_LAB_MortarPestle_A_e834444d-cdb9-42ad-8fd4-71bb22126f72",	CHARACTER_XC_CYS_Ingredient_Trader, 1 );
+// Bertia
+ItemTemplateAddToCharacter( "TOOL_Shears_A_7d507bb0-7f15-45bc-b2ff-9a9753c4c7c7",					CHARACTER_CYS_Bertia, 1 );
+// Painter Gerome, he gets a shovel because he also sells the treasure maps
+ItemTemplateAddToCharacter( "TOOL_Shovel_A_41486dd2-3fd5-464e-870e-844120cf0517",					CHARACTER_CYS_Gerome, 1 );
+// Selenia has the pickaxe, her legionnaires of course bring stuff home from expeditions
+ItemTemplateAddToCharacter( "WPN_Undead_Pickaxe_A_0f11d7e7-4e0b-4921-aa63-f8c6511ac631",			CHARACTER_CYS_Selenia, 1 );
+KBSECTION
+// This is mainly for Bjorn and Mara in Luculla, who are set up as Big Traders after the escort quest
+// The rule will probably not kick in for setting the traders in INIT due to file order (...again).
+IF
+	DB_BigTrader( _Trader )
+	AND
+	NOT XCTradeDB_Traders_Exceptions( _Trader )
+THEN
+	XCTradeDB_Traders( _Trader );
+
+// Add Big Traders as our Traders, leave out the Exceptions
+PROC
+	XCHook_Cys_First_AfterPlayer()
+	AND
+	DB_BigTrader( _Trader )
+	AND
+	NOT XCTradeDB_Traders_Exceptions( _Trader )
+THEN
+	XCTradeDB_Traders( _Trader );
+
+// Should someone have slipped through, since we have an IF rule now
+PROC
+	XCHook_Cys_First_AfterPlayer()
+	AND
+	XCTradeDB_Traders( _Trader )
+	AND
+	XCTradeDB_Traders_Exceptions( _Trader )
+THEN
+	NOT XCTradeDB_Traders( _Trader );
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// See http://larian.com/forums/ubbthreads.php?ubb=showflat&Number=583324
+// for our discussion of handle waste, crash on zoning, handle creation
+// and http://larian.com/forums/ubbthreads.php?ubb=showflat&Number=583967
+// for treasure generation in EE.
+//
+// /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// We need an event for signaling the start of registration.
+//
+// We are only interested in real trade, i.e. when the trade window actually opens.
+// If a trade starts, it is done in _Trade.txt with the procedure StartTrade().
+//
+// We want to have an event that happens before the trade window opens to enable registration of
+// transferred items. (It's only important that the 'registration enabled' fact is set somewhere
+// within the context of StartTrade(), it does not actually matter where, but it makes me feel better
+// if I have it set up before the window opens. ;-)
+// An event in StartTrade() that always happens before the window opens is the setup of the fact
+// TradeRunning( _Player, _Trader, 1 ). We use this setup to set our 'registration enabled' fact.
+// We call the fact XCTradeDB__ActiveTrade(), it holds the trader currently active for
+// item registration and the player who trade with the trader.
+IF
+	TradeRunning( _Player, _Trader, 1 )
+	AND
+	XCTradeDB_Traders( _Trader )
+	AND
+	_Player.DB_IsPlayer()
+THEN
+	XCTradeDB__ActiveTrade( _Trader, _Player );
+
+// Stop item registration after trade ends, subsequent trades should start registration again
+// because they run through the process where TradeRunning() is set.
+// (TradeEnds() is the event sent when the trade window closes I assume.)
+IF
+	TradeEnds( _, _Trader )
+	AND
+	XCTradeDB__ActiveTrade( _Trader, _Player )
+THEN
+	NOT XCTradeDB__ActiveTrade( _Trader, _Player );
+
+PROC
+	XCTradeHook__BeforeTradeTreasureGeneration( (CHARACTER)_Player, (CHARACTER)_Trader )
+	AND
+	XCTradeDB_Traders( _Trader )
+	AND
+	XCTradeDB__RegisteredItems( _Trader, _Handle, _Template )
+THEN
+	NOT XCTradeDB__RegisteredItems( _Trader, _Handle, _Template );
+	ItemHandleDelete( _Handle );
+
+// After trade treasure has been generated, we 'send a signal' to the trader's inventory indicating that all items
+// added to the trader so far were generated by treasure generation and all the following items added to the trader
+// will be ones from the actual trade with the player.
+//
+// We need to find an event that safely happens AFTER treasure generation and before the trade window opens.
+// (the latter condition is actually not necessary, because no items are yet transferred on ActivateTrade())
+//
+// ProcGenerateTradeTreasure( (CHARACTER)_Player, (CHARACTER)_Trader ) cannot be safely be used for that because
+// that would make us dependent of the order or PROC executions and thus dependent on file names.
+//
+// The LastTradeItemGeneration() DB is only set in 3 places in _Trade.txt, twice as a reset with _TH = 0
+// and once with _TH != 0 directly at the end of the ProcGenerateTradeTreasure()
+// So we use that one.
+//
+// Since we also need to set up the disable registration fact and this only needs to be set somewhere within
+// the whole trade generation process and before any Added() event handler can execute, which is the case
+// for ProcGenerateTradeTreasure() and since the setting of the LastTradeItemGeneration() fact happens
+// within the procedure context, we use the setting of this fact to set the temporary disabled fact here
+// as well instead of creating another ProcGenerateTradeTreasure().
+IF
+	LastTradeItemGeneration( _Trader, _TH )
+	AND
+	_TH != 0
+	AND
+	XCTradeDB_Traders( _Trader )
+THEN
+	XCTradeFlag__RegistrationDisabled( _Trader );
+	XCHooksProc_SendInventorySignal( _Trader, "ReenableItemRegistering" );
+
+// If new treasure was generated, the signal token was added afterwards, so the event this action created was
+// thrown after trade treasure generation.
+// We can remove the disable flag here.
+// (The 'signal cleanup' is done somewhere else.)
+PROC
+	XCHooksProc_ReceiveInventorySignal( (CHARACTER)_Trader, "ReenableItemRegistering" )
+THEN
+	NOT XCTradeFlag__RegistrationDisabled( _Trader );
+
+// Register an added item as sold to the trader.
+// If registering is enabled and not temporarily disabled, it must be a sold item.
+IF
+	ItemTemplateAddedToCharacter( _Template, _Handle, _Trader )
+	AND
+	XCTradeDB_Traders( _Trader )
+	AND
+	NOT XCTradeDB__Ignored__Templates( _Template )
+	AND
+	XCTradeDB__ActiveTrade( _Trader, _Player )
+	AND
+	NOT XCTradeFlag__RegistrationDisabled( _Trader )
+THEN
+	XCTradeDB__RegisteredItems( _Trader, _Handle, _Template );
+
+
+// Deregister all templates that are no longer in the trader's inventory if we registered them before.
+PROC
+	XCTradeProc__Deregister__Item( (CHARACTER)_Trader, (INTEGER)_, (STRING)_Template )
+	AND
+	ItemTemplateIsInCharacterInventory( _Trader, _Template, _Count )
+	AND
+	_Count == 0
+	AND
+	XCTradeDB__RegisteredItems( _Trader, _Handle, _Template )
+THEN
+	NOT XCTradeDB__RegisteredItems( _Trader, _Handle, _Template );
+
+// If the trader still carries a template in the inventory, a closer look at the handles
+// must be taken.
+// If parts of a are were bought back, a new handle should have been created for the removed items,
+// a handle not registered before, so this PROC cannot catch it.
+// This is actually the part for non-stackables that use equal templates as is often the case
+// with armor and weapons, especially the crafted ones.
+PROC
+	XCTradeProc__Deregister__Item( (CHARACTER)_Trader, (INTEGER)_Handle, (STRING)_Template )
+	AND
+	ItemTemplateIsInCharacterInventory( _Trader, _Template, _Count )
+	AND
+	_Count > 0
+	AND
+	XCTradeDB__RegisteredItems( _Trader, _Handle, _Template )
+THEN
+	NOT XCTradeDB__RegisteredItems( _Trader, _Handle, _Template );
+
+// Deregister items that are bought back.
+// This is mostly interesting for stuff a trader does not sell in the first place
+// and for non stackable items like armor or weapons
+// Stuff the Trader sells will get regenerated on next generation run.
+// (If sold stuff merged with an existing stack in the trader's inventory, the registered handle
+//  was lost in the process of item transferral and deleting a no longer existing handle seems
+//  not to cause any errors.)
+IF
+	ItemTemplateRemovedFromCharacter( _Template, _Handle, _Trader )
+	AND
+	XCTradeDB__ActiveTrade( _Trader, _Player )
+	AND
+	NOT XCTradeFlag__RegistrationDisabled( _Trader )
+THEN
+	XCTradeProc__Deregister__Item( _Trader, _Handle, _Template );
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

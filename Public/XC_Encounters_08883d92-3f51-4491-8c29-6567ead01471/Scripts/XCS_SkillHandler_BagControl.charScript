@@ -1,0 +1,101 @@
+INIT
+	CHARACTER:__Me
+	// flag indicates the presence of this script; queried by osiris init procedure
+	INT:%XCBFlag_IsBagHandler=1
+	// bag status flag: active/inactive; used internally and queried by osiris
+	INT:%XCBFlag_Active=1
+	// effects indicating the bag status, because we want a visual indication of the bag state
+	// the turn-on effect is only cosmetic, the is-off effect is a loop effect and thus needs a handle
+	STRING:%XCBEff__TurnedOn__Name="FX_GP_Projectile_Gold_Impact_A"
+	FIXEDSTRING:%XCBEff__TurnedOn__Bone="Bip001 Head"
+	// events
+	STRING:%XCBEv_Toggled="XCBagsEv_Toggled"
+	STRING:%XCBCmd_TurnOn="XCBagsEv_TurnOn"
+	STRING:%XCBCmd_TurnOff="XCBagsEv_TurnOff"
+
+	// Some of the 'Bones' in the char visual resource (PL_F_Body_A in the 'Attachments')
+	// Dummy_Root
+	// Bip001
+	// Bip001 Pelvis
+	// Bip001 Spine
+	// Bip001 Spine1
+	// Bip001 Spine2
+	// Bip001 Neck
+	// Bip001 Head
+	// Bip001 L Clavicle
+	// Bip001 L UpperArm
+	// Bip001 L Forearm
+	// Bip001 L Hand
+	// Bip001 R Clavicle
+	// Bip001 R UpperArm
+	// Bip001 R Forearm
+	// Bip001 R Hand
+
+
+EVENTS
+
+EVENT XCBagsEvent_InitHandlerNames
+ON
+	OnInit()
+ACTIONS
+	Set( %XCBEv_Toggled, "XCBagsEv_Toggled" )
+	Set( %XCBCmd_TurnOn, "XCBagsEv_TurnOn" )
+	Set( %XCBCmd_TurnOff, "XCBagsEv_TurnOff" )
+	
+
+// Use of the skill toggles the magic bags state
+// A SKILL (SKILL_ID) cannot be set from Osiris, so I decided not to put it into a variable but
+// enter it here directly as a string.
+// Although I did not test it, I assume it cannot be queried with CharacterGetVarString() either
+// so sadly, we cannot have one central place to store it.
+// There is all kind of shit in Osiris like CharacterGetVarCharacter() but essential generic stuff
+// is missing :-(
+EVENT XCBagsEvent_ToggleBagsOnOff
+ON
+	OnSkillCast( __Me, "XC_Skill_Other_MagicBagControl" )
+ACTIONS
+	IF "c1"
+		IsEqual( %XCBFlag_Active, 0 )
+	THEN
+		CharacterEvent( __Me, %XCBCmd_TurnOn )
+	ELSE
+		CharacterEvent( __Me, %XCBCmd_TurnOff )
+	ENDIF
+
+// Turn bags on when a turn-on-command is given (used from the toggle event handler and in story)
+// The bag functionality itself is - and must be - handled in Osiris, we only set the state variable here
+// and send a notification - event - that is caught by Osiris
+EVENT XCBagsEvent_TurnBagsOn
+ON
+	OnCharacterEvent( __Me, %XCBCmd_TurnOn )
+	OnCharacterStatusRemoved( __Me, CLEAN )
+	OnDie( __Me, _, _, _ )
+ACTIONS
+	IF "!c1"
+		IsEqual( %XCBFlag_Active, 1 )
+	THEN
+		Set( %XCBFlag_Active, 1 )
+		CharacterRemoveStatus( __Me, CLEAN )
+		CharacterEvent( __Me, %XCBEv_Toggled )
+//		CharacterPlayEffect( __Me, %XCBEff__TurnedOn__Name, %XCBEff__TurnedOn__Bone )
+	ENDIF
+
+// Turn bags off when a turn-on-command is given (used from the toggle event handler and in story)
+// Additionally, the functionality is turned off when the character dies, because turning off the
+// animation only (like OnShutdown) would require the 'opposite' event (OnResurrect) - and I could
+// not find any such event. (Osiris has a CharacterResurrected() event, but I do not want to have
+// to deal with additional event throwing.)
+// The bag functionality itself is - and must be - handled in Osiris, we only set the state variable here
+// and send a notification - event - that is caught by Osiris
+EVENT XCBagsEvent_TurnBagsOff
+ON
+	OnCharacterEvent( __Me, %XCBCmd_TurnOff )
+ACTIONS
+	IF "!c1"
+		IsEqual( %XCBFlag_Active, 0 )
+	THEN
+		Set( %XCBFlag_Active, 0 )
+//		CharacterApplyStatus( __Me, CLEAN, -1, 1 )
+		CharacterEvent( __Me, %XCBEv_Toggled )
+	ENDIF
+

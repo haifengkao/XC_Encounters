@@ -1,0 +1,17 @@
+INIT
+	CHARACTER:__Me
+
+EVENTS
+
+// Check and remove OOC Tornado if regular Tornado not present
+EVENT XCSMisc_CheckOOCTornado
+ON
+	OnCharacterEvent( __Me, "XCSMisc_CheckOOCTornado" )
+ACTIONS
+	IF "c1&!c2"
+		CharacterGetSkillRange( _, _, __Me, XC_Skill_Other_ViolentSummerBreeze )
+		CharacterCanCast( __Me, Tornado_Air, 1 )
+	THEN
+		CharacterRemoveSkill( XC_Skill_Other_ViolentSummerBreeze )
+		CharacterEvent( __Me, "XCSMisc_OOCTornadoRemoved" )
+	ENDIF

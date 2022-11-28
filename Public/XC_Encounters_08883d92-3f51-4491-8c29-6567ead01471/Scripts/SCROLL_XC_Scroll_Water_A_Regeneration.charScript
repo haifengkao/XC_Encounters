@@ -1,0 +1,120 @@
+#TEMPLATE "_SKILLFROMITEM_Base" : XC_Scroll_Water_A_Regeneration, Heal_EnemyRegenerate
+
+INIT
+CHARACTER:__Me
+FLOAT:%SkillTargetScore_XC_Scroll_Water_A_Regeneration=-1000000
+// [GLOBAL_VARS]
+INT:%ClassScore_XC_Scroll_Water_A_Regeneration
+// [~GLOBAL_VARS]
+
+EVENTS
+
+// [EVENTS]
+// [~EVENTS]
+
+// Calculate the priority of the skill
+EVENT CalculateScore_XC_Scroll_Water_A_Regeneration
+VARS
+	// [CALC_VARS]
+	// [~CALC_VARS]
+ON
+	OnFunction("CalculateScore_XC_Scroll_Water_A_Regeneration")
+ACTIONS
+	Set(%SkillTargetScore_XC_Scroll_Water_A_Regeneration, -1000000)
+
+	// [CALC_ACTIONS_PRE]
+	Set(%ClassScore_XC_Scroll_Water_A_Regeneration, 0)
+	// [~CALC_ACTIONS_PRE]
+	// [CALC_ACTIONS]
+	IterateCharactersInCombat(__Me, "CalculateTarget_XC_Scroll_Water_A_Regeneration", Random, Vitality)
+	IF "!c1"
+		IsEqual(%SkillTargetChar_XC_Scroll_Water_A_Regeneration, null)
+	THEN
+		Add(%ActionScore_XC_Scroll_Water_A_Regeneration, %SkillTargetScore_XC_Scroll_Water_A_Regeneration)
+	ENDIF
+	// [~CALC_ACTIONS]
+
+	
+	
+// Calculate the character we should attack
+EVENT CalculateTarget_XC_Scroll_Water_A_Regeneration
+VARS	
+	CHARACTER:_Char
+	// [CALC_TARGET_VARS]
+	INT:_ClassScore_XC_Scroll_Water_A_Regeneration
+	FLOAT:_StatVitality
+	FLOAT:_Score
+	FLOAT:_SkillRangeMin
+	FLOAT:_SkillRangeMax
+	FLOAT:_DistanceToChar
+	FLOAT:_DistanceScore
+	// [~CALC_TARGET_VARS]
+ON
+	OnIterateCharacter(_Char, "CalculateTarget_XC_Scroll_Water_A_Regeneration")	
+ACTIONS
+	// [CALC_CHAR_TARGET_ACTIONS_PRE]
+	Set(_ClassScore_XC_Scroll_Water_A_Regeneration, %ClassScore_XC_Scroll_Water_A_Regeneration)
+	Set(_Score, 0.0)
+	// [~CALC_CHAR_TARGET_ACTIONS_PRE]
+	// [CALC_CHAR_TARGET_ACTIONS]
+	IF "(!c1&!c2&!c3&!c4&!c5)&(c6)&((c7&c8)|c9)&(!((c10)|c11))&(c12)&(c13)&(c14)"
+	    CharacterIsDead(_Char) // c1
+	    CharacterHasStatus(_Char, INVISIBLE) // c2
+	    CharacterHasStatus(_Char, SNEAKING) // c3
+	    CharacterHasStatus(_Char, CHARMED) // c4			ADDED BY EDOUARD ON 19/6/2015 PLEASE DO NOT OVERWRITE
+	    CharacterHasTalent(_Char, Zombie)	//c5			ADDED BY EDOUARD ON 02/6/2015 PLEASE DO NOT OVERWRITE
+		CharacterIsBetterOrEqualClass(_Char, %ClassScore_XC_Scroll_Water_A_Regeneration, _ClassScore_XC_Scroll_Water_A_Regeneration, 5, 1, 3, 4, 2) // c6
+	    CharacterGetStat(_StatVitality, _Char, Vitality) // c7
+	    IsLessThen(_StatVitality, 0.6) // c8
+	    IsLessThen(_StatVitality, 0.3) // c9
+	    IsGreaterThen(_StatVitality, 0.8) // c10
+	    CharacterHasStatus(_Char, HEALING) // c11
+	    CharacterIsAlly(__Me, _Char) // c12
+	    CharacterGetSkillRange(_SkillRangeMin, _SkillRangeMax, __Me, %SkillID_XC_Scroll_Water_A_Regeneration) // c13
+	    GetDistance(_DistanceToChar, __Me, _Char) // c14
+	THEN
+	    Set(%ClassScore_XC_Scroll_Water_A_Regeneration, _ClassScore_XC_Scroll_Water_A_Regeneration)
+	    // Hostile count score calculation
+	    Add(_Score, 10.0) // HostileWeight
+	    
+	    // Range score calculation
+	    Set(_DistanceScore, _DistanceToChar)
+	    IF "(c1)"
+	        IsGreaterThen(_DistanceScore, _SkillRangeMax) // c1
+	    THEN
+	        Subtract(_DistanceScore, _SkillRangeMax)
+	        Multiply(_DistanceScore, -1.0)
+	    ELIF "(c1)"
+	        IsLessThen(_DistanceScore, _SkillRangeMin) // c1
+	    THEN
+	        Subtract(_DistanceScore, _SkillRangeMin)
+	        Multiply(_DistanceScore, 1.0)
+	    ELSE 
+	        Set(_DistanceScore, 0.0)
+	    ENDIF
+	    Add(_Score, _DistanceScore)
+	    
+	    // Can see score calculation
+	    IF "!c1"
+	    	CharacterCanSee(__Me, _Char)
+	    THEN
+	    	Add(_Score, -10.0)
+	    ENDIF
+	    
+	    IF "c1"
+	    	IsGreaterThen(_Score, %SkillTargetScore_XC_Scroll_Water_A_Regeneration)
+	    THEN
+	    	Set(%SkillTargetChar_XC_Scroll_Water_A_Regeneration, _Char)
+	    	Set(%SkillTargetScore_XC_Scroll_Water_A_Regeneration, _Score)
+	    ENDIF	
+	ENDIF
+	// [~CALC_CHAR_TARGET_ACTIONS]
+	
+	
+	
+	
+	
+	
+	
+	
+	

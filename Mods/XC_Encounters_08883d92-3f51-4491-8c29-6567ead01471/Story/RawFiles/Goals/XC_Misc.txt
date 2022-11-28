@@ -1,0 +1,283 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+// A star stone (and a blood stone as well, because it is converted into a star stone on use)
+// should remove ALL harmful statuses from players.
+// When doing the Enhanced Edition, Larian forgot that though when they added new statuses.
+//
+// Since removing of statuses is done in a central place with a single procedure, it is easy to hook in
+// and add the forgotten stuff.
+// The original procedure is in Global_Procedure.txt, line 135.
+
+// For reference:
+// Statuses I found in EoCApp.exe (at least I think those are statuses, and the list might not be complete, I found
+// stuff in two different places within the .exe, there might be more)
+// There is actually no status DEAD to be found in the .exe, so I guess, there is no such status, I don't remember
+// where I got the idea that there was one.
+//
+// ***************************************************************************************************************
+// first part, not sorted but in the order I found them in the .exe)
+// ***************************************************************************************************************
+// HEAL
+// DYING
+// HIT
+// NONE
+// DRUNK
+// BLESSED
+// FORTIFIED
+// DISEASED
+// BLIND
+// BLEEDING
+// WARM
+// CHILLED
+// PETRIFIED
+// INFECTIOUS_DISEASED
+// CLEAN
+// SMELLY
+// INVULNERABLE
+// ENCUMBERED
+// ROTATE
+// INVISIBLE
+// BLACKROCKED
+// FEAR
+// UNLOCK
+// SNEAKING
+// SITTING
+// STANCE
+// UNSHEATHED
+// BOOST
+// WEAK
+// CURSED
+// CRIPPLED
+// LYING
+// LUCKY
+// RAGED
+// HASTED
+// SLOWED
+// AIR_IMMUNITY_AURA
+// AIR_IMMUNITY
+// EARTH_IMMUNITY_AURA
+// EARTH_IMMUNITY
+// PHYSICAL_IMMUNITY_AURA
+// PHYSICAL_IMMUNITY
+// ELEMENTAL_IMMUNITY_AURA
+// ELEMENTAL_IMMUNITY
+// DECAYING_TOUCH
+// AGGRO_MARKED
+// REMORSE
+// ETHEREAL_SOLES
+// OILED
+// TAUNTED
+// MARK_OF_DEATH
+// CRAWLING_INFESTATION
+// LEADERSHIP
+// MATERIAL
+// GALVANISED
+// VOID_AURA
+// SHACKLES_OF_PAIN_CASTER
+// SHACKLES_OF_PAIN
+// ADRENALINE
+// EXPLODE
+// DARK_AVENGER
+// WIND_WALKER
+// IMPROVED_INITIATIVE_AURA
+// IMPROVED_INITIATIVE
+// WATER_IMMUNITY_AURA
+// WATER_IMMUNITY
+// FIRE_IMMUNITY_AURA
+// FIRE_IMMUNITY
+// ***************************************************************************************************************
+// second part, again not sorted but in the order I found them in the .exe
+// ***************************************************************************************************************
+// STUNNED
+// POISONED
+// FROZEN
+// BURNING
+// HEALING
+// CHARMED
+// MUTED
+// WET
+// SHIELD
+// SUMMONING
+// KNOCKED_DOWN
+// THROWN
+// ATTACKOFOPP
+// STORY_FROZEN
+// CONSUME
+// FALLING
+// ***************************************************************************************************************
+// third part ?
+// ***************************************************************************************************************
+
+
+// Available statuses as per Data\Stats\Generated\Structure\Base\ValueLists.txt, in section 'valuelist "Status Type"'
+// A: harmful, with 2 used as yes, but not quite, only in connection with something else
+// B: can be on players
+// C: relevant for removal
+// D: included in default procedure
+// E: needs to be included in our extension
+// Name								A	B	C	D	E
+//valuelist "Status Type"
+//value "None"							1			
+//value "Burning"					1	1	1	1	
+//value "Frozen"					1	1	1	1	
+//value "Poison"					1	1	1	1	
+//value "Stun"						1	1	1	1	
+//value "Wet"						2	1	1	1	
+//value "Mute"						1	1	1	1	
+//value "Charm"						1	1	1	1	
+//value "Knockdown"					1	1	1		1
+//value "InstantKnockdown"			1	1	1		1
+//value "Fear"						1	1	1	1	
+//value "Consume"						1			
+//value "Unlock"									
+//value "BlackRocked"				1	1	1	1	
+//value "Stance"						1			
+//value "Chilled"					1	1	1	1	
+//value "Warm"						2	1	1	1	
+//value "Bleeding"					1	1	1	1	
+//value "Crippled"					1	1	1	1	
+//value "Blind"						1	1	1	1	
+//value "Cursed"					1	1	1	1	
+//value "Weak"						1	1	1	1	
+//value "Invisible"						1			
+//value "Slowed"					1	1	1	1	
+//value "Hasted"						1			
+//value "Raged"							1			
+//value "Lucky"							1			
+//value "Smelly"								1	
+//value "Clean"									1	
+//value "Diseased"					1	1	1	1	
+//value "InfectiousDiseased"		1	1	1	1	
+//value "Fortified"						1	1		
+//value "Petrified"					1	1	1	1	
+//value "Blessed"						1			
+//value "Drunk"						1	1	1	1	
+//value "Invulnerable"					1			
+//value "VoidAura"									
+//value "Galvanised"								
+//value "Healing"						1			
+//value "Heal"										
+//value "Explode"									
+//value "Adrenaline"				1	1			
+//value "ShackesOfPain"				1	1	1		1
+//value "ShacklesOfPainCaster"			1			
+//value "ImprovedInitiative"						
+//value "ImprovedInitiative_Aura"					
+//value "WindWalker"								
+//value "DarkAvenger"								
+//value "FireImmunity"								
+//value "FireImmunity_Aura"							
+//value "WaterImmunity"								
+//value "WaterImmunity_Aura"						
+//value "EarthImmunity"								
+//value "EarthImmunity_Aura"						
+//value "AirImmunity"								
+//value "AirImmunity_Aura"							
+//value "ElementalImmunity"							
+//value "ElementalImmunity_Aura"					
+//value "PhysicalImmunity"							
+//value "PhysicalImmunity_Aura"						
+//value "AggroMarked"				1	1	1		1
+//value "Remorse"					1	1	1		1
+//value "EtherealSoles"					1			
+//value "DecayingTouch"				1	1	1		1
+//value "CrawlingInfestation"		1	1	1		1
+//value "MarkOfDeath"				1	1	1		1
+//value "Taunted"									
+//value "Oiled"						1	1	1		1
+//value "Unhealable"				1				
+//
+// Notes:
+// - I have never used Adrenaline myself, but I suppose that the Adrenaline status is the debuff for the following round
+//   that should not be removable in my opinion
+// - I am not sure, if removal of 'ShackesOfPain' works, Purifying Fire at least removes ShackesOfPainCaster
+//   (might be, that the game reapplies it, if the caster still has it on, but this, I cannot deal with)
+
+// The original procedure in Global_Procedure.txt, line 135 as a reference
+// (formatted a little bit because I don't like the original ;-)
+//
+//PROC
+//	Proc_RemoveHarmfullStatuses((CHARACTER)_Player)
+//THEN
+//	CharacterRemoveStatus(_Player, "BURNING");
+//	CharacterRemoveStatus(_Player, "FROZEN");
+//	CharacterRemoveStatus(_Player, "POISONED");
+//	CharacterRemoveStatus(_Player, "STUNNED");
+//	CharacterRemoveStatus(_Player, "WET");
+//	CharacterRemoveStatus(_Player, "MUTED");
+//	CharacterRemoveStatus(_Player, "CHARMED");
+//	CharacterRemoveStatus(_Player, "FEAR");
+//	CharacterRemoveStatus(_Player, "BLACKROCKED");
+//	CharacterRemoveStatus(_Player, "CRIPPLED");
+//	CharacterRemoveStatus(_Player, "CURSED");
+//	CharacterRemoveStatus(_Player, "WEAK");
+//	CharacterRemoveStatus(_Player, "SLOWED");
+//	CharacterRemoveStatus(_Player, "DISEASED");
+//	CharacterRemoveStatus(_Player, "DRUNK");
+//	CharacterRemoveStatus(_Player, "CHILLED");
+//	CharacterRemoveStatus(_Player, "WARM");
+//	CharacterRemoveStatus(_Player, "BLEEDING");
+//	CharacterRemoveStatus(_Player, "BLIND");
+//	CharacterRemoveStatus(_Player, "SMELLY");
+//	CharacterRemoveStatus(_Player, "CLEAN");
+//	CharacterRemoveStatus(_Player, "INFECTIOUS_DISEASED");
+//	CharacterRemoveStatus(_Player, "PETRIFIED");
+//
+
+// Remove the 'forgotten' statuses as well.
+// We have one special case, which is probably the reason why knocked down is missing from
+// the original handling as well:
+// Knocked down is deliberately applied for story reasons the first time a star stone is used.
+// DOSStart\HOM_ZixZax.txt, line 86 in the timer handler.
+// When all players are ready to be transported to the Homestead for the first time, this timer
+// is launched.
+// Now, the default star stone handlers start 3 timers, the 'FirstTimer' which finishes after 2.1 seconds,
+// the 'ReplacementTimer', which we don't care about in this context and the 'EffectTimer' which finishes
+// after 2.5 seconds. The FirstTimer calls the first-time-teleport procedure and the EffectTimer starts
+// another 2 second 'OverTimer' which finally calls the removal procedure.
+// Now, to avoid all possible interference with this code, we skip handling knocked down on the very first
+// procedure call. This relieves us from thinking about any timers.
+//
+// Additional removed statuses as per the table above:
+// "DecayingTouch"				DECAYING_TOUCH
+// "AggroMarked"				AGGRO_MARKED
+// "Remorse"					REMORSE
+// "Oiled"						OILED (it's harmful isn't it ;-)
+// "MarkOfDeath"				MARK_OF_DEATH
+// "CrawlingInfestation"		CRAWLING_INFESTATION
+// "ShackesOfPain"				SHACKLES_OF_PAIN (not yet enabled)
+// "Knockdown"					KNOCKED_DOWN
+// ("InstantKnockdown"			applies KNOCKED_DOWN ? and only exists for animation purposes ?)
+PROC
+	Proc_RemoveHarmfullStatuses( (CHARACTER)_Player )
+THEN
+	CharacterRemoveStatus( _Player, "DECAYING_TOUCH"		);
+	CharacterRemoveStatus( _Player, "AGGRO_MARKED"			);
+	CharacterRemoveStatus( _Player, "REMORSE"				);
+	CharacterRemoveStatus( _Player, "OILED"					);
+	CharacterRemoveStatus( _Player, "MARK_OF_DEATH"			);
+	CharacterRemoveStatus( _Player, "CRAWLING_INFESTATION"	);
+	// don't know, if a still existing SHACKLES_OF_PAIN_CASTER would reapply it or try to
+	// and if that would cause problems. So I don't remove it until I know for sure.
+	//CharacterRemoveStatus( _Player, "SHACKLES_OF_PAIN"		);
+
+// skip knocked down the first time
+PROC
+	Proc_RemoveHarmfullStatuses( (CHARACTER)_Player )
+	AND
+	XCDB_StarStoneAllowRemoveKnockDown(1)
+THEN
+	CharacterRemoveStatus( _Player, "KNOCKED_DOWN"			);
+
+// enables knocked-down handling after first time
+PROC
+	Proc_RemoveHarmfullStatuses( (CHARACTER)_Player )
+THEN
+	XCDB_StarStoneAllowRemoveKnockDown(1);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

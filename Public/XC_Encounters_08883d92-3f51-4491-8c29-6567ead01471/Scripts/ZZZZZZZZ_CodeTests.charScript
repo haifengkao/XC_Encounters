@@ -1,0 +1,33 @@
+INIT
+	CHARACTER:__Me
+	INT:%XCLevels_CurrentLevel=1
+
+EVENTS
+
+EVENT LevelupOnCommand
+VARS
+	FLOAT:_FVal
+ON
+	OnGlobalEventSet( "XC_Levelup_To_At_Least_4" )
+ACTIONS
+	IF "!c1&c2"
+		CharacterIsDead( __Me )
+		CharacterGetStat( _FVal, __Me, VitalityPoints )
+	THEN
+		CharacterEvent( __Me, "ReadyForLevelup" )
+	ENDIF
+	CharacterRemoveStatus( __Me, LYING )
+
+
+BEHAVIOUR
+
+REACTION ZZZZ_TestCode,0
+USAGE ALL
+VARS
+	CHARACTER:_Caster
+CHECK "c1"
+	IsCasual()
+ACTIONS
+	Set( _Caster, __Me )
+
+

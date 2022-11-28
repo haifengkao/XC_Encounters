@@ -1,0 +1,19 @@
+INIT
+
+	ITEM:__Me
+	EXTERN STRING:%XC_HideEvent=null
+
+EVENTS
+
+EVENT XC_HideEventSet
+ON
+	OnGlobalEventCleared( %XC_HideEvent )
+ACTIONS
+	ItemSetOnStage( __Me, 0 )
+
+EVENT XC_HideEventCleared
+ON
+	OnGlobalEventSet( %XC_HideEvent )
+ACTIONS
+	ItemSetOnStage( __Me, 1 )
+

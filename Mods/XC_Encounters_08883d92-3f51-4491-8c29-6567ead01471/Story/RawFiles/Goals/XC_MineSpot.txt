@@ -1,0 +1,167 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// Respawn hours in ingame hours, with 1 ingame hour == 5 realtime minutes
+XCMineSpotConfig__RespawnTime( 24 );
+
+// NEVER add a second template, chaning the value is okay, adding is NOT
+// NEVER remove the entry, or mining will be disabled
+XCMineSpotConfig__PickAxeTemplate( "XC_Tool_Crafting_Axe_Blacksmith_c8b2b78c-ae56-4076-bb4e-d6c1e78e85fd" );
+KBSECTION
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// THE NEW PICKAXE
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// General:
+// Introduction of mine respawns. Since item scripts stop working when the player party gets out of range, respawn cannot be
+// done with a timer in the item script.
+// For this reason I fundamentally changed both the item script and the Osiris handler code.
+// Mining is done in a single step instead of several steps with a countdown to reduce item handle use.
+// The amount of ore a mine has is now 5 fixed, there is not a single mine in Rivellon that has a different %Amount.
+// Notes:
+// - all events sent in the item script that must be caught by Osiris have to be CharacterItemEvents() because Osiris can
+//   not catch an ItemEvent() for non global objects.
+// - events caught only by OnItemEvent() in the item script can be ItemEvent() in the script or ItemHandleSetEvent()
+//   for non globals from Osiris.
+// - object scripts can only 'look' into a character's main inventory but not into containers within a character's
+//   inventory, so the check for the pickaxe must be done in Osiris
+//
+// Item script handlers:
+// - OnItemUse() handler stores the mine user and sends a 'used' event
+// - 'respawn command' (OnItemEvent()) handler resets the current ore amount to the stored amount
+// - 'use mine command' (OnItemEvent()) handler
+//   - checks mine if the user's Blacksmithing ability is too low; if the check succeeds, displays a 'Blacksmithing 
+//     too low' message and sends a 'mining failed' ItemEvent() to itself
+//   - checks if the remaining ore amount is 0; if the check succeeds, it displays the 'mine depleted' text and sends
+//     a 'mining failed' ItemEvent() to itself
+//   - if no failure check succeeds, the script sends a 'mining allowed' CharacterItemEvent()
+// - mining successful OnItemEvent() handler sets amount to 0, displays the configured 'ore added' text and releases
+//   the mine user
+// - mining failed OnItemEvent() handler releases the mine user
+//
+// Osiris:
+// - catches the 'mine used' event sent by the item script, calls the respawn PROC and calls the mining PROC
+//   - PROC XCMineSpotProc__RespawnMine():
+//     - checks if the configured ingame hours have passed and if so, sends a respawn command (event) to the mine
+//   - PROC XCMineSpotProc__MineWithPickaxe():
+//     - checks if character has a pickaxe and if not, displays a message and sends the mining failed event to the mine
+//     - if successful, stores the 'actors' in a DB, starts a 'safety timer' and sends the use command (event) to the mine
+// - catches the script's 'mining allowed' event
+//   - freezes the mining character
+//   - plays the mining animation which sends an 'animation finished' character event on finish
+// - catches the 'animation finished' character event:
+//   - cancels the safety timer
+//   - unfreezes the mining character
+//   - queries the mine for the ore template
+//   - adds the ore to the mine user
+//   - adds the mine to the 'database of respawning mines'
+//   - sends the mining successful event back to the mine
+//   - resets the mining actors
+// - if the safety timer can finish
+//   - unfreezes mining character
+//   - resets the mining actors
+//   - sends the mining failed event to the mine
+
+// Event sent by the mine when it is used
+//
+// (We cannot catch the use event directly in Osiris because Osiris can only catch use events for globals
+//  and there is not a single mine in the game that is global.
+//  Using CharacterUsedItemTemplate() would be possible but is tedious because it would require setting up
+//  a database of mine templates which is always susceptible to RT changes, so it is easier to have the mine
+//  inform Osiris about the mine being used, since all mines already have an item script attached.)
+IF
+	CharacterItemHandleEvent( _Char, _MineHandle, "XCMineEv_MineUsed" )
+THEN
+	XCMineSpotProc__RespawnMine( _MineHandle );
+	XCMineSpotProc__MineWithPickaxe( _Char, _MineHandle );
+
+IF
+	CharacterItemHandleEvent( _Char, _MineHandle, "XCMineEv_MiningAllowed" )
+	AND
+	XCMineSpotDB__MiningActors( _Char, _MineHandle )
+THEN
+	CharacterSetFightMode( _Char, 0, 1 );
+	CharacterFreeze( _Char );
+	CharacterPlayAnimation( _Char, "use_mine", "mine_anim_end" );
+
+IF
+	CharacterEvent( _Char, "mine_anim_end" )
+	AND
+	XCMineSpotDB__MiningActors( _Char, _MineHandle )
+	AND
+	ItemHandleGetVarString( _MineHandle, "Ore", _OreItemTemplate )
+	AND
+	Time( _, _, _GameHour )
+THEN
+	NOT XCMineSpotDB__MiningActors( _Char, _MineHandle );
+	XCMineSpotDB__MinesInRespawn( _MineHandle, _GameHour );
+	ItemTemplateAddToCharacter( _OreItemTemplate, _Char, 5 );
+	ItemHandleSetEvent( _MineHandle, "XCMineEv_MiningSuccessful" );
+	CharacterUnfreeze( _Char );
+	CharTimerCancel( _Char, "XCMining_SafetyTimer" );
+
+PROC
+	XCMineSpotProc__RespawnMine( (INTEGER)_MineHandle )
+	AND
+	XCMineSpotDB__MinesInRespawn( _MineHandle, _DepletionTime )
+	AND
+	Time( _, _, _GameHour )
+	AND
+	IntegerSubtract( _GameHour, _DepletionTime, _Delta )
+	AND
+	XCMineSpotConfig__RespawnTime( _RespawnTime )
+	AND
+	_Delta >= _RespawnTime
+THEN
+	NOT XCMineSpotDB__MinesInRespawn( _MineHandle, _DepletionTime );
+	ItemHandleSetEvent( _MineHandle, "XCMineCmd_Respawn" );
+
+// The pickaxe must be handled in Osiris, because char/item scripts cannot look into bags inside the inventory
+PROC
+	XCMineSpotProc__MineWithPickaxe( (CHARACTER)_Char, (INTEGER)_MineHandle )
+	AND
+	XCMineSpotConfig__PickAxeTemplate( _PickAxeTemplate )
+	AND
+	ItemTemplateIsInCharacterInventory( _Char, _PickAxeTemplate, 1 )
+THEN
+	XCMineSpotDB__MiningActors( _Char, _MineHandle );
+	CharTimer( _Char, "XCMining_SafetyTimer", 20000 );
+	ItemHandleSetEvent( _MineHandle, "XCMineCmd_UseMine" );
+
+// If there is no pickaxe, show message and send the fail event to the mine
+PROC
+	XCMineSpotProc__MineWithPickaxe( (CHARACTER)_Char, (INTEGER)_MineHandle )
+	AND
+	NOT XCMineSpotDB__MiningActors( _Char, _MineHandle )
+THEN
+	CharacterDisplayText( _Char, "GLO_PickaxeRequired" );
+	ItemHandleSetEvent( _MineHandle, "XCMineEv_MiningFailed" );
+
+// I'm not sure why the original code had the safety handler but it might be to prevent perma-lock of the mine if combat
+// is triggered during the mining animation which might interrupt the animation and prevent the finish event from ever
+// being sent. After all the mine is locked when a character uses it and the animation takes a while.
+// So I keep it.
+// (Shovels don't have this situation because they do not communicate with an item script that can internally lock
+//  things which might be the reason that no safety timer is used with shovels.)
+IF
+	CharTimerFinished( _Char, "XCMining_SafetyTimer" )
+	AND
+	XCMineSpotDB__MiningActors( _Char, _MineHandle )
+THEN
+	ItemHandleSetEvent( _MineHandle, "XCMineEv_MiningFailed" );
+	NOT XCMineSpotDB__MiningActors( _Char, _MineHandle );
+	CharacterUnfreeze( _Char );
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

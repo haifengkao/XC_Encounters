@@ -1,0 +1,95 @@
+INIT
+	ITEM:__Me
+	INT:%IAmCoffin = null
+	FIXEDSTRING:%XCSFB_Msg_Greeting_1 = null
+	FIXEDSTRING:%XCSFB_Msg_StopUse_1 = null
+	FIXEDSTRING:%XCSFB_Msg_StopUse_2 = null
+	FIXEDSTRING:%XCSFB_Msg_StartUse_1 = null
+	FIXEDSTRING:%XCSFB_Msg_StartUse_2 = null
+	FIXEDSTRING:%XCSFB_Msg_StartUse_3 = null
+
+EVENTS
+
+// On activation, we throw an event which is caught by Osiris to start the despawn timer
+// The timer must be done in Osiris because item scripts stop working when a character
+// moves out of range, and with the script stops the timer.
+// So if we handled the timer here, it might never finish until a character moved into
+// range again, which would prevent the character from calling forth another field bed
+EVENT FieldBed_OnMyselfCalledForth
+ON
+	OnActivate()
+ACTIONS
+	ItemEvent( __Me, "FieldBedActivated" )
+
+// Greeting message, the event is initiated by Osiris
+// (There are hickups when the message is displayed in the Activation event
+//  and I have no idea why)
+//EVENT FieldBed_HopefullyReadyToBlabber
+//ON
+//	OnItemEvent( __Me, "SayGreeting" )
+//ACTIONS
+//	DisplayText( __Me, %XCSFB_Msg_Greeting_1, 3.0 )
+//	IF "c1"
+//		IsEqual( %IAmCoffin, 1 )
+//	THEN
+//		// SPEAKER: CYS_BC_ZombieStoryteller_Nick_M
+//		// (GLO_NickTurnInCombat8: No grave contains me!)
+//		DisplayText( __Me, "GLO_NickTurnInCombat8", 3.0 )
+//	ELSE
+//		// SPEAKER: GEN_Object_Shorts_ZandalorsTrunksofEpicIntelligence_M
+//		// Trunks_BuyFriendship: Where'd you learn that little trick, Source Hunter? The red lamp district?
+//		DisplayText( __Me, "Trunks_BuyFriendship", 3.0 )
+//	ENDIF
+
+//EVENT FieldBed_UseStopped
+//VARS
+//	FIXEDSTRING:_DisplayText
+//ON
+//	OnItemEvent( __Me, "UseStopped" )
+//ACTIONS
+//	IF "c1"
+//		IsEqual( %IAmCoffin, 1 )
+//	THEN
+//		// SPEAKER: CYS_BC_ZombieStoryteller_Nick_M
+//		// (GLO_NickTurnInCombat6: Life roils within these veins!)
+//		// (GLO_NickTurnInCombat10: Oh, how I'll sing of your entrails...)
+//		// GLO_NickTurnInCombat11: I'll defend you till my death rattle!
+//		// GLO_NickTurnInCombat13: As thrilling as the stage! Though not half so bloody...
+//		GetWeightedRandom( _DisplayText, "GLO_NickTurnInCombat11", INT:1, "GLO_NickTurnInCombat13", INT:4 )
+//	ELSE
+//		// SPEAKER: GEN_Object_Shorts_ZandalorsTrunksofEpicIntelligence_M
+//		// (Trunks_LevelUp: Oh thank heavens! Maybe now can learn something useful, like how to wash your underthings.)
+//		// Trunks_LoseCIR: Well, that's what you get for trying.
+//		// (Trunks_EndVictory: Victory! Triumph! Success! Now that you've saved Rivellon, you'll have time for a bath!)
+//		// Trunks_EndDefeat: After this long in your pants, I for one welcome the Void...
+//		GetWeightedRandom( _DisplayText, "Trunks_LoseCIR", INT:1, "Trunks_EndDefeat", INT:1 )
+//	ENDIF
+//	GetWeightedRandom( _DisplayText, %XCSFB_Msg_StopUse_1, INT:2, %XCSFB_Msg_StopUse_2, INT:1 )
+//	DisplayText( __Me, _DisplayText, 3.0 )
+
+// show a message and set the 'in-use' flag
+//EVENT FieldBed_SomeoneIsUsingMe
+//VARS
+//	FIXEDSTRING:_DisplayText
+//ON
+//	OnUseItem( _, __Me )
+//ACTIONS
+//	IF "c1"
+//		IsEqual( %IAmCoffin, 1 )
+//	THEN
+//		// SPEAKER: CYS_BC_ZombieStoryteller_Nick_M
+//		// GLO_NickTurnInCombat4: I'll make short work of this scum.
+//		// (GLO_NickTurnInCombat5: Would you care to hear a little tale?)
+//		// GLO_NickTurnInCombat7: I think I'll go for the eyes this time...
+//		// GLO_NickTurnInCombat14: What do you think, Source Hunter? Shall I start shredding from the top or bottom?
+//		GetWeightedRandom( _DisplayText, "GLO_NickTurnInCombat4", INT:1, "GLO_NickTurnInCombat7", INT:1, "GLO_NickTurnInCombat14", INT:1 )
+//	ELSE
+//		// SPEAKER: GEN_Object_Shorts_ZandalorsTrunksofEpicIntelligence_M
+//		// (Trunks_EdenLeandraFriendly: As much as it pains me to admit it, you're getting good at this, Source Hunter.)
+//		// Trunks_DeadBodies: Mmm, venison!
+//		// Trunks_Sick: Ugh, is that a... a seeping wound?
+//		// Trunks_IcaraFound: Ooh, a witchcicle!
+//		GetWeightedRandom( _DisplayText, "Trunks_DeadBodies", INT:1, "Trunks_Sick", INT:4, "Trunks_IcaraFound", INT:1 )
+//	ENDIF
+//	GetWeightedRandom( _DisplayText, %XCSFB_Msg_StartUse_1, INT:4, %XCSFB_Msg_StartUse_2, INT:2, %XCSFB_Msg_StartUse_3, INT:1 )
+//	DisplayText( __Me, _DisplayText, 3.0 )

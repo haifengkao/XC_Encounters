@@ -1,0 +1,95 @@
+INIT
+	ITEM:__Me
+	EXTERN INT:%Amount = 5
+	EXTERN STRING:%Ore = "LOOT_Ore_BlackRock_A_b9db80ea-0844-4b89-8074-a036b5034ab8"
+	EXTERN FIXEDSTRING:%OreMinedText = "GEN_BlackOreReceived"
+	CHARACTER:%Miner=null
+
+EVENTS
+
+// On item use, store the mine user and send the use event as a CharacterItemEvent()
+// so that Osiris can catch it even for non globals.
+// (Practically already contains the 'actors': the mine and the mine user.)
+EVENT XCMineSpot_MineEvUsed
+VARS
+	CHARACTER:_Char
+ON
+	OnUseItem( _Char, __Me )
+ACTIONS
+	IF "c1"
+		IsEqual( %Miner, null )
+	THEN
+		Set( %Miner, _Char )
+		CharacterItemEvent( _Char, __Me, "XCMineEv_MineUsed" )
+	ELSE
+		DisplayText( __Me, "GLO_MinespotInUse", 3 )
+	ENDIF
+
+// This event is sent by Osiris when the mining animation has finished.
+// We set %Amount to 0 since we mine in one step now with a fixed %Amount of 5.
+// The amount can not be changed externally anymore except to 0 or less which
+// effectively disables the mine as a mine.
+// Such a mine won't ever respawn either because the 'respawn timer' is only
+// started on successful mining.
+// The variable %Amount is now more a bool flag than an actual integer value.
+EVENT XCMineEv_MiningSuccessful
+ON
+	OnItemEvent( __Me, "XCMineEv_MiningSuccessful" )
+ACTIONS
+	// Set %Amount to 0 to have the '*vein depleted*' message pop up until respawn
+	Set( %Amount, 0 )
+	DisplayText( %Miner, %OreMinedText, 2 )
+	// Release the mine
+	Set( %Miner, null )
+
+EVENT XCMineEv_MiningFailed
+ON
+	OnItemEvent( __Me, "XCMineEv_MiningFailed" )
+ACTIONS
+	// Release the mine
+	Set( %Miner, null )
+
+// This command (event) is sent by Osiris in its on-use event handler if the 'respawn timer' has finished.
+// (It's not really a timer but the Time(_,_,_) database in Osiris has a timer behind the scenes.)
+// Reset the %Amount to 5
+EVENT XCMineCmd_Respawn
+ON
+	OnItemEvent( __Me, "XCMineCmd_Respawn" )
+ACTIONS
+	Set( %Amount, 5 )
+
+// This command (event) is sent by Osiris when it catches the use "XCMineEv_MineUsed" event sent by
+// the mine's OnUseItem() handler.
+// The respawn event might have been sent from Osiris before.
+// The pickaxe cannot be checked here because object scripts cannot 'look' inside containers
+// within a character's inventory. That must be done in Osiris.
+// The order of checks - and failure messages - is thus:
+// - check if the tool is missing (Osiris)
+// - check if the skill is too low (here - IF)
+// - check if the mine is depleted (here - ELIF)
+// If the first fail check succeeds, Osiris does not send this event.
+// If the checks here fail - which means it's okay to mine now - another evet is sent here and caught
+// by Osiris, which then plays the mining animation, adds the ore and starts the 'respawn timer'.
+EVENT XCMineCmd_UseMine
+VARS
+	ITEM:_Pickaxe
+	INT:_BSScore
+ON
+	OnItemEvent( __Me, "XCMineCmd_UseMine" )
+ACTIONS
+	IF "c1&c2"
+		CharacterGetAbility( _BSScore, %Miner, "Repair" )
+		IsLessThen( _BSScore, 1 )
+	THEN
+		// User has not enough Blacksmithing
+		DisplayText( %Miner, "XC_Message_Mining_Blacksmithing_Too_Low", 3.0 )
+		ItemEvent( __Me, "XCMineEv_MiningFailed" )
+	ELIF "c1"
+		IsLessThen( %Amount, 1 )
+	THEN
+		// Mine is depleted and has not yet respawned
+		DisplayText( __Me, "GLO_MinespotDepleted", 3 )
+		ItemEvent( __Me, "XCMineEv_MiningFailed" )
+	ELSE
+		CharacterItemEvent( %Miner, __Me, "XCMineEv_MiningAllowed" )
+	ENDIF

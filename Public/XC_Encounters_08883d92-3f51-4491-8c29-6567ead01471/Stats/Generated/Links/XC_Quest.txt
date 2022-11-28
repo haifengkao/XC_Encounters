@@ -1,0 +1,2 @@
+object itemstat "XC_Quest_Esmeralda_Panty","ef63b8b7-6454-4662-9b37-bf7111a53949","",0,0,"",-1,-1,-1,1,-1,-1
+object itemstat "XC_Quest_Staff_Of_Pergamon","59539880-adb5-46bf-b0ba-3e281a6e87d3","",0,0,"",-1,-1,-1,1,-1,-1

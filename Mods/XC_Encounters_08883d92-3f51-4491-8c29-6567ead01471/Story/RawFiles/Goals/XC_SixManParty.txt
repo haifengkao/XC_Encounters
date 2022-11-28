@@ -1,0 +1,163 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// Enable Six Man Party
+XCSixManPartyDB_Enabled(1);
+
+// Maximum number of Companions:
+// -----------------------------
+// The Lone Wolf talent does not by itself limit the number of companions, it only adds the additional health and AP.
+// The max companion number is controlled in _Global.txt !
+//
+// If a character takes Lone Wolf or unlocks it later, the max is simply decreased, on respec the number is increased again.
+// If this number is increased (e.g. from 2 to 4) then the max should be adjusted accordingly (add/subtract 2 instead of 1)
+// We achieve this adjustment of Max by making one additional call every time adjustment is done.
+// (x - 1 - 1 == x - 2, one additional step each time, but no code change in _Global.txt needed.)
+//
+// The adjustment is done on three lines in _Global.txt:
+//		line 902 in the CharacterUnlockedTalent() event
+//		line 950 in the ProcIncreaseCompMaxIfLonewolf() procedure
+//		line 963 in the ProcDecreaseCompMaxIfLonewolf() procedure
+//
+
+// Teleport point trigger database for endgame
+XCSixManPartyDB__CompanionTeleportTriggers( TRIGGER_END_RoomB_Start_Comp1 );
+XCSixManPartyDB__CompanionTeleportTriggers( TRIGGER_END_RoomB_Start_Comp2 );
+XCSixManPartyDB__CompanionTeleportTriggers( TRIGGER_END_RoomB_Start_Comp3_XC );
+XCSixManPartyDB__CompanionTeleportTriggers( TRIGGER_END_RoomB_Start_Comp4_XC );
+KBSECTION
+// hiding the prison chests if not enabled
+PROC
+	XCHook_Cys_First_BeforePlayer()
+	AND
+	NOT XCSixManPartyDB_Enabled(1)
+THEN
+	// Cyseal
+	ItemSetOnstage( ITEM_CYS_ChestPrison5_XC, 0 );
+	ItemSetOnstage( ITEM_CYS_ChestPrison6_XC, 0 );
+	// Luculla
+	ItemSetOnstage( ITEM_LUC_ChestPrison5_XC, 0 );
+	ItemSetOnstage( ITEM_LUC_ChestPrison6_XC, 0 );
+
+// adding the prison chests to the database, this must ALWAYS be done, if enabled, independent of Lone Wolf
+PROC
+	XCHook_Cys_First_BeforePlayer()
+	AND
+	XCSixManPartyDB_Enabled(1)
+THEN
+	// Cyseal
+	DB_CompanionChest( "PRISON_CYSEAL",		ITEM_CYS_ChestPrison5_XC, CHARACTER_NULL );
+	DB_CompanionChest( "PRISON_CYSEAL",		ITEM_CYS_ChestPrison6_XC, CHARACTER_NULL );
+	// Luculla
+	DB_CompanionChest( "PRISON_LUCULLA",	ITEM_LUC_ChestPrison5_XC, CHARACTER_NULL );
+	DB_CompanionChest( "PRISON_LUCULLA",	ITEM_LUC_ChestPrison6_XC, CHARACTER_NULL );
+
+// DB_Compmax is set to DB_CompMax(2) in INIT in _Global.txt.
+// If I don't want to change that file I need to find a place to change it afterwards, so I just use my hooks
+// to safely execute after all INITs (because I don't like being dependent on file name order)
+// But here we are out of character creation, so possible CharacterUnlockedTalent() handlers have already
+// kicked in, which means that setting it to a fixed DB_CompMax(4) is no longer possible.
+// If no player took Lone Wolf, we still have DB_CompMax(2), if one took it, we have DB_CompMax(0) and we have
+// DB_CompMax(-2) if both took the talent.
+// To get the desired value, I need to add 2 to get the correct value here.
+// If no player took the talent, we shall have DB_CompMax(4), if one took it we have DB_CompMax(2) and
+// if both have the talent, we end up with DB_CompMax(0), everything fine.
+// (This requires of course that IntegerSum() works correctly with negative values, which I assume, because
+//  I cannot imagine that Osiris does EVERYTHING strangely.)
+PROC
+	XCHook_Cys_First_BeforePlayer()
+	AND
+	XCSixManPartyDB_Enabled(1)
+	AND
+	DB_CompMax( _Count )
+	AND
+	IntegerSum( _Count, 2, _NewMax )
+THEN
+	NOT DB_CompMax( _Count );
+	DB_CompMax( _NewMax );
+
+
+// No code (yet...) to disable the mod ingame, because I was to lazy to search for the code parts of
+// imprisoned characters (you cannot dismiss companions in prison for example, that I know)
+// There is a simple workaround though: don't install a mod that increases party size.
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// TODOS:
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// todo: Teleporting of companions from and to the NEGA king's crab Inn
+// DOSStart\END_NegaKingsCrab.txt, line 463 (IF ItemDestroyed( ITEM_END_AfterShrikeTeleporter_Inactive ))
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+// Hooking into the code that manages the party size, making one additional call every time should do the trick
+// There is no need to adjust size upon arriving at Cyseal Beach because if players take Lonewolf, the
+// Unlocked() handler will be called
+
+// Called when the talent is taken (also in character creation)
+IF
+	CharacterUnlockedTalent( _Player, "LoneWolf" )
+	AND
+	XCSixManPartyDB_Enabled(1)
+	AND
+	DB_CompMax( _Count )
+	AND
+	IntegerSubtract( _Count, 1, _NewMax )
+THEN
+	NOT DB_CompMax( _Count );
+	DB_CompMax( _NewMax );
+	ProcCheckPartyState();
+
+// The following procedures are called by the respec process EXCLUSIVELY and nowhere else !
+// Before respeccing, the party size is increased for Lonewolves, and decreased again if respeccing fails,
+// for whatever reason.
+// (Maybe the CharacterAddToCharacterCreation() query in the ProcHOMCheckRespec((CHARACTER)_Player)
+//  procedure can fail, I don't know ...)
+
+// Increase party size (before respecc, DOSStart/HOM_Traders.txt, line 156 ->)
+PROC
+	ProcIncreaseCompMaxIfLonewolf( (CHARACTER)_Char )
+	AND
+	XCSixManPartyDB_Enabled(1)
+	AND
+	CharacterHasTalent( _Char, "LoneWolf", 1 )
+	AND
+	DB_CompMax( _Max )
+	AND
+	IntegerSum( _Max, 1, _New )
+THEN
+	NOT DB_CompMax( _Max );
+	DB_CompMax( _New );
+	ProcCheckPartyState();
+
+// Increase party size (on respecc fail, DOSStart/HOM_Traders.txt, line 173 ->)
+PROC
+	ProcDecreaseCompMaxIfLonewolf( (CHARACTER)_Char )
+	AND
+	XCSixManPartyDB_Enabled(1)
+	AND
+	CharacterHasTalent( _Char, "LoneWolf", 1 )
+	AND
+	DB_CompMax( _Max )
+	AND
+	IntegerSubtract( _Max, 1, _New )
+THEN
+	NOT DB_CompMax( _Max );
+	DB_CompMax( _New );
+	ProcCheckPartyState();
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

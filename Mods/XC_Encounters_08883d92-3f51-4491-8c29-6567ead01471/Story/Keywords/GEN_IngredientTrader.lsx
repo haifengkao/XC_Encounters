@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" time="1472066138" />
+    <version major="2" minor="0" revision="0" build="0" />
+    <region id="keywordDialog">
+        <node id="root">
+            <attribute id="KeywordVoiced" value="1" type="19" />
+            <attribute id="PlayGreeting" value="0" type="19" />
+            <attribute id="keywordAutoImport" value="0" type="19" />
+            <children>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="119ab963-204c-417e-9253-b16135a6ae8c" type="22" />
+                    <attribute id="keywordContentMapValue" value="Cyseal, now that&apos;s a sad story. Elegant homes burned for fuel, oaken cupboards emptied, and ladies dragging the dregs of their great skirts to bargain for fish bones." handle="h7d8350c7g2c60g4b60g9964gd2df5fd5c608" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="18b990c1-6842-4514-9623-f303a5a147c5" type="22" />
+                    <attribute id="keywordContentMapValue" value="Never thought I&apos;d see Cyseal in such dire straits - this here&apos;s one of the oldest cities in Rivellon!" handle="hc3999966g8f47g49ebg88c9gb04f538e240c" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="2c33eaa7-b4a8-433a-90f7-52266153ef40" type="22" />
+                    <attribute id="keywordContentMapValue" value="This town has seen better days, but despite it all, we&apos;ll always have the sea." handle="h1ff7ca49g61b2g4314ga731gebeeaea80bf5" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="2f56af43-bb4b-4a3d-a980-297e5691f530" type="22" />
+                    <attribute id="keywordContentMapValue" value="I&apos;m telling you a necromancer must be at work in Cyseal! How else do you explain risen dead sprouting like mushrooms in the night?" handle="h50472a5bgb42dg4c05g8b79g92a753e6a7cf" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="44083078-4521-4782-8cf3-fb6f42eb9a8c" type="22" />
+                    <attribute id="keywordContentMapValue" value="Praise be that Arhu the wizard built those newfangled weapons of his. Cyseal would have long been overrun by undead if it weren&apos;t for them contraptions!" handle="h5ae5edf0g7903g43c4g807egab6d282a9d64" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="49c718a3-5b14-458e-80a6-54c1e117ed7e" type="22" />
+                    <attribute id="keywordContentMapValue" value="Bloody undead! &apos;Remember &apos;bove all to stay behind the wall&apos; we tell our children! You heed them words, Source Hunter!" handle="hdeb9571aga948g4aa7gb076gfa2ca6e08ae8" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="544d07d0-a053-437e-82e8-a629b0f5e293" type="22" />
+                    <attribute id="keywordContentMapValue" value="Undead at every exit, orcs upon the harbour... We&apos;re sealed in!" handle="hd03779ceg28a6g476dg9739g4401d667c402" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="95e10f63-8fba-4ce2-83c4-7bf33a02e895" type="22" />
+                    <attribute id="keywordContentMapValue" value="I swear I saw a lady in red upon the beach, but everyone laughs and says I&apos;ll see mermaids next!" handle="h1ade4a2agf346g4281ga55ag1e8c25f988ca" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="991b456c-d714-4f22-8db7-6257a9b1ac89" type="22" />
+                    <attribute id="keywordContentMapValue" value="I&apos;ll take my leave." handle="h5d76f117g2200g43fdga4c7gc708cbd3edfc" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="b30b0268-10f8-4914-9d3f-bff72a46b876" type="22" />
+                    <attribute id="keywordContentMapValue" value="A Source Hunter! Don&apos;t tell me we&apos;ve got to worry about dark magic on top of it all!" handle="he1e8c7fdg3ffdg482eg8bb5gfe94897f3e5c" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="d6f08ea0-eced-48fc-a2a8-2781068571a3" type="22" />
+                    <attribute id="keywordContentMapValue" value="About time the Council took notice of us! You here for the bone-rattlers or the club-wavers?" handle="h617f53ffg342bg4900ga58ag162539991d45" type="28" />
+                </node>
+                <node id="keywordContentMap">
+                    <attribute id="keywordContentMapKey" value="edecd93e-61c6-429c-be85-95c8792f09b1" type="22" />
+                    <attribute id="keywordContentMapValue" value="" handle="h43e5feb5g60ddg4892g94f6gb7a0bb2b050b" type="28" />
+                </node>
+                <node id="keywordNode">
+                    <attribute id="ResetRotation" value="0" type="19" />
+                    <attribute id="ZoomCamera" value="1" type="19" />
+                    <attribute id="keywordActions" value="" type="23" />
+                    <attribute id="keywordConditions" value="" type="23" />
+                    <attribute id="keywordDisplayedText" value="edecd93e-61c6-429c-be85-95c8792f09b1" type="22" />
+                    <attribute id="keywordDisplayedTextVoiced" value="0" type="19" />
+                    <attribute id="keywordId" value="Greeting" type="22" />
+                    <attribute id="keywordLast" value="0" type="19" />
+                    <attribute id="keywordOwner" value="-1" type="4" />
+                    <attribute id="keywordShow" value="0" type="19" />
+                    <attribute id="keywordSource" value="0" type="5" />
+                    <children>
+                        <node id="keywordText">
+                            <attribute id="PopCount" value="1" type="5" />
+                            <attribute id="keywordActions" value="" type="23" />
+                            <attribute id="keywordConditions" value="" type="23" />
+                            <attribute id="keywordEmotion" value="0" type="5" />
+                            <attribute id="keywordEndDialog" value="0" type="19" />
+                            <attribute id="keywordPushPop" value="0" type="5" />
+                            <attribute id="keywordSpeaker" value="0" type="5" />
+                            <attribute id="keywordSpeakerOverride" value="" type="23" />
+                            <attribute id="keywordStub" value="0" type="19" />
+                            <attribute id="keywordTransition" value="0" type="5" />
+                            <attribute id="keywordWaitSeconds" value="3" type="6" />
+                            <children>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="544d07d0-a053-437e-82e8-a629b0f5e293" type="22" />
+                                </node>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="b30b0268-10f8-4914-9d3f-bff72a46b876" type="22" />
+                                </node>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="18b990c1-6842-4514-9623-f303a5a147c5" type="22" />
+                                </node>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="d6f08ea0-eced-48fc-a2a8-2781068571a3" type="22" />
+                                </node>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="2c33eaa7-b4a8-433a-90f7-52266153ef40" type="22" />
+                                </node>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="119ab963-204c-417e-9253-b16135a6ae8c" type="22" />
+                                </node>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="2f56af43-bb4b-4a3d-a980-297e5691f530" type="22" />
+                                </node>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="44083078-4521-4782-8cf3-fb6f42eb9a8c" type="22" />
+                                </node>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="49c718a3-5b14-458e-80a6-54c1e117ed7e" type="22" />
+                                </node>
+                                <node id="keywordTextUid">
+                                    <attribute id="Object" value="95e10f63-8fba-4ce2-83c4-7bf33a02e895" type="22" />
+                                </node>
+                            </children>
+                        </node>
+                    </children>
+                </node>
+                <node id="keywordNode">
+                    <attribute id="ResetRotation" value="0" type="19" />
+                    <attribute id="ZoomCamera" value="1" type="19" />
+                    <attribute id="keywordActions" value="" type="23" />
+                    <attribute id="keywordConditions" value="" type="23" />
+                    <attribute id="keywordDisplayedText" value="991b456c-d714-4f22-8db7-6257a9b1ac89" type="22" />
+                    <attribute id="keywordDisplayedTextVoiced" value="0" type="19" />
+                    <attribute id="keywordId" value="Leave" type="22" />
+                    <attribute id="keywordLast" value="1" type="19" />
+                    <attribute id="keywordOwner" value="-1" type="4" />
+                    <attribute id="keywordShow" value="1" type="19" />
+                    <attribute id="keywordSource" value="0" type="5" />
+                    <children>
+                        <node id="keywordText">
+                            <attribute id="PopCount" value="1" type="5" />
+                            <attribute id="keywordActions" value="" type="23" />
+                            <attribute id="keywordConditions" value="" type="23" />
+                            <attribute id="keywordEmotion" value="0" type="5" />
+                            <attribute id="keywordEndDialog" value="1" type="19" />
+                            <attribute id="keywordPushPop" value="0" type="5" />
+                            <attribute id="keywordSpeaker" value="0" type="5" />
+                            <attribute id="keywordSpeakerOverride" value="" type="23" />
+                            <attribute id="keywordStub" value="1" type="19" />
+                            <attribute id="keywordTransition" value="0" type="5" />
+                            <attribute id="keywordWaitSeconds" value="2" type="6" />
+                        </node>
+                    </children>
+                </node>
+                <node id="keywordSpeakerNames">
+                    <children>
+                        <node id="keywordSpeakerName">
+                            <attribute id="Name" value="CYS_Human_Civilian_F;CYS_Human_Shopper_Citizen_F;CYS_Human_Shopper_Citizen_M;GEN_Human_Civilian_M;XC_CYS_Ingredient_Trader" type="23" />
+                        </node>
+                        <node id="keywordSpeakerName">
+                            <attribute id="Name" value="" type="23" />
+                        </node>
+                        <node id="keywordSpeakerName">
+                            <attribute id="Name" value="" type="23" />
+                        </node>
+                        <node id="keywordSpeakerName">
+                            <attribute id="Name" value="" type="23" />
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

@@ -1,0 +1,68 @@
+INIT
+
+	ITEM:__Me
+	EXTERN INT:%XC_BoolInitiallyHidden=0
+	EXTERN INT:%XC_BoolPlayHideEffect=0
+	EXTERN INT:%XC_BoolPlayShowEffect=0
+	EXTERN STRING:%XC_HideEffectName="FX_GP_TeleportSmoke_A"
+	EXTERN STRING:%XC_ShowEffectName="FX_GP_TeleportSmoke_A"
+	EXTERN STRING:%XC_HideEventName="XCEv_Hide"
+	EXTERN STRING:%XC_ShowEventName="XCEv_Show"
+	EXTERN FIXEDSTRING:%XC_GlobalEventOnHide=null
+	FLOAT3:%MyPos
+
+EVENTS
+
+
+// store position, because effect must be played at position, NOT at item
+EVENT XCHideShow_Initialize
+ON
+	OnInit()
+ACTIONS
+	GetPosition( __Me, %MyPos )
+	IF "c1"
+		IsEqual( %XC_BoolInitiallyHidden, 1 )
+	THEN
+		IF "!(c1|c2)"
+			IsEqual( %XC_GlobalEventOnHide, null )
+			IsEqual( %XC_GlobalEventOnHide, "" )
+		THEN
+			GlobalSetEvent( %XC_GlobalEventOnHide )
+		ENDIF
+		ItemSetOnStage( __Me, 0 )
+	ENDIF
+
+EVENT XCHideShow_HideEventReceived
+ON
+	OnItemEvent( __Me, %XC_HideEventName )
+ACTIONS
+	IF "c1"
+		IsEqual( %XC_BoolPlayHideEffect, 1 )
+	THEN
+		PlayEffectAt( %MyPos, %XC_HideEffectName )
+	ENDIF
+	IF "!(c1|c2)"
+		IsEqual( %XC_GlobalEventOnHide, null )
+		IsEqual( %XC_GlobalEventOnHide, "" )
+	THEN
+		GlobalSetEvent( %XC_GlobalEventOnHide )
+	ENDIF
+	ItemSetOnStage( __Me, 0 )
+
+EVENT XCHideShow_ShowEventReceived
+ON
+	OnItemEvent( __Me, %XC_ShowEventName )
+ACTIONS
+	IF "c1"
+		IsEqual( %XC_BoolPlayShowEffect, 1 )
+	THEN
+		PlayEffectAt( %MyPos, %XC_ShowEffectName )
+	ENDIF
+	IF "!(c1|c2)"
+		IsEqual( %XC_GlobalEventOnHide, null )
+		IsEqual( %XC_GlobalEventOnHide, "" )
+	THEN
+		GlobalClearEvent( %XC_GlobalEventOnHide )
+	ENDIF
+	ItemSetOnStage( __Me, 1 )
+

@@ -1,0 +1,287 @@
+//=====================================================//
+//                                                     //
+//          S K I L L B O O K   V E N D O R            //
+//                                                     //
+//       Written by Matteo "Ameranth" T. (2017)        //
+//                (longest script ever)                //
+//=====================================================//
+//The purpose of this script is to simulate the game's
+//basic treasure generation system for vendors, for skillbooks.
+//The reason this is done is to save item handles by only
+//generating the skillbooks when they are actually missing
+//(have been purchased), rather than on every vendor cycle.
+//
+//This behavior is logical to extend to skillbooks because
+//there is only one possible skillbook inventory for many
+//skillbook vendors.
+INIT
+CHARACTER:__Me
+	
+//Append to these a 2-character string to denote which skillbook
+//inventory(ies) should be generated. Syntaxes are as follow:
+//One letter and one number, i.e. H2 = Midgame Hydrosophist.
+//H = Hydrosophist
+//P = Pyrokinetic
+//G = Geomancer
+//A = Aerotheurge
+//W = Witchcraft
+//M = Man-at-Arms
+//R = Ranger
+//S = Scoundrel
+//
+//1 = Earlygame	(Cyseal)
+//2 = Midgame	(Luculla)
+//3 = Lategame	(Homestead)
+EXTERN FIXEDSTRING:%AMER_SkillbookVendor_WhichBooks1 = "AMER_SkillbookVendor_"
+EXTERN FIXEDSTRING:%AMER_SkillbookVendor_WhichBooks2 = "AMER_SkillbookVendor_"
+	
+FIXEDSTRING:%AMER_SkillbookVendor_WhichBook
+FIXEDSTRING:%AMER_SkillbookVendor_WhichTable
+INT:%AMER_SkillbookVendor_Count = 0	//reusable count variable, cuts down on script footprint.
+	
+EVENTS
+EVENT SkillbookVendorOnInit
+ON
+	OnInit()
+ACTIONS
+	IF "!c1"
+		CharacterIsDead(__Me)
+	THEN
+		IF "!c1"
+			IsEqual(%AMER_SkillbookVendor_WhichBooks1, "AMER_SkillbookVendor_")
+		THEN
+			Set(%AMER_SkillbookVendor_WhichTable, %AMER_SkillbookVendor_WhichBooks1)
+			CallFunction("AMER_SkillbookVendor_Control")
+		ENDIF
+		
+		IF "!c1"
+			IsEqual(%AMER_SkillbookVendor_WhichBooks2, "AMER_SkillbookVendor_")
+		THEN
+			Set(%AMER_SkillbookVendor_WhichTable, %AMER_SkillbookVendor_WhichBooks2)
+			CallFunction("AMER_SkillbookVendor_Control")
+		ENDIF
+	ENDIF
+	
+EVENT SkillbookVendorControl
+ON
+	OnFunction("AMER_SkillbookVendor_Control")
+ACTIONS
+	//This first iteration is done to offset the order of operations
+	//such that the while condition both protects against null as
+	//well as exits on null.
+	Set(%AMER_SkillbookVendor_Count, INT:0)
+	CallFunction(%AMER_SkillbookVendor_WhichTable)
+	Set(%AMER_SkillbookVendor_Count, 1)
+	WHILE "!c1"
+		IsEqual(%AMER_SkillbookVendor_WhichBook, null)
+	DO
+		CallFunction("AMER_SkillbookVendor_CheckAndGenerate")
+		CallFunction(%AMER_SkillbookVendor_WhichTable)
+		Add(%AMER_SkillbookVendor_Count, 1)
+	ENDWHILE
+		
+EVENT SkillbookVendorCheckAndGenerate
+//If the book is already in my inventory, generate enough to
+//reach maximum stock of 5. If there are more than 5 copies,
+//reduce the stock to 5.
+VARS
+	ITEM:_Item
+	FLOAT:_Weight
+	INT:_Amount
+ON
+	OnFunction("AMER_SkillbookVendor_CheckAndGenerate")
+ACTIONS
+	IF "c1"
+		ItemGetFromInventory(_Item, __Me, %AMER_SkillbookVendor_WhichBook)
+	THEN
+		IF "c1&c2"
+			ItemGetStat(_Weight, _Item, Weight)
+			IsLessThen(_Weight, 2.5)
+		THEN
+			Set(_Amount, 5)
+			Divide(_Weight, 0.5)
+			Subtract(_Amount, _Weight)
+			
+			CharacterAddToInventory(__Me, %AMER_SkillbookVendor_WhichBook, _Amount)
+		ELIF "c1"
+			IsGreaterThen(_Weight, 2.5)
+		THEN
+			ItemSetAmount(_Item, 5)
+		ENDIF
+	ELSE
+		CharacterAddToInventory(__Me, %AMER_SkillbookVendor_WhichBook, 5)
+	ENDIF
+	
+//=====================================================//
+//               Pyrokinetic Skillbooks                //
+//=====================================================//
+EVENT SkillbookVendorEarlyPyro
+ON
+	OnFunction("AMER_SkillbookVendor_P1")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Fire_A_AvatarOfFire, XC_Skillbook_Fire_A_Boil, XC_Skillbook_Fire_A_BurningTouch, XC_Skillbook_Fire_A_ElementalVisions, XC_Skillbook_Fire_A_FireAbsorptionShield, XC_Skillbook_Fire_A_Firefly, XC_Skillbook_Fire_A_Flare, XC_Skillbook_Fire_A_HeatMetal, XC_Skillbook_Fire_A_SelfImmolation, XC_Skillbook_Fire_B_Explode, XC_Skillbook_Fire_B_Fireball, XC_Skillbook_Fire_B_PurifyingFire, XC_Skillbook_Fire_B_SphereofNegation, XC_Skillbook_Fire_B_SummonFireElemental, XC_Skillbook_Fire_B_Wildfire, null)
+	
+EVENT SkillbookVendorMidPyro
+ON
+	OnFunction("AMER_SkillbookVendor_P2")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Fire_B_Cauterize, XC_Skillbook_Fire_B_Explode, XC_Skillbook_Fire_B_Fireball, XC_Skillbook_Fire_B_PurifyingFire, XC_Skillbook_Fire_B_SphereofNegation, XC_Skillbook_Fire_B_SummonFireElemental, XC_Skillbook_Fire_B_Wildfire, XC_Skillbook_Fire_C_Soulfire, XC_Skillbook_Fire_C_InfectiousFlame, null)
+	
+EVENT SkillbookVendorLatePyro
+ON
+	OnFunction("AMER_SkillbookVendor_P3")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Fire_C_InfectiousFlame, XC_Skillbook_Fire_C_MeteorShower, XC_Skillbook_Fire_C_Rebirth, XC_Skillbook_Fire_C_Soulfire, null)
+	
+//=====================================================//
+//              Hydrosophist Skillbooks                //
+//=====================================================//
+EVENT SkillbookVendorEarlyHydro
+ON
+	OnFunction("AMER_SkillbookVendor_H1")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Water_A_AvatarOfFrost, XC_Skillbook_Water_A_Deluge, XC_Skillbook_Water_A_FreezingTouch, XC_Skillbook_Water_A_Rain, XC_Skillbook_Water_A_Regeneration, XC_Skillbook_Water_A_SlowCurrent, XC_Skillbook_Water_A_Soothe, XC_Skillbook_Water_A_Rime, XC_Skillbook_Water_A_WaterAbsorptionShield, XC_Skillbook_Water_B_ColdSnap, XC_Skillbook_Water_B_IceShards, XC_Skillbook_Water_B_IceWall, XC_Skillbook_Water_B_SummonIceElemental, null)
+	
+EVENT SkillbookVendorMidHydro
+ON
+	OnFunction("AMER_SkillbookVendor_H2")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Water_B_CleansingWater, XC_Skillbook_Water_B_ColdSnap, XC_Skillbook_Water_B_MassSlow, XC_Skillbook_Water_B_IceShards, XC_Skillbook_Water_B_IceWall, XC_Skillbook_Water_B_Stasis, XC_Skillbook_Water_B_SummonIceElemental, XC_Skillbook_Water_B_WaterOfLife, XC_Skillbook_Water_C_Winterblast, XC_Skillbook_Water_C_MassHealing, null)
+	
+EVENT SkillbookVendorLateHydro
+ON
+	OnFunction("AMER_SkillbookVendor_H3")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Water_C_Hailstorm, XC_Skillbook_Water_C_HorridWilting, XC_Skillbook_Water_C_MassHealing, XC_Skillbook_Water_C_Plague, XC_Skillbook_Water_C_Winterblast, null)
+	
+//=====================================================//
+//               Aerotheurge Skillbooks                //
+//=====================================================//
+EVENT SkillbookVendorEarlyAero
+ON
+	OnFunction("AMER_SkillbookVendor_A1")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Air_A_AirAbsorptionShield, XC_Skillbook_Air_A_AvatarOfStorms, XC_Skillbook_Air_A_BitterCold, XC_Skillbook_Air_A_LightningBolt, XC_Skillbook_Air_A_ShockingTouch, XC_Skillbook_Air_A_Teleportation, XC_Skillbook_Air_A_ThunderJump, XC_Skillbook_Air_A_WindOfChange, XC_Skillbook_Air_A_Windrun, XC_Skillbook_Air_B_Headvice, XC_Skillbook_Air_B_Invisibility, null)
+
+EVENT SkillbookVendorMidAero
+ON
+	OnFunction("AMER_SkillbookVendor_A2")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Air_B_ChainLightning, XC_Skillbook_Air_B_Enervate, XC_Skillbook_Air_B_Headvice, XC_Skillbook_Air_B_Invisibility, XC_Skillbook_Air_B_Netherswap, XC_Skillbook_Air_B_SummonAirElemental, XC_Skillbook_Air_B_Tornado, XC_Skillbook_Air_C_GreaterInvisibility, XC_Skillbook_Air_C_Vengeance, null)
+
+EVENT SkillbookVendorLateAero
+ON
+	OnFunction("AMER_SkillbookVendor_A3")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Air_C_Audacity, XC_Skillbook_Air_C_GreaterInvisibility, XC_Skillbook_Air_C_Storm, XC_Skillbook_Air_C_Vengeance, null)
+	
+//=====================================================//
+//                Geomancer Skillbooks                 //
+//=====================================================//
+EVENT SkillbookVendorEarlyGeo
+ON
+	OnFunction("AMER_SkillbookVendor_G1")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Earth_A_AvatarOfPoison, XC_Skillbook_Earth_A_NaturesFury, XC_Skillbook_Earth_A_Bless, XC_Skillbook_Earth_A_BoulderBash, XC_Skillbook_Earth_A_CreepingOoze, XC_Skillbook_Earth_A_EarthAbsorptionShield, XC_Skillbook_Earth_A_Fallow, XC_Skillbook_Earth_A_Fortify, XC_Skillbook_Earth_A_SummonSpider, XC_Skillbook_Earth_B_PetrifyingTouch, XC_Skillbook_Earth_B_ThornCascade, null)
+
+EVENT SkillbookVendorMidGeo
+ON
+	OnFunction("AMER_SkillbookVendor_G2")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Earth_B_Balance, XC_Skillbook_Earth_B_BlessedEarth, XC_Skillbook_Earth_B_Erosion, XC_Skillbook_Earth_B_PetrifyingTouch, XC_Skillbook_Earth_B_SummonEarthElemental, XC_Skillbook_Earth_B_TectonicSpray, XC_Skillbook_Earth_B_ThornCascade, XC_Skillbook_Earth_C_SummonToxicHorror, XC_Skillbook_Earth_C_StoneCurse, XC_Skillbook_Earth_C_Ruin, null)
+
+EVENT SkillbookVendorLateGeo
+ON
+	OnFunction("AMER_SkillbookVendor_G3")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Earth_C_DeadlySpores, XC_Skillbook_Earth_C_Earthquake, XC_Skillbook_Earth_C_Maze, XC_Skillbook_Earth_C_Ruin, XC_Skillbook_Earth_C_StoneCurse, XC_Skillbook_Earth_C_SummonToxicHorror, null)
+
+//=====================================================//
+//               Witchcraft Skillbooks                 //
+//=====================================================//
+EVENT SkillbookVendorEarlyWitch
+ON
+	OnFunction("AMER_SkillbookVendor_W1")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Source_A_CurseOfCuts, XC_Skillbook_Source_A_DecayingTouch, XC_Skillbook_Source_A_LowerResistances, XC_Skillbook_Source_A_Malediction, XC_Skillbook_Source_A_Mute, XC_Skillbook_Source_A_Resurrect, XC_Skillbook_Source_A_SummonUndeadWarrior, XC_Skillbook_Source_A_VampiricTouch, XC_Skillbook_Source_B_Attenuate, XC_Skillbook_Source_B_Banishment, XC_Skillbook_Source_B_Despair, XC_Skillbook_Source_B_DrainWillpower, XC_Skillbook_Source_B_OathOfDesecration, XC_Skillbook_Source_B_Rapture, null)
+
+EVENT SkillbookVendorMidWitch
+ON
+	OnFunction("AMER_SkillbookVendor_W2")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Source_B_Attenuate, XC_Skillbook_Source_B_Banishment, XC_Skillbook_Source_B_Despair, XC_Skillbook_Source_B_DrainWillpower, XC_Skillbook_Source_B_Impalement, XC_Skillbook_Source_B_OathOfDesecration, XC_Skillbook_Source_B_Rapture, XC_Skillbook_Source_B_SummonUndeadDecapitator, XC_Skillbook_Source_C_FingerofDeath, XC_Skillbook_Source_C_Invulnerability, null)
+
+EVENT SkillbookVendorLateWitch
+ON
+	OnFunction("AMER_SkillbookVendor_W3")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Source_C_FingerofDeath, XC_Skillbook_Source_C_Invulnerability, XC_Skillbook_Source_C_Soulsap, XC_Skillbook_Source_C_HorrificScream, null)
+	
+//=====================================================//
+//                 Soldier Skillbooks                  //
+//=====================================================//
+EVENT SkillbookVendorEarlySoldier
+ON
+	OnFunction("AMER_SkillbookVendor_M1")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Warrior_A_Bolster, XC_Skillbook_Warrior_A_BatteringRam, XC_Skillbook_Warrior_A_Command, XC_Skillbook_Warrior_A_CrushingFist, XC_Skillbook_Warrior_A_CureWounds, XC_Skillbook_Warrior_A_DivineLight, XC_Skillbook_Warrior_A_Encourage, XC_Skillbook_Warrior_A_HelpingHand, XC_Skillbook_Warrior_A_MeleeDefensiveStance, XC_Skillbook_Warrior_A_MeleePrecisionStance, XC_Skillbook_Warrior_B_CripplingBlow,  XC_Skillbook_Warrior_B_ErodingStrike, XC_Skillbook_Warrior_B_Rage, XC_Skillbook_Warrior_B_SpikedShell, XC_Skillbook_Warrior_B_Whirlwind, null)
+
+EVENT SkillbookVendorMidSoldier
+ON
+	OnFunction("AMER_SkillbookVendor_M2")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Warrior_B_Attonement, XC_Skillbook_Warrior_B_AwesomePresence, XC_Skillbook_Warrior_B_CripplingBlow, XC_Skillbook_Warrior_B_ElementalTortoise, XC_Skillbook_Warrior_B_ErodingStrike, XC_Skillbook_Warrior_B_Fossilize, XC_Skillbook_Warrior_B_Rage, XC_Skillbook_Warrior_B_SpikedShell, XC_Skillbook_Warrior_B_Whirlwind, XC_Skillbook_Warrior_C_Flurry, XC_Skillbook_Warrior_C_VitalityLink, null)
+	
+EVENT SkillbookVendorLateSoldier
+ON
+	OnFunction("AMER_SkillbookVendor_M3")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Warrior_C_Crush, XC_Skillbook_Warrior_C_Flurry, XC_Skillbook_Warrior_C_ShacklesOfPain, XC_Skillbook_Warrior_C_Torment, XC_Skillbook_Warrior_C_VitalityLink, null)
+
+//=====================================================//
+//                Scoundrel Skillbooks                 //
+//=====================================================//
+EVENT SkillbookVendorEarlyScoundrel
+ON
+	OnFunction("AMER_SkillbookVendor_S1")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Rogue_A_Adrenaline, XC_Skillbook_Rogue_A_FastTrack, XC_Skillbook_Rogue_A_Lacerate, XC_Skillbook_Rogue_A_MistyStep, XC_Skillbook_Rogue_A_PreciseIncision, XC_Skillbook_Rogue_A_Trip, XC_Skillbook_Rogue_A_VenomousStrike, XC_Skillbook_Rogue_A_WalkInShadows, XC_Skillbook_Rogue_A_WingedFeet, XC_Skillbook_Rogue_B_Blur, XC_Skillbook_Rogue_B_CloakAndDagger, XC_Skillbook_Rogue_B_EyeGouge, XC_Skillbook_Rogue_B_Fade, XC_Skillbook_Rogue_B_Squander, null)
+
+EVENT SkillbookVendorMidScoundrel
+ON
+	OnFunction("AMER_SkillbookVendor_S2")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Rogue_B_Blur, XC_Skillbook_Rogue_B_BorrowedTime, XC_Skillbook_Rogue_B_CloakAndDagger, XC_Skillbook_Rogue_B_DaggersDrawn, XC_Skillbook_Rogue_B_EyeGouge, XC_Skillbook_Rogue_B_Fade, XC_Skillbook_Rogue_B_Squander, XC_Skillbook_Rogue_B_WindUpToy, XC_Skillbook_Rogue_C_ShadowStep, XC_Skillbook_Rogue_C_Execute, null)
+
+EVENT SkillbookVendorLateScoundrel
+ON
+	OnFunction("AMER_SkillbookVendor_S3")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Rogue_C_Cruelty, XC_Skillbook_Rogue_C_Execute, XC_Skillbook_Rogue_C_Premeditate, XC_Skillbook_Rogue_C_ShadowStep, null)
+
+//=====================================================//
+//                  Ranger Skillbooks                  //
+//=====================================================//
+EVENT SkillbookVendorEarlyRanger
+ON
+	OnFunction("AMER_SkillbookVendor_R1")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Ranger_A_Anticipate, XC_Skillbook_Ranger_A_Doctor, XC_Skillbook_Ranger_A_FirstAid, XC_Skillbook_Ranger_A_FreezingTrap, XC_Skillbook_Ranger_A_RangedPowerStance, XC_Skillbook_Ranger_A_RangedPrecisionStance, XC_Skillbook_Ranger_A_Ricochet, XC_Skillbook_Ranger_A_SplinteredArrow, XC_Skillbook_Ranger_A_TreatPoisoning, XC_Skillbook_Ranger_B_AbsorbTheElements, XC_Skillbook_Ranger_B_ConjureAcidArrow, XC_Skillbook_Ranger_B_Farseer, XC_Skillbook_Ranger_B_Infect, XC_Skillbook_Ranger_B_SurvivorsKarma, XC_Skillbook_Ranger_B_VampiricArrow, null)
+
+EVENT SkillbookVendorMidRanger
+ON
+	OnFunction("AMER_SkillbookVendor_R2")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Ranger_B_AbsorbTheElements, XC_Skillbook_Ranger_B_Barrage, XC_Skillbook_Ranger_B_ConjureAcidArrow, XC_Skillbook_Ranger_B_Farseer, XC_Skillbook_Ranger_B_Infect, XC_Skillbook_Ranger_B_SummonWolf, XC_Skillbook_Ranger_B_SurvivorsKarma, XC_Skillbook_Ranger_B_VampiricArrow, XC_Skillbook_Ranger_C_RainOfArrows, XC_Skillbook_Ranger_C_InsectPlague, null)
+	
+EVENT SkillbookVendorLateRanger
+ON
+	OnFunction("AMER_SkillbookVendor_R3")
+ACTIONS
+	GetElement(%AMER_SkillbookVendor_WhichBook, %AMER_SkillbookVendor_Count, XC_Skillbook_Ranger_C_Fusillade, XC_Skillbook_Ranger_C_RainOfArrows, XC_Skillbook_Ranger_C_NaturalOrder, XC_Skillbook_Ranger_C_InsectPlague, null)
+	
+//=====================================================//
+//                                                     //
+//          S K I L L B O O K   V E N D O R            //
+//                                                     //
+//=====================================================//

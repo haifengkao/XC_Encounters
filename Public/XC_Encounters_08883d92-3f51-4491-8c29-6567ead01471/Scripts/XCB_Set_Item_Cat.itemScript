@@ -1,0 +1,4 @@
+INIT
+	ITEM:__Me
+	EXTERN STRING:%XCBags_ItemIsMovable="no"
+	EXTERN STRING:%XCBags_ItemCategory=""

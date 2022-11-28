@@ -1,0 +1,148 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+ProcTriggerRegisterForPlayers( TRIGGER_CYS_ShovelThelyronWife );
+DB_Global_ItemDescriptions( ITEM_CYS_ThelyronWifeTomb, "CYS_ThelyronWifeTomb" );
+KBSECTION
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// The code for Thelyron's wife's grave does not define any DB_ShovelArea() entries nor any shovel rewards, it tries to
+// circumvent all default shovel handling in __Start/__GLO_Shovel.txt, because most of the code there requires some
+// databases to be set up beforehand.
+// There is one handler though which still fully catches the event of using a shovel on the grave directly.
+// It is the handler for 'Dig outside a trigger'.
+// That would actually freeze the character and start the digging animation, throw the event afterwards which would then
+// display the 'GEN_Shovel_Failed' text.
+// The handler here, which is executed afterwards though, wants to start a dialog.
+// The ProcDoTwoSpeakerItemDialog() is defined in __Start/__PROC.txt and in the flow, a call to CharacterMakeStoryNpc() is made.
+// I do not know if the call to CharacterMakeStoryNpc() there actually interrupts the digging animation immediately
+// and prevents the event from being thrown. While it is okay to show the start of the animation, it would absolutely not
+// be okay to EVER show the fail message due to the missing DB_Shovelling_Mound() database in the "digmound" event handler
+// in __Start/__GLO_Shovel.txt, 'All that digging and there's nothing here ?', but only if the shovel was used, would never
+// appear if the pile was used directly.
+// I tested it, digging does not happen but the message appears, though it's not voiced because of the 'dialog overlay'.
+// No digging animation, not even the start of it, is visible, so it's obviously cancelled, but the event is not.
+// (Oh how I hate the bullshit they are coding, this is what happens when hackers start programming, GRRRRRRRRRRR ...)
+// Since there are no databases set up for the default shovel handler, nothing happens anymore after the dialog finished
+// whichever the outcome is. With subsequent digging the handlers here are skipped as well, because the .DialogOneShot()
+// flag is attached to the pile.
+// (What a bullshit, they do any kind of nonsense but then fail to bring it to an end: 'We will not discuss it another
+//  time, we already decided to leave this grave alone'. After all, the pile is still there.)
+//
+// What effect will it have, if we create a DB_Shovelling_Mound() entry in INIT ?
+// - the default handler will no longer execute, no default handling will take place at all.
+// - the only difference would be that no DB_Shovel_PlayerHadWeaponDrawn() handling would take place but this is also
+//   the case with the dirt-used handler, because for this, the default handler is NOT executed because there is no
+//   DB_ShovelArea() entry
+//
+// So I will disable the interfering handler by setting a DB_Shovelling_Mound() entry.
+// (Going to do that with one of my hooks instead of doing it here, because that will require no change to code
+//  if ever more than 2 players are used.)
+//
+// Additionally
+// - I 're-enable' using the grave after the dialog again, but only to show the above mentioned message upon use.
+//   I need to check if the dialog is still running, because otherwise other players in a future more-than-4-player mod
+//   could accidently 'abuse' this when waiting for the dialog, waiting players NEVER wait, they are ALWAYS impatient,
+//   especially when RPS happens, and WILL use the grave if possible.
+//   Looking into __Start/__PROC.txt, where ProcDoTwoSpeakerItemDialog() is defined shows, that an _Item.DB_IsInItemDialog()
+//   flag is attached to the item while it is in dialog. That would be ITEM_CYS_ThelyronWifeTomb.DB_IsInItemDialog()
+//   in our case.
+//   (The on-use action could be removed from the dirtpile - with ItemSetCanInteract() - but digging with the shovel should
+//    still be possible, the dirtpile is still there after all, so I decided against that and show messages instead.)
+// - I introduce handling for companions showing at least some message on use (Triggers should be registered for party)
+// - same for henchmen, but the message they get is less nice, because I don't like them ;-)
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// CHANGE:
+// - root template
+//   old template: TOOL_Shovel_A_41486dd2-3fd5-464e-870e-844120cf0517
+// - call a procedure to handle digging (defined in XC_Start/XC_Tools.txt)
+//   (reason for this: which would be called on every template use)
+//
+// case: shovel used for digging
+IF
+	CharacterUsedItemTemplate( _Player, "XC_Tool_General_Shovel_7b29fbdb-6a51-42af-85a1-30e5b24fe18f", _ )
+	AND
+	DB_InRegion( _Player, TRIGGER_CYS_ShovelThelyronWife )
+THEN
+	XCToolsProc_CharDiggingThelyronGrave( _Player );
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// CHANGE:
+// - root template
+//   old template: TOOL_Shovel_A_41486dd2-3fd5-464e-870e-844120cf0517
+// - call a procedure instead of handling everything here directly to reduce the number of handlers
+//   (which would be called on every template use)
+//
+// case: dirt pile is 'used'
+IF
+	CharacterUsedItem( _Player, ITEM_CYS_ShovelThelyronWifeDirt )
+	AND
+	ItemTemplateIsInCharacterInventory( _Player, "XC_Tool_General_Shovel_7b29fbdb-6a51-42af-85a1-30e5b24fe18f", _Count )
+	AND
+	_Count > 0
+THEN
+	XCToolsProc_CharDiggingThelyronGrave( _Player );
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// ADDED:
+// - handler for no shovel in user's inventory, because we disabled the Magic Pockets nonsense
+IF
+	CharacterUsedItem( _Player, ITEM_CYS_ShovelThelyronWifeDirt )
+	AND
+	ItemTemplateIsInCharacterInventory( _Player, "XC_Tool_General_Shovel_7b29fbdb-6a51-42af-85a1-30e5b24fe18f", 0 )
+THEN
+	CharacterDisplayText( _Player, "GLO_ShovelRequired" );
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// CHANGE:
+// - root template
+//   old template: TOOL_Shovel_A_41486dd2-3fd5-464e-870e-844120cf0517
+// - removed the ItemTemplateIsInPartyInventory() (without replacement!)
+//   The original code had further conditions:
+//			...
+//			AND
+//			DB_DialogPlayers( _ID, _Player, 1 )
+//			AND
+//			ItemTemplateIsInPartyInventory( _Player, "XC_Tool_General_Shovel_7b29fbdb-6a51-42af-85a1-30e5b24fe18f", 0, _Count )
+//			AND
+//			_Count > 0
+//		THEN
+//			...
+//   The dialog will now only be started if the user or digger had the new shovel. When in dialog, this user will be the
+//   DB_DialogPlayers(_,_,1) entry, so we can safely assume that the shovel is still in inventory and skip this check
+//   completely. The DB_DialogPlayers() database is still required to get the player who does the digging, the rest is
+//   no longer required. It was only there for the stupid 'Magic Pockets' thing in the first place.
+//   
+// Dialog-ended handler called after the player dialog ended and the decision was made to disturb the grave
+// (This is a copy of the default shovel handler code without any CharacterIsInFightMode() handling)
+IF
+	DialogEnded( "CYS_ThelyronWifeTomb", _ID )
+	AND
+	DB_GlobalEvent( "CYS_DisturbThelyronWife2" )
+	AND
+	DB_DialogPlayers( _ID, _Player, 1 )
+THEN
+	CharacterSetFightMode( _Player, 0, 1 );
+	CharacterFreeze( _Player );
+	CharacterPlayAnimation( _Player, "use_dig", "digmoundThelyron" );
+
+// no change required here, the dirtpile 'explodes' and disappears, so no further use can happen.
+IF
+	CharacterEvent( _Player, "digmoundThelyron" )
+THEN
+	ItemSetOnstage( ITEM_CYS_ShovelThelyronWifeDirt, 0 );
+	CharacterUnfreeze( _Player );
+	ItemSetEvent( ITEM_CYS_ThelyronWifeTomb, "explode" );
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DOSStart"

@@ -1,0 +1,116 @@
+INIT
+	CHARACTER:__Me
+	INT:%ISpeakFieldBedish = 1
+	// variables for the spawned and the used mat
+	// - we need the spawned one to prevent further mats from being spawned at the same time by one char
+	// - we need the used one to send use signals to it (this is the real 'speaking fieldbedish' ;-)
+	ITEM:%MyCoffin = null
+	ITEM:%MyMattress = null
+	// This flag indicates that a bed is currently out and prevents successful use of the skills if it is 1
+	INT:%MyFieldBedIsOut = 0
+	// an effect makes it look better
+	STRING:%FieldBedSpawnEffect = "FX_GP_TeleportSmoke_A"
+	// SKILL USE MESSAGES
+	// internal error, no coffin was assigned
+	// GEN_Broken: This seems to be broken.
+	FIXEDSTRING:%XCSFB_ErrMsg_FieldBedNull = "GEN_Broken"
+	// No zombie talent (as long as respawn is possible, it's needed)
+	// GLO_FailedUse: I mustn't have used it correctly
+	FIXEDSTRING:%XCSFB_ErrMsg_NoZombieTalent = "GLO_FailedUse"
+	// No use in combat
+	// GLOBAL_CannotUseNow: Now is not the time for that.
+	FIXEDSTRING:%XCSFB_ErrMsg_NotInCombat = "GLOBAL_CannotUseNow"
+	// Only one active mat per caster at any time
+	// GLO_ForbiddenItem: It seems I can't use this right now.
+	FIXEDSTRING:%XCSFB_ErrMsg_FieldBedIsOut = "GLO_ForbiddenItem"
+
+// Player1 <dac1443f-a866-4ab3-b240-e705c0b20ec5>
+// Player2 <a0af7520-57ac-4f1c-b9d7-197bceebeade>
+
+// XC_SkillItem_Coffin_1 <4af2c994-630e-4db5-ac4d-1d4b6caebf75>
+// XC_SkillItem_Coffin_2 <8f3d75a0-9c9d-47f9-9361-695637b46bda>
+// XC_SkillItem_Mattress_1 <c5277739-c7db-4d4b-b0f6-fc0a2883e3bd>
+// XC_SkillItem_Mattress_2 <a3291e29-f838-414d-bad7-6836226fe5c2>
+
+EVENTS
+
+EVENT XCT_InitPlayerFieldBeds
+VARS
+	CHARACTER:_Player1=Player1_dac1443f-a866-4ab3-b240-e705c0b20ec5
+	CHARACTER:_Player2=Player2_a0af7520-57ac-4f1c-b9d7-197bceebeade
+	ITEM:_Mattress1=XC_SkillItem_Mattress_1_c5277739-c7db-4d4b-b0f6-fc0a2883e3bd
+	ITEM:_Mattress2=XC_SkillItem_Mattress_2_a3291e29-f838-414d-bad7-6836226fe5c2
+	ITEM:_Coffin1=XC_SkillItem_Coffin_1_4af2c994-630e-4db5-ac4d-1d4b6caebf75
+	ITEM:_Coffin2=XC_SkillItem_Coffin_2_8f3d75a0-9c9d-47f9-9361-695637b46bda
+ON
+	OnInit()
+ACTIONS
+	IF "c1"
+		IsEqual( __Me, _Player1 )
+	THEN
+		Set( %MyMattress, _Mattress1 )
+		Set( %MyCoffin, _Coffin1 )
+	ELSE
+		Set( %MyMattress, _Mattress2 )
+		Set( %MyCoffin, _Coffin2 )
+	ENDIF
+
+// skill use
+EVENT XCT_CreateZombieSleepingBag
+ON
+	OnSkillCast( __Me, "XC_Skill_Other_FieldBedZombie" )
+ACTIONS
+	IF "c1"
+		IsEqual( %MyCoffin, null )
+	THEN
+		DisplayText( __Me, %XCSFB_ErrMsg_FieldBedNull, 3.0 )
+	ELIF "!c1"
+		CharacterHasTalent( __Me, "Zombie" )
+	THEN
+		DisplayText( __Me, %XCSFB_ErrMsg_NoZombieTalent, 3.0 )
+	ELIF "c1"
+		IsInCombat( __Me )
+	THEN
+		DisplayText( __Me, %XCSFB_ErrMsg_NotInCombat, 3.0 )
+	ELIF "c1"
+		IsEqual( %MyFieldBedIsOut, 1 )
+	THEN
+		DisplayText( __Me, %XCSFB_ErrMsg_FieldBedIsOut, 3.0 )
+	ELSE
+		ItemTeleportTo( %MyCoffin, __Me )
+		PlayEffectAt( __Me, %FieldBedSpawnEffect )
+		Set( %MyFieldBedIsOut, 1 )
+		ItemSetOnStage( %MyCoffin, 1 )
+	ENDIF
+
+// skill use
+EVENT XCT_CreateSleepingBag
+ON
+	OnSkillCast( __Me, "XC_Skill_Other_FieldBed" )
+ACTIONS
+	IF "c1"
+		IsEqual( %MyMattress, null )
+	THEN
+		DisplayText( __Me, %XCSFB_ErrMsg_FieldBedNull, 3.0 )
+	ELIF "c1"
+		IsInCombat( __Me )
+	THEN
+		DisplayText( __Me, %XCSFB_ErrMsg_NotInCombat, 3.0 )
+	ELIF "c1"
+		IsEqual( %MyFieldBedIsOut, 1 )
+	THEN
+		DisplayText( __Me, %XCSFB_ErrMsg_FieldBedIsOut, 3.0 )
+	ELSE
+		ItemTeleportTo( %MyMattress, __Me )
+		PlayEffectAt( __Me, %FieldBedSpawnEffect )
+		Set( %MyFieldBedIsOut, 1 )
+		ItemSetOnStage( %MyMattress, 1 )
+	ENDIF
+
+// When Osiris sets the field bed offstage, it sends an event
+// We reset the indicator flag so that we can spawn again
+EVENT XCT_MySpawnDied
+ON
+	OnCharacterEvent( __Me, "FieldBedDisappeared" )
+ACTIONS
+	Set( %MyFieldBedIsOut, 0 )

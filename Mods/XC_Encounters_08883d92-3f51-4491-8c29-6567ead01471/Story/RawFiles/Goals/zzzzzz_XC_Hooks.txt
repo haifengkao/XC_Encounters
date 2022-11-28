@@ -1,0 +1,484 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// setting the additional character and companion flags
+XCHooksIntProc__Init__Players();
+XCHooksIntProc__Init__Companions();
+
+// we are (hopefully) the final INIT section
+XCHooksIntProc__PostInit__Characters();
+
+// database for finding out the class
+// (needs putting a - correct - class token into a players inventory through Equipment.txt
+//  ... there is no other way to find out the chosen class ... or I am too stupid too see it ;-)
+XCHooksIntDB__Class__Tokens( "Battlemage",	"XC_SIGNALTOKEN_Class_Battlemage_4b36631a-8ff4-4ac6-879f-1e0e49f0104a"	);
+XCHooksIntDB__Class__Tokens( "Cleric",		"XC_SIGNALTOKEN_Class_Cleric_772f62e9-25e4-4fe5-8783-e96e24893559"	);
+XCHooksIntDB__Class__Tokens( "Enchanter",	"XC_SIGNALTOKEN_Class_Enchanter_6c904a3d-e04f-45b3-aa3f-6e463945c9be"	);
+XCHooksIntDB__Class__Tokens( "Fighter",		"XC_SIGNALTOKEN_Class_Fighter_eea15e80-856e-4b94-aa7f-cf644df37dfc"	);
+XCHooksIntDB__Class__Tokens( "Inquisitor",	"XC_SIGNALTOKEN_Class_Inquisitor_80f3f9b4-1ea4-4dd2-a371-745fff8a4fad"	);
+XCHooksIntDB__Class__Tokens( "Knight",		"XC_SIGNALTOKEN_Class_Knight_daca73c9-d8c3-4cc9-85cc-7bd035d86275"	);
+XCHooksIntDB__Class__Tokens( "Ranger",		"XC_SIGNALTOKEN_Class_Ranger_9b6af680-6356-4682-a601-a007487408e6"	);
+XCHooksIntDB__Class__Tokens( "Rogue",		"XC_SIGNALTOKEN_Class_Rogue_304af8cf-473d-4c15-8495-3ca098772f24"	);
+XCHooksIntDB__Class__Tokens( "Shadowblade",	"XC_SIGNALTOKEN_Class_Shadowblade_722ccfaf-2811-4d22-a273-024d8da6a25f"	);
+XCHooksIntDB__Class__Tokens( "Wayfarer",	"XC_SIGNALTOKEN_Class_Wayfarer_af54f52a-931c-4e51-9baa-1df11d31b468"	);
+XCHooksIntDB__Class__Tokens( "Witch",		"XC_SIGNALTOKEN_Class_Witch_aa3610e4-1d50-4f86-a4db-017572a6b944"	);
+XCHooksIntDB__Class__Tokens( "Wizard",		"XC_SIGNALTOKEN_Class_Wizard_73a98a26-a4a5-452c-9e96-ebbfe6399804"	);
+
+// signal tokens
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_01 );
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_02 );
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_03 );
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_04 );
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_05 );
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_06 );
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_07 );
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_08 );
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_09 );
+XCHooksDB__SignalTokens( ITEM_XC_SIGNALTOKEN_10 );
+
+// This database allows me to achieve an order of initialization, independent of changes done
+// to DB_DefinedCompanions().
+// Whereever all companions are iterated and the end of iteration needs to be signaled, it must be known,
+// who was the last companion processed. To achieve it, I need an order.
+// Using this database in companion init will attach DB_DefinedCompanions in my desired specific order
+// independent of the order of their definition in DB_DefinedCompanions.
+XCHooksIntDB__CompanionFixedOrder( CHARACTER_Bairdotr	);
+XCHooksIntDB__CompanionFixedOrder( CHARACTER_Jahan		);
+XCHooksIntDB__CompanionFixedOrder( CHARACTER_Madoc		);
+XCHooksIntDB__CompanionFixedOrder( CHARACTER_Wolgraff	);
+KBSECTION
+// using 4 flags:
+// I am NOT content with the .DB_IsPlayer() db, because it works only for players within the party
+// and gives NO information about the type of party member.
+//
+// So I introduced additional flags:
+//
+// 1. type:
+//			XCDB_IsPlayer()/XCDB_IsCompanion()/XCDB_IsHenchman() should be self explaining
+// 2. XCDB_IsPlayable()
+//			shows that a character is playable (DB_IsPlayer() is NOT enough, because it is set only
+//			for characters that are in the party, so it cannot be used for more general stuff.)
+// 3. XCDB_IsRecruitable()
+//			is not for players of course but for all companions regardless of their type
+//			(this is basically the same as DB_DefinedCompanions(), but attached to a character and independent
+//			of some code I might not have found that could possibly fiddle with this DB)
+// 4. XCDB_IsInParty()
+//			is basically the same as CharacterIsPartyMember() but does not require the call anymore
+//
+
+// setup procedures for the initial flags
+PROC
+	XCHooksIntProc__Setup__Player( (CHARACTER)_Player )
+THEN
+	_Player.XCDB_IsPlayer();
+	_Player.XCDB_IsPlayable();
+	_Player.XCDB_IsInParty();
+
+// called in INIT section
+PROC
+	XCHooksIntProc__Init__Players()
+THEN
+	XCHooksIntProc__Setup__Player( CHARACTER_Player1 );
+	XCHooksIntProc__Setup__Player( CHARACTER_Player2 );
+
+// if some overlooked code messed with the DB_DefinedCompanions() db in the INIT sections,
+// none of those procedures will be called ...
+// (with Larian's code mess, EVERYTHING seems possible ;-)
+PROC
+	XCHooksIntProc__Setup__Companion( (CHARACTER)_Companion )
+THEN
+	_Companion.XCDB_IsPlayable();
+	_Companion.XCDB_IsRecruitable();
+
+PROC
+	XCHooksIntProc__Setup__Companion( CHARACTER_Bairdotr )
+THEN
+	CHARACTER_Bairdotr.XCDB_IsCompanion();
+
+PROC
+	XCHooksIntProc__Setup__Companion( CHARACTER_Jahan )
+THEN
+	CHARACTER_Jahan.XCDB_IsCompanion();
+
+PROC
+	XCHooksIntProc__Setup__Companion( CHARACTER_Madoc )
+THEN
+	CHARACTER_Madoc.XCDB_IsCompanion();
+
+PROC
+	XCHooksIntProc__Setup__Companion( CHARACTER_Wolgraff )
+THEN
+	CHARACTER_Wolgraff.XCDB_IsCompanion();
+
+// skipped for all (known) companions, will only execute for henchmen
+PROC
+	XCHooksIntProc__Setup__Companion( (CHARACTER)_Companion )
+	AND
+	NOT _Companion.XCDB_IsCompanion()
+THEN
+	_Companion.XCDB_IsHenchman();
+
+// hope this works and we are really last ...
+PROC
+	XCHooksIntProc__Setup__Companion( (CHARACTER)_Companion )
+THEN
+	XCHook_On_Companion_Initialized( _Companion );
+
+
+// called in INIT section
+// called first, will setup all companions that are not in my 'ordered' database
+PROC
+	XCHooksIntProc__Init__Companions()
+	AND
+	DB_DefinedCompanions( _Companion )
+	AND
+	NOT XCHooksIntDB__CompanionFixedOrder( _Companion )
+THEN
+	XCHooksIntProc__Setup__Companion( _Companion );
+
+// called next, will attach the companion database to my ordered one, since I put my DB first
+// Wolgraff will definitely be the last of companions, Bairdotr first.
+PROC
+	XCHooksIntProc__Init__Companions()
+	AND
+	XCHooksIntDB__CompanionFixedOrder( _Companion )
+	AND
+	DB_DefinedCompanions( _Companion )
+THEN
+	XCHooksIntProc__Setup__Companion( _Companion );
+
+// called last, we no longer need the 'fixed order' database
+PROC
+	XCHooksIntProc__Init__Companions()
+	AND
+	XCHooksIntDB__CompanionFixedOrder( _Companion )
+THEN
+	NOT XCHooksIntDB__CompanionFixedOrder( _Companion );
+
+
+// called when a blood stone or star stone is 'zapped'
+PROC
+	XCHook_On_StarStoneUsed( (INTEGER)_Number )
+THEN
+	XCNOP(1);
+
+
+
+
+// Hook for general initializations after character creation
+// i.e. after all INIT sections have been run through
+PROC
+	XCHook_On_Character_Initialized( (CHARACTER)_Char )
+THEN
+	XCNOP();
+
+// called in INIT section
+PROC
+	XCHooksIntProc__PostInit__Characters()
+THEN
+	XCHook_On_Character_Initialized( CHARACTER_Player1 );
+	XCHook_On_Character_Initialized( CHARACTER_Player2 );
+
+PROC
+	XCHooksIntProc__PostInit__Characters()
+	AND
+	DB_DefinedCompanions( _Companion )
+THEN
+	XCHook_On_Character_Initialized( _Companion );
+
+
+// Hooks for general initializations after character creation
+
+// called upon arriving at Cyseal Beach before the player hooks are called
+PROC
+	XCHook_Cys_First_BeforePlayer()
+THEN
+	XCNOP();
+
+// called upon arriving at Cyseal Beach after the player hooks are called
+PROC
+	XCHook_Cys_First_AfterPlayer()
+THEN
+	XCNOP();
+
+
+// Helper procedure to set ONE and only one player class
+// in case someone got the idea to add several tokens to a character
+PROC
+	XCHooksIntProc__Set__One__Player__Class( (CHARACTER)_Player, (STRING)_ClassName )
+	AND
+	NOT _Player.XCDB_ClassName( _ )
+THEN
+	_Player.XCDB_ClassName( _ClassName );
+
+// internal procedure to set the character class name
+// (this CANNOT be called on any init, because the class is not set in character creation yet
+//  but when leaving it)
+PROC
+	XCHooksIntProc__Set__Player__Class( (CHARACTER)_Player )
+	AND
+	NOT _Player.XCDB_ClassName( _ )
+	AND
+	XCHooksIntDB__Class__Tokens( _ClassName, _TokenTemplate )
+	AND
+	ItemTemplateIsInCharacterInventory( _Player, _TokenTemplate, _Count )
+	AND
+	_Count > 0
+	AND
+	GetItemhandleForItemTemplateInInventory( _Player, _TokenTemplate, _TokenHandle )
+THEN
+	ItemHandleDelete( _TokenHandle );
+	XCHooksIntProc__Set__One__Player__Class( _Player, _ClassName );
+
+
+// Hook for player initialization after character creation
+// called only for CHARACTER_Player1 and CHARACTER_Player2
+//
+// The call to this procedure is done after the player leaves char creation
+// It does not make sense to do it earlier because char creation shifts around root templates,
+// inventories, etc., so stuff done before might get lost.
+PROC
+	XCHook_On_Player_Enters_World( (CHARACTER)_Player )
+THEN
+	XCNOP(1);
+
+
+// Hook for companion initialization
+// Called for hired companions (real and henchmen) on their first party join
+PROC
+	XCHook_On_Companion_Initialized( (CHARACTER)_Companion )
+THEN
+	XCNOP(1);
+
+// Hook for companion initialization
+// Called for hired companions (real and henchmen) on their first party join
+PROC
+	XCHook_On_Companion_Initial_Join( (CHARACTER)_Companion )
+THEN
+	XCNOP(1);
+
+// Hook for companion initialization
+// Called for hired companions (real and henchmen) on rejoining the party (i.e. not on the initial hiring)
+PROC
+	XCHook_On_Companion_Rejoin( (CHARACTER)_Companion )
+THEN
+	XCNOP(1);
+
+// Hook for companion initialization
+// Called for hired companions (real and henchmen) on every party join (both initial and subsequent hirings)
+PROC
+	XCHook_On_Companion_Join( (CHARACTER)_Companion )
+THEN
+	_Companion.XCDB_IsInParty();
+
+// Hook for companions leaving party
+// Called for hired companions (real and henchmen) on every party leave
+PROC
+	XCHook_On_Companion_Leave( (CHARACTER)_Companion )
+THEN
+	NOT _Companion.XCDB_IsInParty();
+
+
+
+// Player initialization hook call
+//
+// Here we are safe from all root template switching of character creation.
+// Intro movie is playing or finished, SH Orders, items and gold are added, char
+// will appear (or is already) on Cyseal beach.
+// This PROC is called once
+//
+// Henchmen are marked as Henchmen here and not before, because the marking relies on the
+// existence of data set up in INIT sections (setting .XCDB_IsCompanion() this file's
+// INIT section and creation of the DB_DefinedCompanions() database in InitGoal.txt)
+// and we do not want to rely on any order of compilation, so we do the marking when all
+// INIT sections are finished, which is the case in the KB sections.
+//
+// We hook ourselves into a procedure call done in DOSStart.txt/CYS_General.txt which
+// occurs after character creation and after the initial items have been given.
+//	ProcStartTutorial()
+PROC
+	ProcUnlockInitialRecipes()
+THEN
+	// hook for setup before player hooks are called
+	XCHook_Cys_First_BeforePlayer();
+	// Set the class name
+	// This call is deliberately done BEFORE the call to XCHook_On_Player_Enters_World()
+	// so users of that hook can rely on the class being set when their procedure is called
+	XCHooksIntProc__Set__Player__Class( CHARACTER_Player1 );
+	XCHooksIntProc__Set__Player__Class( CHARACTER_Player2 );
+	CHARACTER_Player1.XCDB_WorldEntered();
+	CHARACTER_Player2.XCDB_WorldEntered();
+	// calling the Player-arrived-Cyseal-Beach hook
+	XCHook_On_Player_Enters_World( CHARACTER_Player1 );
+	XCHook_On_Player_Enters_World( CHARACTER_Player2 );
+	// hook for setup after player hooks are called
+	XCHook_Cys_First_AfterPlayer();
+
+
+// Companion joins
+IF
+	DB_Companion( _Companion )
+THEN
+	XCHook_On_Companion_Join( _Companion );
+
+// Companion rejoins
+IF
+	DB_Companion( _Companion )
+	AND
+	_Companion.XCDB_WorldEntered()
+THEN
+	XCHook_On_Companion_Rejoin( _Companion );
+
+// Companion joins first time
+IF
+	DB_Companion( _Companion )
+	AND
+	NOT _Companion.XCDB_WorldEntered()
+THEN
+	_Companion.XCDB_WorldEntered();
+	XCHook_On_Companion_Initial_Join( _Companion );
+
+// The only safe and reasonable way to catch companion dismiss is to monitor the reset of the
+// DB_Companion() database, because dismissing is done in many different ways.
+// The ProcDismiss...() procedures are simply ignored at several different reasons (e.g. for
+// Bairdotr in LUC_IV_Jareth.txt), so we'd have to catch different events for every companions.
+// It's easier to simply monitor the database reset.
+// The flag .XCDB_WorldEntered() is set on initial join, it's sufficient as the 'positive condition'
+// for our purpose because a companion that never joined the party cannot be dismissed anyway.
+IF
+	_Companion.XCDB_WorldEntered()
+	AND
+	NOT DB_Companion( _Companion )
+THEN
+	XCHook_On_Companion_Leave( _Companion );
+
+
+
+
+// on every star stone or blood stone use, the number in the DB_NumStarStonesFound(_Number) database is incremented
+//
+// This is done in DOSStart/HOM_Teleporters.txt in the procedure Proc_HOM_UnlockMajorRoom() (line 76)
+// This PROC is called on every use of star stone or blood stone in Global_Procedure.txt at the end of the
+// effect timer (line 92).
+// (NOTE: it took me forever to find out, why Evelyn's use of her blood stone sends players to the homestead, because
+//  I never found the setup of a DB_StarstoneEffect(_EffectTimer,_ItemZapper,_OverTimer,_PlayerZapped) in the
+//  ProcUseBloodStone() procedures and she uses the two parameter version in DOSStart/CYS_ThelyronsHealingPractice.txt, line 284.
+//  The 'solution' to this 'riddle' is:
+//  The used blood stone is not replaced by a depleted stone but by a real star stone, which throws the 'GLO_StarStoneZap'
+//  event that is then caught in Global_Procedure.txt, top, line 2.
+//  ... more accurate looking could have resolved this a lot earlier ...)
+//
+// we could create an additional PROC Proc_HOM_UnlockMajorRoom() but it is more convenient to use the setting of the DB
+// within the PROC because then we immediately have the number of stones zapped instead of having to query it and haviong to
+// rely on a specific order of procedure executions.
+// (and we don't have to introduce our own counter ...)
+IF
+	DB_NumStarStonesFound( _Number )
+	AND
+	_Number > 0
+THEN
+	XCHook_On_StarStoneUsed( _Number );
+
+
+// NOTE:
+// Disabled auto-destruction, because there is a chance that moving items off a stack with story code does
+// not create a new handle if a target stack is present.
+// Since the container now sits in an unreachable 'dump level', hopefully the level can take enough items
+// to that no 'level overflow' ever occurs.
+// NOTE:
+// Auto-destruction re-enabled, because items moved there always have a handle already when moved, the only case when
+// a new one could be created would be when an existing stack becomes full and a new stack needs to be 'opened',
+// although I think if this happens, the moved stack just keeps its existing handle and it does not get lost because
+// not everything of it can be added to the existing stack.
+//
+// This is the 'Black Hole', a container which destroys everything it receives immediately.
+// Can be used to remove items. Simply put them in here.
+// There is no hook to intervene and stop the destruction, so be careful.
+IF
+	ItemTemplateAddedToContainer( _, _ItemHandle, ITEM_XC_STORAGE_BLACK_HOLE_SUN )
+THEN
+	ItemHandleDelete( _ItemHandle );
+
+
+// Helper PROC to move one (and only one) of the pre-placed signal tokens to a character
+PROC
+	XCHooksIntProc__AcquireSignalToken( (CHARACTER)_Char, (STRING)_EventName, (ITEM)_Token )
+	AND
+	XCHooksDB__SignalTokens( _Token )
+	AND
+	NOT XCHooksIntDB__UsedSignalTokens( _Char, _EventName, _ )
+THEN
+	NOT XCHooksDB__SignalTokens( _Token );
+	XCHooksIntDB__UsedSignalTokens( _Char, _EventName, _Token );
+	ItemToCharacter( _Token, _Char );
+
+// This is the hook to use when one wants to catch the event of adding the token
+//
+// This base procdure moves the token to the hidden storage and adds it to the pool of
+// usable tokens again.
+// Signal users should add their handling by adding another procedure of that name.
+PROC
+	XCHooksProc_ReceiveInventorySignal( (CHARACTER)_Char, (STRING)_EventName )
+	AND
+	XCHooksIntDB__UsedSignalTokens( _Char, _EventName, _Token )
+THEN
+	XCHooksDB__SignalTokens( _Token );
+	NOT XCHooksIntDB__UsedSignalTokens( _Char, _EventName, _Token );
+	ItemToContainer( _Token, ITEM_XC_SIGNALTOKEN_STORAGE );
+
+// This is the hook to create an inventory signal
+PROC
+	XCHooksProc_SendInventorySignal( (CHARACTER)_Char, (STRING)_EventName )
+	AND
+	XCHooksDB__SignalTokens( _Token )
+THEN
+	XCHooksIntProc__AcquireSignalToken( _Char, _EventName, _Token );
+
+// When the token is added to the character
+IF
+	ItemAddedToCharacter( _Token, _Char )
+	AND
+	XCHooksIntDB__UsedSignalTokens( _Char, _EventName, _Token )
+THEN
+	XCHooksProc_ReceiveInventorySignal( _Char, _EventName );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Respeccing
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+PROC
+	XCHook_AfterRespecc( (CHARACTER)_Char )
+THEN
+	NOT _Char.XCHooksIntFlag__IsRespeccing();
+
+// before respecc
+PROC
+	ProcIncreaseCompMaxIfLonewolf( (CHARACTER)_Char )
+THEN
+	_Char.XCHooksIntFlag__IsRespeccing();
+
+// respecc successful
+IF
+	_Char.XCHooksIntFlag__IsRespeccing()
+	AND
+	NOT DB_MephistoRespecCost( _ )
+THEN
+	XCHook_AfterRespecc( _Char );
+
+// if respecc fails
+PROC
+	ProcDecreaseCompMaxIfLonewolf( (CHARACTER)_Char )
+THEN
+	NOT _Char.XCHooksIntFlag__IsRespeccing();
+
+
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

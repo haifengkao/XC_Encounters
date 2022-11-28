@@ -1,0 +1,87 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// Abilities
+// Weapons
+XCDB__Abilities( "Bow"				);	// Bow
+XCDB__Abilities( "Crossbow"			);	// Crossbow
+XCDB__Abilities( "DualWielding"		);	// Dual Wielding
+XCDB__Abilities( "SingleHanded"		);	// Singlehanded
+XCDB__Abilities( "Blackrock"		);	// Tenebrium
+XCDB__Abilities( "TwoHanded"		);	// Two-Handed
+XCDB__Abilities( "Wand"				);	// Wand
+// Defense
+XCDB__Abilities( "ArmorMastery"		);	// Armor Specialist
+XCDB__Abilities( "BodyBuilding"		);	// Bodybuildig
+XCDB__Abilities( "Shield"			);	// Shield Specialist
+XCDB__Abilities( "Willpower"		);	// Willpower
+XCDB__Abilities( "Reflexes"			);	// ???
+// Schools
+XCDB__Abilities( "AirSpecialist"	);	// Aerotheurge
+XCDB__Abilities( "RangerLore"		);	// Expert Marksman
+XCDB__Abilities( "EarthSpecialist"	);	// Geomancer
+XCDB__Abilities( "WaterSpecialist"	);	// Hydrosophist
+XCDB__Abilities( "WarriorLore"		);	// Man-at-Arms
+XCDB__Abilities( "FireSpecialist"	);	// Pyrokinetic
+XCDB__Abilities( "RogueLore"		);	// Scoundrel
+XCDB__Abilities( "Sourcery"			);	// Witchcraft
+// Personality
+XCDB__Abilities( "Barter"			);	// Bartering
+XCDB__Abilities( "Charisma"			);	// Charisma
+XCDB__Abilities( "Leadership"		);	// Leadership
+XCDB__Abilities( "Luck"				);	// Lucky Charm
+XCDB__Abilities( "Charm"			);	// ?
+XCDB__Abilities( "Intimidate"		);	// ?
+XCDB__Abilities( "Reason"			);	// ?
+// Craftmanship
+XCDB__Abilities( "Repair"			);	// Blacksmithing
+XCDB__Abilities( "Crafting"			);	// Crafting
+XCDB__Abilities( "Loremaster"		);	// Loremaster
+XCDB__Abilities( "Telekinesis"		);	// Telekinesis
+XCDB__Abilities( "Throwing"			);	// ???
+// Nasty Deeds
+XCDB__Abilities( "Lockpicking"		);	// Lockpicking
+XCDB__Abilities( "Pickpocket"		);	// Pickpocketing
+XCDB__Abilities( "Sneaking"			);	// Sneaking
+KBSECTION
+// There is no OnResurrect event for character scripts, so we simultate one
+IF
+	CharacterResurrected( _Char )
+THEN
+	CharacterSetEvent( _Char, "XCEVOnResurrect" );
+
+
+// CharacterAddAbility() does not allow to add more than 1 to an ability, whatever the
+// reason might be.
+// Doing it with a counter in a recursive procedure seems to work
+
+// Increase an Ability
+PROC
+	XCProc_IncreaseAbility( (CHARACTER)_Char, (STRING)_Ability, (INTEGER)_IncreaseAmount )
+	AND
+	_IncreaseAmount > 0
+	AND
+	XCDB__Abilities( _Ability )
+	AND
+	IntegerSubtract( _IncreaseAmount, 1, _NextAmount )
+THEN
+	CharacterAddAbility( _Char, _Ability, 1 );
+	XCProc_IncreaseAbility( _Char, _Ability, _NextAmount );
+
+// Decrease an Ability
+PROC
+	XCProc_DecreaseAbility( (CHARACTER)_Char, (STRING)_Ability, (INTEGER)_DecreaseAmount )
+	AND
+	_DecreaseAmount > 0
+	AND
+	XCDB__Abilities( _Ability )
+	AND
+	IntegerSubtract( _DecreaseAmount, 1, _NextAmount )
+THEN
+	CharacterRemoveAbility( _Char, _Ability, 1 );
+	XCProc_DecreaseAbility( _Char, _Ability, _NextAmount );
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

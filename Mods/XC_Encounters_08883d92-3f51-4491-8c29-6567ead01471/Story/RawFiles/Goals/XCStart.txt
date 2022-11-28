@@ -1,0 +1,21 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+// A procedure to hook in.
+// At the point where it is called, all INIT sections should be finished and nothing else is yet done,
+// players are added to char creation.
+PROC
+	XCStartHook_On_GameStarted()
+THEN
+	XCNOP(1);
+
+IF
+	GameEventSet("GAMEEVENT_GameStarted")
+THEN
+	XCStartHook_On_GameStarted();
+	GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION

@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<header version="2" time="0" />
+	<version major="33" minor="0" revision="0" build="0" />
+	<region id="Recipes">
+		<node id="root">
+			<children>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor1" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor1" type="22" />
+					<attribute id="Description" value="RCP_Survivor1" type="22" />
+					<attribute id="Recipes" value="XC_WPN_Branch_A_Nails,XC_CraftedSpear,CraftedHammer" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor2" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor2" type="22" />
+					<attribute id="Description" value="RCP_Survivor2" type="22" />
+					<attribute id="Recipes" value="WPN_CraftedShield_01" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor3" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor3" type="22" />
+					<attribute id="Description" value="RCP_Survivor3" type="22" />
+					<attribute id="Recipes" value="ShieldMetal_Anvil" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor4" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor4" type="22" />
+					<attribute id="Description" value="RCP_Survivor4" type="22" />
+					<attribute id="Recipes" value="CraftedDagger" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor5" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor5" type="22" />
+					<attribute id="Description" value="RCP_Survivor5" type="22" />
+					<attribute id="Recipes" value="XC_WPN_Branch_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor6" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor6" type="22" />
+					<attribute id="Description" value="RCP_Survivor6" type="22" />
+					<attribute id="Recipes" value="XC_CraftedStaff" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor7" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor7" type="22" />
+					<attribute id="Description" value="RCP_Survivor7" type="22" />
+					<attribute id="Recipes" value="Pearl_ArmorScale,Pearl_ArmorLeather,Pearl_ClothArmor,Pearl_RobeArmor,Pearl_Garment,Pearl_ArmorBelt,Pearl_ArmorGloves,Pearl_ArmorHelmet,Pearl_LeatherHelmet" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor8" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor8" type="22" />
+					<attribute id="Description" value="RCP_Survivor8" type="22" />
+					<attribute id="Recipes" value="XC_Crafting_WhetStone_Wheel_Knife,XC_Crafting_WhetStone_Wheel_Dagger,XC_Crafting_WhetStone_Wheel_Sword,XC_Crafting_WhetStone_Wheel_Axe,XC_Crafting_WhetStone_Wheel_TwoHandedAxe,XC_Crafting_WhetStone_Wheel_TwoHandedSword,XC_Crafting_WhetStone_Wheel_Spear" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor9" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor9" type="22" />
+					<attribute id="Description" value="RCP_Survivor9" type="22" />
+					<attribute id="Recipes" value="LOOT_Moonstone_A_Staff,LOOT_Moonstone_A_WandAir,LOOT_Moonstone_A_WandEarth,LOOT_Moonstone_A_WandFire,LOOT_Moonstone_A_WandWater,LOOT_Moonstone_A_WandShadow,XC_LOOT_OreBar_A_Steel_A_Club,XC_LOOT_OreBar_A_Steel_A_Large_TwoHandedMaul" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor10" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor10" type="22" />
+					<attribute id="Description" value="RCP_Survivor10" type="22" />
+					<attribute id="Recipes" value="WPN_ArrowHead_Poison_A,PotionPoison_Knife,PotionPoison_Dagger,PotionPoison_Sword,PotionPoison_Axe,PotionPoison_Spear,PotionPoison_TwoHandedSword,PotionPoison_TwoHandedAxe,PotionPoison_Staff,PotionPoison_Club,PotionPoison_Bow,PotionPoison_Crossbow" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor11" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor11" type="22" />
+					<attribute id="Description" value="RCP_Survivor11" type="22" />
+					<attribute id="Recipes" value="LOOT_Scraps_Leather_A_ClothArmor,LOOT_Scraps_Metal_A_ClothArmor,LOOT_Scraps_Metal_A_ArmorLeather,LOOT_Scraps_Scale_A_ArmorScale,LOOT_Scraps_Plate_A_ArmorScale" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor12" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor12" type="22" />
+					<attribute id="Description" value="RCP_Survivor12" type="22" />
+					<attribute id="Recipes" value="FUR_BoilingPot_A_ArmorLeather" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor13" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor13" type="22" />
+					<attribute id="Description" value="RCP_Survivor13" type="22" />
+					<attribute id="Recipes" value="Anvil_ArmorScale" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor14" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor14" type="22" />
+					<attribute id="Description" value="RCP_Survivor14" type="22" />
+					<attribute id="Recipes" value="CON_Drink_Cup_A_Oil_ArmorScale,ITEM_BottleWithOil_ArmorScale" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor15" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor15" type="22" />
+					<attribute id="Description" value="RCP_Survivor15" type="22" />
+					<attribute id="Recipes" value="CON_Potion_Invisible_A_FromShadow,LOOT_Essence_Shadow_A_ArmorScale,LOOT_Essence_Shadow_A_ArmorLeather,LOOT_Essence_Shadow_A_ClothArmor,LOOT_Essence_Shadow_A_RobeArmor,LOOT_Essence_Shadow_A_Garment,LOOT_Essence_Shadow_A_ArmorBelt,LOOT_Essence_Shadow_A_ArmorGloves,LOOT_Essence_Shadow_A_ArmorHelmet,LOOT_Essence_Shadow_A_LeatherHelmet" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor16" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor16" type="22" />
+					<attribute id="Description" value="RCP_Survivor16" type="22" />
+					<attribute id="Recipes" value="XC_CraftedRobe,XC_CraftedLeatherTorsoMagic" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor17" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor17" type="22" />
+					<attribute id="Description" value="RCP_Survivor17" type="22" />
+					<attribute id="Recipes" value="Yarn,Rope" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor18" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor18" type="22" />
+					<attribute id="Description" value="RCP_Survivor18" type="22" />
+					<attribute id="Recipes" value="FUR_CookingPot_A_Open" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor19" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor19" type="22" />
+					<attribute id="Description" value="RCP_Survivor19" type="22" />
+					<attribute id="Recipes" value="LOOT_Thread_A,XC_CraftedClothTorso,XC_CraftedLeatherTorso" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Survivor20" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Survivor20" type="22" />
+					<attribute id="Description" value="RCP_Survivor20" type="22" />
+					<attribute id="Recipes" value="XC_LOOT_Scraps_Leather_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion1" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion1" type="22" />
+					<attribute id="Description" value="RCP_Potion1" type="22" />
+					<attribute id="Recipes" value="HealingPotionFromMushroom,CON_Potion_Poison_A_FromMushroom" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion2" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion2" type="22" />
+					<attribute id="Description" value="RCP_Potion2" type="22" />
+					<attribute id="Recipes" value="CON_Potion_Fire_Res_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion3" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion3" type="22" />
+					<attribute id="Description" value="RCP_Potion3" type="22" />
+					<attribute id="Recipes" value="CON_Potion_Fire_Res_A,CON_Potion_Water_Res_A,CON_Potion_Earth_Res_A,CON_Potion_Air_Res_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion4" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion4" type="22" />
+					<attribute id="Description" value="RCP_Potion4" type="22" />
+					<attribute id="Recipes" value="CON_Potion_Poison_Res_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion5" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion5" type="22" />
+					<attribute id="Description" value="RCP_Potion5" type="22" />
+					<attribute id="Recipes" value="SpeedPotion" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion6" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion6" type="22" />
+					<attribute id="Description" value="RCP_Potion6" type="22" />
+					<attribute id="Recipes" value="ConstitutionPotion" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion7" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion7" type="22" />
+					<attribute id="Description" value="RCP_Potion7" type="22" />
+					<attribute id="Recipes" value="PerceptionPotion" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion8" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion8" type="22" />
+					<attribute id="Description" value="RCP_Potion8" type="22" />
+					<attribute id="Recipes" value="" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion9" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion9" type="22" />
+					<attribute id="Description" value="RCP_Potion9" type="22" />
+					<attribute id="Recipes" value="CON_Potion_Telekinesis_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Potion10" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Potion10" type="22" />
+					<attribute id="Description" value="RCP_Potion10" type="22" />
+					<attribute id="Recipes" value="IntelligencePotion,StrengthPotion,DexterityPotion" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Smith1" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Smith1" type="22" />
+					<attribute id="Description" value="RCP_Smith1" type="22" />
+					<attribute id="Recipes" value="CraftedSword" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Smith2" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Smith2" type="22" />
+					<attribute id="Description" value="RCP_Smith2" type="22" />
+					<attribute id="Recipes" value="CraftedAxe" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Smith3" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Smith3" type="22" />
+					<attribute id="Description" value="RCP_Smith3" type="22" />
+					<attribute id="Recipes" value="2HSword,2HAxe,CraftedMaul" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Smith4" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Smith4" type="22" />
+					<attribute id="Description" value="RCP_Smith4" type="22" />
+					<attribute id="Recipes" value="LOOT_OreBar_A_Steel_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Smith5" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Smith5" type="22" />
+					<attribute id="Description" value="RCP_Smith5" type="22" />
+					<attribute id="Recipes" value="LOOT_OreBar_A_Iron_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Smith6" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Smith6" type="22" />
+					<attribute id="Description" value="RCP_Smith6" type="22" />
+					<attribute id="Recipes" value="CraftedMetalTorso" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Smith7" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Smith7" type="22" />
+					<attribute id="Description" value="RCP_Smith7" type="22" />
+					<attribute id="Recipes" value="LOOT_Scraps_Cloth_A_Anvil,LOOT_Scraps_Leather_A_Anvil" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_MaradinoCookbook" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Legionnaire" type="22" />
+					<attribute id="Description" value="RCP_MaradinoCookbook" type="22" />
+					<attribute id="Recipes" value="WPN_ArrowShaft_A,XC_CraftedSpear,XC_CraftedStaff,XC_CON_Ingred_Dough_Cyseal_A,XC_CON_Ingred_Dough_Cyseal_B,CON_Ingred_Dough_Cyseal_A,CON_Ingred_Dough_Cyseal_A_Oven,XC_CON_Ingred_Dough_A,CON_Ingred_Dough_A,CON_Ingred_Dough_B,CON_Ingred_Dough_C,CON_Ingred_Dough_Pizza_A,CON_Ingred_Dough_CheeseBread_A,XC_CON_Food_Tomato_Sauce_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Cooking1" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Cooking1" type="22" />
+					<attribute id="Description" value="RCP_Cooking1" type="22" />
+					<attribute id="Recipes" value="ITEM_CookingPot_LTS_Campfire_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Cooking2" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Cooking2" type="22" />
+					<attribute id="Description" value="RCP_Cooking2" type="22" />
+					<attribute id="Recipes" value="XC_LOOT_Flour_A,XC_CON_Ingred_Dough_A,CON_Ingred_Dough_A,CON_Ingred_Dough_B,CON_Ingred_Dough_C,FOOD_Bread" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Cooking3" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Cooking3" type="22" />
+					<attribute id="Description" value="RCP_Cooking3" type="22" />
+					<attribute id="Recipes" value="XC_CON_Ingred_Dough_A,CON_Ingred_Dough_A,CON_Ingred_Dough_Pizza_A,CON_Ingred_Dough_CheeseBread_A,XC_CON_Ingred_Dough_Cyseal_A,XC_CON_Ingred_Dough_Cyseal_B,CON_Ingred_Dough_Cyseal_A,CON_Ingred_Dough_Apple_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Cooking4" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Cooking4" type="22" />
+					<attribute id="Description" value="RCP_Cooking4" type="22" />
+					<attribute id="Recipes" value="CON_Food_Potato_Boiled_A,XC_CON_Food_Potato_Mash_Cold_A,CON_Food_Potato_Mash_A,CON_Food_Fries_Rivellon_A,XC_CON_Food_Fries_Cold_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Cooking5" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Cooking5" type="22" />
+					<attribute id="Description" value="RCP_Cooking5" type="22" />
+					<attribute id="Recipes" value="CON_Food_Soup_Pumpkin_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic1" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic1" type="22" />
+					<attribute id="Description" value="RCP_Magic1" type="22" />
+					<attribute id="Recipes" value="XC_Ingredient_Dust_Bone" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic2" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic2" type="22" />
+					<attribute id="Description" value="RCP_Magic2" type="22" />
+					<attribute id="Recipes" value="XC_Ingredient_Dust_Mineral,XC_Ingredient_Dust_Star_A,XC_Ingredient_Dust_Star_B,XC_Ingredient_Dust_Star_C,XC_Ingredient_Dust_Moon,XC_Ingredient_Dust_Pixie_A,XC_Ingredient_Dust_Pixie_B,XC_Ingredient_Dust_Pixie_C,XC_Ingredient_Dust_Pixie_D" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic3" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic3" type="22" />
+					<attribute id="Description" value="RCP_Magic3" type="22" />
+					<attribute id="Recipes" value="XC_LOOT_Paw_A_Rabbit_A_Magic,LOOT_Rabbit_Paw_MagicAmulet_A,LOOT_Rabbit_Paw_MagicBelt_A,LOOT_Rabbit_Paw_MagicRing_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic4" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic4" type="22" />
+					<attribute id="Description" value="RCP_Magic4" type="22" />
+					<attribute id="Recipes" value="LOOT_Ink_Pot_A_Quill_A_Magic,LOOT_Feather_A_Quill_B,LOOT_Feather_A_Quill_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic5" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic5" type="22" />
+					<attribute id="Description" value="RCP_Magic5" type="22" />
+					<attribute id="Recipes" value="XC_Ingredient_Scroll_Air_A,XC_Ingredient_Scroll_Earth_A,XC_Ingredient_Scroll_Fire_A,XC_Ingredient_Scroll_Source_A,XC_Ingredient_Scroll_Water_A,XC_Tool_Crafting_Knife_Paper,RecipeID_Scroll_Air,RecipeID_Scroll_Earth,RecipeID_Scroll_Fire,RecipeID_Scroll_Marksman,RecipeID_Scroll_Scoundrel,RecipeID_Scroll_Source,RecipeID_Scroll_Warrior,RecipeID_Scroll_Water" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic6" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic6" type="22" />
+					<attribute id="Description" value="RCP_Magic6" type="22" />
+					<attribute id="Recipes" value="XC_LOOT_Scraps_Wood_A_Mush_A,XC_LOOT_Scraps_Wood_A_Mush_B,XC_LOOT_Scraps_Wood_A_Mush_C,XC_LOOT_Scraps_Wood_A_Mush_D,XC_LOOT_Scraps_Wood_A_Mush_E,XC_BOOK_Paper_Sheet_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic7" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic7" type="22" />
+					<attribute id="Description" value="RCP_Magic7" type="22" />
+					<attribute id="Recipes" value="XC_Ingredient_Soul_Tormented_Magic,LOOT_Soul_Tormented_A_Dagger,LOOT_Soul_Tormented_A_Knife,LOOT_Soul_Tormented_A_Sword,LOOT_Soul_Tormented_A_Axe,LOOT_Soul_Tormented_A_Spear,LOOT_Soul_Tormented_A_TwoHandedSword,LOOT_Soul_Tormented_A_TwoHandedAxe,LOOT_Soul_Tormented_A_Staff,LOOT_Soul_Tormented_A_Club,LOOT_Soul_Tormented_A_Bow,LOOT_Soul_Tormented_A_Crossbow" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic8" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic8" type="22" />
+					<attribute id="Description" value="RCP_Magic8" type="22" />
+					<attribute id="Recipes" value="XC_Ingredient_Scroll_Air_A,XC_Ingredient_Scroll_Earth_A,XC_Ingredient_Scroll_Fire_A,XC_Ingredient_Scroll_Water_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic9" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic9" type="22" />
+					<attribute id="Description" value="RCP_Magic9" type="22" />
+					<attribute id="Recipes" value="Ruby_ArmorScale,Ruby_ArmorLeather,Ruby_ClothArmor,Ruby_RobeArmor,Ruby_Garment,Ruby_ArmorBelt,Ruby_ArmorGloves,Ruby_ArmorHelmet,Ruby_LeatherHelmet" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Magic10" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Magic10" type="22" />
+					<attribute id="Description" value="RCP_Magic10" type="22" />
+					<attribute id="Recipes" value="" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Archer1" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Archer1" type="22" />
+					<attribute id="Description" value="RCP_Archer1" type="22" />
+					<attribute id="Recipes" value="XC_CraftedBow" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Archer2" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Archer2" type="22" />
+					<attribute id="Description" value="RCP_Archer2" type="22" />
+					<attribute id="Recipes" value="WPN_ArrowHead_Steam_A,XC_WPN_ArrowHead_Steam_A" type="23" />
+				</node>
+				<node id="Recipe">
+					<attribute id="RecipeID" value="RCP_Archer3" type="22" />
+					<attribute id="Title" value="BOOK_RCP_Archer3" type="22" />
+					<attribute id="Description" value="RCP_Archer3" type="22" />
+					<attribute id="Recipes" value="CON_Potion_Debuf_Strength_A" type="23" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

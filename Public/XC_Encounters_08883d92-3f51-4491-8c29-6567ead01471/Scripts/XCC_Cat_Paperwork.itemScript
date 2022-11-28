@@ -1,0 +1,3 @@
+INIT
+	ITEM:__Me
+	STRING:%XCCont_ItemCategory="Paperwork"

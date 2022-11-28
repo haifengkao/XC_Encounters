@@ -1,0 +1,241 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// For container initialization, we only need this to query the categories from the containers
+XCContDB__Placed( ITEM_XC_Cont_Armor_1			);
+XCContDB__Placed( ITEM_XC_Cont_Arrows_1			);
+XCContDB__Placed( ITEM_XC_Cont_Barrels_1		);
+XCContDB__Placed( ITEM_XC_Cont_Blacksmith_1		);
+XCContDB__Placed( ITEM_XC_Cont_Bottles_1		);
+XCContDB__Placed( ITEM_XC_Cont_Containers_1		);
+XCContDB__Placed( ITEM_XC_Cont_Cook_1			);
+XCContDB__Placed( ITEM_XC_Cont_Crafter_1		);
+XCContDB__Placed( ITEM_XC_Cont_Food_1			);
+XCContDB__Placed( ITEM_XC_Cont_Grenades_1		);
+XCContDB__Placed( ITEM_XC_Cont_Jewelry_1		);
+XCContDB__Placed( ITEM_XC_Cont_Keys_1			);
+XCContDB__Placed( ITEM_XC_Cont_Paperwork_1		);
+XCContDB__Placed( ITEM_XC_Cont_Potions_1		);
+XCContDB__Placed( ITEM_XC_Cont_Quest_1			);
+XCContDB__Placed( ITEM_XC_Cont_Scrolls_1		);
+XCContDB__Placed( ITEM_XC_Cont_Skillbooks_1		);
+XCContDB__Placed( ITEM_XC_Cont_Tools_1			);
+XCContDB__Placed( ITEM_XC_Cont_Unclassified_1	);
+XCContDB__Placed( ITEM_XC_Cont_Weapons_1		);
+XCContDB__Placed( ITEM_XC_Cont_Wood_1			);
+XCContDB__Placed( ITEM_XC_Cont_Zombie_1			);
+
+XCContDB__Fallback( ITEM_XC_Cont_Unclassified_1 );
+
+XCContProc__Setup();
+KBSECTION
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// For some reason still unknown to me, the pyramids do not have the 'Send to Homestead' menu entry
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// add further templates to the 'forbidden' database
+PROC
+	XCContProc_AddForbiddenTemplate( (STRING)_ItemTemplate )
+	AND
+	NOT XCContDB_Forbidden_Templates( _ItemTemplate )
+THEN
+	XCContDB_Forbidden_Templates( _ItemTemplate );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Event handlers
+//
+// To disable the default 'Send to Homestead' without interfering with existing code, we simply unset the database used
+// by the default handlers. Default handling is done in DOSStart/HOM_PersonalChests.txt.
+// Handling there depends on the 'owner' database DB_PersonalChestOwner( (ITEM)_Chest, (CHARACTER)_OwnerPlayer ),
+// if we remove this database, the code will never again reach the execution part.
+//
+// To make use of the new containers, we need to enable sending to homestead long before it can happen ingame.
+// For now, we enable it when reaching Cyseal Beach but we should find a better event, the dialog with Arhu at the Gate
+// perhaps. After all I've learned from Let's Players, people are so creative in skipping and missing stuff that an
+// event that CANNOT be skipped should be used, like the mentioned dialog.
+// It's not too early but still early enough.
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Disable 'normal' sending to homestead by disabling the chest-owner database
+PROC
+	XCHook_Cys_First_BeforePlayer()
+	AND
+	DB_PersonalChestOwner( _Chest, _OwnerPlayer )
+THEN
+	NOT DB_PersonalChestOwner( _Chest, _OwnerPlayer );
+	XCDB_OLD_PersonalChestOwner( _Chest, _OwnerPlayer );
+
+// possible 'hook' in DOSStart/CYS_Arhu.txt, the box trigger is right before the Cyseal Southeast Gate, covering the whole bridge
+// should be used to enable homestead sending
+//PROC
+//ProcOneShotTriggerEntered((CHARACTER)_Player,TRIGGER_CYS_Arhu_Gate_Area)
+//THEN
+//ItemUnlockAndOpen(ITEM_CYS_Cyseal_Gate_Arhu);
+//ProcCharacterMoveToTrigger(CHARACTER_CYS_Arhu, TRIGGER_CYS_Point_BodyGuard1, 1, "");
+
+// Enable 'Send to Homestead'
+PROC
+	XCBagsHook_After_All_Init_Done()
+THEN
+	ItemTemplateAddToCharacter( "CON_Potion_Poison_A_8122de3c-a331-44a4-b51a-6767a778776f", CHARACTER_Player1, 1 );
+	EnableSendToHomestead(1);
+
+PROC
+	XCBagsHook_After_All_Init_Done()
+	AND
+	ItemTemplateIsInCharacterInventory( CHARACTER_Player1, "CON_Potion_Poison_A_8122de3c-a331-44a4-b51a-6767a778776f", _Count )
+	AND
+	_Count > 0
+	AND
+	GetItemhandleForItemTemplateInInventory( CHARACTER_Player1, "CON_Potion_Poison_A_8122de3c-a331-44a4-b51a-6767a778776f", _ItemHandle )
+THEN
+	XCContProc__SendToHomestead( CHARACTER_Player1, _ItemHandle );
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Container initialization (called in INIT only)
+//
+// - Builds a database of all containers with category names: XCContDB_Containers()
+//
+// Unsets the initial container database in the process
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// init containers
+PROC
+	XCContProc__Setup()
+	AND
+	XCContDB__Placed( _Container )
+	AND
+	ItemGetVarString( _Container, "XCCont_ContainerCategory", _ContainerCategory )
+	AND
+	_ContainerCategory != ""
+THEN
+	NOT XCContDB__Placed( _Container );
+	XCContDB_Containers( _ContainerCategory, _Container );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// New 'Send to Homestead' handler
+//
+// When a send is requested, we call a procedure to handle it. This procedure first calls a hook to enable other modules
+// to step in. The hooks can set XCContFlag__HandleAlreadySent( _ItemHandle ) if they did any moving themselves or if
+// they wish to do some additional stuff. (Bags and bag controllers use this hook to prevent their own sending, bags
+// additionally do their own sending to homestead.)
+// We do not need the character who triggered the event for distribution anymore, but we pass it through to our hook
+// because other modules hooking in might want it.
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// we do not need the sending player anymore
+IF
+	ItemHandleSendToHomestead( _Char, _ItemHandle )
+THEN
+	XCContProc__SendToHomestead( _Char, _ItemHandle );
+
+// Hook template procedure
+PROC
+	XCContHook_PrepareForHomestead( (CHARACTER)_Char, (INTEGER)_ItemHandle )
+THEN
+	XCNOP(1);
+
+// Calling the hook
+PROC
+	XCContProc__SendToHomestead( (CHARACTER)_Char, (INTEGER)_ItemHandle )
+THEN
+	XCContHook_PrepareForHomestead( _Char, _ItemHandle );
+
+// With 'Send to Homestead' we do not distribute any items to their containers, instead we send them to the
+// 'hidden homestead', a container which distributes them.
+// (which needs to exist for external modules anyway)
+PROC
+	XCContProc__SendToHomestead( (CHARACTER)_Char, (INTEGER)_ItemHandle )
+	AND
+	NOT XCContFlag__HandleAlreadySent( _ItemHandle )
+THEN
+	ItemHandleToContainer( _ItemHandle, ITEM_XC_STORAGE_HOMESTEAD, -1 );
+
+// reset the skipper flag
+PROC
+	XCContProc__SendToHomestead( (CHARACTER)_Char, (INTEGER)_ItemHandle )
+	AND
+	XCContFlag__HandleAlreadySent( _ItemHandle )
+THEN
+	NOT XCContFlag__HandleAlreadySent( _ItemHandle );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Distribution of items to their containers
+//
+// We use a hidden container to trigger item distribution instead of doing it directly in the send procedure.
+//
+// The reason for this is that this is the easiest interface for other modules and mass sending of items can be done
+// that way, without that, a user might have to know what he sends. The ...MoveAllItemsToContainer() calls
+// are much easier though.
+//
+// When an item arrives in the container, it is immediately distributed, there are no more hooks to influence that.
+// If no matching category is found among the existing containers, the item is moved to the fallback container.
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Similar to the 'Black Hole Container' which deletes all it receives, the 'Homestead Container' distributes all it
+// receives to the respective containers.
+// No hook to intervene or control this process. Must be done before (and there is a hook for the 'Before'.)
+IF
+	ItemTemplateAddedToContainer( _, _ItemHandle, ITEM_XC_STORAGE_HOMESTEAD )
+THEN
+	XCContIntProc__DistributeToHomestead( _ItemHandle );
+
+// /////////////////////////////////////////////////////
+// inventory preparation
+// /////////////////////////////////////////////////////
+
+// Move an item to its container if one can be determined
+// - sets a skip flag for the following part (Fallback)
+PROC
+	XCContIntProc__DistributeToHomestead( (INTEGER)_ItemHandle )
+	AND
+	ItemHandleGetVarString( _ItemHandle, "XCCont_ItemCategory", _ContainerCategory )
+	AND
+	XCContDB_Containers( _ContainerCategory, _Container )
+THEN
+	XCContFlag__HandleDistributed( _ItemHandle );
+	ItemHandleToContainer( _ItemHandle, _Container, -1 );
+
+// If no skip flag is set, move the item to fallback
+PROC
+	XCContIntProc__DistributeToHomestead( (INTEGER)_ItemHandle )
+	AND
+	NOT XCContFlag__HandleDistributed( _ItemHandle )
+	AND
+	XCContDB__Fallback( _Container )
+THEN
+	ItemHandleToContainer( _ItemHandle, _Container, -1 );
+
+// Reset the skip flag
+PROC
+	XCContIntProc__DistributeToHomestead( (INTEGER)_ItemHandle )
+	AND
+	XCContFlag__HandleDistributed( _ItemHandle )
+THEN
+	NOT XCContFlag__HandleDistributed( _ItemHandle );
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

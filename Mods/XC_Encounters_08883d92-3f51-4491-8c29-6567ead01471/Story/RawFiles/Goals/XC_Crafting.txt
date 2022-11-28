@@ -1,0 +1,782 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// Register trigger for players
+ProcTriggerRegisterForPlayers( TRIGGER_XC_CYS_CraftingArea );
+
+// Crafting statues
+XCCraftingDB__CraftingStatues( 0, 0, ITEM_XC_Crafting_Statue_None		);
+XCCraftingDB__CraftingStatues( 1, 1, ITEM_XC_Crafting_Statue_Blacksmith	);
+XCCraftingDB__CraftingStatues( 2, 1, ITEM_XC_Crafting_Statue_Crafter	);
+XCCraftingDB__CraftingStatues( 3, 1, ITEM_XC_Crafting_Statue_All		);
+XCCraftingDB__CraftingStatues( 3, 0, ITEM_XC_Crafting_Statue_Sparkles	);
+
+XCCraftingProc__Init__Statues();
+
+// The crafting facilities that can be moved or picked up
+XCCraftingDB__MovableFacilities( ITEM_XC_Crafting_Anvil_1,				TRIGGER_XC_Crafting_Pos_Anvil			);
+XCCraftingDB__MovableFacilities( ITEM_XC_Crafting_Barrel_Oil_1,			TRIGGER_XC_Crafting_Pos_Barrel_Oil		);
+XCCraftingDB__MovableFacilities( ITEM_XC_Crafting_Barrel_Ooze_1,		TRIGGER_XC_Crafting_Pos_Barrel_Ooze		);
+XCCraftingDB__MovableFacilities( ITEM_XC_Crafting_Barrel_Water_1,		TRIGGER_XC_Crafting_Pos_Barrel_Water	);
+XCCraftingDB__MovableFacilities( ITEM_XC_Crafting_Cask_Wine_1,			TRIGGER_XC_Crafting_Pos_Cask_Wine		);
+XCCraftingDB__MovableFacilities( ITEM_XC_Crafting_Kitchen_1,			TRIGGER_XC_Crafting_Pos_Kitchen			);
+XCCraftingDB__MovableFacilities( ITEM_XC_Crafting_Keg_Beer_1,			TRIGGER_XC_Crafting_Pos_Keg_Beer		);
+XCCraftingDB__MovableFacilities( ITEM_XC_Crafting_WhetStone_Wheel_1,	TRIGGER_XC_Crafting_Pos_Whetstone_Wheel	);
+
+// Messages when movable facilities are moved back
+// DAF_Orc_Torturer_Lorr_M
+// DAF_BO_OrcTortureNolanDied_02:	See what 'appen when stupid 'umans take charge? Chaos!
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Anvil_1,				"MOV", "DAF_BO_OrcTortureNolanDied_02"	);
+// DAF_Human_Immaculate_ImmaculateDuelist_M_2
+// DAF_Immaculate_Aggro_02:			Ha! How far did you think you'd get, Lost One?
+// DAF_Immaculate_Forgotten_03:		Bah! I haven't time for tricks of the light.
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Barrel_Oil_1,		"INV", "DAF_Immaculate_Aggro_02"		);
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Barrel_Oil_1,		"MOV", "DAF_Immaculate_Forgotten_03"	);
+// CYS_Human_PrisonGuard_Legionnaire_M
+// CYS_GuardShootPrisoner:			Ha! So much for your great escape!
+// CYS_PrisonerEscaped:				Blast and darn it! The cretin managed to escape!
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Barrel_Ooze_1,		"INV", "CYS_GuardShootPrisoner"			);
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Barrel_Ooze_1,		"MOV", "CYS_PrisonerEscaped"			);
+// CYS_Human_PatrolLead_Legionnaire_M
+// CYS_PatrolGuardTalkToGuard_1_1:	Excellent! Let's keep it that way.
+// CYS_PatrolGuardWestSide_1:		Cyseal isn't so bad on a quiet day like this, is it?
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Barrel_Water_1,		"INV", "CYS_PatrolGuardTalkToGuard_1_1"	);
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Barrel_Water_1,		"MOV", "CYS_PatrolGuardWestSide_1"		);
+// CYS_Orc_Grieving_Broggnar_M
+// CYS_GreavingOrc_Story_02:		You! 'Ippocrites! Liars! Fiends!
+// CYS_GreavingOrc_Story_00:		It's 'ere, at my feet. Watch your step, will ye?
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Cask_Wine_1,			"INV", "CYS_GreavingOrc_Story_02"		);
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Cask_Wine_1,			"MOV", "CYS_GreavingOrc_Story_00"		);
+// CYS_Human_Thief_Robin_M
+// CYS_FishThief2_Script_1:			Let me out! I've been tricked! I've been suckered!
+// CYS_FishThief2_Script_0:			I... I... It isn't fair!
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Keg_Beer_1,			"INV", "CYS_FishThief2_Script_1"		);
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Keg_Beer_1,			"MOV", "CYS_FishThief2_Script_0"		);
+// DAF_Human_TorturePrisoner_Prisoner_F
+// DAF_TorturePrisoner_1:			You can do what you like with us, you monsters! Justice will find you in the end!
+// DAF_BO_TunnelCowering_01:		I... I thought we'd left danger behind us!
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Kitchen_1,			"INV", "DAF_TorturePrisoner_1"			);
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_Kitchen_1,			"MOV", "DAF_BO_TunnelCowering_01"		);
+// CYS_Ghost_Strongman_Snorri_M
+// CYS_SnorriFight:					Ha! That was easy as cherry pie. What else've you got, ey? Put 'em up!
+XCCraftingDB__MoveBack__ItemMessages( ITEM_XC_Crafting_WhetStone_Wheel_1,	"MOV", "CYS_SnorriFight"				);
+
+// Multi-Input to create oil and ooze barrels
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Fish_A_35bfe2cf-7a83-422c-b8c4-8a90b0c0e55d" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Fish_B_e9f60640-98dd-480d-9531-7f016bd0cced" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Fish_C_b7101e9c-2305-4015-8872-b46bbf13d237" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Fish_D_6245ee9e-69b7-426a-97ce-e7f491d42129" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Fish_E_93c60d6d-7db1-4e53-b5ac-f1fefbf832a9" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Fish_F_6e06b364-76ae-4f2b-911b-af879adeec72" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Poisoned_Fish_A_8c693596-08d8-4ff4-b01d-e0e40dae5a51" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Poisoned_Fish_B_a3297c8e-1cad-463d-9b0b-ac8be948824c" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Poisoned_Fish_C_7a8e19cd-26cd-446a-b2af-94a0700fca4e" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Poisoned_Fish_D_36f59d4a-1a8a-42c3-8818-9e8ec9507fcc" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Poisoned_Fish_E_8c6f9d68-5455-41dd-88b8-9b6291f46109" );
+XCCraftingDB__CategoryTriggers( "oil",	"CON_Food_Poisoned_Fish_F_c3900e31-3a0e-4136-b4e2-a79a99e4becd" );
+XCCraftingDB__CategoryTriggers( "oil",	"HAR_Starfish_A_b98a3821-d267-4293-af5b-abe41328aa7a" );
+XCCraftingDB__CategoryTriggers( "oil",	"HAR_Starfish_A_Magic_a3bcd8f0-cd3f-4514-80aa-7453db661cd3" );
+XCCraftingDB__CategoryTriggers( "oil",	"HAR_ShellPearl_Big_A_e5c7238b-3965-4fe3-b906-4918d695e967" );
+XCCraftingDB__CategoryTriggers( "oil",	"HAR_Shell_A_ef10b963-05b5-4db9-9ce7-1c9dadd99bc1" );
+XCCraftingDB__CategoryTriggers( "oil",	"HAR_Shell_B_06848e53-53b8-4eb6-bd2d-2802a0b2d35e" );
+XCCraftingDB__CategoryTriggers( "oil",	"HAR_Shell_Big_A_36900f30-df7d-4922-bd47-ff5238048a2e" );
+XCCraftingDB__CategoryTriggers( "oil",	"HAR_Shell_Big_B_8d9be96d-2731-47d8-abe0-469810e37ce4" );
+
+XCCraftingDB__CategoryTriggers( "ooze",	"CON_Herb_Mushroom_C_22dd3ff8-77b6-4243-be9f-f55f6f531707" );
+
+// 
+XCCraftingDB__EndProductTriggers( "oil",	"CONT_Barrel_A_9f41f684-590b-46db-b26d-87189941d8e0" );
+XCCraftingDB__EndProductTriggers( "oil",	"CONT_Barrel_A_Snow_bee48e5c-bae8-4636-97e2-b52cbb855d1e" );
+XCCraftingDB__EndProductTriggers( "oil",	"CONT_Cyseal_Barrel_A_OpenClose_857be6b8-1ebf-46a7-859c-24c6e32b635a" );
+XCCraftingDB__EndProductTriggers( "oil",	"CONT_WrathBarrel_A_OpenClose_ef299634-d756-4b24-9a34-f27788f4d759" );
+
+XCCraftingDB__EndProductTriggers( "ooze",	"CONT_Barrel_A_9f41f684-590b-46db-b26d-87189941d8e0" );
+XCCraftingDB__EndProductTriggers( "ooze",	"CONT_Barrel_A_Snow_bee48e5c-bae8-4636-97e2-b52cbb855d1e" );
+XCCraftingDB__EndProductTriggers( "ooze",	"CONT_Cyseal_Barrel_A_OpenClose_857be6b8-1ebf-46a7-859c-24c6e32b635a" );
+// root template has the stat 'XC_Wooden_Crate', used to be 'CONT_Crate', so it won't work unless and object has a changed stat
+XCCraftingDB__EndProductTriggers( "ooze",	"CONT_WrathBarrel_A_OpenClose_ef299634-d756-4b24-9a34-f27788f4d759" );
+
+XCCraftingDB__EndProductTemplates( "oil",	1,	"CONT_Barrel_Oil_A_1b34b32c-e96c-404e-90cc-054cb549c558" );
+XCCraftingDB__EndProductTemplates( "ooze",	1,	"CONT_Barrel_Ooze_A_0ae0668f-418c-46c4-bcbb-1683aa3c68e3" );
+
+
+XCCraftingDB__Distiller__StageIndicator( 1,		"oil",	ITEM_XC_Crafting_Distiller_1_Oil_01 );
+XCCraftingDB__Distiller__StageIndicator( 2,		"oil",	ITEM_XC_Crafting_Distiller_1_Oil_02 );
+XCCraftingDB__Distiller__StageIndicator( 3,		"oil",	ITEM_XC_Crafting_Distiller_1_Oil_03 );
+XCCraftingDB__Distiller__StageIndicator( 4,		"oil",	ITEM_XC_Crafting_Distiller_1_Oil_04 );
+XCCraftingDB__Distiller__StageIndicator( 5,		"oil",	ITEM_XC_Crafting_Distiller_1_Oil_05 );
+XCCraftingDB__Distiller__StageIndicator( 6,		"oil",	ITEM_XC_Crafting_Distiller_1_Oil_06 );
+XCCraftingDB__Distiller__StageIndicator( 7,		"oil",	ITEM_XC_Crafting_Distiller_1_Oil_07 );
+XCCraftingDB__Distiller__StageIndicator( 8,		"oil",	ITEM_XC_Crafting_Distiller_1_Oil_08 );
+XCCraftingDB__Distiller__StageIndicator( 9,		"oil",	ITEM_XC_Crafting_Distiller_1_Oil_09 );
+XCCraftingDB__Distiller__StageIndicator( 10,	"oil",	ITEM_XC_Crafting_Distiller_1_Oil_10 );
+
+XCCraftingDB__Distiller__StageIndicator( 1,		"ooze",	ITEM_XC_Crafting_Distiller_1_Ooze_1 );
+XCCraftingDB__Distiller__StageIndicator( 2,		"ooze",	ITEM_XC_Crafting_Distiller_1_Ooze_2 );
+XCCraftingDB__Distiller__StageIndicator( 3,		"ooze",	ITEM_XC_Crafting_Distiller_1_Ooze_3 );
+XCCraftingDB__Distiller__StageIndicator( 4,		"ooze",	ITEM_XC_Crafting_Distiller_1_Ooze_4 );
+XCCraftingDB__Distiller__StageIndicator( 5,		"ooze",	ITEM_XC_Crafting_Distiller_1_Ooze_5 );
+
+XCCraftingDB__Distiller__ActivationEffectItem( "oil",	ITEM_XC_Crafting_Distiller_1_Deco_Bubbles );
+XCCraftingDB__Distiller__ActivationEffectItem( "ooze",	ITEM_XC_Crafting_Distiller_1_Deco_Bubbles );
+
+XCCraftingDB__Distiller__CountStartEffectItem( "oil",	ITEM_XC_Crafting_Distiller_1_Deco_PoisonCloud );
+XCCraftingDB__Distiller__CountStartEffectItem( "ooze",	ITEM_XC_Crafting_Distiller_1_Deco_PoisonCloud );
+
+XCCraftingProc__Init__Distiller();
+
+// Crafting statue templates
+XCCraftingDB__StatueTemplates( "XC_Crafting_Statue_White_af5aece7-afeb-488e-8960-7637a40ded47" );
+XCCraftingDB__StatueTemplates( "XC_Crafting_Statue_Green_6cf50024-8522-4b24-8df9-85fd1a663f0e" );
+XCCraftingDB__StatueTemplates( "XC_Crafting_Statue_Blue_8db4821a-1b8c-4b7c-8f33-e1faf715ef00" );
+XCCraftingDB__StatueTemplates( "XC_Crafting_Statue_Red_dba96a47-b120-4c38-b18b-47343af75365" );
+XCCraftingDB__StatueTemplates( "XC_Crafting_Statue_d61f1d51-867f-48b6-81a6-2289677b8d2c" );
+
+KBSECTION
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Some facilities are movable or can be picked up but they should never leave the crafting area
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Disable sending to homestead
+PROC
+	XCContHook_PrepareForHomestead( (CHARACTER)_Char, (INTEGER)_ItemHandle )
+	AND
+	XCCraftingDB__MovableFacilities( _CraftingFacility, _, _ItemHandle )
+THEN
+	XCContFlag__HandleAlreadySent( _ItemHandle );
+	XCCraftingProc__MoveBackCraftingFacility( _CraftingFacility, _Char, "MOV" );
+
+// initialize the movable facilities
+// store initial position where the item will be moved to if necessary
+// store handle to disable send to homestead
+IF
+	XCCraftingDB__MovableFacilities( (ITEM)_CraftingFacility, (TRIGGER)_Pos )
+	AND
+	ItemGetHandle( _CraftingFacility, _ItemHandle )
+THEN
+	XCCraftingDB__MovableFacilities( _CraftingFacility, _Pos, _ItemHandle );
+
+// Moves a crafting facility back from a player to its initial position
+PROC
+	XCCraftingProc__MoveBackCraftingFacility( (ITEM)_CraftingFacility, (CHARACTER)_Char, (STRING)_CommentType )
+	AND
+	XCCraftingDB__MovableFacilities( _CraftingFacility, _Pos )
+THEN
+	ItemTeleportToTrigger( _CraftingFacility, _Pos );
+	PlayEffectAtTrigger( "FX_GP_TeleportSmoke_A", _Pos );
+	XCCraftingProc__PlayerComment( _Char, _CraftingFacility, _CommentType );
+
+// Moves a crafting facility back to its initial position
+PROC
+	XCCraftingProc__MoveBackCraftingFacility( (ITEM)_CraftingFacility, (STRING)_CommentType )
+	AND
+	XCCraftingDB__MovableFacilities( _CraftingFacility, _Pos )
+THEN
+	ItemTeleportToTrigger( _CraftingFacility, _Pos );
+	PlayEffectAtTrigger( "FX_GP_TeleportSmoke_A", _Pos );
+	XCCraftingProc__ItemComment( _CraftingFacility, _CommentType );
+
+// Moving a facility outside of the crafting area is forbidden
+IF
+	CharacterMovedItem( _Char, _CraftingFacility )
+	AND
+	XCCraftingDB__MovableFacilities( _CraftingFacility, _ )
+	AND
+	ItemIsInTrigger( _CraftingFacility, TRIGGER_XC_CYS_CraftingArea, 0 )
+THEN
+	XCCraftingProc__MoveBackCraftingFacility( _CraftingFacility, _Char, "MOV" );
+
+// Dropping a facility via right click menu might drop it outside the crafting area
+IF
+	ItemDropped( _CraftingFacility )
+	AND
+	XCCraftingDB__MovableFacilities( _CraftingFacility, _ )
+	AND
+	ItemIsInTrigger( _CraftingFacility, TRIGGER_XC_CYS_CraftingArea, 0 )
+THEN
+	XCCraftingProc__MoveBackCraftingFacility( _CraftingFacility, "MOV" );
+
+// Might be a loophole
+IF
+	ItemHandleMovedFromCharacterToCharacter( _ItemHandle, _Sender, _Receiver, _ )
+	AND
+	XCCraftingDB__MovableFacilities( _CraftingFacility, _Pos, _ItemHandle )
+	AND
+	NOT _Receiver.XCCraftingFlag_InArea()
+THEN
+	XCCraftingProc__MoveBackCraftingFacility( _CraftingFacility, _Sender, "INV" );
+
+// Leaving the crafting area with a facility in inventory is forbidden
+IF
+	CharacterLeftTrigger( _Char, TRIGGER_XC_CYS_CraftingArea )
+	AND
+	XCCraftingDB__MovableFacilities( _CraftingFacility, _ )
+	AND
+	ItemIsInCharacterInventory( _CraftingFacility, _Char, 1 )
+THEN
+	XCCraftingProc__MoveBackCraftingFacility( _CraftingFacility, _Char, "INV" );
+
+// Shows an item comment (the ItemDropped() event does not have the dropper and we don't want to constantly monitor the facilities!)
+PROC
+	XCCraftingProc__ItemComment( (ITEM)_CraftingFacility, (STRING)_CommentType )
+	AND
+	XCCraftingDB__MoveBack__ItemMessages( _CraftingFacility, _CommentType, _Comment )
+THEN
+	ItemDisplayText( _CraftingFacility, _Comment );
+
+// Shows a player comment
+PROC
+	XCCraftingProc__PlayerComment( (CHARACTER)_Char, (ITEM)_CraftingFacility, (STRING)_CommentType )
+	AND
+	NOT XCCraftingFlag__DisplayDisabled(1)
+THEN
+	XCCraftingFlag__DisplayDisabled(1);
+	XCCraftingComments_Actors( _Char, _CraftingFacility, _CommentType );
+	TimerLaunch( "XCCrafting_ReenableComments", 5000 );
+	// CYS_BC_ReactOminousLever: Where in the name of the fork-tongued lizard king is this?
+	CharacterDisplayText( _Char, "CYS_BC_ReactOminousLever" );
+
+// The crafting facility answers to the player message
+IF
+	CharacterDisplayTextEnded( _Char, "CYS_BC_ReactOminousLever" )
+	AND
+	XCCraftingComments_Actors( _Char, _CraftingFacility, _CommentType )
+	AND
+	XCCraftingDB__MoveBack__ItemMessages( _CraftingFacility, _CommentType, _Comment )
+THEN
+	NOT XCCraftingComments_Actors( _Char, _CraftingFacility, _CommentType );
+	ItemDisplayText( _CraftingFacility, _Comment );
+
+// Message display is disabled for a short time to prevent message spamming, it is enabled
+// again when this timer finishes.
+IF
+	TimerFinished( "XCCrafting_ReenableComments" )
+THEN
+	NOT XCCraftingFlag__DisplayDisabled(1);
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Unlocking the crafting statues
+//
+// We want players to be able to apply Crafting and Blacksmithing buffs to ANY bracers or belts.
+// The reasoning behind this: if players have collected gear with those boosts once, they could always equip that gear
+// for Crafting or Blacksmithing. But to always have to switch gear is tedious, so I enable putting the boosts on gear
+// with Crafting and Blacksmithing.
+// (Yes this opens the chance of cheating but that I cannot change as long as there is no kind of 'StackId' for boosts.)
+//
+// We placed 4 statues in the crafting area as 'ingredients'. One does not do anything, one is for Blacksmithing boost,
+// one for the Crafting boost and one for both boosts. All statues occupy the same spot, only one is visible at any time.
+//
+// We check if players are wearing gear that has +2 of one of the Abilities and if so, we enable the corresponding statue.
+// ('Enable' here means, we set them on stage, the crafting recipes must exist already, we only enable one ingredient.)
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Initialization
+// We use an 'Unlock Stage', kind of a binary algorithm with Bit 1 corresponding to Blacksmithing and Bit 2 to Crafting.
+// If a bit is set, the corresponding ability will be unlocked for crafting. Thus we get the decimal values
+// 0 (0000): none enabled
+// 1 (0001): Blacksmithing enabled
+// 2 (0010): Crafting enabled
+// 3 (0011): both Blacksmithing and Crafting enabled
+// (It is clear that it is not really a binary logic because enabling two statues AND have them work is impossible.)
+// We start with 0 of course
+PROC
+	XCCraftingProc__Init__Statues()
+THEN
+	XCCraftingValue__UnlockStage( 0 );
+
+// Set all off stage that does not have the current unlock stage
+PROC
+	XCCraftingProc__Init__Statues()
+	AND
+	XCCraftingDB__CraftingStatues( _UnlockStage, _, _Statue )
+	AND
+	_UnlockStage != 0
+THEN
+	ItemSetOnstage( _Statue, 0 );
+
+
+// This is the second check, a check-on-use
+IF
+	CharacterUsedItem( _Char, _Statue )
+	AND
+	XCCraftingDB__CraftingStatues( _, _, _Statue )
+	AND
+	_Char.DB_IsPlayer()
+THEN
+	XCCraftingProc__CheckCraftingStatues( _Char );
+
+
+// Here we do the check for the abilities
+// As long as characters are within the crafting area, they get a Loremaster buff to 5
+IF
+	CharacterEnteredTrigger( _Char, TRIGGER_XC_CYS_CraftingArea )
+	AND
+	_Char.DB_IsPlayer()
+THEN
+	_Char.XCCraftingFlag_InArea();
+	XCCraftingProc__ApplyLMBuff( _Char );
+	XCCraftingProc__CheckCraftingStatues( _Char );
+
+// Remove the Loremaster buuf when the area is left.
+IF
+	CharacterLeftTrigger( _Char, TRIGGER_XC_CYS_CraftingArea )
+	AND
+	_Char.DB_IsPlayer()
+THEN
+	NOT _Char.XCCraftingFlag_InArea();
+	XCCraftingProc__RemoveLMBuff( _Char );
+
+
+PROC
+	XCCraftingProc__CheckCraftingStatues( (CHARACTER)_Char )
+	AND
+	XCCraftingValue__UnlockStage( _Stage )
+	AND
+	_Stage < 3
+	AND
+	XCCraftingQry__CheckCR( _Char )
+	AND
+	XCCraftingQry__CheckBS( _Char )
+	AND
+	XCCraftingValue__UnlockStage( _NewStage )
+	AND
+	_Stage != _NewStage
+THEN
+	XCCraftingProc__ExchangeStatues( _NewStage );
+
+PROC
+	XCCraftingProc__ExchangeStatues( (INTEGER)_Stage )
+	AND
+	XCCraftingDB__CraftingStatues( _StatueStage, _, _Statue )
+	AND
+	_Stage != _StatueStage
+THEN
+	ItemSetOnstage( _Statue, 0 );
+
+PROC
+	XCCraftingProc__ExchangeStatues( (INTEGER)_Stage )
+	AND
+	XCCraftingDB__CraftingStatues( _Stage, _PlayAppearEffect, _Statue )
+THEN
+	ItemSetOnstage( _Statue, 1 );
+	XCCraftingProc__PlayStatueAppearEffect( _Statue, _PlayAppearEffect );
+
+PROC
+	XCCraftingProc__PlayStatueAppearEffect( (ITEM)_Statue, 1 )
+THEN
+	PlayEffectAtItem( "FX_GP_TeleportSmoke_A", _Statue );
+
+QRY
+	XCCraftingQry__CheckCR( (CHARACTER)_Char )
+	AND
+	XCCraftingValue__UnlockStage( _Stage )
+	AND
+	_Stage >= 2		// if no check required, values >= 2 mean that crafting is unlocked
+THEN
+	XCNOP(1);
+
+// We do a check only if needed, only values < 2 mean that the Crafting statue is not yet unlocked
+QRY
+	XCCraftingQry__CheckCR( (CHARACTER)_Char )
+	AND
+	XCCraftingValue__UnlockStage( _Stage )
+	AND
+	_Stage < 2		// check only if required, values < 2 mean that crafting is still locked (0 and 1)
+	AND
+	CharacterGetBaseAbility(	_Char, "Crafting",		_BaseScore		) // Ability Base
+	AND
+	CharacterHasTalent(			_Char, "Scientist",		_ScientistScore	) // Talent Scientist
+	AND
+	CharacterHasTalent(			_Char, "ItemCreation",	_TinkererScore	) // Talent Tinkerer
+	AND
+	CharacterHasTrait(			_Char, "Pragmatic",		_PragmaticScore	) // Trait Pragmatic
+	AND
+	IntegerSum( _BaseScore,	_ScientistScore,	_First )		// Base + 0/1 Scientist
+	AND
+	IntegerSum( _First,		_TinkererScore,		_Second )		// + 0/1 Tinkerer
+	AND
+	IntegerSum( _Second,	_PragmaticScore,	_AbilityBase )	// + 0/1 Pragmatic
+	AND
+	CharacterGetAbility( _Char, "Crafting", _Ability )
+	AND
+	IntegerSubtract( _Ability, _AbilityBase, _GearScore )
+	AND
+	_GearScore == 2
+	AND
+	IntegerSum( _Stage, 2, _NewStage )
+THEN
+	NOT XCCraftingValue__UnlockStage( _Stage );
+	XCCraftingValue__UnlockStage( _NewStage );
+
+// Query should never fail
+QRY
+	XCCraftingQry__CheckCR( (CHARACTER)_Char )
+	AND
+	XCCraftingValue__UnlockStage( _Stage )
+	AND
+	_Stage < 2
+THEN
+	XCNOP(1);
+
+QRY
+	XCCraftingQry__CheckBS( (CHARACTER)_Char )
+	AND
+	XCCraftingValue__UnlockStage( _Stage )
+	AND
+	_Stage == 1		// when we are at 1, BS is already unlocked, at 3, this code is never called
+THEN
+	XCNOP(1);
+
+// We do a check only if needed, only even values (0 and 2) mean that the Blacksmithing statue is not yet unlocked
+QRY
+	XCCraftingQry__CheckBS( (CHARACTER)_Char )
+	AND
+	XCCraftingValue__UnlockStage( _Stage )
+	AND
+	_Stage != 1		// any other value than 1 means that Blacksmithing is still locked
+					// (0 and 2, when _Stage is 3, this code part is never called)
+	AND
+	CharacterGetBaseAbility(	_Char, "Repair",		_BaseScore		) // Ability Base
+	AND
+	CharacterHasTalent(			_Char, "Scientist",		_ScientistScore	) // Talent Scientist
+	AND
+	CharacterHasTalent(			_Char, "Repair",		_RepairScore	) // Talent Grease Monkey
+	AND
+	IntegerSum( _BaseScore,	_ScientistScore,	_First )		// Base + 0/1 Scientist
+	AND
+	IntegerSum( _First,		_RepairScore,		_AbilityBase )	// + 0/1 Grease Monkey
+	AND
+	CharacterGetAbility( _Char, "Repair", _Ability )
+	AND
+	IntegerSubtract( _Ability, _AbilityBase, _GearScore )
+	AND
+	_GearScore == 2
+	AND
+	IntegerSum( _Stage, 1, _NewStage )
+THEN
+	NOT XCCraftingValue__UnlockStage( _Stage );
+	XCCraftingValue__UnlockStage( _NewStage );
+
+// Query should never fail
+QRY
+	XCCraftingQry__CheckBS( (CHARACTER)_Char )
+	AND
+	XCCraftingValue__UnlockStage( _Stage )
+	AND
+	_Stage != 1
+THEN
+	XCNOP(1);
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Apply Loremaster boost while withing the crafting area for identifying
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Apply a Loremaster buff and store the applied value
+PROC
+	XCCraftingProc__ApplyLMBuff( (CHARACTER)_Char )
+	AND
+	CharacterGetAbility( _Char, "Loremaster", _LMScore )
+	AND
+	_LMScore < 5
+	AND
+	IntegerSubtract( 5, _LMScore, _LMBuff )
+THEN
+	XCCraftingDB__AppliedLMBuff( _Char, _LMBuff );
+	XCProc_IncreaseAbility( _Char, "Loremaster", _LMBuff );
+	//XCCraftingProc__IncreaseLM( _Char, _LMBuff );
+
+// Remove Loremaster buff if one was applied
+PROC
+	XCCraftingProc__RemoveLMBuff( (CHARACTER)_Char )
+	AND
+	XCCraftingDB__AppliedLMBuff( _Char, _LMBuff )
+THEN
+	NOT XCCraftingDB__AppliedLMBuff( _Char, _LMBuff );
+	XCProc_DecreaseAbility( _Char, "Loremaster", _LMBuff );
+	//XCCraftingProc__DecreaseLM( _Char, _LMBuff );
+
+PROC
+	XCCraftingProc__IncreaseLM( (CHARACTER)_Char, (INTEGER)_Counter )
+	AND
+	_Counter > 0
+	AND
+	IntegerSubtract( _Counter, 1, _NewCounter )
+THEN
+	CharacterAddAbility( _Char, "Loremaster", 1 );
+	XCCraftingProc__IncreaseLM( _Char, _NewCounter );
+
+PROC
+	XCCraftingProc__DecreaseLM( (CHARACTER)_Char, (INTEGER)_Counter )
+	AND
+	_Counter > 0
+	AND
+	IntegerSubtract( _Counter, 1, _NewCounter )
+THEN
+	CharacterRemoveAbility( _Char, "Loremaster", 1 );
+	XCCraftingProc__DecreaseLM( _Char, _NewCounter );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Oil and ooze barrel crafting
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+PROC
+	XCCraftingProc__Init__Distiller()
+	AND
+	XCCraftingDB__Distiller__StageIndicator( _, _, _Indicator )
+THEN
+	ItemSetOnstage( _Indicator, 0 );
+
+PROC
+	XCCraftingProc__Init__Distiller()
+	AND
+	XCCraftingDB__Distiller__ActivationEffectItem( _, _Indicator )
+THEN
+	ItemSetOnstage( _Indicator, 0 );
+
+PROC
+	XCCraftingProc__Init__Distiller()
+	AND
+	XCCraftingDB__Distiller__CountStartEffectItem( _, _Indicator )
+THEN
+	ItemSetOnstage( _Indicator, 0 );
+
+
+IF
+	ItemTemplateCombinedWithItemTemplate( _Template, "XC_Crafting_Distiller_54bcd32a-5c3f-40ae-9f4f-8355953191d9", _Char, _ )
+THEN
+	XCCraftingProc_CombineTemplateWithDistiller( _Template, _Char );
+
+// 'Feed' the distiller
+// Trigger templates can increase stage
+PROC
+	XCCraftingProc_CombineTemplateWithDistiller( (STRING)_Template, (CHARACTER)_Char )
+	AND
+	XCCraftingDB__CategoryTriggers( _Category, _Template )
+THEN
+	XCCraftingProc_RegisterDistillerCategory( _Category, _Char );
+
+// Craft end product if ready
+PROC
+	XCCraftingProc_CombineTemplateWithDistiller( (STRING)_Template, (CHARACTER)_Char )
+	AND
+	XCCraftingDB__EndProductTriggers( _Category, _Template )
+	AND
+	XCCraftingFlag__Distiller__CategoryReady( _Category )
+	AND
+	XCCraftingDB__EndProductTemplates( _Category, _Amount, _ProductTemplate )
+	AND
+	XCCraftingValue__Distiller__CategoryStage( _Category, _Stage )
+THEN
+	XCCraftingProc_ResetDistillerCategory( _Category );
+	ItemTemplateAddToCharacter( _ProductTemplate, _Char, _Amount );
+
+// all non trigger templates do a reset (including end product triggers)
+PROC
+	XCCraftingProc_CombineTemplateWithDistiller( (STRING)_Template, (CHARACTER)_Char )
+	AND
+	NOT XCCraftingDB__CategoryTriggers( _, _Template )
+	AND
+	XCCraftingValue__Distiller__CategoryStage( _Category, _Stage )
+THEN
+	XCCraftingProc_ResetDistillerCategory( _Category );
+
+PROC
+	XCCraftingProc_ResetDistillerCategory( (STRING)_Category )
+THEN
+	XCCraftingProc__ShowCountStartEffectItem( _Category, 0 );
+	XCCraftingProc__ShowActivationEffectItem( _Category, 0 );
+
+PROC
+	XCCraftingProc_ResetDistillerCategory( (STRING)_Category )
+	AND
+	XCCraftingValue__Distiller__CategoryStage( _Category, _Stage )
+THEN
+	XCCraftingProc__HideCategoryIndicators( _Category, _Stage );
+	NOT XCCraftingValue__Distiller__CategoryStage( _Category, _Stage );
+
+PROC
+	XCCraftingProc_ResetDistillerCategory( (STRING)_Category )
+	AND
+	XCCraftingFlag__Distiller__CategoryReady( _Category )
+THEN
+	NOT XCCraftingFlag__Distiller__CategoryReady( _Category );
+
+// remove the other category if set
+PROC
+	XCCraftingProc_RegisterDistillerCategory( (STRING)_Category, (CHARACTER)_Char )
+	AND
+	XCCraftingValue__Distiller__CategoryStage( _OtherCategory, _Stage )
+	AND
+	_Category != _OtherCategory
+THEN
+	XCCraftingProc_ResetDistillerCategory( _OtherCategory );
+
+// initialize if necessary
+PROC
+	XCCraftingProc_RegisterDistillerCategory( (STRING)_Category, (CHARACTER)_Char )
+	AND
+	NOT XCCraftingValue__Distiller__CategoryStage( _Category, _ )
+THEN
+	XCCraftingValue__Distiller__CategoryStage( _Category, 0 );
+	XCCraftingProc__ShowCountStartEffectItem( _Category, 1 );
+
+// increase stage and turn on lights
+PROC
+	XCCraftingProc_RegisterDistillerCategory( (STRING)_Category, (CHARACTER)_Char )
+	AND
+	XCCraftingValue__Distiller__CategoryStage( _Category, _Stage )
+	AND
+	IntegerSum( _Stage, 1, _NewStage )
+	AND
+	IntegerSum( _NewStage, 1, _NextStage )
+	AND
+	XCCraftingQry__ShowCategoryIndicators( _Category, _NewStage )
+	AND
+	XCCraftingQry__IncreaseCategoryStage( _Category, _NewStage )
+THEN
+	XCCraftingProc__ActivateDistillerCategory( _Category, _NextStage, _Char );
+
+QRY
+	XCCraftingQry__ShowCategoryIndicators( (STRING)_Category, (INTEGER)_Stage )
+	AND
+	XCCraftingDB__Distiller__StageIndicator( _Stage, _Category, _Light )
+THEN
+	ItemSetOnstage( _Light, 1 );
+
+QRY
+	XCCraftingQry__IncreaseCategoryStage( (STRING)_Category, (INTEGER)_Stage )
+	AND
+	XCCraftingValue__Distiller__CategoryStage( _Category, _OldStage )
+THEN
+	NOT XCCraftingValue__Distiller__CategoryStage( _Category, _OldStage );
+	XCCraftingValue__Distiller__CategoryStage( _Category, _Stage );
+
+// GLO_ActivatedSwitch2: Now to find out what effect that had...
+// GLO_ActivatedSwitch4: Did that cause a reaction?
+// GLO_SuccessfulUse: Well, that was efficient!
+// GEN_FakePerceptionReveal2: It's... it's a mirage...
+// TortureRackOccupied: Room for one more?
+
+// GEN_Comment_Furnace_1_2: Ah, a forge: The one place metal and bread are welcome in equal measure.
+// GEN_Comment_Furnace_1_1: Have I got anything that needs a good firing?
+
+PROC
+	XCCraftingProc__ActivateDistillerCategory( (STRING)_Category, (INTEGER)_Stage, (CHARACTER)_Char )
+	AND
+	XCCraftingDB__Distiller__StageIndicator( _Stage, _Category, _ )
+THEN
+	CharacterDisplayText( _Char, "TortureRackOccupied" );
+
+PROC
+	XCCraftingProc__ActivateDistillerCategory( (STRING)_Category, (INTEGER)_Stage, (CHARACTER)_Char )
+	AND
+	NOT XCCraftingDB__Distiller__StageIndicator( _Stage, _Category, _ )
+THEN
+	XCCraftingFlag__Distiller__CategoryReady( _Category );
+	XCCraftingProc__ShowActivationEffectItem( _Category, 1 );
+	XCCraftingProc__ShowCategoryActivationEffect( _Category );
+	CharacterDisplayText( _Char, "GLO_SuccessfulUse" );
+
+//PROC
+//	XCCraftingProc__ShowDistillerUsePlayerMessage( (STRING)_Message, (INTEGER)_Stage, (CHARACTER)_Char )
+
+
+PROC
+	XCCraftingProc__ShowCategoryActivationEffect( (STRING)_Category )
+THEN
+	PlayEffectAtItem( "FX_GP_TeleportSmoke_A", ITEM_XC_Crafting_Distiller_1_Deco_Bubbles );
+
+PROC
+	XCCraftingProc__ShowCountStartEffectItem( (STRING)_Category, 1 )
+	AND
+	XCCraftingDB__Distiller__CountStartEffectItem( _Category, _Item )
+THEN
+	ItemSetOnstage( _Item, 1 );
+
+PROC
+	XCCraftingProc__ShowCountStartEffectItem( (STRING)_Category, 0 )
+	AND
+	XCCraftingDB__Distiller__CountStartEffectItem( _Category, _Item )
+THEN
+	ItemSetOnstage( _Item, 0 );
+
+PROC
+	XCCraftingProc__ShowActivationEffectItem( (STRING)_Category, 1 )
+	AND
+	XCCraftingDB__Distiller__ActivationEffectItem( _Category, _Item )
+THEN
+	ItemSetOnstage( _Item, 1 );
+
+PROC
+	XCCraftingProc__ShowActivationEffectItem( (STRING)_Category, 0 )
+	AND
+	XCCraftingDB__Distiller__ActivationEffectItem( _Category, _Item )
+THEN
+	ItemSetOnstage( _Item, 0 );
+
+PROC
+	XCCraftingProc__HideCategoryIndicators( (STRING)_Category, (INTEGER)_Stage )
+	AND
+	XCCraftingDB__Distiller__StageIndicator( _LightStage, _Category, _Light )
+	AND
+	_LightStage <= _Stage
+THEN
+	ItemSetOnstage( _Light, 0 );
+
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Crafting 'General Raze's Wrath'
+//
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+IF
+	ItemTemplateCombinedWithItemTemplate( "TOOL_Figurine_GeneralRaze_11746c9e-54b6-4fec-a9f1-00606d92f610", _StatueTemplate, _Char, _ )
+	AND
+	XCCraftingDB__StatueTemplates( _StatueTemplate )
+THEN
+	XCCraftingProc__CraftRazesWrath( _Char );
+
+PROC
+	XCCraftingProc__CraftRazesWrath( (CHARACTER)_Char )
+	AND
+	NOT _Char.XCDB_IsPlayer()
+THEN
+	// GLO_FailedUse: I mustn't have used it correctly
+	CharacterDisplayText( _Char, "GLO_FailedUse" );
+
+PROC
+	XCCraftingProc__CraftRazesWrath( (CHARACTER)_Char )
+	AND
+	_Char.XCDB_IsPlayer()
+	AND
+	GetItemhandleForItemTemplateInInventory( _Char, "TOOL_Figurine_GeneralRaze_11746c9e-54b6-4fec-a9f1-00606d92f610", _DollHandle )
+THEN
+	ItemHandleToContainer( _DollHandle, ITEM_XC_STORAGE_BLACK_HOLE_SUN, 1 );
+	ItemTemplateAddToCharacter( "XC_WPN_Unique_RazesWrath_2a8ec1ba-f3e4-48d0-a929-8b35ec7fabd7", _Char, 1 );
+	// GEN_FakePerceptionReveal2: It's... it's a mirage...
+	CharacterDisplayText( _Char, "GEN_FakePerceptionReveal2" );
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "XCStart"

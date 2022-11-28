@@ -1,0 +1,11 @@
+INIT
+ITEM:__Me
+
+EVENTS
+EVENT XCEE_TornadoOnUse
+VARS
+	CHARACTER:_Char
+ON
+OnUseItem(_Char, __Me)
+ACTIONS
+ItemEvent(__Me, "XCEE_TornadoLearned")

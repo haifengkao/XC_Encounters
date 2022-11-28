@@ -1,0 +1,14 @@
+object itemstat "XC_WPN_CraftedShield_04","c1b10ee6-cf8a-403d-810b-1960d250ecc0","",0,0,"",-1,-1,-1,0,-1,-1
+object itemstat "XC_WPN_Metal_Shield_F","a5f8f8c5-282a-402c-a583-e15cca347628","",0,0,"Shield",1,1,1,0,-1,-1
+object itemstat "XC_WPN_Metal_Shield_G","a5f8f8c5-282a-402c-a583-e15cca347628","",0,0,"Shield",1,1,1,0,-1,-1
+object itemstat "XC_WPN_Royal_Shield_D","0b89f216-8ac7-415f-b5c5-3975f0487530","",0,0,"Shield",1,1,1,0,-1,-1
+object itemstat "XC_WPN_Royal_Shield_E","0b89f216-8ac7-415f-b5c5-3975f0487530","",0,0,"Shield",1,1,1,0,-1,-1
+object itemstat "XC_WPN_Royal_Shield_F","0b89f216-8ac7-415f-b5c5-3975f0487530","",0,0,"Shield",1,1,1,0,-1,-1
+object itemstat "XC_WPN_Blackrock_Shield_A_A","910caf06-8273-4426-9ab6-776a541e9951","",0,0,"BlackrockShield",1,1,1,0,-1,-1
+object itemstat "XC_WPN_Blackrock_Shield_A_B","910caf06-8273-4426-9ab6-776a541e9951","",0,0,"BlackrockShield",1,1,1,0,-1,-1
+object itemstat "XC_WPN_Blackrock_Shield_A_C","910caf06-8273-4426-9ab6-776a541e9951","",0,0,"BlackrockShield",1,1,1,0,-1,-1
+object itemstat "XC_WPN_Blackrock_Shield_B_A","5281d6f3-4b37-4284-b03f-b1034f3bc69a","",0,0,"BlackrockShield",1,1,1,0,-1,-1
+object itemstat "XC_WPN_Blackrock_Shield_B_B","5281d6f3-4b37-4284-b03f-b1034f3bc69a","",0,0,"BlackrockShield",1,1,1,0,-1,-1
+object itemstat "XC_SLD_Uni_Shield_Rogue_A_06","7f01a401-b9c8-41f2-9e5e-672c558d4534","",0,0,"",-1,-1,-1,0,-1,-1
+object itemstat "XC_SLD_Uni_Shield_Warrior_A_06","6ad9e210-ea35-4a05-b173-9410bf2d8174","",0,0,"",-1,-1,-1,0,-1,-1
+object itemstat "XC_SLD_Uni_Shield_Wizard_A_06","72f6fe7b-1713-467c-b36c-e85144fcdb02","",0,0,"",-1,-1,-1,0,-1,-1
