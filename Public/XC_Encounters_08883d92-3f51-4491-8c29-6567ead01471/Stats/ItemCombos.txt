@@ -169,6 +169,14 @@ start transform code Boost2Twice
       make boost param4
 end transform code
 
+start transform code Destroy1Boost2Twice
+  with using object do
+      object disappears
+  with used object do
+      make boost param3
+      make boost param4
+end transform code
+
 start transform code Transform1CreateTwoNew
   with using object do
       set transforms param1
@@ -290,24 +298,23 @@ use object XC_Ingredient_Dust_Pixie on category Wand with transform code Destroy
 // Junk Scrapping - XC_Bags
 // ***************************************************************************************************************************************************************
 use category XCCraftingAxe on object ITEM_FoldedShirts with transform code Transform2 parameters LOOT_Scraps_Cloth_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
-use category XC_Tool_Crafting_Knife_Crafter on object ITEM_FoldedShirts with transform code Transform2 parameters LOOT_Scraps_Cloth_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
+use category XCCraftingKnife on object ITEM_FoldedShirts with transform code Transform2 parameters LOOT_Scraps_Cloth_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category XCCraftingAxe on object XC_Wooden_GoblinBasket with transform code Transform2CreateNew parameters LOOT_Scraps_Cloth_A,XC_LOOT_Scraps_Wood_A,0,0,0,0,2,2 autolevel 0 autoValue 0
 use category XCCraftingAxe on object CONT_Grain_Sack_A with transform code Transform2CreateNew parameters LOOT_Scraps_Cloth_A,LOOT_Wheat_A,0,0,0,0,1,2 autolevel 0 autoValue 0
 use category XCCraftingAxe on object CONT_Grain_Sack_A with transform code Transform2CreateNew parameters LOOT_Scraps_Cloth_A,LOOT_Wheat_A,0,0,0,0,1,2 autolevel 0 autoValue 0
 use category XCCraftingAxe on object LOOT_Hide_Animal_A with transform code Transform2 parameters LOOT_Scraps_Leather_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
-use category XC_Tool_Crafting_Knife_Crafter on object CONT_Grain_Sack_A with transform code Transform2CreateNew parameters LOOT_Scraps_Cloth_A,LOOT_Wheat_A,0,0,0,0,1,2 autolevel 0 autoValue 0
-use category XC_Tool_Crafting_Knife_Crafter on object CONT_Grain_Sack_A with transform code Transform2CreateNew parameters LOOT_Scraps_Cloth_A,LOOT_Wheat_A,0,0,0,0,1,2 autolevel 0 autoValue 0
-use category XC_Tool_Crafting_Knife_Crafter on object LOOT_Hide_Animal_A with transform code Transform2 parameters LOOT_Scraps_Leather_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category XCCraftingKnife on object CONT_Grain_Sack_A with transform code Transform2CreateNew parameters LOOT_Scraps_Cloth_A,LOOT_Wheat_A,0,0,0,0,1,2 autolevel 0 autoValue 0
+use category XCCraftingKnife on object LOOT_Hide_Animal_A with transform code Transform2 parameters LOOT_Scraps_Leather_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
 use category XCCraftingAxe on object XC_ITEM_Log with transform code Transform2CreateNew parameters XC_WPN_Branch_A,XC_LOOT_Scraps_Wood_A,0,0,0,0,2,2 autolevel 0 autoValue 0
 use category XCCraftingAxe on object CONT_Barrel_A_Lid_A with transform code Transform2 parameters XC_LOOT_Scraps_Wood_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category XCCraftingAxe on object FUR_Bucket_A with transform code Transform2 parameters XC_LOOT_Scraps_Wood_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
-use category XCCraftingAxe on object CONT_Barrel_A with transform code Transform2CreateNew parameters XC_WPN_Branch_A,XC_LOOT_Scraps_Wood_A,0,0,0,0,2,2 autolevel 0 autoValue 0
+use category XCCraftingAxe on object CONT_Barrel_A with transform code Transform2CreateTwoNew parameters XC_WPN_Branch_A,XC_LOOT_Scraps_Wood_A,ITEM_Nails,0,0,0,2,2 autolevel 0 autoValue 0
 use category XCCraftingAxe on object XC_Wooden_Basket with transform code Transform2 parameters XC_LOOT_Scraps_Wood_A,0,0,0,0,0,2,1 autolevel 0 autoValue 0
 use category XCCraftingAxe on object XC_Wooden_BasketSmall with transform code Transform2 parameters XC_LOOT_Scraps_Wood_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category XCCraftingAxe on object XC_Wooden_BasketSmallApples with transform code Transform2CreateNew parameters XC_LOOT_Scraps_Wood_A,FOOD_Apple,0,0,0,0,1,2 autolevel 0 autoValue 0
 use category XCCraftingAxe on object XC_Wooden_BasketSmallFood with transform code Transform2CreateNew parameters XC_LOOT_Scraps_Wood_A,CON_Food_Potato_A,0,0,0,0,1,2 autolevel 0 autoValue 0
 use category XCCraftingAxe on object XC_Wooden_BasketSmallFood with transform code Transform2CreateNew parameters XC_LOOT_Scraps_Wood_A,LOOT_Wheat_A,0,0,0,0,1,2 autolevel 0 autoValue 0
-use category XCCraftingAxe on object XC_Wooden_Crate with transform code Transform2CreateNew parameters XC_WPN_Branch_A,XC_LOOT_Scraps_Wood_A,0,0,0,0,2,2 autolevel 0 autoValue 0
+use category XCCraftingAxe on object XC_Wooden_Crate with transform code Transform2CreateTwoNew parameters XC_WPN_Branch_A,XC_LOOT_Scraps_Wood_A,ITEM_Nails,0,0,0,2,2 autolevel 0 autoValue 0
 use category XCCraftingAxe on object FUR_WashTubBoard_A with transform code Transform2CreateNew parameters FUR_WashTub_A,FUR_WashBoard_A,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category XCCraftingAxe on object FUR_WashBoard_A with transform code Transform2CreateNew parameters LOOT_Scraps_Metal_A,XC_LOOT_Scraps_Wood_A,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category XCCraftingAxe on object FUR_WashTub_A with transform code Transform2CreateNew parameters LOOT_Scraps_Metal_A,XC_LOOT_Scraps_Wood_A,0,0,0,0,1,3 autolevel 0 autoValue 0
@@ -421,6 +428,21 @@ use category Philosopher on object AMER_UNI_TheVault_25 with transform code Tran
 use category Philosopher on object AMER_UNI_FoolsCrest_15 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_C,0,0,0,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
 use category Philosopher on object AMER_UNI_FoolsCrest_20 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_D,0,0,0,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
 use category Philosopher on object AMER_UNI_FoolsCrest_25 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_E,0,0,0,0,0,1,1 requires Blacksmithing 7 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MoriensBeak_5 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_A,0,0,0,0,0,1,1 requires Blacksmithing 2 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MoriensBeak_10 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_B,0,0,0,0,0,1,1 requires Blacksmithing 3 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MoriensBeak_15 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_C,0,0,0,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MoriensBeak_20 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_D,0,0,0,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MoriensBeak_25 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_E,0,0,0,0,0,1,1 requires Blacksmithing 7 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MasterOfNone_5 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_A,0,0,0,0,0,1,1 requires Blacksmithing 2 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MasterOfNone_10 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_B,0,0,0,0,0,1,1 requires Blacksmithing 3 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MasterOfNone_15 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_C,0,0,0,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MasterOfNone_20 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_D,0,0,0,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_MasterOfNone_25 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_E,0,0,0,0,0,1,1 requires Blacksmithing 7 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_PussBoots_5 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_A,0,0,0,0,0,1,1 requires Blacksmithing 2 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_PussBoots_10 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_B,0,0,0,0,0,1,1 requires Blacksmithing 3 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_PussBoots_15 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_C,0,0,0,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_PussBoots_20 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_D,0,0,0,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_PussBoots_25 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_E,0,0,0,0,0,1,1 requires Blacksmithing 7 autolevel 0 autoValue 0
 use category Philosopher on object AMER_UNI_EyeoftheStorm_15 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_C,0,0,0,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
 use category Philosopher on object AMER_UNI_EyeoftheStorm_20 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_D,0,0,0,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
 use category Philosopher on object AMER_UNI_EyeoftheStorm_25 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_E,0,0,0,0,0,1,1 requires Blacksmithing 7 autolevel 0 autoValue 0
@@ -644,6 +666,16 @@ use category Philosopher on object AMER_UNI_RoConviction_25 with transform code 
 use category Philosopher on object AMER_UNI_FaceOfTheFallen_15 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_C,0,0,0,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
 use category Philosopher on object AMER_UNI_FaceOfTheFallen_20 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_D,0,0,0,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
 use category Philosopher on object AMER_UNI_FaceOfTheFallen_25 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_E,0,0,0,0,0,1,1 requires Blacksmithing 7 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansWand_5 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_A,0,0,0,0,0,1,1 requires Blacksmithing 2 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansWand_10 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_B,0,0,0,0,0,1,1 requires Blacksmithing 3 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansWand_15 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_C,0,0,0,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansWand_20 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_D,0,0,0,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansWand_25 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_E,0,0,0,0,0,1,1 requires Blacksmithing 7 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansShield_5 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_A,0,0,0,0,0,1,1 requires Blacksmithing 2 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansShield_10 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_B,0,0,0,0,0,1,1 requires Blacksmithing 3 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansShield_15 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_C,0,0,0,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansShield_20 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_D,0,0,0,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
+use category Philosopher on object AMER_UNI_LorkansShield_25 with transform code Transform2 parameters AMER_LOOT_UNI_Shard_E,0,0,0,0,0,1,1 requires Blacksmithing 7 autolevel 0 autoValue 0
 // ***************************************************************************************************************************************************************
 // Scrolls - XC_Encounters
 // ***************************************************************************************************************************************************************
@@ -779,11 +811,17 @@ use object XC_Ingredient_Scroll_Earth on object XC_Ingredient_Scroll_Earth with 
 use object XC_Ingredient_Scroll_Fire on object XC_Ingredient_Scroll_Fire with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Fire,0,0,0,0,0,1,1 requires FireSpecialist 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Scroll_Source on object XC_Ingredient_Scroll_Source with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Source,0,0,0,0,0,1,1 requires Sourcery 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Scroll_Water on object XC_Ingredient_Scroll_Water with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Water,0,0,0,0,0,1,1 requires WaterSpecialist 1 autolevel 0 autoValue 0
+use object XC_Ingredient_Scroll_Ranger on object XC_Ingredient_Scroll_Ranger with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Ranger,0,0,0,0,0,1,1 requires RangerLore 1 autolevel 0 autoValue 0
+use object XC_Ingredient_Scroll_Rogue on object XC_Ingredient_Scroll_Rogue with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Rogue,0,0,0,0,0,1,1 requires RogueLore 1 autolevel 0 autoValue 0
+use object XC_Ingredient_Scroll_Warrior on object XC_Ingredient_Scroll_Warrior with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Warrior,0,0,0,0,0,1,1 requires WarriorLore 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Scroll_Air on object XC_Ingredient_Scroll_Air with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Air,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Scroll_Earth on object XC_Ingredient_Scroll_Earth with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Earth,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Scroll_Fire on object XC_Ingredient_Scroll_Fire with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Fire,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Scroll_Source on object XC_Ingredient_Scroll_Source with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Source,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Scroll_Water on object XC_Ingredient_Scroll_Water with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Water,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object XC_Ingredient_Scroll_Ranger on object XC_Ingredient_Scroll_Ranger with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Ranger,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object XC_Ingredient_Scroll_Rogue on object XC_Ingredient_Scroll_Rogue with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Rogue,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object XC_Ingredient_Scroll_Warrior on object XC_Ingredient_Scroll_Warrior with transform code Destroy1Transform2 parameters XC_Ingredient_Skillbook_Warrior,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Dust_Bone on category AirSkillbook with transform code Transform2 parameters XC_Ingredient_Skillbook_Air,0,0,0,0,0,1,1 requires AirSpecialist 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Dust_Bone on category EarthSkillbook with transform code Transform2 parameters XC_Ingredient_Skillbook_Earth,0,0,0,0,0,1,1 requires EarthSpecialist 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Dust_Bone on category FireSkillbook with transform code Transform2 parameters XC_Ingredient_Skillbook_Fire,0,0,0,0,0,1,1 requires FireSpecialist 1 autolevel 0 autoValue 0
@@ -843,7 +881,7 @@ use object XC_Ingredient_Skillbook_Fire on object XC_Scroll_Fire_B_Explode with 
 use object XC_Ingredient_Skillbook_Fire on object XC_Scroll_Fire_A_FireAbsorptionShield with transform code Destroy1Transform2 parameters XC_Skillbook_Fire_A_FireAbsorptionShield,0,0,0,0,0,1,1 requires FireSpecialist 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Fire on object XC_Scroll_Fire_B_Fireball with transform code Destroy1Transform2 parameters XC_Skillbook_Fire_B_Fireball,0,0,0,0,0,1,1 requires FireSpecialist 2 autolevel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Fire on object XC_Scroll_Fire_B_PurifyingFire with transform code Destroy1Transform2 parameters XC_Skillbook_Fire_B_PurifyingFire,0,0,0,0,0,1,1 requires FireSpecialist 2 autolevel 0 autoValue 0
-use object XC_Ingredient_Skillbook_Fire on object XC_Scroll_Fire_B_SphereofNegation with transform code Destroy1Transform2 parameters XC_Skillbook_Fire_B_SphereofNegation,0,0,0,0,0,1,1 requires FireSpecialist 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Fire on object XC_Scroll_Fire_B_SphereofNegation with transform code Destroy1Transform2 parameters XC_Skillbook_Fire_B_SphereofNegation,0,0,0,0,0,1,1 requires FireSpecialist 2 autole	vel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Fire on object XC_Scroll_Fire_B_SummonFireElemental with transform code Destroy1Transform2 parameters XC_Skillbook_Fire_B_SummonFireElemental,0,0,0,0,0,1,1 requires FireSpecialist 2 autolevel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Fire on object XC_Scroll_Fire_C_Soulfire with transform code Destroy1Transform2 parameters XC_Skillbook_Fire_C_Soulfire,0,0,0,0,0,1,1 requires FireSpecialist 4 autolevel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Fire on object XC_Scroll_Fire_C_InfectiousFlame with transform code Destroy1Transform2 parameters XC_Skillbook_Fire_C_InfectiousFlame,0,0,0,0,0,1,1 requires FireSpecialist 4 autolevel 0 autoValue 0
@@ -864,7 +902,7 @@ use object XC_Ingredient_Skillbook_Source on object XC_Scroll_Source_C_FingerofD
 use object XC_Ingredient_Skillbook_Source on object XC_Scroll_Source_C_HorrificScream with transform code Destroy1Transform2 parameters XC_Skillbook_Source_C_HorrificScream,0,0,0,0,0,1,1 requires Sourcery 4 autolevel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Source on object XC_Scroll_Source_C_Invulnerability with transform code Destroy1Transform2 parameters XC_Skillbook_Source_C_Invulnerability,0,0,0,0,0,1,1 requires Sourcery 4 autolevel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Source on object XC_Scroll_Source_C_Soulsap with transform code Destroy1Transform2 parameters XC_Skillbook_Source_C_Soulsap,0,0,0,0,0,1,1 requires Sourcery 4 autolevel 0 autoValue 0
-use object XC_Ingredient_Skillbook_Source on object XC_Scroll_Source_A_Resurrect with transform code Destroy1Transform2 parameters XC_Skillbook_Source_A_Resurrect,0,0,0,0,0,1,1 requires Sourcery 1 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Source on object XC_Scroll_Source_A_Resurrect with transform code Destroy1Transform2 parameters XC_Skillbook_Source_A_Resurrect,0,0,0,0,0,1,1 requires Sourcery 4 autolevel 0 autoValue 0
 // Water (Hydrosophist) 
 use object XC_Ingredient_Skillbook_Water on object XC_Scroll_Water_A_AvatarOfFrost with transform code Destroy1Transform2 parameters XC_Skillbook_Water_A_AvatarOfFrost,0,0,0,0,0,1,1 requires WaterSpecialist 1 autolevel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Water on object XC_Scroll_Water_A_FreezingTouch with transform code Destroy1Transform2 parameters XC_Skillbook_Water_A_FreezingTouch,0,0,0,0,0,1,1 requires WaterSpecialist 1 autolevel 0 autoValue 0
@@ -882,6 +920,52 @@ use object XC_Ingredient_Skillbook_Water on object XC_Scroll_Water_C_Hailstorm w
 use object XC_Ingredient_Skillbook_Water on object XC_Scroll_Water_C_Plague with transform code Destroy1Transform2 parameters XC_Skillbook_Water_C_Plague,0,0,0,0,0,1,1 requires WaterSpecialist 4 autolevel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Water on object XC_Scroll_Water_C_MassHealing with transform code Destroy1Transform2 parameters XC_Skillbook_Water_C_MassHealing,0,0,0,0,0,1,1 requires WaterSpecialist 4 autolevel 0 autoValue 0
 use object XC_Ingredient_Skillbook_Water on object XC_Scroll_Water_C_Winterblast with transform code Destroy1Transform2 parameters XC_Skillbook_Water_C_Winterblast,0,0,0,0,0,1,1 requires WaterSpecialist 4 autolevel 0 autoValue 0
+// ******************** Ranger ********************
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_A_Doctor with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_A_Doctor,0,0,0,0,0,1,1 requires RangerLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_A_FirstAid with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_A_FirstAid,0,0,0,0,0,1,1 requires RangerLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_A_RangedPowerStance with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_A_RangedPowerStance,0,0,0,0,0,1,1 requires RangerLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_A_RangedPrecisionStance with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_A_RangedPrecisionStance,0,0,0,0,0,1,1 requires RangerLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_A_Ricochet with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_A_Ricochet,0,0,0,0,0,1,1 requires RangerLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_A_SplinteredArrow with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_A_SplinteredArrow,0,0,0,0,0,1,1 requires RangerLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_A_TreatPoisoning with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_A_TreatPoisoning,0,0,0,0,0,1,1 requires RangerLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_B_AbsorbTheElements with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_B_AbsorbTheElements,0,0,0,0,0,1,1 requires RangerLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_B_Barrage with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_B_Barrage,0,0,0,0,0,1,1 requires RangerLore 4 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_B_Farseer with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_B_Farseer,0,0,0,0,0,1,1 requires RangerLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_B_Infect with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_B_Infect,0,0,0,0,0,1,1 requires RangerLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_B_SurvivorsKarma with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_B_SurvivorsKarma,0,0,0,0,0,1,1 requires RangerLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_B_VampiricArrow with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_B_VampiricArrow,0,0,0,0,0,1,1 requires RangerLore 4 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Ranger on object XC_Scroll_Ranger_C_RainOfArrows with transform code Destroy1Transform2 parameters XC_Skillbook_Ranger_C_RainOfArrows,0,0,0,0,0,1,1 requires RangerLore 5 autolevel 0 autoValue 0
+// ******************** Rogue (Scoundrel) ********************
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_A_Adrenaline with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_A_Adrenaline,0,0,0,0,0,1,1 requires RogueLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_A_FastTrack with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_A_FastTrack,0,0,0,0,0,1,1 requires RogueLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_A_Lacerate with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_A_Lacerate,0,0,0,0,0,1,1 requires RogueLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_A_PreciseIncision with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_A_PreciseIncision,0,0,0,0,0,1,1 requires RogueLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_A_Trip with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_A_Trip,0,0,0,0,0,1,1 requires RogueLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_A_VenomousStrike with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_A_VenomousStrike,0,0,0,0,0,1,1 requires RogueLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_A_WalkInShadows with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_A_WalkInShadows,0,0,0,0,0,1,1 requires RogueLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_A_WingedFeet with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_A_WingedFeet,0,0,0,0,0,1,1 requires RogueLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_B_CloakAndDagger with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_B_CloakAndDagger,0,0,0,0,0,1,1 requires RogueLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_B_DaggersDrawn with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_B_DaggersDrawn,0,0,0,0,0,1,1 requires RogueLore 4 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_B_EyeGouge with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_B_EyeGouge,0,0,0,0,0,1,1 requires RogueLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_B_WindUpToy with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_B_WindUpToy,0,0,0,0,0,1,1 requires RogueLore 4 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Rogue on object XC_Scroll_Rogue_C_ShadowStep with transform code Destroy1Transform2 parameters XC_Skillbook_Rogue_C_ShadowStep,0,0,0,0,0,1,1 requires RogueLore 5 autolevel 0 autoValue 0
+// ******************** Warrior (Man-at-Arms) ********************
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_A_BatteringRam with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_A_BatteringRam,0,0,0,0,0,1,1 requires WarriorLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_A_CrushingFist with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_A_CrushingFist,0,0,0,0,0,1,1 requires WarriorLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_A_CureWounds with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_A_CureWounds,0,0,0,0,0,1,1 requires WarriorLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_A_DivineLight with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_A_DivineLight,0,0,0,0,0,1,1 requires WarriorLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_A_Encourage with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_A_Encourage,0,0,0,0,0,1,1 requires WarriorLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_A_HelpingHand with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_A_HelpingHand,0,0,0,0,0,1,1 requires WarriorLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_A_MeleeDefensiveStance with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_A_MeleeDefensiveStance,0,0,0,0,0,1,1 requires WarriorLore 2 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_A_MeleePowerStance with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_A_MeleePowerStance,0,0,0,0,0,1,1 requires WarriorLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_B_CripplingBlow with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_B_CripplingBlow,0,0,0,0,0,1,1 requires WarriorLore 4 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_B_ElementalTortoise with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_B_ElementalTortoise,0,0,0,0,0,1,1 requires WarriorLore 5 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_B_Rage with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_B_Rage,0,0,0,0,0,1,1 requires WarriorLore 4 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_B_Whirlwind with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_B_Whirlwind,0,0,0,0,0,1,1 requires WarriorLore 3 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_C_ErodingStrike with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_B_ErodingStrike,0,0,0,0,0,1,1 requires WarriorLore 5 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_C_Flurry with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_C_Flurry,0,0,0,0,0,1,1 requires WarriorLore 4 autolevel 0 autoValue 0
+use object XC_Ingredient_Skillbook_Warrior on object XC_Scroll_Warrior_C_ShacklesOfPain with transform code Destroy1Transform2 parameters XC_Skillbook_Warrior_C_ShacklesOfPain,0,0,0,0,0,1,1 requires WarriorLore 4 autolevel 0 autoValue 0
+
 // ***************************************************************************************************************************************************************
 // Quest and Specials - XC_Bags
 // ***************************************************************************************************************************************************************
@@ -908,7 +992,7 @@ use object XC_Tool_Crafting_Hammer_Blacksmith on object LOOT_Wheat_A with transf
 use object XC_Crafting_Barrel_Water on object LOOT_Flour_A with transform code Transform2 parameters CON_Ingred_Dough_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object XC_Tool_Crafting_Hammer_Blacksmith on object CON_Food_Tomato_A with transform code Transform2 parameters CON_Food_Tomato_Sauce_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object XC_Tool_Crafting_Hammer_Blacksmith on object CON_Food_Potato_A with transform code Transform2 parameters CON_Food_Potato_Mash_Cold_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
-use object XC_Tool_Crafting_Knife_Cook on object CON_Food_Potato_A with transform code Transform2 parameters CON_Food_Fries_Cold_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
+use object XC_Tool_Crafting_Knife_Crafter on object CON_Food_Potato_A with transform code Transform2 parameters CON_Food_Fries_Cold_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object CON_Ingred_Dough_A on object HAR_Shell with transform code Destroy2Transform1 parameters CON_Ingred_Dough_Cyseal_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object CON_Ingred_Dough_A on object LOOT_Claw_Crab_A with transform code Destroy2Transform1 parameters CON_Ingred_Dough_Cyseal_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object XC_Crafting_Beehive on object LOOT_Jar_A with transform code Transform2 parameters CON_Food_Honey_Jar_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
@@ -954,7 +1038,7 @@ use object XC_Crafting_Barrel_Ooze on object FOOD_FishF with transform code Tran
 use object XC_Crafting_Barrel_Ooze on object CON_Food_Tomato_Sauce_A with transform code Transform2 parameters CON_Food_Tomato_Sauce_A_Poisoned,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object XC_Tool_Crafting_Hammer_Blacksmith on object CON_Food_Tomato_A_Poisoned with transform code Transform2 parameters CON_Food_Tomato_Sauce_A_Poisoned,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object XC_Crafting_Barrel_Ooze on object CON_Food_Fries_Cold_A with transform code Transform2 parameters CON_Food_Fries_Cold_A_Poisoned,0,0,0,0,0,1,1 autolevel 0 autoValue 0
-use object XC_Tool_Crafting_Knife_Cook on object CON_Food_Potato_A_Poisoned with transform code Transform2 parameters CON_Food_Fries_Cold_A_Poisoned,0,0,0,0,0,1,1 autolevel 0 autoValue 0
+use object XC_Tool_Crafting_Knife_Crafter on object CON_Food_Potato_A_Poisoned with transform code Transform2 parameters CON_Food_Fries_Cold_A_Poisoned,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object XC_Crafting_Barrel_Ooze on object CON_Food_Potato_Mash_Cold_A with transform code Transform2 parameters CON_Food_Potato_Mash_Cold_A_Poisoned,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object XC_Tool_Crafting_Hammer_Blacksmith on object CON_Food_Potato_A_Poisoned with transform code Transform2 parameters CON_Food_Potato_Mash_Cold_A_Poisoned,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use object XC_Crafting_Barrel_Ooze on object CON_Food_Honey_Jar_A with transform code Transform2 parameters CON_Food_Honey_Jar_A_Poisoned,0,0,0,0,0,1,1 autolevel 0 autoValue 0
@@ -1397,7 +1481,7 @@ use object LOOT_Scraps_Cloth_A on object XC_Tool_Crafting_NeedleThread with tran
 use object LOOT_Scraps_Cloth_A on object XC_Tool_Crafting_NeedleThread with transform code Transform1 parameters ARM_CraftedClothTorso_04,0,0,0,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
 use object LOOT_Scraps_Cloth_A on object XC_Tool_Crafting_NeedleThread with transform code Transform1Boost1 parameters ARM_CraftedClothTorso_05,0,0,Armor_Small_Vitality_Mod,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
 use object LOOT_Scraps_Cloth_A on object XC_Tool_Crafting_NeedleThread with transform code Transform1Boost1 parameters ARM_CraftedClothTorso_05,0,0,Armor_Small_Luck_Mod,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
-use object LOOT_Scraps_Cloth_A on object XC_Tool_Crafting_NeedleThread with transform code Transform1Boost1 parameters ARM_CraftedClothTorso_05,0,0,Armor_Medium_ArmorDefense_ModMail_Late,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object LOOT_Scraps_Cloth_A on object XC_Tool_Crafting_NeedleThread with transform code Transform1Boost1 parameters ARM_CraftedClothTorso_05,0,0,Armor_Medium_ArmorDefense_ModMail_Late,0,0,1,5 requires Crafting 4 autolevel 1 autoValue 0
 use object LOOT_Scraps_Cloth_A on object XC_Tool_Crafting_NeedleThread_Magic with transform code Transform1Boost1 parameters ARM_CraftedRobe_01,0,0,Armor_Small_Vitality_Mod,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
 use object LOOT_Scraps_Cloth_A on object XC_Tool_Crafting_NeedleThread_Magic with transform code Transform1Boost1 parameters ARM_CraftedRobe_01,0,0,Armor_Small_Luck_Mod,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
 use object LOOT_Scraps_Cloth_A on object XC_Tool_Crafting_NeedleThread_Magic with transform code Transform1Boost1 parameters ARM_CraftedRobe_01,0,0,Armor_Small_Speed_Mod,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
@@ -1706,7 +1790,7 @@ use category CraftingStatue on object XC_Tool_Crafting_Hammer_Blacksmith with tr
 use category CraftingStatue on object XC_Tool_Crafting_Hammer_Crafter with transform code Transform2 parameters XC_Tool_Crafting_Hammer_Crafter,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category CraftingStatue on object XC_Tool_Crafting_Knife_Cook with transform code Transform2 parameters XC_Tool_Crafting_Knife_Cook,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category CraftingStatue on object XC_Tool_Crafting_Knife_Crafter with transform code Transform2 parameters XC_Tool_Crafting_Knife_Crafter,0,0,0,0,0,1,1 autolevel 0 autoValue 0
-use category CraftingStatue on object XC_Tool_Crafting_Knife_Paper with transform code Transform2 parameters XC_Tool_Crafting_Knife_Paper,0,0,0,0,0,1,1 autolevel 0 autoValue 0
+use category CraftingStatue on object XC_Tool_Crafting_Knife_Paper with transform code Transform2 parameters XC_Tool_General_Lockpick,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category CraftingStatue on object XC_Tool_Crafting_Knife_Paper_Magic with transform code Transform2 parameters XC_Tool_Crafting_Knife_Paper_Magic,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category CraftingStatue on object XC_Tool_Crafting_MortarPestle with transform code Transform2 parameters XC_Tool_Crafting_MortarPestle,0,0,0,0,0,1,1 autolevel 0 autoValue 0
 use category CraftingStatue on object XC_Tool_Crafting_NeedleThread with transform code Transform2 parameters XC_Tool_Crafting_NeedleThread,0,0,0,0,0,1,1 autolevel 0 autoValue 0
@@ -1715,14 +1799,393 @@ use category CraftingStatue on object XC_Tool_Crafting_Tong with transform code 
 // ***************************************************************************************************************************************************************
 // Redacted - XC_Bags
 // ***************************************************************************************************************************************************************
-// Armor boosts with blacksmithing in addition to the crafting ones
-// use object LOOT_Scraps_Scale_A on category ArmorScale with transform code Destroy1Boost2 parameters 0,0,0,Armor_Medium_ArmorDefense_ModMail_Late,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
-// use object LOOT_Scraps_Plate_A on category ArmorScale with transform code Destroy1Boost2 parameters 0,0,0,Armor_Large_ArmorDefense_Mod_LateMail,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
-// use category Anvil on category ArmorScale with transform code Boost2 parameters 0,0,0,Armor_Small_Movement_Mod,0,0,1,1 requires Blacksmithing 2 autolevel 0 autoValue 0
-// Tusk
-// use object LOOT_Tusk_A_Magic_Large on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Tusk_MagicBelt_A_Large,0,0,0,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+//
 // Bars from EE
+//
 // use category Oven on object LOOT_OreBar_A_Iron_A with transform code Transform2 parameters LOOT_OreBar_A_Steel_A,0,0,0,0,0,1,1 requires Blacksmithing 3 autolevel 0 autoValue 0
 // use category Oven on object LOOT_OreBar_A_Iron_A_Large with transform code Transform2 parameters LOOT_OreBar_A_Steel_A_Large,0,0,0,0,0,1,1 requires Blacksmithing 3 autolevel 0 autoValue 0
 // use object LOOT_OreBar_A_Iron_A on object LOOT_OreBar_A_Iron_A with transform code Destroy1Transform2 parameters LOOT_OreBar_A_Iron_A_Large,0,0,0,0,0,1,1 requires Blacksmithing 3 autolevel 0 autoValue 0
 // use object LOOT_OreBar_A_Steel_A on object LOOT_OreBar_A_Steel_A with transform code Destroy1Transform2 parameters LOOT_OreBar_A_Steel_A_Large,0,0,0,0,0,1,1 requires Blacksmithing 3 autolevel 0 autoValue 0
+//
+// Armor boosts with blacksmithing in addition to the crafting ones
+//
+use object LOOT_Scraps_Scale_A on category ArmorScale with transform code Destroy1Boost2 parameters 0,0,0,Armor_Medium_ArmorDefense_ModMail_Late,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
+use object LOOT_Scraps_Plate_A on category ArmorScale with transform code Destroy1Boost2 parameters 0,0,0,Armor_Large_ArmorDefense_Mod_LateMail,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
+use category Anvil on category ArmorScale with transform code Boost2 parameters 0,0,0,Armor_Small_Movement_Mod,0,0,1,1 requires Blacksmithing 2 autolevel 0 autoValue 0
+//
+// Missing voodoo
+//
+use object LOOT_Scraps_Cloth_A on object LOOT_Thread_A with transform code Destroy1Transform2 parameters TOOL_Figurine_Wood_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
+use object TOOL_Figurine_Wood_A on object LOOT_Needle_A with transform code Destroy1Transform2 parameters TOOL_VoodooDoll,0,0,0,0,0,1,1 autolevel 0 autoValue 0
+use object TOOL_Figurine_GeneralRaze on category CraftingStatue with transform code DoNothing parameters 0,0,0,0,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+//
+// Missing crafting for belts and bracers in crafting statue. I changed the order of the early statues for the boosts because i believe
+// the story script responsible for creating the statues is confused. At least 'Statue_BS' is got by using the statue with +2 gear crafting stats, which is obviously wrong
+//
+use object XC_Crafting_Statue_CR on category ArmorBelt with transform code Boost2 parameters 0,0,0,Armor__Belt_Boost_Repair_Mod,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
+use object XC_Crafting_Statue_BS on category ArmorBelt with transform code Boost2 parameters 0,0,0,Armor__Belt_Boost_Crafting_Mod,0,0,1,1 requires Crafting 4 autolevel 0 autoValue 0
+use object XC_Crafting_Statue_BSCR on category ArmorBelt with transform code Boost2Twice parameters 0,0,Armor__Belt_Boost_Repair_Mod,Armor__Belt_Boost_Crafting_Mod,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
+use object XC_Crafting_Statue_BSCR on category ArmorBelt with transform code Boost2Twice parameters 0,0,Armor__Belt_Boost_Repair_Mod,Armor__Belt_Boost_Crafting_Mod,0,0,1,1 requires Crafting 4 autolevel 0 autoValue 0
+use object XC_Crafting_Statue_CR on category ArmorGloves with transform code Boost2 parameters 0,0,0,Armor__Gloves_Boost_Repair_Mod,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
+use object XC_Crafting_Statue_BS on category ArmorGloves with transform code Boost2 parameters 0,0,0,Armor__Gloves_Boost_Crafting_Mod,0,0,1,1 requires Crafting 4 autolevel 0 autoValue 0
+use object XC_Crafting_Statue_BSCR on category ArmorGloves with transform code Boost2Twice parameters 0,0,Armor__Gloves_Boost_Repair_Mod,Armor__Gloves_Boost_Crafting_Mod,0,0,1,1 requires Blacksmithing 4 autolevel 0 autoValue 0
+use object XC_Crafting_Statue_BSCR on category ArmorGloves with transform code Boost2Twice parameters 0,0,Armor__Gloves_Boost_Repair_Mod,Armor__Gloves_Boost_Crafting_Mod,0,0,1,1 requires Crafting 4 autolevel 0 autoValue 0
+//
+// missing arrowhead
+//
+use object XC_Crafting_Mobile_Kitchen on object LOOT_Scraps_Scale_A with transform code Transform2 parameters WPN_ArrowHead_A,0,0,0,0,0,10,1 requires Crafting 3 autolevel 0 autoValue 0
+//
+//nails on boots also was removed...
+//
+use object ITEM_Nails on category ArmorShoes with transform code Destroy1Boost2 parameters 0,0,0,Armor__Shoes_Boost_SnowBoots,0,0,1,1 requires Crafting 5 autolevel 0 autoValue 0
+//
+//scale armor boosts
+//
+use object CON_Drink_Cup_A_Oil on category ArmorScale with transform code Destroy1Boost2 parameters 0,0,0,Armor_Small_Movement_Mod,0,0,1,1 autolevel 0 autoValue 0
+use object ITEM_BottleWithOil on category ArmorScale with transform code Transform1Boost2 parameters ITEM_EmptyBottle,0,0,Armor_Small_Movement_Mod,0,0,1,1 autolevel 0 autoValue 0
+
+
+//
+//create scraps
+//
+use category XCCraftingAxe on object XC_Ingredient_Glass_Plate with transform code Transform2 parameters LOOT_Scraps_Metal_A,0,0,0,0,0,1,1 requires Blacksmithing 1 autolevel 0 autoValue 0
+use category XCCraftingAxe on object XC_Ingredient_Glass_PlateStack_25 with transform code Transform2 parameters LOOT_Scraps_Metal_A,0,0,0,0,0,5,5 requires Blacksmithing 2 autolevel 0 autoValue 0
+use category XCCraftingAxe on object XC_Ingredient_Glass_PlateStack_50 with transform code Transform2 parameters LOOT_Scraps_Metal_A,0,0,0,0,0,10,10 requires Blacksmithing 3 autolevel 0 autoValue 0
+use object LOOT_Scraps_Scale_A on object LOOT_Scraps_Scale_A with transform code Destroy1Transform2 parameters LOOT_Scraps_Plate_A,0,0,0,0,0,1,1 requires Blacksmithing 2 autolevel 0 autoValue 0
+//
+// Grenades
+//
+use object XC_Tool_Crafting_Knife_Crafter on object LOOT_Rope_A with transform code Transform2 parameters GRN_Ingredient_Fuse_A,0,0,0,0,0,2,1 requires Crafting 1 autolevel 0 autoValue 0
+use object GRN_Ingredient_Fuse_A on object GRN_Ingredient_Fuse_A with transform code Destroy2Transform1 parameters LOOT_Rope_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object XC_Crafting_Barrel_Oil on object LOOT_Scraps_Cloth_A with transform code Transform2 parameters GRN_Ingredient_Flask_Empty_A,0,0,0,0,0,1,1 requires Crafting 3 autolevel 0 autoValue 0
+use object XC_Crafting_Barrel_Oil on object LOOT_Scraps_Leather_A with transform code Transform2 parameters GRN_Ingredient_Flask_Empty_A,0,0,0,0,0,1,1 requires Crafting 3 autolevel 0 autoValue 0
+use object XC_Tool_Crafting_Hammer_Blacksmith on object LOOT_Scraps_Metal_A with transform code Transform2 parameters GRN_Ingredient_Cylinder_Empty_A,0,0,0,0,0,1,1 requires Crafting 4 autolevel 0 autoValue 0
+use object XC_Tool_Crafting_Hammer_Blacksmith on object LOOT_Scraps_Plate_A with transform code Transform2 parameters GRN_Ingredient_Round_Empty_A,0,0,0,0,0,1,1 requires Crafting 4 autolevel 0 autoValue 0
+use object XC_Crafting_Barrel_Oil on object GRN_Ingredient_Flask_Empty_A with transform code Transform2 parameters GRN_Grenade_OilFlask_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
+use object XC_Crafting_Barrel_Ooze on object GRN_Ingredient_Flask_Empty_A with transform code Transform2 parameters GRN_Grenade_PoisonFlask_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
+use object XC_Crafting_Barrel_Water on object GRN_Ingredient_Flask_Empty_A with transform code Transform2 parameters GRN_Grenade_WaterBalloon_A,0,0,0,0,0,1,1 autolevel 0 autoValue 0
+use object GRN_Ingredient_Love_Empty_A on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters GRN_Grenade_Love_A,0,0,0,0,0,1,1 requires Crafting 4 autolevel 0 autoValue 0
+use object GRN_Ingredient_Cylinder_Empty_A on object XC_LOOT_Scraps_Wood_A with transform code Destroy2Transform1 parameters GRN_Grenade_SmokeBomb_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 0 autoValue 0
+use object XC_Crafting_Barrel_Ooze on object GRN_Ingredient_Round_Empty_A with transform code Transform2 parameters GRN_Grenade_MustardGas_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 0 autoValue 0
+//
+// poison might as well do something besides making zombie healing
+//
+use object CON_Potion_Empty_A on object XC_Crafting_Barrel_Ooze with transform code Transform1 parameters CON_Potion_Poison_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object CON_Potion_Empty_A on object CONT_Barrel_Ooze_A with transform code Transform1 parameters CON_Potion_Poison_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Knife with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Dagger with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Sword with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Axe with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Spear with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category TwoHandedSword with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category TwoHandedMaul with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category TwoHandedAxe with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Staff with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Club with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Bow with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Crossbow with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use category PotionPoison on category Wand with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Small_PoisonDamage_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+// missing from EE
+use object LOOT_Kickstarter_Pouch_JoshuaSpice on category Wand with transform code Destroy1Boost2 parameters 0,0,0,Weapon_Large_FireDamage_ModSword,0,0,1,1 requires Crafting 2 autolevel 0 autoValue 0
+//
+// Not sure which magic items recipes are missing, so here are all of them
+//
+use object LOOT_Skull_Human_A_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Skull_MagicAmulet_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Skull_Human_A_Magic_Ancient on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Skull_MagicAmulet_A_Ancient,0,0,0,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object LOOT_Skull_Human_A_Magic_Tattooed on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Skull_MagicAmulet_A_Tattooed,0,0,0,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object LOOT_Paw_A_Rabbit_A on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Paw_A_Rabbit_A_Magic,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Paw_A_Rabbit_A_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_MagicAmulet_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Paw_A_Rabbit_A_Lucky on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Paw_A_Rabbit_A_Magic_Lucky,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Paw_A_Rabbit_A_Magic_Lucky on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_MagicAmulet_A_Lucky,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_MagicAmulet_A on object LOOT_String_Bow_A with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_SuperAmulet_A,0,0,0,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_MagicAmulet_A_Lucky on object LOOT_String_Bow_A with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_SuperAmulet_A_Lucky,0,0,0,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object LOOT_Foot_Chicken_A on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Foot_Chicken_A_Magic,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Foot_Chicken_A_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Chicken_Claw_MagicAmulet_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Foot_Chicken_A_Big on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Foot_Chicken_A_Magic_Big,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Foot_Chicken_A_Magic_Big on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Chicken_Claw_MagicAmulet_A_Big,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Tail_A_Rat_A on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Tail_A_Rat_A_Magic,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tail_A_Rat_A_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Rat_Tail_MagicAmulet_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tail_A_Rat_A_Long on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Tail_A_Rat_A_Magic_Long,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tail_A_Rat_A_Magic_Long on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Rat_Tail_MagicAmulet_A_Long,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Feather_A on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Feather_A_Magic,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Feather_A_Fancy on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Feather_A_Magic_Fancy,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Feather_A_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Feather_MagicAmulet_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Feather_A_Magic_Fancy on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Feather_MagicAmulet_A_Fancy,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Tusk_A on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Tusk_A_Magic,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Tusk_A_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Tusk_MagicAmulet_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Tusk_A_Large on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Tusk_A_Magic_Large,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Tusk_A_Magic_Large on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Tusk_MagicAmulet_A_Large,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Tooth_A on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Tooth_A_Magic,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tooth_A_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Tooth_MagicAmulet_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tooth_A_Sharp on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Tooth_A_Magic_Sharp,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tooth_A_Magic_Sharp on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Tooth_MagicAmulet_A_Sharp,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Claw_A on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Claw_A_Magic,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Claw_A_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Claw_MagicAmulet_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Claw_A_Magic on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Claw_MagicBelt_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Claw_A_Sharp on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Claw_A_Sharp_Magic,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Claw_A_Sharp_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Claw_MagicAmulet_A_Sharp,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Claw_A_Sharp_Magic on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Claw_MagicBelt_A_Sharp,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Tooth_A_Magic on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Tooth_MagicBelt_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tooth_A_Magic_Sharp on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Tooth_MagicBelt_A_Sharp,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tusk_A_Magic on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Tusk_MagicBelt_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Tusk_A_Magic_Large on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Tusk_MagicBelt_A_Large,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Feather_A_Magic on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Feather_MagicBelt_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Feather_A_Magic_Fancy on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Feather_MagicBelt_A_Fancy,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Tail_A_Rat_A_Magic_Long on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Rat_Tail_MagicBelt_A_Long,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tail_A_Rat_A_Magic on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Rat_Tail_MagicBelt_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Foot_Chicken_A_Magic on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Chicken_Claw_MagicBelt_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Foot_Chicken_A_Magic_Big on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Chicken_Claw_MagicBelt_A_Big,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Skull_Human_A_Magic on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Skull_MagicBelt_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Skull_Human_A_Magic_Tattooed on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Skull_MagicBelt_A_Tattooed,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Skull_Human_A_Magic_Ancient on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Skull_MagicBelt_A_Ancient,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Paw_A_Rabbit_A_Magic on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_MagicBelt_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_SuperAmulet_A on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_SuperBelt_A,0,0,0,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object LOOT_Paw_A_Rabbit_A_Magic_Lucky on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_MagicBelt_A_Lucky,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_SuperAmulet_A_Lucky on object LOOT_Rope_A with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_SuperBelt_A_Lucky,0,0,0,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object LOOT_Claw_A_Magic on category Ring with transform code Destroy2Transform1 parameters LOOT_Claw_MagicRing_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tooth_A_Magic on category Ring with transform code Destroy2Transform1 parameters LOOT_Tooth_MagicRing_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tusk_A_Magic on category Ring with transform code Destroy2Transform1 parameters LOOT_Tusk_MagicRing_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Feather_A_Magic on category Ring with transform code Destroy2Transform1 parameters LOOT_Feather_MagicRing_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tail_A_Rat_A_Magic on category Ring with transform code Destroy2Transform1 parameters LOOT_Rat_Tail_MagicRing_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Foot_Chicken_A_Magic on category Ring with transform code Destroy2Transform1 parameters LOOT_Chicken_Claw_MagicRing_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Paw_A_Rabbit_A_Magic on category Ring with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_MagicRing_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Skull_Human_A_Magic on category Ring with transform code Destroy2Transform1 parameters LOOT_Skull_MagicRing_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_SuperAmulet_A on category Ring with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_SuperRing_A,0,0,0,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object LOOT_Claw_A_Sharp_Magic on category Ring with transform code Destroy2Transform1 parameters LOOT_Claw_MagicRing_A_Sharp,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tooth_A_Magic_Sharp on category Ring with transform code Destroy2Transform1 parameters LOOT_Tooth_MagicRing_A_Sharp,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tusk_A_Magic_Large on category Ring with transform code Destroy2Transform1 parameters LOOT_Tusk_MagicRing_A_Large,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Feather_A_Magic_Fancy on category Ring with transform code Destroy2Transform1 parameters LOOT_Feather_MagicRing_A_Fancy,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Tail_A_Rat_A_Magic_Long on category Ring with transform code Destroy2Transform1 parameters LOOT_Rat_Tail_MagicRing_A_Long,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Foot_Chicken_A_Magic_Big on category Ring with transform code Destroy2Transform1 parameters LOOT_Chicken_Claw_MagicRing_A_Big,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Paw_A_Rabbit_A_Magic_Lucky on category Ring with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_MagicRing_A_Lucky,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Skull_Human_A_Magic_Tattooed on category Ring with transform code Destroy2Transform1 parameters LOOT_Skull_MagicRing_A_Tattooed,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Skull_Human_A_Magic_Ancient on category Ring with transform code Destroy2Transform1 parameters LOOT_Skull_MagicRing_A_Ancient,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_SuperAmulet_A_Lucky on category Ring with transform code Destroy2Transform1 parameters LOOT_Rabbit_Paw_SuperRing_A_Lucky,0,0,0,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object HAR_Fish_Star on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters HAR_Fish_Star_Magic,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object HAR_Fish_Star_Magic on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Star_Fish_MagicAmulet_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Eye_A on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Eye_A_Earie_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Eye_A_Earie_A on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_EerieEye_Amulet_A,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object HAR_Fish_Star_Glowing on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters HAR_Fish_Star_Magic_Glowing,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object HAR_Fish_Star_Magic_Glowing on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_Star_Fish_MagicAmulet_A_Glowing,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Eye_A_Creepy on object XC_Ingredient_Dust_Pixie with transform code Destroy2Transform1 parameters LOOT_Eye_A_Earie_A_Creepy,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use object LOOT_Eye_A_Earie_A_Creepy on object LOOT_Thread_A with transform code Destroy2Transform1 parameters LOOT_EerieEye_Amulet_A_Creepy,0,0,0,0,0,1,1 requires Crafting 1 autolevel 1 autoValue 0
+use category LeatherHelmet on object LOOT_Feather_A_Magic with transform code Destroy2Transform1 parameters ARM_Helmet_Feather_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use category LeatherHelmet on object LOOT_Eye_A_Earie_A with transform code Destroy2Transform1 parameters ARM_Helmet_ThirdEye_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use category LeatherHelmet on object HAR_Fish_Star_Magic with transform code Destroy2Transform1 parameters ARM_Helmet_Starfish_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use category LeatherHelmet on object LOOT_Claw_Crab_A with transform code Destroy2Transform1 parameters ARM_Helmet_CrabPincer_A,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use category LeatherHelmet on object LOOT_Feather_A_Magic_Fancy with transform code Destroy2Transform1 parameters ARM_Helmet_Feather_A_Fancy,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use category LeatherHelmet on object LOOT_Eye_A_Earie_A_Creepy with transform code Destroy2Transform1 parameters ARM_Helmet_ThirdEye_A_Creepy,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use category LeatherHelmet on object HAR_Fish_Star_Magic_Glowing with transform code Destroy2Transform1 parameters ARM_Helmet_Starfish_A_Glowing,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+
+
+//
+// Boosts
+//
+
+// New helmet colors experiment
+use object XC_Ingredient_Dye_DarkCrimson on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,XC_Armor_Boost_Dye_DarkCrimson,0,0,1,1 autolevel 0 autoValue 0
+use object XC_Ingredient_Dye_DarkForest on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,XC_Armor_Boost_Dye_DarkForest,0,0,1,1 autolevel 0 autoValue 0
+use object XC_Ingredient_Dye_DarkMud on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,XC_Armor_Boost_Dye_DarkMud,0,0,1,1 autolevel 0 autoValue 0
+use object XC_Ingredient_Dye_DeepPurple on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,XC_Armor_Boost_Dye_DeepPurple,0,0,1,1 autolevel 0 autoValue 0
+use object XC_Ingredient_Dye_Sapphire on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,XC_Armor_Boost_Dye_Sapphire,0,0,1,1 autolevel 0 autoValue 0
+use object TOOL_Dye_Black on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Black,0,0,1,1 autolevel 0 autoValue 0
+use object TOOL_Dye_Blue on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Blue,0,0,1,1 autolevel 0 autoValue 0
+use object TOOL_Dye_Green on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Green,0,0,1,1 autolevel 0 autoValue 0
+use object TOOL_Dye_Purple on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Purple,0,0,1,1 autolevel 0 autoValue 0
+use object TOOL_Dye_Red on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Red,0,0,1,1 autolevel 0 autoValue 0
+use object TOOL_Dye_White on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_White,0,0,1,1 autolevel 0 autoValue 0
+use object TOOL_Dye_Yellow on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Yellow,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Void on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Void,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Stealth on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Stealth,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Earth on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Earth,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Fog on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Fog,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Seafoam on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Seafoam,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Smoke on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Smoke,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Verdure on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Verdure,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Lichen on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Lichen,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Coral on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Coral,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Clay on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Clay,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Saffron on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Saffron,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Midnight on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Midnight,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Abyss on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Abyss,0,0,1,1 autolevel 0 autoValue 0
+use object AMER_TOOL_Dye_Nemesis on category MagicHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor_Boost_Dye_TOOL_Dye_Nemesis,0,0,1,1 autolevel 0 autoValue 0
+
+// Movement on Shields
+use object LOOT_Feather_A_Magic on category ShieldWood with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_Movement_Mod_Medium,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Feather_A_Magic_Fancy on category ShieldWood with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_Movement_Mod_Medium,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Feather_A_Magic on category ShieldMetal with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_Movement_Mod_Medium,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Feather_A_Magic_Fancy on category ShieldMetal with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_Movement_Mod_Medium,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Feather_A_Magic on category BlackrockShield with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_Movement_Mod_Medium,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Feather_A_Magic_Fancy on category BlackrockShield with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_Movement_Mod_Medium,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+// Tormented Boost on Shields
+use object LOOT_Soul_Tormented_A on category ShieldWood with transform code Destroy1Boost2 parameters 0,0,0,XC_Shield_Small_TormentedSoul_Mod,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Soul_Tormented_A on category ShieldMetal with transform code Destroy1Boost2 parameters 0,0,0,XC_Shield_Small_TormentedSoul_Mod,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Soul_Tormented_A on category BlackrockShield with transform code Destroy1Boost2 parameters 0,0,0,XC_Shield_Small_TormentedSoul_Mod,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+// Blocking on Tenebrium Shields (no large blocking mod)
+use category Anvil on category BlackrockShield with transform code Boost2 parameters 0,0,0,Shield_Small_Blocking_Mod,0,0,1,1 requires Blacksmithing 5 autolevel 0 autoValue 0
+use category Anvil on category BlackrockShield with transform code Boost2 parameters 0,0,0,Shield_Medium_Blocking_Mod,0,0,1,1 requires Blacksmithing 6 autolevel 0 autoValue 0
+// Resistances on Tenebrium Shields
+use object LOOT_Essence_Air_A on category BlackrockShield with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_AirResistance_Mod,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Essence_Earth_A on category BlackrockShield with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_EarthResistance_Mod,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Essence_Fire_A on category BlackrockShield with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_FireResistance_Mod,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Essence_Water_A on category BlackrockShield with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_WaterResistance_Mod,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Essence_Shadow_A on category BlackrockShield with transform code Destroy1Boost2 parameters 0,0,0,Shield_Small_ShadowResistance_Mod,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+// bling boosts
+use object LOOT_Moonstone_A on category BlackrockShield with transform code Destroy1Boost2 parameters 0,0,0,Shield_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category ShieldWood with transform code Destroy1Boost2 parameters 0,0,0,Shield_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category ShieldMetal with transform code Destroy1Boost2 parameters 0,0,0,Shield_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category ArmorScale with transform code Destroy1Boost2 parameters 0,0,0,Armor__Body_Boost_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category ArmorLeather with transform code Destroy1Boost2 parameters 0,0,0,Armor__Body_Boost_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category ClothArmor with transform code Destroy1Boost2 parameters 0,0,0,Armor__Body_Boost_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category RobeArmor with transform code Destroy1Boost2 parameters 0,0,0,Armor__Body_Boost_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category Garment with transform code Destroy1Boost2 parameters 0,0,0,Armor__Body_Boost_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category ArmorBelt with transform code Destroy1Boost2 parameters 0,0,0,Armor__Body_Boost_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category ArmorGloves with transform code Destroy1Boost2 parameters 0,0,0,Armor__Body_Boost_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category ArmorHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor__Body_Boost_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+use object LOOT_Moonstone_A on category LeatherHelmet with transform code Destroy1Boost2 parameters 0,0,0,Armor__Body_Boost_Value_Mod,0,0,1,1 requires Crafting 1 autolevel 0 autoValue 0
+
+//
+// ring sight boost
+//
+use object LOOT_Eye_A_Earie_A on category MagicRing with transform code Destroy1Boost2 parameters 0,0,0,Sight_Boost,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+use object LOOT_Eye_A_Earie_A_Creepy on category MagicRing with transform code Destroy1Boost2 parameters 0,0,0,Sight_Boost,0,0,1,1 requires Crafting 6 autolevel 0 autoValue 0
+
+//
+// predator's bellt bonuses. I had the idea of making it actually ring a bell every few seconds with a unused script called AMER_ItemSFX.itemScript in the mod,
+// but that would also require OSIRIS to know when the item is equipped and when to turn it off (items can only run timers when they're dropped in the ground, not equipped)
+//
+// edit: turns out that there is a original game bug with spell item abilities that can be crafted, where if the item is equipped when a new ability is crafted, the old ability doesn't go away.
+// unfortunately, the 'combine with' button always exists for any item with a recipe (including combos). So the item spell debuff turns from 6 possibile spell bonus to 1 single unsusual item
+// (a starstone, that already 'releases souls' - or rather you handling it but close enough - in the game). There is a way to avoid the bug, the 'Transform' commands, which
+// destroy the original and create new one, but that doesn't keep boosts, which is the whole point of this item.
+//
+// Note that the boosts reflect the original items, so combining two of the same kind will not add boosts, but reflect the 'stronger'. The lvl of the item is the same as the lvl of the later belts to match.
+// I did notice a bug where applying a boost of a affected stat after or before the 'cancel debuff boost' didn't correctly add +1, so all the debuffs are for stats that don't exist in the 'normal' boosts.
+// however, i did reinforce the belt lines with all the distinct main stats, resistances (except shadow and physicals), some personality and defence bonus and ap boosts, so fully upgraded this is op.
+//
+use object LOOT_Chicken_Claw_MagicBelt_A_Big on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Chicken_Claw_MagicBelt_A_Big,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Chicken_Claw_MagicBelt_A on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Chicken_Claw_MagicBelt_A,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Claw_MagicBelt_A on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Claw_MagicBelt_A,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Claw_MagicBelt_A_Sharp on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Claw_MagicBelt_A_Sharp,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Feather_MagicBelt_A_Fancy on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Feather_MagicBelt_A_Fancy,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Feather_MagicBelt_A on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Feather_MagicBelt_A,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_MagicBelt_A_Lucky on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Rabbit_Paw_MagicBelt_A_Lucky,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_MagicBelt_A on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Rabbit_Paw_MagicBelt_A,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_SuperBelt_A_Lucky on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Rabbit_Paw_SuperBelt_A_Lucky,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Rabbit_Paw_SuperBelt_A on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Rabbit_Paw_SuperBelt_A,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Rat_Tail_MagicBelt_A_Long on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Rat_Tail_MagicBelt_A_Long,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Rat_Tail_MagicBelt_A on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Rat_Tail_MagicBelt_A,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Skull_MagicBelt_A_Ancient on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Skull_MagicBelt_A_Ancient,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Skull_MagicBelt_A on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Skull_MagicBelt_A,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Skull_MagicBelt_A_Tattooed on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Skull_MagicBelt_A_Tattooed,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Tooth_MagicBelt_A on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Tooth_MagicBelt_A,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Tooth_MagicBelt_A_Sharp on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Tooth_MagicBelt_A_Sharp,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Tusk_MagicBelt_A_Large on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Tusk_MagicBelt_A_Large,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+use object LOOT_Tusk_MagicBelt_A on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,_Tusk_MagicBelt_A,0,0,1,1 requires Crafting 0 autolevel 1 autoValue 0
+//
+//Boost to remove the disavantages
+use category StarGems on object ARM_UNIQUE_CatsBellt with transform code Destroy1Boost2 parameters 0,0,0,CB_DebuffCancel,0,0,1,1 requires Sourcery 1 autolevel 1 autoValue 0
+
+//
+// Boosts the 'set bonus' items with any combination (btw, these items need the boost again after being upgraded i believe, but nothing is being consumed, so no problem)
+// Thematically the Lorkan set needs no crafting because they're 'already crafted' to work together. You're just making them remember.
+//
+use object AMER_UNI_LorkansWand_5 on object AMER_UNI_LorkansShield_5 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_5 on object AMER_UNI_LorkansShield_10 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_5 on object AMER_UNI_LorkansShield_15 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_5 on object AMER_UNI_LorkansShield_20 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_5 on object AMER_UNI_LorkansShield_25 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_10 on object AMER_UNI_LorkansShield_5 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_10 on object AMER_UNI_LorkansShield_10 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_10 on object AMER_UNI_LorkansShield_15 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_10 on object AMER_UNI_LorkansShield_20 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_10 on object AMER_UNI_LorkansShield_25 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_15 on object AMER_UNI_LorkansShield_5 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_15 on object AMER_UNI_LorkansShield_10 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_15 on object AMER_UNI_LorkansShield_15 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_15 on object AMER_UNI_LorkansShield_20 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_15 on object AMER_UNI_LorkansShield_25 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_20 on object AMER_UNI_LorkansShield_5 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_20 on object AMER_UNI_LorkansShield_10 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_20 on object AMER_UNI_LorkansShield_15 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_20 on object AMER_UNI_LorkansShield_20 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_20 on object AMER_UNI_LorkansShield_25 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_25 on object AMER_UNI_LorkansShield_5 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_25 on object AMER_UNI_LorkansShield_10 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_25 on object AMER_UNI_LorkansShield_15 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_25 on object AMER_UNI_LorkansShield_20 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+use object AMER_UNI_LorkansWand_25 on object AMER_UNI_LorkansShield_25 with transform code BoostBoth parameters 0,0,0,WandOvercharge,WandPrecisionStance,0,1,1 requires Crafting 0 autolevel 0 autoValue 0
+//
+// Create better sarong from a certain robe (i'm feeling merciful, so this autolevels as if the player is redoing the embroidery every time, more skilled each level)
+// the autolevel of switching spells has effects on the resistances and maybe on the int and ap per turn boosts much later.
+// Note that the garment doesn't have has much base resistances as the original (though the AP per turn extra boost ofsets that and the ability to 'autolevel' when switching spells eclipses that later)
+// due to what i found out when doing the predator's bellt (ie: crafted spells can stack on a character if they're equiped at the time of crafting)
+// these items will lose garment boosts when crafting spells on them by being recreated, which also prevents the bug (destroys the original which 'unquips', so no extra ghost skill).
+// The only garment boosts is one i added to make them higher value and others for item color. 
+// Worth it imo for this spell centric item. This isn't possible on the predator's bellt because there the whole point is to stack boosts, and here it's just to replace them.
+use object XC_Tool_Crafting_NeedleThread_Magic on object ARM_CraftedRobe_Trethon with transform code Transform2 parameters ARM_UNIQUE_GarmentTrethon,0,0,0,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+//
+// add empowered spells to sarong
+//level 2
+use object XC_Skillbook_Fire_A_SelfImmolation on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredSelfImmolation,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object XC_Skillbook_Water_A_Soothe on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredSoothe,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object XC_Skillbook_Air_A_ShockingTouch on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredShockingTouch,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object XC_Skillbook_Earth_A_Fortify on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredFortify,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object XC_Skillbook_Source_A_LowerResistances on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredLowerResistances,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object XC_Skillbook_Warrior_A_HelpingHand on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredHelpingHand,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object XC_Skillbook_Rogue_A_WingedFeet on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredWingedFeet,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object XC_Skillbook_Ranger_A_SplinteredArrow on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredSplinteredArrow,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+use object XC_Skillbook_Ranger_A_FirstAid on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredFirstAid,0,0,1,1 requires Crafting 2 autolevel 1 autoValue 0
+//level 3
+use object XC_Skillbook_Fire_A_Flare on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredFlare,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object XC_Skillbook_Water_A_SlowCurrent on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredSlowCurrent,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object XC_Skillbook_Air_A_ThunderJump on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredThunderJump,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object XC_Skillbook_Earth_A_BoulderBash on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredBoulderBash,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object XC_Skillbook_Source_A_VampiricTouch on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredVampiricTouch,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object XC_Skillbook_Warrior_A_CrushingFist on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredCrushingFist,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object XC_Skillbook_Warrior_A_Bolster on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredBolster,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object XC_Skillbook_Rogue_A_Adrenaline on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredAdrenaline,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+use object XC_Skillbook_Ranger_B_SurvivorsKarma on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredSurvivorsKarma,0,0,1,1 requires Crafting 3 autolevel 1 autoValue 0
+//level 4
+use object XC_Skillbook_Fire_B_Fireball on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredFireball,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object XC_Skillbook_Water_B_Stasis on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Stasis,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object XC_Skillbook_Air_B_Netherswap on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredNetherswap,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object XC_Skillbook_Earth_B_BlessedEarth on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredBlessedEarth,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object XC_Skillbook_Earth_B_PetrifyingTouch on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredPetrifyingTouch,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object XC_Skillbook_Warrior_B_SpikedShell on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredSpikedShell,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object XC_Skillbook_Warrior_B_Rage on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Rage,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object XC_Skillbook_Warrior_B_AwesomePresence on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_AwesomePresence,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object XC_Skillbook_Warrior_B_Attonement on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Attonement,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object XC_Skillbook_Rogue_B_Fade on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_EmpoweredFade,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+// add scroll spell (there are only 2 of these scrolls and they're part of a puzzle to unlock a bonus chest, but don't warn the player or anything)
+use object XC_Scroll_Source_Z_MagicalUnlock on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_UnlockMagic,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+use object SCROLL_MagicalUnlock_1 on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_UnlockMagic,0,0,1,1 requires Crafting 4 autolevel 1 autoValue 0
+//add item spells
+use object AMER_UNI_Ghostflame_5 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Ghostflame,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Ghostflame_10 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Ghostflame,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Ghostflame_15 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Ghostflame,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Ghostflame_20 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Ghostflame,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Ghostflame_25 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Ghostflame,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Seraph_5 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Seraph,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Seraph_10 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Seraph,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Seraph_15 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Seraph,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Seraph_20 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Seraph,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Seraph_25 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Seraph,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Wendigo_5 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Wendigo,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Wendigo_10 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Wendigo,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Wendigo_15 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Wendigo,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Wendigo_20 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Wendigo,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_Wendigo_25 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Wendigo,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_AngelEgg_15 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Rebirth,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_AngelEgg_20 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Rebirth,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+use object AMER_UNI_AngelEgg_25 on object ARM_UNIQUE_GarmentTrethon with transform code Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Rebirth,0,0,1,1 requires Crafting 5 autolevel 1 autoValue 0
+//secret combos
+use object XC_Skillbook_Fire_C_Soulfire on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Soulfire,0,0,1,1 requires Crafting 8 autolevel 1 autoValue 0
+use object XC_Skillbook_Water_C_MassHealing on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_MassHealing,0,0,1,1 requires Crafting 8 autolevel 1 autoValue 0
+use object XC_Skillbook_Air_C_Audacity on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Audacity,0,0,1,1 requires Crafting 8 autolevel 1 autoValue 0
+use object XC_Skillbook_Earth_C_Maze on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Maze,0,0,1,1 requires Crafting 8 autolevel 1 autoValue 0
+use object XC_Skillbook_Source_C_Invulnerability on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Invulnerability,0,0,1,1 requires Crafting 8 autolevel 1 autoValue 0
+use object XC_Skillbook_Warrior_C_ShacklesOfPain on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_ShacklesOfPain,0,0,1,1 requires Crafting 8 autolevel 1 autoValue 0
+use object XC_Skillbook_Rogue_C_Premeditate on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_Premeditate,0,0,1,1 requires Crafting 8 autolevel 1 autoValue 0
+use object XC_Skillbook_Ranger_C_InsectPlague on object ARM_UNIQUE_GarmentTrethon with transform code Destroy1Transform2Boost2 parameters ARM_UNIQUE_GarmentTrethon,0,0,Sarong_InsectPlague,0,0,1,1 requires Crafting 8 autolevel 1 autoValue 0
+

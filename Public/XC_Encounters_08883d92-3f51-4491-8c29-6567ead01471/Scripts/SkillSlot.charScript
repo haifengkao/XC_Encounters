@@ -1,0 +1,427 @@
+//Terrible hack involving (146) useless 'Bogus' skills just to trick the game engine into placing skills
+//into the desired slot (if that slot can be assured to be empty). Should be used only once at first init of
+//companions, henchmen and player characters to place the skills in desired hotbar position 
+//(once because 'adding' skills only adds to the hotbar the first time so no need to repeat this).
+//since it only runs once per game for a limited number of characters, not a serious script performance killer.
+
+//As explained where this is used on Player_AI.charScript this is fragile because of a multitude of factors.
+//because you need 'some' way to count the non-class skills. I mostly hardcoded it there with the extra information
+//that companions (not henchmen) don't start with a flee button, companions only get the 2 sleeping mattress
+//skills when they join and pcs when before start the game (this is relevant because for pcs and companions
+//the OnInit event the script is running on runs on the start of the game) and most problematic of all
+//henchmen only run this (in that same OnInit) when they return with the party from the End of Time.
+//There is no apparent way of hooking into 'companion joined' to smooth this out, from charScripts (might have
+//worked on OSIRIS scripts but i can't use them without the editor), and worse henchmen start with no bags
+//(they can use the bags of a dismissed companion) and thus all of their consumables are set on the bar.
+//basically if you modify a henchman inventory before they go out of the end of time the skills might be messed up
+//(but not missing, they're always added, but might not be in the hotkeys). Finally i use a ontime timer of 
+//1 second 'later' to run this script - this is because OSIRIS has a rule that adds the bag skill that runs again
+//if we remove the skill before the OnInit is over (needed to move it) and duplicates the hotkey without the timer.
+
+//this would be much better if I could
+//1: remove hotkeys without removing the skill
+//2: count the 'non-class skills' without the user provided info
+//3: add the XC_Bags icons in hotkeys to save me the trouble (but since they're not skills, i can't)
+//4: have a event that worked for when henchmen are hired, not when they exit the End of Time with no performance problems.
+//
+//(1) would allow to remove the annoying 'flee' in main characters hotkey (name unknown, added by the game engine) and handle the 3 xcbags skills better
+//(2) would simplify the caller and make this actually more generic (though if you add that, I wouldn't need the bogus skills anyway).
+//(3) would save more time and because after all this trouble it's annoying not to end up with a 'complete' hotkey from chargen.
+
+INIT
+CHARACTER:__Me
+
+INT:%StartSlot = 0
+INT:%numberOfNonClassSkills = 0
+
+EVENTS
+
+//Bumps the slots with bogus skills taking into account class skills and chargen added talents for the caller to add new skills into a user specified slot sequence.
+//input is %StartSlot = slot (counting from 1) to start adding and %numberOfNonClassSkills to specify the number of non-class skills the character has.
+//After calling this, the caller can add the skills it wants (as long as the number fits in 50-numberOfNonClassSkills) then should call UnBumpSlots to remove the bogus
+//skills used for this.
+EVENT BumpSlots
+VARS
+	INT:_SAM_LearntSkills
+	INT:_Slot_Bump
+ON
+	OnFunction("BumpSlots")
+	OnTimer("BumpSlots") //on functions you can't display messages, unless you use a timer, this is why this event and unbumpslots accepts both. debugging-
+ACTIONS
+		//save the number of the the user wants to start at (to reuse the global StartSlot)
+		Set(_Slot_Bump, %StartSlot)
+		Set(_SAM_LearntSkills,0)
+		//as input: 0: "WarriorLore", 1: "RangerLore", 2: "RogueLore", 3: "Sourcery", 4: "FireSpecialist", 5: "WaterSpecialist", 6: "AirSpecialist", 7: "EarthSpecialist"
+		//as output: as many skills the character knows of that lore tier after joining
+		Set(%StartSlot,0)
+		CallFunction("InferSkillsNovice")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,0)
+		CallFunction("InferSkillsAdept")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,0)
+		CallFunction("InferSkillsMaster")
+		Add(_SAM_LearntSkills,%StartSlot)
+		
+		Set(%StartSlot,1)
+		CallFunction("InferSkillsNovice")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,1)
+		CallFunction("InferSkillsAdept")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,1)
+		CallFunction("InferSkillsMaster")
+		Add(_SAM_LearntSkills,%StartSlot)
+		
+		Set(%StartSlot,2)
+		CallFunction("InferSkillsNovice")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,2)
+		CallFunction("InferSkillsAdept")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,2)
+		CallFunction("InferSkillsMaster")
+		Add(_SAM_LearntSkills,%StartSlot)
+		
+		Set(%StartSlot,3)
+		CallFunction("InferSkillsNovice")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,3)
+		CallFunction("InferSkillsAdept")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,3)
+		CallFunction("InferSkillsMaster")
+		Add(_SAM_LearntSkills,%StartSlot)
+		
+		Set(%StartSlot,4)
+		CallFunction("InferSkillsNovice")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,4)
+		CallFunction("InferSkillsAdept")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,4)
+		CallFunction("InferSkillsMaster")
+		Add(_SAM_LearntSkills,%StartSlot)
+		
+		Set(%StartSlot,5)
+		CallFunction("InferSkillsNovice")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,5)
+		CallFunction("InferSkillsAdept")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,5)
+		CallFunction("InferSkillsMaster")
+		Add(_SAM_LearntSkills,%StartSlot)
+		
+		Set(%StartSlot,6)
+		CallFunction("InferSkillsNovice")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,6)
+		CallFunction("InferSkillsAdept")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,6)
+		CallFunction("InferSkillsMaster")
+		Add(_SAM_LearntSkills,%StartSlot)
+		
+		Set(%StartSlot,7)
+		CallFunction("InferSkillsNovice")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,7)
+		CallFunction("InferSkillsAdept")
+		Add(_SAM_LearntSkills,%StartSlot)
+		Set(%StartSlot,7)
+		CallFunction("InferSkillsMaster")
+		Add(_SAM_LearntSkills,%StartSlot)
+		
+		//However, besides class abilities, characters also have non-class skills signalled by the user programmatically.
+		Add(_SAM_LearntSkills,%numberOfNonClassSkills)
+		
+		//now we have all the skills that the player has and we want to fill everything up to hotbar 4
+		//we're going to use the same horrible hack, but less specialized, where we 'fill' all the slots minus the skill space we want to keep
+		//however, we need to be careful of the action limit for these subfunctions.
+		//reuse %StartSlot again to signal and keep track of 'number of slots to fill' to the function
+		Set(%StartSlot, _Slot_Bump)
+		Subtract(%StartSlot,_SAM_LearntSkills) //minus the character skills
+		CallFunction("FillUpTo10Bogus")
+		CallFunction("FillUpTo10Bogus")
+		CallFunction("FillUpTo10Bogus")
+		CallFunction("FillUpTo10Bogus")
+		CallFunction("FillUpTo10Bogus")
+
+//call after adding your skills at the desired slot	
+EVENT UnBumpSlots
+VARS
+	INT:_SAM_LearntSkills
+ON
+	OnFunction("UnBumpSlots")
+	OnTimer("UnBumpSlots")
+ACTIONS
+		//not reusing a 'startslot' saved in the bumpslots function to make it sure the user can't clobber it.
+		//just remove all possible bogus skills.
+		Set(%StartSlot, 50) 
+		CallFunction("RemoveTo10Bogus")
+		CallFunction("RemoveTo10Bogus")
+		CallFunction("RemoveTo10Bogus")
+		CallFunction("RemoveTo10Bogus")
+		CallFunction("RemoveTo10Bogus")
+		
+
+//To infer a class learned skills take advantage of the game mechanic that skill ability points influence the max of skills of that 'type' you can learn
+//3 different functions to make this easier. Number of 'bogus' class skills is 6*8+4*8+2*8 = 96
+//School Level 1: Can learn 3 novice skills
+//School Level 2: Can learn 5 novice skills, 2 adept skills
+//School Level 3: Can learn 6 novice skills, 3 adept skills //unreachable on chargen and companion joining in unmodded game but not later henchmen
+//School Level 4: Can learn 6 novice skills, 4 adept skills, 1 master skill
+//School Level 5: Can learn 6 novice skills, 4 adept skills, 2 master skills
+
+
+//Max 6 novice skills, start at level 1, level 1 = 3, level 2=5, level 3+ = 6
+Event InferSkillsNovice
+VARS
+	INT:_Level
+	INT:_Limit
+	INT:_Learned
+	FIXEDSTRING:_WhichSkill
+	ABILITY:_WhichAbility
+	STRING:_Str
+	INT:_Max
+	INT:_Min
+ON
+	OnFunction("InferSkillsNovice")
+ACTIONS
+	//this function worst case (counting only the longest path and uncommenting the displaytext function) is 94 action 'lines'
+	//(for 6 skills possible to learn) so it shouldn't trigger the D:OS EE script killer that starts at 100
+	GetElement(_WhichAbility, %StartSlot, WarriorLore, RangerLore, RogueLore, Sourcery, FireSpecialist, WaterSpecialist, AirSpecialist, EarthSpecialist )	
+	IF "c1&c2"
+		CharacterGetAbility(_Level,__Me,_WhichAbility)
+		IsEqual(_Level,0)
+	THEN
+		Set(%StartSlot,0) //return 0 spells learned from this class
+	ELSE
+		//NOVICE
+		IF "c1"
+			IsEqual(_Level,1)
+		THEN
+			Set(_Limit,3)
+		ELIF "c1"
+			IsEqual(_Level,2)
+		THEN
+			Set(_Limit,5)
+		ELSE
+			Set(_Limit,6)
+		ENDIF	
+		Set(_Learned,0)
+		//I'm reusing StartSlot to get the 'start of bogus class skill'
+		Multiply(%StartSlot,6) //start at this skill
+		//increase by 1 because the classes start with 1 not 0
+		Add(%StartSlot,1)
+		//use a single counter variable in the loops to minimize the number of executed actions
+		Set(_Min,%StartSlot)
+		Set(_Max,%StartSlot)
+		Add(_Max,6)          //could maybe be Add(_Max,_Limit), but that's untested
+		WHILE "!c1"
+			IsEqual(%StartSlot,_Max)
+		DO
+			Print(_Str, "BCS_Novice[1]", %StartSlot)
+			Cast(_WhichSkill,_Str)
+			CharacterAddSkill(_WhichSkill)
+			IF "c1"
+				CharacterCanCast(__Me,_WhichSkill,1)
+			THEN
+				Add(_Learned,1)
+				//only increment on success, failure stops the cycle and requires no increment for the next while
+				//(the fail case would have +2 StartSlot instead of +1 because the fail skill was incremented on the previous iteration)
+				Add(%StartSlot,1)
+				//uncomment to check how many skills the character can learn of this type
+				//DisplayCombatInfoText(__Me,_WhichSkill,1.0)
+			ELSE
+				Set(_Max,%StartSlot)//early exit next iteration
+			ENDIF
+		ENDWHILE
+		WHILE "!c1" //we couldn't remove the skill in the previous WHILE because it wouldn't count correctly the skills
+			IsEqual(%StartSlot,_Min)
+		DO
+			Subtract(%StartSlot,1)
+			Print(_Str, "BCS_Novice[1]", %StartSlot)
+			Cast(_WhichSkill,_Str)
+			CharacterRemoveSkill(_WhichSkill)
+		ENDWHILE
+		Subtract(_Limit,_Learned) //_Limit has how many novice skills the character has
+		Set(%StartSlot,_Limit) //the result
+	ENDIF
+
+//max 4 adept skills, start at level 2, level 2 = 2, level 3=3, level 4+ = 4
+Event InferSkillsAdept
+VARS
+	INT:_Level
+	INT:_Limit
+	INT:_Learned
+	FIXEDSTRING:_WhichSkill
+	ABILITY:_WhichAbility
+	STRING:_Str
+	INT:_Max
+	INT:_Min
+ON
+	OnFunction("InferSkillsAdept")
+ACTIONS
+	GetElement(_WhichAbility, %StartSlot, WarriorLore, RangerLore, RogueLore, Sourcery, FireSpecialist, WaterSpecialist, AirSpecialist, EarthSpecialist )
+	
+	IF "c1&c2"
+		CharacterGetAbility(_Level,__Me,_WhichAbility)
+		IsLessThen(_Level,2)
+	THEN
+		Set(%StartSlot,0)
+	ELSE
+		//ADEPT
+		IF "c1"
+			IsEqual(_Level,2)
+		THEN
+			Set(_Limit,2)
+		ELIF "c1"
+			IsEqual(_Level,3)
+		THEN
+			Set(_Limit,3)
+		ELSE
+			Set(_Limit,4)
+		ENDIF
+		Set(_Learned,0)
+		Multiply(%StartSlot,4)
+		Add(%StartSlot,1)
+		Set(_Min,%StartSlot)
+		Set(_Max,%StartSlot)
+		Add(_Max,4)
+		WHILE "!c1"
+			IsEqual(%StartSlot,_Max)
+		DO
+			Print(_Str, "BCS_Adept[1]", %StartSlot)
+			Cast(_WhichSkill,_Str)
+			CharacterAddSkill(_WhichSkill)
+			IF "c1"
+				CharacterCanCast(__Me,_WhichSkill,1)
+			THEN
+				Add(_Learned,1)
+				Add(%StartSlot,1)
+				//DisplayCombatInfoText(__Me,_WhichSkill,1.0)
+			ELSE
+				Set(_Max,%StartSlot)
+			ENDIF
+		ENDWHILE
+		WHILE "!c1"
+			IsEqual(%StartSlot,_Min)
+		DO
+			Subtract(%StartSlot,1)
+			Print(_Str, "BCS_Adept[1]", %StartSlot)
+			Cast(_WhichSkill,_Str)
+			CharacterRemoveSkill(_WhichSkill)
+		ENDWHILE
+		Subtract(_Limit,_Learned)
+		Set(%StartSlot,_Limit)
+	ENDIF
+
+
+//max 2 master skills, start at level 4, level 4 = 1, level 5=2
+Event InferSkillsMaster
+VARS
+	INT:_Level
+	INT:_Limit
+	INT:_Learned
+	FIXEDSTRING:_WhichSkill
+	ABILITY:_WhichAbility
+	STRING:_Str
+	INT:_Max
+	INT:_Min
+ON
+	OnFunction("InferSkillsMaster")
+ACTIONS
+	GetElement(_WhichAbility, %StartSlot, WarriorLore, RangerLore, RogueLore, Sourcery, FireSpecialist, WaterSpecialist, AirSpecialist, EarthSpecialist )
+	
+	IF "c1&c2"
+		CharacterGetAbility(_Level,__Me,_WhichAbility)
+		IsLessThen(_Level,4)
+	THEN
+		Set(%StartSlot,0)
+	ELSE
+		//MASTER
+		IF "c1"
+			IsEqual(_Level,4)
+		THEN
+			Set(_Limit,1)
+		ELSE
+			Set(_Limit,2)
+		ENDIF
+		Set(_Learned,0)
+		Multiply(%StartSlot,2)
+		Add(%StartSlot,1)
+		Set(_Min,%StartSlot)
+		Set(_Max,%StartSlot)
+		Add(_Max,2)
+		WHILE "!c1"
+			IsEqual(%StartSlot,_Max)
+		DO
+			Print(_Str, "BCS_Master[1]", %StartSlot)
+			Cast(_WhichSkill,_Str)
+			CharacterAddSkill(_WhichSkill)
+			IF "c1"
+				CharacterCanCast(__Me,_WhichSkill,1)
+			THEN
+				Add(_Learned,1)
+				Add(%StartSlot,1)
+				//DisplayCombatInfoText(__Me,_WhichSkill,1.0)
+			ELSE
+				Set(_Max,%StartSlot)
+			ENDIF
+		ENDWHILE
+		WHILE "!c1"
+			IsEqual(%StartSlot,_Min)
+		DO
+			Subtract(%StartSlot,1)
+			Print(_Str, "BCS_Master[1]", %StartSlot)
+			Cast(_WhichSkill,_Str)
+			CharacterRemoveSkill(_WhichSkill)
+		ENDWHILE
+		Subtract(_Limit,_Learned)
+		Set(%StartSlot,_Limit)
+	ENDIF
+
+
+
+EVENT FillUpTo10Bogus
+VARS
+	STRING:_Str
+	FIXEDSTRING:_WhichStr
+	INT:_Limit
+ON
+	OnFunction("FillUpTo10Bogus")
+ACTIONS
+	Set(_Limit, 1)
+	WHILE "c1&!c2"
+		IsGreaterThen(%StartSlot, 0)
+		IsEqual(_Limit,11)
+	DO
+		Print(_Str, "Bogus[1]", %StartSlot)
+		Cast(_WhichStr,_Str)
+		CharacterAddSkill(_WhichStr)
+		Add(_Limit,1)
+		Subtract(%StartSlot,1)
+	ENDWHILE
+
+EVENT RemoveTo10Bogus
+VARS
+	STRING:_Str
+	FIXEDSTRING:_WhichStr
+	INT:_Limit
+ON
+	OnFunction("RemoveTo10Bogus")
+ACTIONS
+	Set(_Limit, 1)
+	WHILE "c1&!c2"
+		IsGreaterThen(%StartSlot, 0)
+		IsEqual(_Limit,11)
+	DO
+		Print(_Str, "Bogus[1]", %StartSlot)
+		Cast(_WhichStr,_Str)
+		CharacterRemoveSkill(_WhichStr)
+		Add(_Limit,1)
+		Subtract(%StartSlot,1)
+	ENDWHILE
+

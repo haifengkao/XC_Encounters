@@ -1484,9 +1484,10 @@ VARS
 ON
 	OnFunction("AMER_AlchemistTalentEffects")
 ACTIONS
-	IF "!c1"
-		//Untreated Poison doesn't work on Zombies.
+	IF "!c1&!c2"
+		//Untreated Poison doesn't work on Zombies or characters with the poisonimmunity flag.
 		CharacterHasTalent(__Me, Zombie)
+		HasFlag(__Me, PoisonImmunity) 
 	THEN
 		IF "c1&c2"
 			GetVar(_CharSource, __Me, "AMER_CharSource")

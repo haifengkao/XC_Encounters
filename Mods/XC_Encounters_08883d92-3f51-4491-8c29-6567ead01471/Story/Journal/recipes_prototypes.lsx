@@ -333,13 +333,13 @@
 					<attribute id="RecipeID" value="RCP_Archer2" type="22" />
 					<attribute id="Title" value="BOOK_RCP_Archer2" type="22" />
 					<attribute id="Description" value="RCP_Archer2" type="22" />
-					<attribute id="Recipes" value="WPN_ArrowHead_Steam_A,XC_WPN_ArrowHead_Steam_A" type="23" />
+					<attribute id="Recipes" value="XC_WPN_ArrowHead_Poison_A,XC_WPN_ArrowHead_Poison_B,XC_WPN_ArrowHead_Poison_Cloud_A,XC_WPN_ArrowHead_Poison_Cloud_B,CON_Potion_Debuf_Strength_A,CON_Potion_Debuf_Constitution_A,CON_Potion_Debuf_Dexterity_A,CON_Potion_Debuf_Speed_A,CON_Potion_Debuf_Intelligence_A,CON_Potion_Debuf_Perception_A" type="23" />
 				</node>
 				<node id="Recipe">
 					<attribute id="RecipeID" value="RCP_Archer3" type="22" />
 					<attribute id="Title" value="BOOK_RCP_Archer3" type="22" />
 					<attribute id="Description" value="RCP_Archer3" type="22" />
-					<attribute id="Recipes" value="CON_Potion_Debuf_Strength_A" type="23" />
+					<attribute id="Recipes" value="XC_WPN_ArrowHead_Debuff_All_A,WPN_ArrowHead_Silver_A,XC_WPN_ArrowHead_Silver_A,XC_WPN_ArrowHead_Explosive_A,XC_WPN_ArrowHead_Explosive_B,XC_WPN_ArrowHead_Explosive_C,XC_WPN_ArrowHead_Freezing_A,XC_WPN_ArrowHead_Antler_A,XC_WPN_ArrowHead_Antler_B,XC_WPN_ArrowHead_Antler_C,XC_WPN_ArrowHead_Antler_D,XC_WPN_ArrowHead_SlowDown_A,XC_WPN_ArrowHead_SlowDown_B,XC_WPN_ArrowHead_SlowDown_C,XC_WPN_ArrowHead_Smokescreen_A,XC_WPN_ArrowHead_Static_Could_A,XC_WPN_ArrowHead_Static_Could_B,XC_WPN_ArrowHead_Static_Could_C,WPN_ArrowHead_Steam_A,XC_WPN_ArrowHead_Stunning_A,XC_WPN_ArrowHead_Steam_A,XC_WPN_ArrowHead_Water_A,XC_WPN_ArrowHead_Water_B,Ranged_Crush_A,Ranged_Crush_B" type="23" />
 				</node>
 			</children>
 		</node>

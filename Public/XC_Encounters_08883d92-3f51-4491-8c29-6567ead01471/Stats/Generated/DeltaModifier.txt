@@ -8410,6 +8410,23 @@ param "MinLevel" "20"
 param "BoostType" "Large"
 new boost "_AMER_Bow_Legendary_SightBoost",1
 
+new deltamod "AMER_Armor_Boost_Skill_EmpoweredSurvivorsKarma"
+prefixname "Empowered"
+suffixname "of Empowering"
+param "ModifierType" "Armor"
+param "SlotType" "Helmet"
+param "MinLevel" "1"
+param "MaxLevel" "14"
+param "BoostType" "Large"
+new boost "_AMER_Armor_Boost_Skill_EmpoweredSurvivorsKarma",1
+new deltamod "AMER_Armor_Boost_Skill_EmpoweredSurvivorsKarma_Late"
+prefixname "Empowered"
+suffixname "of Empowering"
+param "ModifierType" "Armor"
+param "SlotType" "Helmet"
+param "MinLevel" "15"
+param "BoostType" "Normal"
+new boost "_AMER_Armor_Boost_Skill_EmpoweredSurvivorsKarma",1
 new deltamod "Armor_AMER_Skill_Boost_EmpoweredBoulderBash"
 prefixname "Empowered"
 suffixname "of Empowering"
@@ -11454,3 +11471,422 @@ param "ModifierType" "Armor"
 param "MinLevel" "1"
 param "BoostType" "ItemCombo"
 new boost "_XC_Armor_Boost_Dye_Sapphire",1
+
+
+
+new deltamod "BoostUnbreakable"
+prefixname ""
+suffixname ""
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Armor_Boost_Unbreakable",1
+
+new deltamod "BoostArmor1"
+prefixname ""
+suffixname ""
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_ArmorDefenseValue_ArmorBoost_Boost",1
+
+new deltamod "BoostArmor2"
+prefixname ""
+suffixname ""
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_AllResist_ArmorBoost_Boost",1
+
+new deltamod "Sight_Boost"
+prefixname ""
+suffixname ""
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sight_Boost",1
+
+new deltamod "WandOvercharge"
+prefixname ""
+suffixname ""
+param "ModifierType" "Weapon"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_WandOvercharge_Boost",1
+
+new deltamod "WandPrecisionStance"
+prefixname ""
+suffixname ""
+param "ModifierType" "Shield"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_WandMeleePrecisionStance_Boost",1
+
+new deltamod "Sarong_EmpoweredFortify"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredFortify",1
+
+new deltamod "Sarong_EmpoweredFirstAid"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredFirstAid",1
+
+new deltamod "Sarong_EmpoweredHelpingHand"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredHelpingHand",1
+
+new deltamod "Sarong_EmpoweredSelfImmolation"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredSelfImmolation",1
+
+new deltamod "Sarong_EmpoweredSoothe"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredSoothe",1
+
+new deltamod "Sarong_EmpoweredLowerResistances"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredLowerResistances",1
+
+new deltamod "Sarong_EmpoweredWingedFeet"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredWingedFeet",1
+
+new deltamod "Sarong_EmpoweredAdrenaline"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredAdrenaline",1
+
+new deltamod "Sarong_EmpoweredThunderJump"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredThunderJump",1
+
+new deltamod "Sarong_EmpoweredSlowCurrent"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredSlowCurrent",1
+
+new deltamod "Sarong_EmpoweredBoulderBash"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredBoulderBash",1
+
+new deltamod "Sarong_EmpoweredSplinteredArrow"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredSplinteredArrow",1
+
+new deltamod "Sarong_EmpoweredCrushingFist"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredCrushingFist",1
+
+new deltamod "Sarong_EmpoweredShockingTouch"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredShockingTouch",1
+
+new deltamod "Sarong_EmpoweredFlare"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredFlare",1
+
+new deltamod "Sarong_EmpoweredVampiricTouch"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredVampiricTouch",1
+
+new deltamod "Sarong_EmpoweredSpikedShell"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredSpikedShell",1
+
+new deltamod "Sarong_EmpoweredPetrifyingTouch"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredPetrifyingTouch",1
+
+new deltamod "Sarong_EmpoweredFireball"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredFireball",1
+
+new deltamod "Sarong_EmpoweredNetherswap"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredNetherswap",1
+
+new deltamod "Sarong_EmpoweredFade"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredFade",1
+
+new deltamod "Sarong_EmpoweredBlessedEarth"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredBlessedEarth",1
+
+new deltamod "Sarong_EmpoweredBolster"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredBolster",1
+
+new deltamod "Sarong_EmpoweredSurvivorsKarma"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_EmpoweredSurvivorsKarma",1
+
+new deltamod "Sarong_Rage"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Rage",1
+
+new deltamod "Sarong_AwesomePresence"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_AwesomePresence",1
+
+new deltamod "Sarong_UnlockMagic"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_UnlockMagic",1
+
+new deltamod "Sarong_Rebirth"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Rebirth",1
+
+new deltamod "Sarong_Attonement"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Attonement",1
+
+new deltamod "Sarong_Wendigo"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Wendigo",1
+
+new deltamod "Sarong_Seraph"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Seraph",1
+
+new deltamod "Sarong_Ghostflame"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Ghostflame",1
+
+new deltamod "Sarong_Stasis"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Stasis",1
+
+new deltamod "Sarong_Soulfire"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Soulfire",1
+
+new deltamod "Sarong_MassHealing"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_MassHealing",1
+
+new deltamod "Sarong_Audacity"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Audacity",1
+
+new deltamod "Sarong_Maze"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Maze",1
+
+new deltamod "Sarong_Invulnerability"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Invulnerability",1
+
+new deltamod "Sarong_ShacklesOfPain"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_ShacklesOfPain",1
+
+new deltamod "Sarong_Premeditate"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_Premeditate",1
+
+new deltamod "Sarong_InsectPlague"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_Sarong_Armor_Boost_Skill_InsectPlague",1
+
+
+
+
+new deltamod "_Chicken_Claw_MagicBelt_A_Big"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Chicken_Claw_MagicBelt_A_Big",1
+
+new deltamod "_Chicken_Claw_MagicBelt_A"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Chicken_Claw_MagicBelt_A",1
+
+new deltamod "_Claw_MagicBelt_A"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Claw_MagicBelt_A",1
+
+new deltamod "_Claw_MagicBelt_A_Sharp"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Claw_MagicBelt_A_Sharp",1
+
+new deltamod "_Feather_MagicBelt_A_Fancy"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Feather_MagicBelt_A_Fancy",1
+
+new deltamod "_Feather_MagicBelt_A"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Feather_MagicBelt_A",1
+
+new deltamod "_Rabbit_Paw_MagicBelt_A_Lucky"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Rabbit_Paw_MagicBelt_A_Lucky",1
+
+new deltamod "_Rabbit_Paw_MagicBelt_A"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Rabbit_Paw_MagicBelt_A",1
+
+new deltamod "_Rabbit_Paw_SuperBelt_A_Lucky"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Rabbit_Paw_SuperBelt_A_Lucky",1
+
+new deltamod "_Rabbit_Paw_SuperBelt_A"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Rabbit_Paw_SuperBelt_A",1
+
+new deltamod "_Rat_Tail_MagicBelt_A_Long"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Rat_Tail_MagicBelt_A_Long",1
+
+new deltamod "_Rat_Tail_MagicBelt_A"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Rat_Tail_MagicBelt_A",1
+
+new deltamod "_Skull_MagicBelt_A_Ancient"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Skull_MagicBelt_A_Ancient",1
+
+new deltamod "_Skull_MagicBelt_A"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Skull_MagicBelt_A",1
+
+new deltamod "_Skull_MagicBelt_A_Tattooed"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Skull_MagicBelt_A_Tattooed",1
+
+new deltamod "_Tooth_MagicBelt_A"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Tooth_MagicBelt_A",1
+
+new deltamod "_Tooth_MagicBelt_A_Sharp"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Tooth_MagicBelt_A_Sharp",1
+
+new deltamod "_Tusk_MagicBelt_A_Large"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Tusk_MagicBelt_A_Large",1
+
+new deltamod "_Tusk_MagicBelt_A"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_Tusk_MagicBelt_A",1
+
+new deltamod "CB_DebuffCancel"
+param "ModifierType" "Armor"
+param "MinLevel" "1"
+param "BoostType" "ItemCombo"
+new boost "_CB_DebuffCancel",1

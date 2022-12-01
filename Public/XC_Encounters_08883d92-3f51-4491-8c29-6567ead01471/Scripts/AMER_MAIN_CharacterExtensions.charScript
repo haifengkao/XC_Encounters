@@ -44,6 +44,7 @@ INT:%AMER_CombatID = 0
 //Used to determine whether or not this character should be
 //removed from the game entirely when it is unloaded.
 INT:%AMER_DestroyOnDeactivate = 0
+
 	
 USING AMER_MAIN_SkillExtensions
 USING AMER_MAIN_CharacterMechanics
@@ -441,9 +442,7 @@ ACTIONS
 	Set(%AMER_CharismaReactionIndex, INT:9)			//Index for Block reaction
 	CallFunction("AMER_InitializeBardicReaction")
 	Set(%AMER_CharismaTargetOverride, null)
-	
-	
-	
+
 EVENT CriticalStrike
 //=========================//
 //Critical Strike/Backstab://
@@ -456,8 +455,9 @@ ACTIONS
 	IF "c1"
 		CharacterHasTalent(__Me, "RogueLoreDaggerBackStab")
 	THEN
-		IF "c1"
+		IF "c1|c2"
 			CharacterHasWeaponType(__Me, SmallWeapons, 1)
+			CharacterHasStatus(__Me, CONSUME, AMER_STATUS_WEAPONBACKSTAB)
 		THEN
 			IF "c1"
 				IsEqual(%AMER_BackstabChoke, INT:0)
@@ -498,6 +498,7 @@ EVENT ConsumeApplied
 ON
 	OnCharacterStatus(__Me, CONSUME)
 ACTIONS
+	
 	IF "!c1"
 		IsEqual(%AMER_ExpectApplicator, INT:0)
 	THEN
@@ -747,6 +748,9 @@ EVENT TurnBased
 //=========================//
 VARS
 	INT:_Round
+//	CHARACTER:_Other
+//	FLOAT:_Sight
+//	INT:_Leadership
 ON
 	OnTurn()	
 ACTIONS
@@ -800,7 +804,7 @@ ACTIONS
 			ENDIF
 		ENDIF
 	ENDIF
-				
+
 	//Broadcast status upkeep event.
 	//The function checks %AMER_OncePerRound so statuses
 	//are only updated once per round, but the event is
@@ -901,7 +905,6 @@ ACTIONS
 	ENDIF
 	
 	
-	
 EVENT EndTurnBased	
 //=========================//
 //       End of Turn:      //
@@ -954,6 +957,7 @@ VARS
 	INT:_Ability
 	INT:_Count
 	FLOAT:_Level
+	ITEM:_It
 ON
 	OnCombatStarted()	
 ACTIONS
@@ -1026,12 +1030,33 @@ ACTIONS
 			Set(%AMER_CharismaReactions, INT:2) //Charisma
 		ENDIF
 	ENDIF
-	
+
+
+	IF "!c1&c2"
+		CharacterIsDead(__Me)
+		CharacterIsPlayer(__Me)
+	THEN
+		//haste for chars with this item in inventory
+		IF "c1"
+			ItemGetFromInventory(_It, __Me , "ARM_UNIQUE_AntigravityGem") 
+		THEN	
+			CharacterApplyStatus(__Me, HASTED, -1)
+		ENDIF
+		//'backstab' criticals (using tricks of the trade bonus) for chars with this item in inventory
+		//not done as a consume onhit status on specific weapons because it misses the first critical
+		//this way it only misses the first if out of combat attack and 
+		//doesn't pollute items descriptions with a 'weird' consume effect
+		IF "c1&c2"
+			CharacterHasTalent(__Me, "RogueLoreDaggerBackStab")
+			ItemGetFromInventory(_It, __Me , "ARM_UNIQUE_PinceNez") 
+		THEN
+			AddStatusInfluence(__Me, CONSUME, 999.0, AMER_STATUS_WEAPONBACKSTAB, 0)
+		ENDIF
+	ENDIF
+
 	//Make certain that this value always starts at zero.
 	Set(%AMER_OncePerRoundTimerChoke, INT:0)
-	
-	
-	
+
 EVENT CombatEnds	
 //=========================//
 //	    End of Combat:     //
@@ -1039,6 +1064,20 @@ EVENT CombatEnds
 ON
 	OnCombatEnded()
 ACTIONS
+	IF "c1"
+		CharacterIsPlayer(__Me)
+	THEN
+		IF "c1"
+			CharacterHasStatus(__Me, HASTED)
+		THEN
+			CharacterRemoveStatus(__Me, HASTED)
+		ENDIF
+		IF "c1"
+			CharacterHasStatus(__Me, CONSUME, AMER_STATUS_WEAPONBACKSTAB)
+		THEN
+			RemoveStatusInfluence(__Me, CONSUME, 1000.0, AMER_STATUS_WEAPONBACKSTAB, 0)
+		ENDIF
+	ENDIF
 	IF "c1"
 		CharacterIsDead(__Me)
 	THEN

@@ -676,6 +676,26 @@
                 <attribute id="CraftAmount" value="3" type="4" />
             </node>
             <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_A" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_FoolsCrest_5" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="2" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_A" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_B" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_FoolsCrest_10" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="3" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_B" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
                 <attribute id="CombinationID" value="Shard_Artifact_C" type="22" />
                 <attribute id="RecipeCategory" value="Objects" type="22" />
                 <attribute id="Object2" value="AMER_UNI_FoolsCrest_15" type="22" />
@@ -699,6 +719,106 @@
                 <attribute id="CombinationID" value="Shard_Artifact_E" type="22" />
                 <attribute id="RecipeCategory" value="Objects" type="22" />
                 <attribute id="Object2" value="AMER_UNI_FoolsCrest_25" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="7" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_E" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_A" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_MasterOfNone_5" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="2" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_A" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_B" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_MasterOfNone_10" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="3" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_B" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_C" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_MasterOfNone_15" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="4" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_C" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_D" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_MasterOfNone_20" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="5" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_D" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_E" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_MasterOfNone_25" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="7" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_E" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_A" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_PussBoots_5" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="2" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_A" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_B" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_PussBoots_10" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="3" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_B" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_C" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_PussBoots_15" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="4" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_C" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_D" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_PussBoots_20" type="22" />
+                <attribute id="Category1" value="Philosopher" type="22" />
+                <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
+                <attribute id="RequiredSkillLevel" value="5" type="4" />
+                <attribute id="StatsID" value="AMER_LOOT_UNI_Shard_D" type="22" />
+                <attribute id="CraftAmount" value="3" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Shard_Artifact_E" type="22" />
+                <attribute id="RecipeCategory" value="Objects" type="22" />
+                <attribute id="Object2" value="AMER_UNI_PussBoots_25" type="22" />
                 <attribute id="Category1" value="Philosopher" type="22" />
                 <attribute id="RequiredSkill" value="Blacksmithing" type="22" />
                 <attribute id="RequiredSkillLevel" value="7" type="4" />
@@ -16431,6 +16551,39 @@
                 <attribute id="StatsID" value="Quest_Wort" type="22" />
                 <attribute id="CraftAmount" value="7" type="4" />
             </node>
+	    <!-- XC Encounters personal edit -->
+            <node id="Combo">
+                <attribute id="CombinationID" value="Ring_Sight_A" type="22" />
+                <attribute id="RecipeCategory" value="Object" type="22" />
+                <attribute id="Object1" value="LOOT_Eye_A_Earie_A" type="22" />
+                <attribute id="Category2" value="Ring" type="22" />
+                <attribute id="RequiredSkill" value="Crafting" type="22" />
+                <attribute id="RequiredSkillLevel" value="6" type="4" />
+                <attribute id="Icon" value="Object2" type="22" />
+                <attribute id="Tooltip" value="Boosted [1]" handle="hf8671fbcga4c5g47e1g929bg53c7e15ef91c" type="28" />
+                <attribute id="CraftAmount" value="1" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="Ring_Sight_B" type="22" />
+                <attribute id="RecipeCategory" value="Object" type="22" />
+                <attribute id="Object1" value="LOOT_Eye_A_Earie_A_Creepy" type="22" />
+                <attribute id="Category2" value="Ring" type="22" />
+                <attribute id="RequiredSkill" value="Crafting" type="22" />
+                <attribute id="RequiredSkillLevel" value="6" type="4" />
+                <attribute id="Icon" value="Object2" type="22" />
+                <attribute id="Tooltip" value="Boosted [1]" handle="hf8671fbcga4c5g47e1g929bg53c7e15ef91c" type="28" />
+                <attribute id="CraftAmount" value="1" type="4" />
+            </node>
+            <node id="Combo">
+                <attribute id="CombinationID" value="GarmentTrethon" type="22" />
+                <attribute id="RecipeCategory" value="Armor" type="22" />
+                <attribute id="Object1" value="XC_Tool_Crafting_NeedleThread_Magic" type="22" />
+                <attribute id="Object2" value="ARM_CraftedRobe_Trethon" type="22" />
+                <attribute id="RequiredSkill" value="Crafting" type="22" />
+                <attribute id="RequiredSkillLevel" value="1" type="4" />
+                <attribute id="StatsID" value="ARM_UNIQUE_GarmentTrethon" type="22" />
+                <attribute id="CraftAmount" value="1" type="4" />
+            </node>     
         </children>
     </node>
 </region>

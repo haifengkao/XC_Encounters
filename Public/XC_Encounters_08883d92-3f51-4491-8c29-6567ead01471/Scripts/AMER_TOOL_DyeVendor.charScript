@@ -13,7 +13,10 @@ INIT
 CHARACTER:__Me
 	
 EVENTS
+	
 EVENT DyeVendorOnInit
+VARS
+	INT:_Cheat
 ON
 	OnInit()
 ACTIONS
@@ -23,8 +26,25 @@ ACTIONS
 		CallFunction("AMER_DyeVendor_GenerateOldDyes")
 		CallFunction("AMER_DyeVendor_GenerateEEDyes")
 		CallFunction("AMER_DyeVendor_GenerateXCDyes")
+		//use player 1 to avoid a race condition
+		//assuming the player is always inited before the npcs, the init function in the player ai script
+		//should have run and set the variable before we check it here
+		IF "c1&c2&c3"
+			IsEqual(__Me,CHARACTER:WeaverOfTime_50079ace-007b-41b6-8d91-b969a1ccee09)
+			GetVar(_Cheat,CHARACTER:Player1_dac1443f-a866-4ab3-b240-e705c0b20ec5,"VendorCheat")
+			IsEqual(_Cheat,1)
+		THEN	
+			CallFunction("WeaverOfTimeCheatNoExtraItems")
+		ENDIF
+		IF "c1&c2&c3"
+			IsEqual(__Me,CHARACTER:WeaverOfTime_50079ace-007b-41b6-8d91-b969a1ccee09)
+			GetVar(_Cheat,CHARACTER:Player1_dac1443f-a866-4ab3-b240-e705c0b20ec5,"VendorCheat")
+			IsEqual(_Cheat,2)
+		THEN	
+			CallFunction("WeaverOfTimeCheat")
+		ENDIF
 	ENDIF
-	
+
 EVENT DyeVendorGenerateOldDyes
 VARS
 	FIXEDSTRING:_WhichItem = null
@@ -87,7 +107,48 @@ ACTIONS
 		ENDIF
 		Add(_Count, 1)
 	ENDWHILE	
+
+EVENT WeaverOfTimeCheatNoExtraItems
+VARS
+	FIXEDSTRING:_WhichItem = null
+	ITEM:_Item
+	INT:_Count
+ON
+	OnFunction("WeaverOfTimeCheatNoExtraItems")
+ACTIONS
+	Set(_Count, INT:0)
+	WHILE "c1"
+		IsLessThen(_Count, 2)
+	DO
+		GetElement(_WhichItem, _Count,"SKILLBOOK_StatPoint","SKILLBOOK_AbilityPoint")
+		IF "!c1"
+			ItemGetFromInventory(_Item, __Me, _WhichItem)
+		THEN
+			CharacterAddToInventory(__Me, _WhichItem, 10)
+		ENDIF
+		Add(_Count, 1)
+	ENDWHILE
 	
+EVENT WeaverOfTimeCheat
+VARS
+	FIXEDSTRING:_WhichItem = null
+	ITEM:_Item
+	INT:_Count
+ON
+	OnFunction("WeaverOfTimeCheat")
+ACTIONS
+	Set(_Count, INT:0)
+	WHILE "c1"
+		IsLessThen(_Count, 17)
+	DO
+		GetElement(_WhichItem, _Count, "TOOL_Dye_Mystery","AMER_LOOT_UNI_Shard_A","SKILLBOOK_StatPoint","SKILLBOOK_AbilityPoint","CYS_PickedUpShell","TOOL_Scope_A","LOOT_Kickstarter_Pouch_JoshuaSpice","AMER_UNI_MoriensBeak_5","AMER_UNI_PussBoots_5","AMER_UNI_MasterOfNone_5","AMER_UNI_LorkansWand_5","AMER_UNI_LorkansShield_5","ARM_UNIQUE_CatsBellt","ARM_UNIQUE_PinceNez","ARM_UNIQUE_AntigravityGem","AMER_Skillbook_SummonAutomaton","TOOL_Bottomless_Pouch_Pixie_Dust")
+		IF "!c1"
+			ItemGetFromInventory(_Item, __Me, _WhichItem)
+		THEN
+			CharacterAddToInventory(__Me, _WhichItem, 10)
+		ENDIF
+		Add(_Count, 1)
+	ENDWHILE
 //=====================================================//
 //                                                     //
 //                 D Y E   V E N D O R                 //

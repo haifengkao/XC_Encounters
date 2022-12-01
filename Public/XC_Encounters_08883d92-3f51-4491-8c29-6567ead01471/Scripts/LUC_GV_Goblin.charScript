@@ -116,7 +116,7 @@ EVENT GatherAtTotem
 		//This hack should get dialogue enabled while they do their stuff.
 		//Exploit story scripting by firing the event that resets their dialogue,
 		//but only respond to it every second catch.
-		StatusText(__Me, "AMER_ChainOne")	//TEST
+		//StatusText(__Me, "AMER_ChainOne")	//TEST
 		Set(%AMER_EnableDialogHack, INT:1)
 		ItemEvent(ITEM_LUC_GV_InvisibleTotem, "goBackTent")
 		
@@ -127,7 +127,7 @@ EVENT GoBackAtSpot
 		OnItemEvent(%Totem, "goBackTent")
 	ACTIONS
 		//Only respond to this event every second catch.
-		StatusText(__Me, "AMER_ChainFive")	//TEST
+		//StatusText(__Me, "AMER_ChainFive")	//TEST
 		IF "!c1"
 			IsGreaterThen(%AMER_EnableDialogHack, INT:0)
 		THEN

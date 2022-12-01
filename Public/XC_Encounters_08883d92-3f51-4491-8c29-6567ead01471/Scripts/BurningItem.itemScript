@@ -12,6 +12,20 @@ EXTERN FIXEDSTRING:%BurnEffectBone = ""
 INT:%BurningFX = null
 
 EVENTS
+
+//If one re-loads a game, make sure the 'if' in DestroyBurningVisuals, doesn't trigger after everything got deleted
+//(this is probably a engine bug on the event)
+EVENT ShutdownBurningItem
+ON
+	OnShutdown()
+ACTIONS
+	IF "!c1"
+		IsEqual(%BurningFX,null)
+	THEN
+		StopLoopEffect(%BurningFX)
+		Set(%BurningFX,null)
+	ENDIF
+
 EVENT CreateBurningVisuals
 ON	
 	OnStatusCreateVisuals(BURNING)

@@ -1621,6 +1621,7 @@ VARS
 	FIXEDSTRING:_WhichEffect
 ON
 	OnSkillCast(__Me, "AMER_SKILL_Overcharge")
+	OnSkillCast(__Me, "WandOvercharge")
 ACTIONS
 	//Overcharge damages the user for each sequential
 	//round wherein it has been used.

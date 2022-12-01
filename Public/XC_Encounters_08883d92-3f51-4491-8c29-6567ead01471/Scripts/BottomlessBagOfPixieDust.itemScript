@@ -1,0 +1,26 @@
+//==============================================================================//
+//																				//
+//			   B O T T O M L E S S   B A G   O F   P I X I E   D U S T			//
+//																				//
+//							   Written by i30817 (2021)							//
+//==============================================================================//
+INIT
+ITEM:__Me
+
+
+
+EVENTS
+
+//All gold has the same item template (1c3c9c74-34a1-4685-989e-410dc080be6f) but it turns out gold may not have the same name and max amount (from Links/Object.txt for the loot and traders)
+//and ItemGetFromInventory and CharacterAddToInventory operate on names. While i could, and did attempt to handle it with a timer to iterate over all the gold names
+//itemScripts can only run timers while 'in the world' not in inventory. If you attempt it, the command is queued but not run until you drop the item into the ground, which is weird. 
+//Attempting checking all 27 gold names without a timer is unwise because DOS:EE has a 100 action limit per event/function and will kill the script iteration if it goes over it.
+//So this is handled in AMER_MAIN_PlayerItemFunctions which is a extension script of the player script so it can get a event to the right player
+EVENT BagOnUse
+VARS
+	CHARACTER:_Char
+ON
+	OnUseItem(_Char, __Me) //__Me is a pattern match. However the _Char is a assigment, except if you use a global variable. Inconsistent...
+ACTIONS
+	CharacterEvent(_Char,"BBOPD_Update")
+

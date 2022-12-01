@@ -1,0 +1,14 @@
+//just spawns the assassin monocle on eglandaer's death because i didn't want the players to see it on the trade menu
+//and just want them to be able to get it on killing eglandaer, not buying or stealing from him
+INIT
+CHARACTER:__Me
+
+
+
+EVENTS
+
+EVENT EglandaerDying
+ON
+	OnCharacterStatus(__Me, DYING)
+ACTIONS
+	SpawnItem("ARM_UNIQUE_PinceNez_53226ce4-3d3d-42b1-a855-591250a13212", __Me, 1)

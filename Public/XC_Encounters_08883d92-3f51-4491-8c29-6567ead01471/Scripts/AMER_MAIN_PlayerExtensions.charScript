@@ -798,16 +798,12 @@ ACTIONS
 	//Remove Overcharge stacks. No funny buisness, I got bug reports
 	//that the Overcharge buff icon was lingering. Just remove them
 	//all and take no chances because nothing works.
-	IF "c1"
-		CharacterHasTalent(__Me, WandCharge)
-	THEN
-		RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge1", 0)
-		RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge2", 0)
-		RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge3", 0)
-		RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge4", 0)
-			
-		Set(%AMER_OverchargeCount, INT:0)
-	ENDIF
+	RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge1", 0)
+	RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge2", 0)
+	RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge3", 0)
+	RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge4", 0)
+		
+	Set(%AMER_OverchargeCount, INT:0)
 	
 	
 	
@@ -927,25 +923,21 @@ ACTIONS
 	//Remove Overcharge stacks. No funny buisness, I got bug reports
 	//that the Overcharge buff icon was lingering. Just remove them
 	//all and take no chances because nothing works.
-	IF "c1"
-		CharacterHasTalent(__Me, WandCharge)
-	THEN
-		RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge1", 0)
-		RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge2", 0)
-		RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge3", 0)
-		RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge4", 0)
-		
-		Set(%AMER_OverchargeCount, INT:0)
-	ENDIF
+	RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge1", 0)
+	RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge2", 0)
+	RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge3", 0)
+	RemoveStatusInfluence(__Me, CONSUME, 1, "AMER_Overcharge4", 0)
+	
+	Set(%AMER_OverchargeCount, INT:0)
 	
 	IF "c1"
 		IsEqual(%AMER_OoCHealingEnabled, INT:1) //SAMARITAN: re-enabled
 	THEN
 		StartTimer("AMER_OoCHealing", _OoCHealingTickTime, -1)
 	ENDIF
-	
-	
-	
+
+
+
 //===============================================//
 //                                               //
 //      P L A Y E R   E X T E N S I O N S        //

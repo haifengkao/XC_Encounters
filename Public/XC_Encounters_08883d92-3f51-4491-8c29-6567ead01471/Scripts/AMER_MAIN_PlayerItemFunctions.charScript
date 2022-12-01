@@ -27,7 +27,12 @@ INT:%AMER_CheckArtifactChest = -1
 //Reusable global int. Used for:
 //Necromancer's Raiment corpse count @ turn end.
 INT:%AMER_ReusableItemAffixInt
-	
+
+//Bottomless Pixie Bag handling
+INT:%BBOPD_DustValue
+INT:%BBOPD_GoldStacksBeat
+INT:%BBOPD_Debt
+INT:%BBOPD_CLOBBER
 	
 EVENTS
 EVENT PlayerItemFunctionsOnTurn
@@ -254,7 +259,7 @@ VARS
 ON
 	OnFunction("AMER_OnActivateAntediluvian")
 ACTIONS
-	StatusText(__Me, "AMER_ChainOne")	//TEST
+	//StatusText(__Me, "AMER_ChainOne")	//TEST
 	//Antediluvian adds +5% to all non-physical max resistances.
 	Set(_Count, INT:0)
 	WHILE "c1"
@@ -279,7 +284,7 @@ VARS
 ON
 	OnFunction("AMER_OnDeactivateAntediluvian")
 ACTIONS
-	StatusText(__Me, "AMER_ChainFive")	//TEST
+	//StatusText(__Me, "AMER_ChainFive")	//TEST
 	//Reduce non-physical maximum resistances by 5%.
 	Set(_Count, INT:0)
 	WHILE "c1"
@@ -1038,9 +1043,125 @@ ACTIONS
 			ENDIF
 		ENDIF
 	ENDIF
-	
-	
-	
+
+
+//start a new timer only if the player activated this item manually
+//this is needed because the player can end up with a gold pile which doesn't have a predictable 'name'
+//(by selling to a trader when broke for instance) and ItemGetFromInventory and CharacterAddToInventory operate on names.
+EVENT Bottomless_Bag_Of_Pixie_Dust
+ON
+	OnCharacterEvent(__Me, "BBOPD_Update")
+ACTIONS
+	//reseting a variable at the end of all the timer iterations is unreliable because D:OS will kill scripts that 100 plus actions per function
+	//so that variable could deadlock this script function. However this is handled by limiting the number of iterations of a while function and the timer
+	//note that there is a inferior way to handle it (that could lose money) by starting two timers and reseting the variable at the 'end of both' if one doesn't, the other does
+	IF "c1"
+		IsEqual(%BBOPD_CLOBBER,0)
+	THEN
+		Set(%BBOPD_CLOBBER,1)
+		//There is not much point in calculating a value dynamically since the default price for pixie dust (ignoring all the barter and reputation penalties) is 92,
+		//the default trader sell price with no bonuses is >250, and with some around 150-200. 200 gives a nice round number to display while not making traders pixie dust useless.
+		//(it's not possible to display dynamic value stats in the inventory tooltip, those are reserved to skillbooks and spells and scaling values based on equipped weapon or class skills -
+		// it's possible to have a item 'with a skill' that shows on the tooltip, but the values you can get there are not scriptable AFAIK and a skill would be too messy for this)
+		Set(%BBOPD_DustValue, 200)
+		//the heartbeat checks for each stack type if they have money to pay, removes that money and records 'debt' owed by the script
+		//that debt is given back at the end if no sale was done. I do it this way because i can't find a function to add/check the character money from scripts
+		Set(%BBOPD_Debt, 0)
+		//prepare the heartbeat which will select one of multiple stack types in each timer iteration, consuming any that doesn't pay completely to check the next etc
+		Set(%BBOPD_GoldStacksBeat, 0)
+		//being optimistic that this can run in just over 1 second, 27 is the number of different stacks of gold possible. It's actually 3-4 seconds here (worst case)
+		StartTimer("BBOPD_Heartbeat",0.04,-1)
+	ELSE
+		DisplayText(__Me,"Bottomless_Pixie_Dust_Clobber",4)
+	ENDIF
+
+EVENT GoldStack
+ON
+	OnTimer("BBOPD_Heartbeat")
+ACTIONS
+		//DOSEE has a limit of action lines of 100 until it kills the script so this function interrupts itself it it goes over a certain limit of iterations
+		//that's the reason why we don't start the timer with 27 fixed iterations. The logic is that BBOPD_DustValue == 0 completed sale and BBOPD_GoldStacksBeat == 27
+		//finished checking every type of stack, BBOPD_DustValue > 0 && BBOPD_GoldStacksBeat == 27 is not enough gold.
+		CallFunction("GoldStacks")
+		
+		IF "c1" //> 0 signifies a sale wasn't finished, yet
+			IsGreaterThen(%BBOPD_DustValue, 0)
+		THEN
+			IF "c1" //final iteration, couldn't buy, add back the money consumed
+				IsEqual(%BBOPD_GoldStacksBeat, 27) //larian has no chill, 27 gold names which are all the fucking same, just for trader stock
+			THEN
+				//since in EE they're the same, add back the 'simplest'.
+				CharacterAddToInventory(__Me, "Small_Gold", %BBOPD_Debt)
+				DisplayText(__Me, "Bottomless_Pixie_Dust_Cancel", 2)
+				Set(%BBOPD_CLOBBER,0)
+				StopTimer("BBOPD_Heartbeat")
+			ENDIF
+		ELSE
+			//could buy, debt reset in the next sale anyway, so no need to waste a line
+			CharacterAddToInventory(__Me, "XC_Ingredient_Dust_Pixie")
+			Set(%BBOPD_CLOBBER,0)
+			StopTimer("BBOPD_Heartbeat")
+		ENDIF
+
+EVENT GoldStacks
+VARS
+	ITEM:_Stack
+	FLOAT:_StackValue
+	INT:_NewStackValue
+	INT:_Iterations
+	FIXEDSTRING:_BBOPD_GoldStack
+ON
+	OnFunction("GoldStacks")
+ACTIONS
+		//note: contrary to what it may first appear one call of this function operates on one stack type.
+		//It's multiple stacks of the same type that the while is for
+		
+		//avoid the 100 actions limit by repeating this function in the next timer call if the iteration limit was reached
+		Set(_Iterations, 0)
+		GetElement(_BBOPD_GoldStack,%BBOPD_GoldStacksBeat,Small_Gold,InBetween_Gold,Medium_Gold,Large_Gold,Larger_Gold,Huge_Gold,Pile_Of_Gold,Pile_Of_Gold_B,Pile_Of_Gold_C,Pile_Of_Gold_D,Small_Gold_Big,InBetween_Gold_Big,Medium_Gold_Big,Large_Gold_Big,Larger_Gold_Big,Huge_Gold_Big,Pile_Of_Gold_Big,Pile_Of_Gold_Big_B,Pile_Of_Gold_Big_C,Pile_Of_Gold_Big_D,Trader_Small_Gold,Trader_Medium_Gold,Trader_Large_Gold,Trader_Huge_Gold,Trader_Insane_Gold,Trader_Bank_Gold,Trader_Endgame_Gold)
+		WHILE "c1&!c2&c3&c4"
+			IsGreaterThen(%BBOPD_DustValue, 0)
+			IsEqual(_Iterations, 5)
+			ItemGetFromInventory(_Stack, __Me, _BBOPD_GoldStack)
+			ItemGetStat(_StackValue, _Stack, Value)
+		DO
+			Cast(_NewStackValue, _StackValue)
+			IF "c1"
+				IsGreaterThen(_NewStackValue, %BBOPD_DustValue)
+			THEN
+				Subtract(_NewStackValue, %BBOPD_DustValue)
+				ItemSetAmount(_Stack, _NewStackValue)
+				//Stop the while and signal the sale
+				Set(%BBOPD_DustValue,0)
+			ELSE
+				//this is done this way, because i can't select 'which' stack to remove with CharacterRemoveFromInventory
+				//only 'a' stack of that kind and i'm also not sure if the function is intelligent enough to continue removing
+				//if it selects a stack that doesn't have enough. This way, the correct value is removed since you can always remove 1.
+				//if there are multiple stacks, and i'm lucky - or the order of ItemGetFromInventory/CharacterRemoveFromInventory
+				//is always the same - the correct stack is chosen (with a single stack it always works).
+				//If it doesn't work it just looks a bit ugly by leaving a single coin as a separate stack. It's just to be safe.
+				
+				//ItemGetFromInventory needs to 'remove' a stack to be sure to advance to another next iteration
+				//of the same type (a gold stack with amount 0 still exists in inventory as a coin...)
+				//so we do remove the stack, but store a 'debt' which we add back if the item wasn't actually bought at the end.
+				ItemSetAmount(_Stack, 1)
+				CharacterRemoveFromInventory(__Me, _BBOPD_GoldStack, 1)
+				Subtract(%BBOPD_DustValue, _NewStackValue)
+				Add(%BBOPD_Debt, _NewStackValue)
+				//If the sale was actually complete %BBOPD_DustValue is exactly 0 and will stop next iteration
+			ENDIF
+			Add(_Iterations, 1)
+		ENDWHILE
+		
+		//only increase the stack if we're not over 4 iterations, otherwise in the next timer event check the same stack type (if the sale wasn't done)
+		//note that it's ok to sell on iteration 4 and not increase the number, because that's a sale and will not check for 'all the stacks checked' to terminate.
+		//and this might seem obvious, but if there is no stack or just one of that type of gold, the iteration doesn't increase beyond 0-1 and the beat always progresses
+		IF "!c1"
+			IsEqual(_Iterations, 5)
+		THEN
+			Add(%BBOPD_GoldStacksBeat, 1)
+		ENDIF
+
 //=================================================//
 //                                                 //
 //    P L A Y E R   I T E M   F U N C T I O N S    //

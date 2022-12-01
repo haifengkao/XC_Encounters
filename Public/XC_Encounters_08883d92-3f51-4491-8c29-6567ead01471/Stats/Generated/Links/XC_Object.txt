@@ -108,7 +108,7 @@ object itemstat "XC_Scroll_Ranger_B_SurvivorsKarma","3410e03d-ee28-43c7-8c9e-b39
 object itemstat "XC_Scroll_Ranger_B_VampiricArrow","581b7c09-daa8-4399-91c4-dca575ddf049","",0,0,"",-1,-1,-1,0,-1,-1
 object itemstat "XC_Scroll_Ranger_C_ArrowSpray","50f83248-c33b-451d-9979-7fc6202ed0bd","",0,0,"",-1,-1,-1,0,-1,-1
 object itemstat "XC_Scroll_Ranger_C_RainOfArrows","04cfd734-e8c8-4b80-9bc0-e58c8132a16d","",0,0,"",-1,-1,-1,0,-1,-1
-object itemstat "XC_Scroll_Rogue_A_Adrenaline","7ae0e09a-915f-4e24-959b-ee1b124303c7","",0,0,"",-1,-1,-1,0,-1,-1
+object itemstat "XC_Scroll_Rogue_A_Adrenaline","7ae0e09a-915f-4e24-959b-ee1b124303c7","",0,0,"RogueScroll",-1,-1,-1,0,-1,-1
 object itemstat "XC_Scroll_Rogue_A_FastTrack","5ea65536-6ecc-4702-9375-5e74b119be58","",0,0,"",-1,-1,-1,0,-1,-1
 object itemstat "XC_Scroll_Rogue_A_Lacerate","85379a04-d410-45ac-b227-54439288ca99","",0,0,"",-1,-1,-1,0,-1,-1
 object itemstat "XC_Scroll_Rogue_A_PreciseIncision","c99bee96-bd61-46c3-9e66-75ec92483209","",0,0,"",-1,-1,-1,0,-1,-1
@@ -116,7 +116,7 @@ object itemstat "XC_Scroll_Rogue_A_Trip","39b2f470-52d3-4df6-b08e-fa3a228fdeb1",
 object itemstat "XC_Scroll_Rogue_A_VenomousStrike","005ee102-db7b-40e8-b041-79adb263f554","",0,0,"",-1,-1,-1,0,-1,-1
 object itemstat "XC_Scroll_Rogue_A_WalkInShadows","943637d3-31f2-491b-a89a-b38b20eb8655","",0,0,"",-1,-1,-1,0,-1,-1
 object itemstat "XC_Scroll_Rogue_A_WingedFeet","6ca28f5f-9139-4def-b24d-f62313d50385","",0,0,"RogueScroll",1,1,4,0,8,25
-object itemstat "XC_Scroll_Rogue_B_BecomeAir","dd20a77c-28c1-42cf-8749-677892d1a4b7","",0,0,"RogueScroll",1,1,4,0,7,25
+object itemstat "XC_Scroll_Rogue_B_BecomeAir","dd20a77c-28c1-42cf-8749-677892d1a4b7","",0,0,"",1,1,4,0,7,25
 object itemstat "XC_Scroll_Rogue_B_CloakAndDagger","c27c1ee3-b5b8-4839-93d7-e5c632a3f938","",0,0,"RogueScroll",1,1,4,0,11,25
 object itemstat "XC_Scroll_Rogue_B_DaggersDrawn","805d14b3-bee5-41e5-918c-c72418c7390c","",0,0,"",-1,-1,-1,0,-1,-1
 object itemstat "XC_Scroll_Rogue_B_EyeGouge","a18432c8-8015-4ad6-9f34-2ed7666858c5","",0,0,"",-1,-1,-1,0,-1,-1
@@ -203,7 +203,7 @@ object itemstat "XC_Skillbook_Earth_C_Earthquake","31c56315-023d-416a-980c-409b3
 object itemstat "XC_Skillbook_Earth_B_SummonEarthElemental","53c4bd06-394a-4a67-9c0f-6852f1034f3b","",0,0,"XCSkillbookEarth",1,1,2,0,14,25
 object itemstat "XC_Skillbook_Earth_C_SummonToxicHorror","797f1de0-a3d4-4514-b7b2-b950dd8b2a9d","",0,0,"XCSkillbookEarth",1,1,2,0,11,25
 object itemstat "XC_Skillbook_Fire_A_AvatarOfFire","2d208708-6955-40b0-bc36-ebb69086662c","",0,0,"XCSkillbookFire",1,1,2,0,1,25
-object itemstat "XC_Skillbook_Fire_A_ElementalVisions,"e7fa7fc6-ff71-4548-9010-7ad81490d922","",0,0,"XCSkillbookFire",1,1,2,0,1,25
+object itemstat "XC_Skillbook_Fire_A_ElementalVisions","e7fa7fc6-ff71-4548-9010-7ad81490d922","",0,0,"XCSkillbookFire",1,1,2,0,1,25
 object itemstat "XC_Skillbook_Fire_A_BurningTouch","1db9404b-4048-4635-b043-019184b2d9a8","",0,0,"XCSkillbookFire",1,1,2,0,1,25
 object itemstat "XC_Skillbook_Fire_A_FireFly","24c8bb08-fcae-4e51-87d8-0faeff44c534","",0,0,"XCSkillbookFire",1,1,2,0,1,25
 object itemstat "XC_Skillbook_Fire_A_Flare","ffc08cbe-6db4-44e8-b065-665aaf7935bc","",0,0,"XCSkillbookFire",1,1,2,0,1,25
