@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" time="1404064042" />
+    <version major="1" minor="3" revision="0" build="0" />
+    <region id="CharacterCreationClass">
+        <node id="root">
+            <attribute id="Armour" value="" type="22" />
+            <attribute id="Boots" value="" type="22" />
+            <attribute id="ClassDescription" value="A young, intrepid battlemage, eager to experience the world" handle="hfca84a2cg231dg4f58g8158g33257879eacd" type="28" />
+            <attribute id="ClassLongDescription" value="Little is known about Celes; she is said to be as cold as ice on both the battlefield and in the matters of the heart." handle="hf62245d7g3d5dg416dga004g3e590cf2e2d3" type="28" />
+            <attribute id="ClassName" value="Battlemage" handle="he929c5d4gf1f7g46aagb9deg47527f6239b6" type="28" />
+            <attribute id="ClassType" value="Battlemage" type="22" />
+            <attribute id="ExtraEquipmentSet" value="" type="22" />
+            <attribute id="Gloves" value="" type="22" />
+            <attribute id="Leggings" value="" type="22" />
+            <attribute id="SkillSet" value="" type="22" />
+            <attribute id="Voice" value="0" type="5" />
+            <children>
+                <node id="AbilityChanges">
+                    <children>
+                        <node id="AbilityChange">
+                            <attribute id="Ability" value="WarriorLore" type="23" />
+                            <attribute id="AmountIncreased" value="1" type="4" />
+                        </node>
+                        <node id="AbilityChange">
+                            <attribute id="Ability" value="SingleHanded" type="23" />
+                            <attribute id="AmountIncreased" value="1" type="4" />
+                        </node>
+                        <node id="AbilityChange">
+                            <attribute id="Ability" value="ArmorMastery" type="23" />
+                            <attribute id="AmountIncreased" value="1" type="4" />
+                        </node>
+                        <node id="AbilityChange">
+                            <attribute id="Ability" value="WaterSpecialist" type="23" />
+                            <attribute id="AmountIncreased" value="1" type="4" />
+                        </node>
+                        <node id="AbilityChange">
+                            <attribute id="Ability" value="Willpower" type="23" />
+                            <attribute id="AmountIncreased" value="1" type="4" />
+                        </node>
+                    </children>
+                </node>
+                <node id="AttributeChanges">
+                    <children>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="1" type="4" />
+                          <attribute id="Attribute" value="DEX" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="1" type="4" />
+                          <attribute id="Attribute" value="SPD" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="1" type="4" />
+                          <attribute id="Attribute" value="PER" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="2" type="4" />
+                          <attribute id="Attribute" value="STR" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="2" type="4" />
+                          <attribute id="Attribute" value="INT" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="2" type="4" />
+                          <attribute id="Attribute" value="CON" type="23" />
+                        </node>
+                    </children>
+                </node>
+                <node id="HenchManData">
+                    <attribute id="HairColor" value="3" type="5" />
+                    <attribute id="HairType" value="3" type="5" />
+                    <attribute id="HeadType" value="18" type="5" />
+                    <attribute id="ID" value="bba7644c-6fbf-4149-a5fb-a4ee7035a058" type="22" />
+                    <attribute id="Icon" value="4" type="5" />
+                    <attribute id="IsMale" value="0" type="19" />
+                    <attribute id="Level" value="2" type="4" />
+                    <attribute id="Name" value="Celes" type="30" />
+                    <attribute id="Race" value="0" type="5" />
+                    <attribute id="SkinColor" value="1" type="5" />
+                    <children>
+                        <node id="Skills">
+                            <attribute id="Object" value="Heal_CureWoundsKnight" type="22" />
+                        </node>
+						<node id="Skills">
+                            <attribute id="Object" value="Heal_RegenerateStart" type="22" />
+                        </node>
+						<node id="Skills">
+                            <attribute id="Object" value="Projectile_IceShardStart" type="22" />
+                        </node>
+                    </children>
+                </node>
+                <node id="TalentsAdded">
+                    <children>
+                        <node id="TalentAdded">
+                            <attribute id="Talent" value="IceKing" type="23" />
+                        </node>
+                        <node id="TalentAdded">
+                            <attribute id="Talent" value="ElementalAffinity" type="23" />
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" time="1404064042" />
+    <version major="1" minor="3" revision="0" build="0" />
+    <region id="CharacterCreationClass">
+        <node id="root">
+            <attribute id="Armour" value="" type="22" />
+            <attribute id="Boots" value="" type="22" />
+            <attribute id="ClassDescription" value="A fist fighter with power and speed." handle="hba13635eg9502g48eaga1ddgb94c088999b6" type="28" />
+            <attribute id="ClassLongDescription" value="A martial arts warrior who wants nothing to do with his royal heritage and birthright." handle="h5c4461b3g0dc4g4d4fgb6fcg666c59f86559" type="28" />
+            <attribute id="ClassName" value="Wayfarer" handle="h20af4b93gbe46g4f30gaaa2g183b7f903a13" type="28" />
+            <attribute id="ClassType" value="Wayfarer" type="22" />
+            <attribute id="ExtraEquipmentSet" value="" type="22" />
+            <attribute id="Gloves" value="" type="22" />
+            <attribute id="Leggings" value="" type="22" />
+            <attribute id="SkillSet" value="" type="22" />
+            <attribute id="Voice" value="0" type="5" />
+            <children>
+                <node id="AbilityChanges">
+                    <children>
+                        <node id="AbilityChange">
+                            <attribute id="Ability" value="SingleHanded" type="23" />
+                            <attribute id="AmountIncreased" value="1" type="4" />
+                        </node>
+                        <node id="AbilityChange">
+                            <attribute id="Ability" value="BodyBuilding" type="23" />
+                            <attribute id="AmountIncreased" value="2" type="4" />
+                        </node>
+                        <node id="AbilityChange">
+                            <attribute id="Ability" value="WarriorLore" type="23" />
+                            <attribute id="AmountIncreased" value="2" type="4" />
+                        </node>
+                    </children>
+                </node>
+                <node id="AttributeChanges">
+                    <children>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="3" type="4" />
+                          <attribute id="Attribute" value="DEX" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="1" type="4" />
+                          <attribute id="Attribute" value="SPD" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="1" type="4" />
+                          <attribute id="Attribute" value="PER" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="4" type="4" />
+                          <attribute id="Attribute" value="STR" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="1" type="4" />
+                          <attribute id="Attribute" value="INT" type="23" />
+                        </node>
+                        <node id="AttributeChange">
+                          <attribute id="AmountIncreased" value="3" type="4" />
+                          <attribute id="Attribute" value="CON" type="23" />
+                        </node>
+                    </children>
+                </node>
+                <node id="HenchManData">
+                    <attribute id="HairColor" value="3" type="5" />
+                    <attribute id="HairType" value="0" type="5" />
+                    <attribute id="HeadType" value="3" type="5" />
+                    <attribute id="ID" value="9174fc42-e596-4481-8a4d-9358baf158f3" type="22" />
+                    <attribute id="Icon" value="13" type="5" />
+                    <attribute id="IsMale" value="1" type="19" />
+                    <attribute id="Level" value="2" type="4" />
+                    <attribute id="Name" value="Sabin" type="30" />
+                    <attribute id="Race" value="0" type="5" />
+                    <attribute id="SkinColor" value="3" type="5" />
+                <children>
+                        <node id="Skills">
+                            <attribute id="Object" value="Rush_RushStart" type="22" />
+                        </node>
+                        <node id="Skills">
+                            <attribute id="Object" value="Target_StunStart" type="22" />
+                        </node>
+                        <node id="Skills">
+                            <attribute id="Object" value="Target_Flurry" type="22" />
+                        </node>
+                    </children>
+                </node>
+                <node id="TalentsAdded">
+                    <children>
+                        <node id="TalentAdded">
+                            <attribute id="Talent" value="LightStep" type="23" />
+                        </node>
+                        <node id="TalentAdded">
+                            <attribute id="Talent" value="Bully" type="23" />
+                        </node>
+                        <node id="TalentAdded">
+                            <attribute id="Talent" value="FiveStarRestaurant" type="23" />
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>
