@@ -11063,6 +11063,11 @@ data "UseAPCost" "3"
 data "Act part" "5"
 data "Value" "10"
 
+new entry "AMER_STATUS_WEAPONBACKSTAB"
+type "Potion"
+data "StackId" "AMERweaponbackstab"
+data "Duration" "0"
+
 new entry "NONE"
 type "Potion"
 data "Duration" "0"
