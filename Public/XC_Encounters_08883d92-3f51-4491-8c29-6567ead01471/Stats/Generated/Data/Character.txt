@@ -93,7 +93,7 @@ type "Character"
 
 new entry "HardcoreNPC"
 type "Character"
-data "Vitality" "50"
+data "Vitality" "100"
 data "Initiative" "2"
 data "ChanceToHitBoost" "20"
 
